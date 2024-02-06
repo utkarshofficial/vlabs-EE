@@ -1921,7 +1921,7 @@ formulas_universal : new Dom("formulas_universal"),
               })
               .add({
                 begin(){
-                  set("The boost converter operation under switch-ON condition is displayed where the inductor is drawing the energy from the input “Battery source”.")
+                  setCC("The boost converter operation under switch-ON condition is displayed where the inductor is drawing the energy from the input “Battery source”.")
                   anime({
                     targets: Scenes.items.slide_13_page_3_1_plus.item,
                     easing: "linear",
