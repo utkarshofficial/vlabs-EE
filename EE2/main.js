@@ -836,7 +836,7 @@ formulas_universal : new Dom("formulas_universal"),
 part_3_option_select : new Dom("part_3_option_select"),
 part_1_text_for_crrct: new Dom("part_1_text_for_crrct"),
 part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
-
+btn_reset_connections: new Dom(".btn-connections"),
 
         
 
@@ -2141,6 +2141,13 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       Dom.setBlinkArrow(-1);
       Scenes.items.btn_next.show()
       Scenes.items.slider_box.hide()
+      Scenes.items.btn_reset_connections.styles({
+        position: "absolute",
+        right: 0,
+        top: "195px",
+        backgroundColor: "blue",
+        color: "white",
+      })
 
       Scenes.setStepHeading("Step-1", "Circuit Formulation");
 
@@ -2150,19 +2157,283 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       //! Required positions
       let tConst = -10
       let lConst = 0
-      Scenes.items.component_battery.set(20+lConst, 30+tConst, 180);
-      Scenes.items.component_inductor.set(200+lConst, 260+tConst, 132);
-      Scenes.items.component_diode.set(380+lConst, 282+tConst, 70);
-      Scenes.items.component_mosfet.set(420+lConst, -40+tConst, 750);
-      Scenes.items.component_capacitor.set(640+lConst, 20+tConst, 230);
-      Scenes.items.btn_check_connections.set(770, 250);
-      Scenes.items.btn_circuit_diagram.set(780, 330);
+      Scenes.items.component_battery.set(20+lConst, 30+tConst, 180)
+      Scenes.items.component_inductor.set(200+lConst, 260+tConst, 132)
+      Scenes.items.component_diode.set(380+lConst, 282+tConst, 70)
+      Scenes.items.component_mosfet.set(420+lConst, -40+tConst, 750)
+      Scenes.items.component_capacitor.set(640+lConst, 20+tConst, 230)
+      Scenes.items.btn_check_connections.set(770, 250)
+      Scenes.items.btn_circuit_diagram.set(780, 330)
       Scenes.items.part_1_text_for_crrct.set(585,340, 40).hide()
       Scenes.items.part_1_text_for_wrong.set(630,310, 110).hide()
 
       Scenes.items.slider_box.hide();
+      // ! JSPLumb cable 
+      function cable(){
+        
+        let a = new Dom(".btn-check-connections")
+        a.get().onclick = checkCableConnection
 
+        // ! check
+        function checkCableConnection() {
+          // if (connections.length == 0) {
+          //   alert("Please make the connections first");
+          //   return false;
+          // }
 
+          if (connections.length < 6) {
+            alert("Wrong Connections\nPlease go through the instructions once");
+            return false;
+          }
+          let isConnectionRight = false
+          if (connections.length >= 6) {
+            let matrixForCheckGraph = [
+            // 0 1 2 3 4 5 6 7 8 9 10
+              [0,0,0,0,0,0,0,0,0,0,0], // 0
+              [0,0,0,1,0,0,0,0,0,0,0], // 1
+              [0,0,0,0,0,0,1,0,1,0,0], // 2
+              [0,1,0,0,0,0,0,0,0,0,0], // 3
+              [0,0,0,0,0,0,0,1,0,1,0], // 4
+              [0,0,0,0,0,0,0,0,0,0,1], // 5
+              [0,0,1,0,0,0,0,0,1,0,0], // 6
+              [0,0,0,0,1,0,0,0,0,1,0], // 7
+              [0,0,1,0,0,0,1,0,0,0,0], // 8
+              [0,0,0,0,1,0,0,1,0,0,0], // 9
+              [0,0,0,0,0,1,0,0,0,0,0], // 10
+            ]
+            var listDiv = [];
+            for (var j = 0; j < connections.length; j++) {
+              let pos = [connections[j].targetId,connections[j].sourceId] 
+              listDiv.push(pos)
+            }
+            for(let i=0;i<listDiv.length;i++){
+              // substr is so i can extract the number from the id
+              let vertex1 = parseInt(listDiv[i][0].substr(-1))
+              let vertex2 = parseInt(listDiv[i][1].substr(-1))
+
+              if(vertex1 == 0){
+                vertex1 = 10
+              }else if(vertex2 == 0){
+                vertex2 = 10
+              }
+
+              console.log(vertex1,vertex2,matrixForCheckGraph[vertex1][vertex2],listDiv)
+
+              if(matrixForCheckGraph[vertex1][vertex2]==1){
+                isConnectionRight = true
+              }
+              else{
+                isConnectionRight = false
+                // todo for connection wrong
+                alert("wrong")
+                return false
+              }
+            }
+            // todo: for right connection note
+            alert("right")  
+            setIsProcessRunning(false);
+
+          }
+          
+        }
+
+        (showConnectionInfo = function (listDiv) {
+        }),
+        (hideConnectionInfo = function (listDiv) {
+          listDiv.style.display = "none";
+        }),
+        (connections = []),
+        (updateConnections = function (conn, remove) {
+          if (!remove) connections.push(conn);
+          else {
+            var idx = -1;
+            for (var i = 0; i < connections.length; i++) {
+              if (connections[i] == conn) {
+                idx = i;
+                break;
+              }
+            }
+            if (idx != -1) connections.splice(idx, 1);
+          }
+          if (connections.length > 0) {
+            var listDiv = [];
+            for (var j = 0; j < connections.length; j++) {
+              let pos = [connections[j].targetId,connections[j].sourceId] 
+              listDiv.push(pos)
+            }
+            showConnectionInfo(listDiv);
+          }
+        });
+
+        jsPlumb.ready(function () {
+          var instance = jsPlumb.getInstance();
+
+          // suspend drawing and initialise.
+          instance.batch(function () {
+            // bind to connection/connectionDetached events, and update the list of connections on screen.
+            instance.bind("connection", function (info, originalEvent) {
+              updateConnections(info.connection);
+            });
+            instance.bind("connectionDetached", function (info, originalEvent) {
+              updateConnections(info.connection, true);
+            });
+
+            instance.bind("connectionMoved", function (info, originalEvent) {
+              //  only remove here, because a 'connection' event is also fired.
+              // in a future release of jsplumb this extra connection event will not
+              // be fired.
+              updateConnections(info.connection, true);
+            });
+
+            // configure some drop options for use by all endpoints.
+            var exampleDropOptions = {
+              tolerance: "touch",
+              hoverClass: "dropHover",
+              activeClass: "dragActive",
+            };
+            let radius = 14
+            var exampleEndpoint1 = {
+              endpoint: ["Dot", { radius: radius }],
+              paintStyle: { fill: "pink" },
+              isSource: true,
+              scope: "green",
+              connectorStyle: { stroke: "pink", strokeWidth: 6 },
+              connector: ["Bezier", { curviness: 10 }],
+              maxConnections: 1,
+              isTarget: true,
+              dropOptions: exampleDropOptions,
+            };
+            var exampleEndpoint2 = {
+              endpoint: ["Dot", { radius: radius }],
+              paintStyle: { fill: "black" },
+              isSource: true,
+              scope: "green",
+              connectorStyle: { stroke: "black", strokeWidth: 6 },
+              connector: ["Bezier", { curviness: -50 }],
+              maxConnections: 2,
+              isTarget: true,
+              dropOptions: exampleDropOptions,
+            };
+            var exampleEndpoint3 = {
+              endpoint: ["Dot", { radius: radius }],
+              paintStyle: { fill: "red" },
+              isSource: true,
+              scope: "green",
+              connectorStyle: { stroke: "red", strokeWidth: 6 },
+              connector: ["Bezier", { curviness: -30 }],
+              maxConnections: 2,
+              isTarget: true,
+              dropOptions: exampleDropOptions,
+            };
+            var exampleEndpoint4 = {
+              endpoint: ["Dot", { radius: radius }],
+              paintStyle: { fill: "green" },
+              isSource: true,
+              scope: "green",
+              connectorStyle: { stroke: "green", strokeWidth: 6 },
+              connector: ["Bezier", { curviness: -50 }],
+              maxConnections: 1,
+              isTarget: true,
+              dropOptions: exampleDropOptions,
+            };
+            // conn 1
+            instance.addEndpoint(
+              "vertex1",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint1
+            );
+            instance.addEndpoint(
+              "vertex3",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint1
+            );
+
+            // conn 2
+            instance.addEndpoint(
+              "vertex4",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint2
+            );
+            instance.addEndpoint(
+              "vertex7",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint2
+            );
+            instance.addEndpoint(
+              "vertex9",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint2
+            );
+
+            // conn 3
+            instance.addEndpoint(
+              "vertex8",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint3
+            );
+            instance.addEndpoint(
+              "vertex6",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint3
+            );
+            instance.addEndpoint(
+              "vertex2",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint3
+            );
+
+            // conn 4
+            instance.addEndpoint(
+              "vertex10",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint4
+            );
+            instance.addEndpoint(
+              "vertex5",
+              { anchor: [0.75, 0, 0, -1] },
+              exampleEndpoint4
+            );
+            /*instance.addEndpoint("vertex9", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint4);
+            instance.addEndpoint("vertex10", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint4);
+            instance.addEndpoint("vertex11", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint3);
+            instance.addEndpoint("vertex12", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint3);*/
+
+            instance.draggable(jsPlumb.getSelector(".drag-drop-demo .window"));
+
+            var hideLinks = jsPlumb.getSelector(".drag-drop-demo .hide");
+            instance.on(hideLinks, "click", function (e) {
+              instance.toggleVisible(this.getAttribute("rel"));
+              jsPlumbUtil.consume(e);
+            });
+
+            var dragLinks = jsPlumb.getSelector(".drag-drop-demo .drag");
+            instance.on(dragLinks, "click", function (e) {
+              var s = instance.toggleDraggable(this.getAttribute("rel"));
+              this.innerHTML = s ? "disable dragging" : "enable dragging";
+              jsPlumbUtil.consume(e);
+            });
+
+            var detachLinks = jsPlumb.getSelector(".drag-drop-demo .detach");
+            instance.on(detachLinks, "click", function (e) {
+              instance.deleteConnectionsForElement(this.getAttribute("rel"));
+              jsPlumbUtil.consume(e);
+            });
+
+            // ! reset
+            instance.on(Scenes.items.btn_reset_connections.item, "click", function (e) {
+              // instance.detachEveryConnection();
+              instance.deleteEveryConnection()
+              showConnectionInfo("");
+              jsPlumbUtil.consume(e);
+            });
+          });
+
+          jsPlumb.fire("jsPlumbDemoLoaded", instance);
+        });
+      }
+
+      // calling cable function
+      cable()
       
       // ------ end
 
@@ -2172,24 +2443,52 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
     }),
     (step2 = function () {
       setIsProcessRunning(true);
+      // destory all the connection 
+      Scenes.items.btn_reset_connections.item.click()
+      getAll(".jtk-endpoint").forEach(ele=>{
+        ele.style.display = "none"
+      })
  
       Scenes.setStepHeading(
         "Step-2",
         "Voltage and current waveforms."
       )
-      Dom.setBlinkArrowRed(true, 35, 90, null, 35, 90).play();
-      setCC("Select the value of V<sub>g</sub>", 5);
+      function stepTutorial2(){
+
+        Dom.setBlinkArrowRed(true,30,-15,30,30,-90).play()
+        setCC("Select the value of V<sub>g</sub>")
+
+        sliders.vImg.onclick = ()=>{
+          sliderV()
+          sliders.vImg.click()
+          Dom.setBlinkArrowRed(true,185,114,null,null,90).play()
+          setCC("Set the value of D",5)
+
+          sliders.d.onclick = ()=>{
+            Dom.setBlinkArrowRed(true,440,85).play()
+            setCC("Set the value of R")
+
+            sliders.r.onclick = ()=>{
+              Dom.setBlinkArrowRed(true,405,-12,30,30,90).play()
+              setCC("Press Record")
+
+              sliders.clearOnclick()
+            }
+          }
+        }
+      }
+      stepTutorial2()
       Scenes.items.btn_next.show();
 
-  //! Required Items
-  Scenes.items.record_btn.set(355, -60, 70)
-  Scenes.items.slider_box.item.style.scale = "0.8";
-  Scenes.items.slider_box.show("flex").set(-120, -40);
+      //! Required Items
+      Scenes.items.record_btn.set(355, -60, 70)
+      Scenes.items.slider_box.item.style.scale = "0.8";
+      Scenes.items.slider_box.show("flex").set(-120, -40);
 
-  Scenes.items.part_2_graph_empty.set(0, -150, 572, 950);
-  Scenes.items.part_2_graph_1.set(0, -150, 572, 950).hide();
-  Scenes.items.part_2_graph_2.set(0, -150, 560, 950).hide();
-  Scenes.items.part_2_graph_3.set(0, -150, 560, 950).hide();
+      Scenes.items.part_2_graph_empty.set(0, -150, 572, 950);
+      Scenes.items.part_2_graph_1.set(0, -150, 572, 950).hide();
+      Scenes.items.part_2_graph_2.set(0, -150, 560, 950).hide();
+      Scenes.items.part_2_graph_3.set(0, -150, 560, 950).hide();
        
  
       // temp text on required positions
@@ -2259,7 +2558,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
         })
       })
  
-       let currentGraph = Scenes.items.part_2_graph_empty
+      let currentGraph = Scenes.items.part_2_graph_empty
 
        
       // *  chage the step size of the sliders
@@ -2273,9 +2572,9 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
  
       // ! onclick for record
       Scenes.items.record_btn.item.onclick = function () {
+        Dom.setBlinkArrowRed(-1)
         // ! Activate the next btn right after the click
         // setCC("Click 'Next' to go to next step");
-        // setIsProcessRunning(false);
         
         // after complete
         // Dom.setBlinkArrow(true, 790, 408).play();
@@ -2548,8 +2847,10 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
           Scenes.items.part_2_graph_3.show();
           currentGraph = Scenes.items.part_2_graph_3;
 
-          // completed
+          
         }
+        // completed
+        setIsProcessRunning(false);
       };
       
 
@@ -2579,12 +2880,15 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       Scenes.items.part_3_option_4.set(712-70, 248, 60)
       // hide the slider
       Scenes.items.slider_box.hide()
+      // resloving the step to css
+      Scenes.items.slider_box.item.style.scale = "1";
+
 
       let rightTicks = [
-        Scenes.items.right_tick_1.set(20,280).hide(),
-        Scenes.items.right_tick_2.set(208,280).hide().zIndex(2001),
-        Scenes.items.right_tick_3.set(435,280).hide(),
-        Scenes.items.right_tick_4.set(630,280).hide()
+        Scenes.items.right_tick_1.set(640,35,44).zIndex(2000).hide(),
+        Scenes.items.right_tick_2.set(655,105,44).zIndex(2001).hide(),
+        Scenes.items.right_tick_3.set(655,180,44).zIndex(2000).hide(),
+        Scenes.items.right_tick_4.set(645,255,44).zIndex(2000).hide()
       ]
 
       // hide all tables
@@ -2690,7 +2994,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
         "Ideal voltage gain plot."
       );
       // ! show the slider
-      Scenes.items.slider_box.set(-50).show("flex")
+      Scenes.items.slider_box.set(-50,-60).show("flex")
       // setCC("Record  7 reading for different Duty Ratio.")
       
       // ! required item
@@ -2707,7 +3011,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
         [],
         [],
         []
-      ]
+      ] 
 
       let table = Scenes.items.part3_table_one.item
       let table1 = table.children[0]
@@ -2766,7 +3070,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       let chart1 = Scenes.items.chart.graph1
       let chart2 = Scenes.items.chart.graph2
       let isDataDeleteable = true
-      if(chart1==null){
+      if(chart1 == null){
         isDataDeleteable = true
       }else{
         isDataDeleteable = false
@@ -3191,7 +3495,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       );
       // setCC("Record 7 reading for 3 different load resistances.")
       // ! show the slider
-      Scenes.items.slider_box.set(-50)
+      Scenes.items.slider_box.set(-50,-60)
       Scenes.items.btn_next.show()
       
       
@@ -3608,7 +3912,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
       )
       // setCC("Record 7 reading for different Load Resistances (R0)")
         // ! show the slider
-      Scenes.items.slider_box.set(-65)
+      Scenes.items.slider_box.set(-65,-60)
       Scenes.items.btn_next.show()
 
       //! Required Items
@@ -3939,7 +4243,7 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
         "Component Stress"
       )
         // ! show the slider
-      Scenes.items.slider_box.set(-70)
+      Scenes.items.slider_box.set(-70,-60)
       Scenes.items.btn_next.show()
 
       //! Required Items
