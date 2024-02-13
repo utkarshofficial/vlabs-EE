@@ -496,7 +496,7 @@ class Dom {
     let blinkArrow = new Dom(".blinkArrowRed")
       .set(left, top, height, width)
       .rotate(rotate)
-      .zIndex(10000);
+      .zIndex(5000);
     if (isX === -1) {
       blinkArrow.hide();
       return;
@@ -837,6 +837,7 @@ part_3_option_select : new Dom("part_3_option_select"),
 part_1_text_for_crrct: new Dom("part_1_text_for_crrct"),
 part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
 btn_reset_connections: new Dom(".btn-connections"),
+part_1_text_for_circuit_diagram: new Dom("part_1_text_for_circuit_diagram"),
 
         
 
@@ -2150,6 +2151,7 @@ btn_reset_connections: new Dom(".btn-connections"),
       })
 
       Scenes.setStepHeading("Step-1", "Circuit Formulation");
+      setCC("Connect the terminals for boost converter")
 
       let vertexBox = new Dom(".vertex-box")
       vertexBox.show()
@@ -2158,14 +2160,55 @@ btn_reset_connections: new Dom(".btn-connections"),
       let tConst = -10
       let lConst = 0
       Scenes.items.component_battery.set(20+lConst, 30+tConst, 180)
-      Scenes.items.component_inductor.set(200+lConst, 260+tConst, 132)
-      Scenes.items.component_diode.set(380+lConst, 282+tConst, 70)
+      Scenes.items.component_inductor.set(200-40+lConst, 260+tConst, 132)
+      Scenes.items.component_diode.set(380+50+lConst, 282+tConst, 70)
       Scenes.items.component_mosfet.set(420+lConst, -40+tConst, 750)
       Scenes.items.component_capacitor.set(640+lConst, 20+tConst, 230)
       Scenes.items.btn_check_connections.set(770, 250)
+      Scenes.items.btn_reset_connections.set()
       Scenes.items.btn_circuit_diagram.set(780, 330)
       Scenes.items.part_1_text_for_crrct.set(585,340, 40).hide()
       Scenes.items.part_1_text_for_wrong.set(630,310, 110).hide()
+      Scenes.items.part_1_text_for_circuit_diagram.set(0,0).zIndex(2000).hide()
+
+      // * Circuit Diagram Btn
+      // Scenes.items.btn_circuit_diagram.item.classList.add("btn-deactive")
+      Scenes.items.btn_circuit_diagram.item.onclick = ()=>{
+        if(Scenes.items.part_1_text_for_circuit_diagram.item.style.display=="none"){
+          Scenes.items.part_1_text_for_circuit_diagram.show()
+          Scenes.items.btn_circuit_diagram.styles({
+            boxShadow: "none"
+          })
+        }else{
+          Scenes.items.part_1_text_for_circuit_diagram.hide()
+          Scenes.items.btn_circuit_diagram.styles({
+            boxShadow: "3px 2px 4px 0px black"
+          })
+        }
+      }
+     
+
+      function isConnectionsRight(connections){
+        let target = null
+        if(connections){
+          target = Scenes.items.part_1_text_for_crrct.set(585,340, 40).show()
+          Scenes.items.part_1_text_for_wrong.set(630,310, 110).hide()
+        }
+        else{
+          Scenes.items.part_1_text_for_crrct.set(585,340, 40).hide()
+          target = Scenes.items.part_1_text_for_wrong.set(630,310, 110).show()
+        }
+        anime({
+          targets: target.item,
+          duration: 2000,
+          easing: "easeInOutExpo",
+          opacity: 0,
+          complete: () => {
+            target.hide()
+          }
+        })
+      }
+
 
       Scenes.items.slider_box.hide();
       // ! JSPLumb cable 
@@ -2182,7 +2225,8 @@ btn_reset_connections: new Dom(".btn-connections"),
           // }
 
           if (connections.length < 6) {
-            alert("Wrong Connections\nPlease go through the instructions once");
+            // alert("Wrong Connections\nPlease go through the instructions once");
+            isConnectionsRight(false)
             return false;
           }
           let isConnectionRight = false
@@ -2217,20 +2261,20 @@ btn_reset_connections: new Dom(".btn-connections"),
                 vertex2 = 10
               }
 
-              console.log(vertex1,vertex2,matrixForCheckGraph[vertex1][vertex2],listDiv)
 
               if(matrixForCheckGraph[vertex1][vertex2]==1){
                 isConnectionRight = true
               }
               else{
                 isConnectionRight = false
-                // todo for connection wrong
-                alert("wrong")
+                // * for connection wrong
+                isConnectionsRight(false)
+                // alert("wrong")
                 return false
               }
             }
-            // todo: for right connection note
-            alert("right")  
+            // * for right connection note
+            isConnectionsRight(true)
             setIsProcessRunning(false);
 
           }
@@ -2448,7 +2492,12 @@ btn_reset_connections: new Dom(".btn-connections"),
       getAll(".jtk-endpoint").forEach(ele=>{
         ele.style.display = "none"
       })
- 
+      
+      // * for setting the slider to its default value
+      let sliderValueInput = document.querySelector(".r .value-box input")
+      sliderValueInput.value = 50
+      sliderValueInput.onkeyup()
+
       Scenes.setStepHeading(
         "Step-2",
         "Voltage and current waveforms."
@@ -2465,7 +2514,7 @@ btn_reset_connections: new Dom(".btn-connections"),
           setCC("Set the value of D",5)
 
           sliders.d.onclick = ()=>{
-            Dom.setBlinkArrowRed(true,440,85).play()
+            Dom.setBlinkArrowRed(true,440,40).play()
             setCC("Set the value of R")
 
             sliders.r.onclick = ()=>{
@@ -2566,8 +2615,7 @@ btn_reset_connections: new Dom(".btn-connections"),
       let dutyRatioSlider = Scenes.items.slider_D.item;
       dutyRatioSlider.min = "0.25";
       dutyRatioSlider.max = "0.75";
-      dutyRatioSlider.step = "0.25";
-      Scenes.items.slider_D.item.innerHTML = "0.25";
+      dutyRatioSlider.step = "0.25"
       
  
       // ! onclick for record
@@ -2604,7 +2652,7 @@ btn_reset_connections: new Dom(".btn-connections"),
 
         //temp titles for inductor
         Scenes.items.tempTitle1.setContent(vG)
-        Scenes.items.tempTitle2.setContent(v0 - vG)
+        Scenes.items.tempTitle2.setContent(Number(v0 - vG).toFixed(1))
         Scenes.items.tempTitle3.setContent("0")
         Scenes.items.tempTitle4.setContent(i1)
         Scenes.items.tempTitle5.setContent(i2)
@@ -2615,28 +2663,28 @@ btn_reset_connections: new Dom(".btn-connections"),
         //temp titles for switch
         Scenes.items.tempTitle9.setContent("0")
         Scenes.items.tempTitle10.setContent(v0)
-        Scenes.items.tempTitle11.setContent((1-dutyRatioValue) * v0)
+        Scenes.items.tempTitle11.setContent(Number((1-dutyRatioValue) * v0).toFixed(1))
         Scenes.items.tempTitle12.setContent(i1)
         Scenes.items.tempTitle13.setContent(i2)
         Scenes.items.tempTitle14.setContent("0")
-        Scenes.items.tempTitle15.setContent(dutyRatioValue * iIn)
+        Scenes.items.tempTitle15.setContent(Number(dutyRatioValue * iIn).toFixed(1))
 
         //for diode d
         Scenes.items.tempTitle16.setContent(v0)
         Scenes.items.tempTitle17.setContent("0")
-        Scenes.items.tempTitle18.setContent(dutyRatioValue*v0)
+        Scenes.items.tempTitle18.setContent(Number(dutyRatioValue*v0).toFixed(1))
         Scenes.items.tempTitle19.setContent("0")
         Scenes.items.tempTitle20.setContent(i2)
         Scenes.items.tempTitle21.setContent(i1)
-        Scenes.items.tempTitle22.setContent((1-dutyRatioValue) * iIn)
+        Scenes.items.tempTitle22.setContent(Number((1-dutyRatioValue) * iIn).toFixed(1))
                 
         //for capacitor
         Scenes.items.tempTitle23.setContent(v0)
         Scenes.items.tempTitle24.setContent(v0)
         Scenes.items.tempTitle25.setContent(v0)
         Scenes.items.tempTitle26.setContent(i0)
-        Scenes.items.tempTitle27.setContent(i2-i0)
-        Scenes.items.tempTitle28.setContent(i1-i0)
+        Scenes.items.tempTitle27.setContent(Number(i2-i0).toFixed(1))
+        Scenes.items.tempTitle28.setContent(Number(i1-i0).toFixed(1))
         Scenes.items.tempTitle29.setContent("0")
         
         //source maasurements
@@ -3034,7 +3082,7 @@ btn_reset_connections: new Dom(".btn-connections"),
 
       function stepTutorial2(){
         
-        Dom.setBlinkArrowRed(true,570,75).play()
+        Dom.setBlinkArrowRed(true,570,20).play()
         setCC("Set the value of R")
 
         sliders.r.onclick = ()=>{
@@ -4019,7 +4067,7 @@ btn_reset_connections: new Dom(".btn-connections"),
           setCC("Set the value of D",5)
 
           sliders.d.onclick = ()=>{
-            Dom.setBlinkArrowRed(true,560,75).play()
+            Dom.setBlinkArrowRed(true,560,20).play()
             setCC("Set the value of R")
 
             sliders.r.onclick = ()=>{
@@ -4254,12 +4302,10 @@ btn_reset_connections: new Dom(".btn-connections"),
       Scenes.items.part3_table_four_2.set(10,240)
       Scenes.items.record_btn.set(465,180,60)
       //  Scenes.items.part_3_option_4_graph.set(295,-60,60)
-      disableSlider("reset")
-
 
       let styles = {
         color: "black",
-        backgroundColor: "white!important",
+        backgroundColor: "white",
         width: "80px",
         rotate: "-90deg"
       }
@@ -4358,7 +4404,7 @@ btn_reset_connections: new Dom(".btn-connections"),
           setCC("Set the value of D",5)
 
           sliders.d.onclick = ()=>{
-            Dom.setBlinkArrowRed(true,560,75).play()
+            Dom.setBlinkArrowRed(true,560,20).play()
             setCC("Set the value of R")
 
             sliders.r.onclick = ()=>{

@@ -164,6 +164,7 @@ formulas_universal:this.allImgsDom[140],
 part_3_option_select:this.allImgsDom[141],
 part_1_text_for_crrct:this.allImgsDom[142],
 part_1_text_for_wrong:this.allImgsDom[143],
+part_1_text_for_circuit_diagram:this.allImgsDom[144],
 
 
 
