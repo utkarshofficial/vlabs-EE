@@ -327,10 +327,10 @@
 /* ! Next Btn Deactive class */
 .btn-deactive{
     transition: 1s;
-    opacity: 0.7;
+    opacity: 0.7!important;
     cursor: not-allowed;
-    background-color: rgb(97, 97, 97);
-    box-shadow: 1px 1px 5px black;
+    background-color: rgb(97, 97, 97)!important;
+    box-shadow: none;
     color: black;
 }
 
@@ -413,7 +413,7 @@
 }
 
 .btn-circuit-diagram{
-    background-color: #7937aa!important;
+    background-color: #7937aa;
     color: white;
     font-weight: bold;
     display: none;
@@ -486,7 +486,7 @@
     padding: 0 2px;
     height: 40px;
     border-radius: 10px;
-    z-index: 5000;
+    z-index: 10000;
   }
 
   .btn-popup{
@@ -565,11 +565,11 @@
     top: 162px;
 }
 #vertex3{
-    left: 205px;
+    left: 165px;
     top: 309px;
 }
 #vertex4{
-    left: 341px;
+    left: 301px;
     top: 308px;
 }
 #vertex5{
@@ -590,10 +590,29 @@
     top: -16px;
 }
 #vertex9  {
-    left: 387px;
+    left: 437px;
     top: 307px;
 }
 #vertex10 {
-    left: 497px;
+    left: 542px;
     top: 307px;
 }
+
+.vertex-box .text{
+    position: relative;
+    font-size: 20px;
+    font-weight: bolder;
+    left: -27px;
+    top: -10px;
+}
+
+.vertex-box #vertex3 .text,
+.vertex-box #vertex4 .text,
+.vertex-box #vertex7 .text,
+.vertex-box #vertex8 .text,
+.vertex-box #vertex9 .text,
+.vertex-box #vertex10 .text{
+    left: 0;
+    top: 20px
+}
+

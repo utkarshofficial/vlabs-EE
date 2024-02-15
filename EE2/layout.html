@@ -293,16 +293,16 @@
               <!-- ! for cicuit formulation -->
               <!-- Connection Points -->
               <div class="vertex-box">
-                <p class="vertex" id="vertex1">1</p>
-                <p class="vertex" id="vertex2">2</p>
-                <p class="vertex" id="vertex3">3</p>
-                <p class="vertex" id="vertex4">4</p>
-                <p class="vertex" id="vertex5">5</p>
-                <p class="vertex" id="vertex6">6</p>
-                <p class="vertex" id="vertex7">7</p>
-                <p class="vertex" id="vertex8">8</p>
-                <p class="vertex" id="vertex9">9</p>
-                <p class="vertex" id="vertex10">10</p>
+                <p class="vertex" id="vertex1"><span class="text">1</span></p>
+                <p class="vertex" id="vertex2"><span class="text">2</span></p>
+                <p class="vertex" id="vertex3"><span class="text">3</span></p>
+                <p class="vertex" id="vertex4"><span class="text">4</span></p>
+                <p class="vertex" id="vertex5"><span class="text">5</span></p>
+                <p class="vertex" id="vertex6"><span class="text">6</span></p>
+                <p class="vertex" id="vertex7"><span class="text">7</span></p>
+                <p class="vertex" id="vertex8"><span class="text">8</span></p>
+                <p class="vertex" id="vertex9"><span class="text">9</span></p>
+                <p class="vertex" id="vertex10"><span class="text">10</span></p>
               </div>
 
               <!-- part 3 first table -->
@@ -853,7 +853,7 @@
               </div>
                           
               <!-- * Input box format for in anime questions -->
-              <form onsubmit="return false" class="temp-input">
+              <form onsubmit="return false" class="temp-input"
                 <span class="text1"></span
                 ><input class="input" type="text" name="" id="ipnum" /><span
                   class="text2"
@@ -966,7 +966,7 @@
                       <input type="range" class="slider_R" step="1" min="50" max="500" value="50">
                       <img src="./src/images/sliders/slider_R_arrow.png" class="slider-R-arrow">
                       <div class="value-box">
-                        <input type="text" value="50" min="50" max="500" onfocusout="">
+                        <input type="text" value="500" min="50" max="500" onfocusout="">
                         <span>𝜴</span>
                       </div>
                     </div>
@@ -985,7 +985,7 @@
               <div class="btn btn-check-connections">
                 Check Connections
               </div>
-              <div class="btn btn-circuit-diagram">
+              <div class="btn btn-circuit-diagram" style="z-index: 2001;">
                 Circuit Diagram
               </div>
               <div class="btn btn-connections" id="reset-connections" >
@@ -1887,6 +1887,10 @@ alt="part_3_option_select"
 <img
         class="main-window-imgs"
         src="./src/images/part_1_text_for_wrong.png"
+    />
+<img
+        class="main-window-imgs"
+        src="./src/images/part_1_circuit_diagram.png"
     />
 
 

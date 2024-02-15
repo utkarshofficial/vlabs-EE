@@ -839,6 +839,9 @@ formulas_universal : new Dom("formulas_universal"),
     let sliderInputs = document.querySelectorAll(".range-slider__range")
     sliderInputs.forEach((ele,idx)=>{
       ele.value=defaultValues[idx]
+      ele.min=defaultValues[idx]
+      Scenes.items.slider_R.item.children[1].children[0].value = 10
+      Scenes.items.slider_R.item.children[1].children[1].value = 10
     })
     document.querySelector(".resistance-input").value = 10
 
@@ -1118,7 +1121,7 @@ formulas_universal : new Dom("formulas_universal"),
                   nextBtnToggle()
                 }
               })
-          setCC("In another example again, the 12 V battery is insufficient to supply the power to the 32 V DC-Bulb and hence it won’t glow")
+          setCC("It is demonstrated that a 12 Volt battery is insufficient to supply the power to the 48 Volt Fan and 32 Volt DC bulb, hence they will not work.")
 
             },
           ]
@@ -1344,7 +1347,7 @@ formulas_universal : new Dom("formulas_universal"),
                 },
                 complete(){
                   nextBtnToggle()
-              setCC("Here, three batteries in series provides 36 V which is higher than the 32 V DC-bulb voltage and hence not advisable to connect as demonstrated here")
+              setCC("Here, three batteries in series provides 36 Volt which is higher than the 32 Volt DC-bulb voltage and hence not advisable to connect as demonstrated here")
 
                 }
               })
@@ -1420,7 +1423,7 @@ formulas_universal : new Dom("formulas_universal"),
                 },
                 ()=>{
                   nextBtnToggle()
-                  setCC("A DC-DC boost converter is more appropriate to boost the 12 V battery voltage to power the 32 V DC-Bulb.")
+                  setCC("A DC-DC boost converter is more appropriate to boost the 12 Volt battery voltage to power the 32 Volt DC-Bulb.")
 
                 })
             })
@@ -1550,12 +1553,8 @@ formulas_universal : new Dom("formulas_universal"),
               })
               .add({
                 begin(){
-                  fadeAnime(Scenes.items.slide_10_page_4_2_plus)
-                }
-              })
-              .add({
-                begin(){
-                  fadeAnime(Scenes.items.slide_10_page_4_3_minus)
+                  Scenes.items.slide_10_page_4_2_plus.show()
+                  Scenes.items.slide_10_page_4_3_minus.show()
                 }
               })
               .add({
@@ -1591,7 +1590,7 @@ formulas_universal : new Dom("formulas_universal"),
               .add({
                 delay: 3000,
                 complete(){
-                  setCC("The inductor used in DC-DC converter circuits satisfies volt-sec balance, stores and releases the energy due to switching action and its voltage polarity changes")
+                  setCC("The inductor used in DC-DC converter circuits satisfies volt-second balance, stores and releases the energy due to switching action and its voltage polarity changes")
                   fadeAnime(Scenes.items.slide_10_page_4_4_arrow,
                     ()=>{},
                     ()=>{
@@ -1646,7 +1645,7 @@ formulas_universal : new Dom("formulas_universal"),
               })
               .add({
                 begin(){
-                  setCC("The “Capacitor” used in DC-DC converter circuits satisfies “Charge-sec” balance, stores and releases the energy due to switching action and its current direction changes.")
+                  setCC("The “Capacitor” used in DC-DC converter circuits satisfies “Charge-second” balance, stores and releases the energy due to switching action and its current direction changes.")
                   fadeAnime(Scenes.items.slide_11_page_3_1)
                   nextBtnToggle()
                 },
@@ -1741,7 +1740,7 @@ formulas_universal : new Dom("formulas_universal"),
               })
               .add({
                 begin(){
-                  setCC("A controlled switch (MOSFET/IGBT) under forward biased condition, starts conducting against “High PWM signal” and turns-OFF with “Low PWM signal”.")
+                  setCC("A controlled switch (MOSFET or IGBT) under forward biased condition, starts conducting against “High PWM signal” and turns-OFF with “Low PWM signal”.")
                   fadeAnime(Scenes.items.slide_12_page_3_4_text_2)
                 },
                 complete(){
@@ -2296,7 +2295,7 @@ formulas_universal : new Dom("formulas_universal"),
         "Step-2",
         "Voltage and current waveforms."
       )
-      setCC("Select the parameter(s): Vin, D, R to see the current and voltage waveforms of various components.")
+      setCC("Select the parameters: Vin, D, R to see the current and voltage waveforms of various components.")
       Scenes.items.slider_box.show("flex")
       Scenes.items.btn_next.show()
 
@@ -2658,7 +2657,7 @@ formulas_universal : new Dom("formulas_universal"),
 
           slidersBox[1].onclick = ()=>{
             Dom.setBlinkArrowRed(true,225,110).play()
-            setCC("Select the value of Load Resistance (R)")
+            setCC("Select the value of R")
 
             slidersBox[2].onclick = ()=>{
               Dom.setBlinkArrowRed(true,180,280).play()
@@ -2858,7 +2857,7 @@ formulas_universal : new Dom("formulas_universal"),
         // for arrow system
         if(recordBtnClickIdx < 6){
           Dom.setBlinkArrowRed(true,225,60).play()
-          setCC("Change the value of Duty ratio (D) in steps and record it")
+          setCC("Change the value of D")
           slidersBox[1].onclick = ()=>{
             Dom.setBlinkArrowRed(true,180,280).play()
             setCC("Press record button",7)
@@ -2942,7 +2941,7 @@ formulas_universal : new Dom("formulas_universal"),
 
         // warning for sorting the data
         if(recordBtnClickIdx==7){
-          setCC("Click 'Record' to sort the table according to D and plot the graph.")
+          setCC("Click 'Record' to plot the graph.")
         }
 
         
@@ -3084,7 +3083,7 @@ formulas_universal : new Dom("formulas_universal"),
     
             slidersBox[0].onclick = ()=>{
               Dom.setBlinkArrowRed(true,375,90,null,null,-90).play()
-              setCC("Select the value of load resistance (R1) from 3 options",5)
+              setCC("Select the value of R1 from three options",5)
     
               slidersBox[1].onclick = ()=>{
                 Dom.setBlinkArrowRed(true,225,110).play()
@@ -3425,10 +3424,20 @@ formulas_universal : new Dom("formulas_universal"),
         "",
         "Efficiency Plot."
       )
-      setCC("Record  7 reading for different Load Resistances (R0)")
+
+
         // ! show the slider
       Scenes.items.slider_box.show("flex")
       Scenes.items.btn_next.show()
+
+      // *  chage the step size of the sliders
+      let resistanceSlider = Scenes.items.slider_R.item.children[1].children[0];
+      let resistanceSliderInput = Scenes.items.slider_R.item.children[1].children[1]
+      resistanceSlider.min = "50"
+      resistanceSlider.value = "50"
+      resistanceSliderInput.value = "50"
+      
+
 
       //! Required Items
       Scenes.items.circuit_full_3.set(230,-50,150)
@@ -3523,15 +3532,15 @@ formulas_universal : new Dom("formulas_universal"),
       function stepTutorial2(){
 
         Dom.setBlinkArrowRed(true,225,10).play()
-        setCC("Select the value of source voltage (V<sub>in</sub>)",6)
+        setCC("Select the value of (V<sub>in</sub>)",6)
 
         slidersBox[0].onclick = ()=>{
           Dom.setBlinkArrowRed(true,225,60).play()
-          setCC("Select the value of Duty Ratio (D)")
+          setCC("Select the value D")
 
           slidersBox[1].onclick = ()=>{
             Dom.setBlinkArrowRed(true,225,110).play()
-            setCC("Select the value of Load Resistance (R)")
+            setCC("Select the value of R")
 
             slidersBox[2].onclick = ()=>{
               Dom.setBlinkArrowRed(true,180,280).play()
@@ -3714,7 +3723,7 @@ formulas_universal : new Dom("formulas_universal"),
          // for arrow system
          if(recordBtnClickIdx < 6){
           Dom.setBlinkArrowRed(true,225,110).play()
-            setCC("Select the value of Load Resistance (R)")
+            setCC("Select the value of R")
           slidersBox[2].onclick = ()=>{
             Dom.setBlinkArrowRed(true,180,280).play()
             setCC("Press record button",7)
@@ -3821,7 +3830,7 @@ formulas_universal : new Dom("formulas_universal"),
         // }
         // warning for sorting the data
         if(recordBtnClickIdx==7){
-          setCC("Click 'Record' to sort the table according to D and plot the graph.")
+          setCC("Click 'Record' to plot the graph.")
         }
       }    
        
@@ -4172,13 +4181,13 @@ formulas_universal : new Dom("formulas_universal"),
          let ic = Number(Formulas.stress.i_L2(values) - Formulas.stress.i0(values)).toFixed(2)
          // table two changes
          let table2Row = Scenes.items.part3_table_four_2.item.tBodies[0].rows
-        table2Row[0].cells[1].innerHTML = `> v<sub>S</sub> (${v0})`
-        table2Row[1].cells[1].innerHTML = `> v<sub>D</sub> (${v0})`
-        table2Row[2].cells[1].innerHTML = `> v<sub>C</sub> (${v0})`
+        table2Row[0].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
+        table2Row[1].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
+        table2Row[2].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
         
-        table2Row[0].cells[2].innerHTML = `> i<sub>S</sub> (${iL2})`
-        table2Row[1].cells[2].innerHTML = `> i<sub>D</sub> (${iL2})`
-        table2Row[2].cells[2].innerHTML = `> i<sub>C</sub> (${ic})`
+        table2Row[0].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
+        table2Row[1].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
+        table2Row[2].cells[2].innerHTML = `> (i<sub>L2</sub>-i<sub>0</sub>) (${ic})`
 
         // ! add values to graph
         let graph1_data = [v0,v0,v0,v0]
