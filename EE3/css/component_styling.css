@@ -26,173 +26,13 @@
     top: -50px;
     left: -50px;
     /* user-select: none; */
-    pointer-events: none;
   }
 
 
 /*  table styling */
-.part3_table_one{
-    display: none;
-    /* display: flex; */
-    flex-direction: row;
-    bottom: 0px;
-    position: absolute;
-    text-align: center;
-    left: 30px;
-    gap: 20px;
-}
-.part3_table_one table{
-    height: 200px;
-    width: 180px;
-}
-.part3_table_one table thead tr th{
-    width: 70px;
-    padding: 5px;
-}
-.part3_table_one table tbody tr,td{
-    height: 10px!important;
-}
-.part3_table_one table{
-    border-collapse: collapse;
-}
-
-.part3_table_one td,tr,th,td{
-    font-size: 1.05em;
-    border: 1px solid black;
-    font-weight: bold;
-}
-.part3_table_one table thead tr th{
-    background-color: #c55a11;
-}
-
-/* Color change different */
-.part3_table_one table th{
-    background-color: #c55a11;
-    color: white;
-}
-.part3_table_one table td:nth-child(1){
-    background-color: #d9d9d9;
-}
-
-.part3_table_one table .table-title{
-}
-.part3_table_one table:nth-child(1) .table-title{
-    background-color: red;
-    /* border: 5px ridge red; */
-    box-shadow: inset 2px 2px 5px 1px black;
-}
-.part3_table_one table:nth-child(2) .table-title{
-    background-color: blue;
-    /* border: 5px ridge blue; */
-    box-shadow: inset 2px 2px 5px 1px black;
-}
-.part3_table_one table:nth-child(3) .table-title{
-    background-color: #05bc57;
-    /* border: 5px ridge #05bc57; */
-    box-shadow: inset 2px 2px 5px 1px black;
-}
 
 
-.part3_table_one tbody tr td{
-    height: 24px!important;
-    width: 10px!important;
-}
-
-/* part3 second table */
-.part3_table_two{
-    /* display: flex; */
-    display: none;
-    bottom: 0px;
-    position: absolute;
-    text-align: center;
-    left: 30px;
-    gap: 20px;
-}
-.part3_table_two table{
-    height: 200px;
-}
-.part3_table_two table thead tr th{
-    width: 70px;
-    padding: 5px;
-}
-.part3_table_two table tbody tr,td{
-    height: 10px!important;
-}
-.part3_table_two table{
-    border-collapse: collapse;
-}
-
-.part3_table_two td,tr,th,td{
-    font-size: 1.05em;
-    border: 1px solid black;
-    font-weight: bold;
-}
-.part3_table_two table thead tr th{
-    background-color: #c55a11;
-}
-
-/* Adding slider of table */
-.part3_table_two .table-slider{
-    position: relative;
-    z-index: 2000;
-    background-color: red;
-    color: white;
-    border-radius: 10px;
-    border: 2px solid black;
-    box-shadow: 2px 2px 1px black;
-}
-.part3_table_two .table-slider .labels{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    position: absolute;
-    font-size: 15px;
-    top: 7px;
-    left: 49px;
-    color: black;
-    font-weight: bolder!important;
-}
-.part3_table_two .table-slider .lines{
-    display: flex;
-    position: absolute;
-    color: black;
-    font-weight: bolder;
-    font-size: 10px;
-    gap: 49px;
-    left: 63px;
-    top: 25px;
-}
-.part3_table_two .table-slider .table-slider-box{
-    display: flex;
-    justify-content: space-evenly;
-    height: 50px;
-    color: white;
-}
-.part3_table_two .table-slider .table-slider-box .title{
-    /* background-color: white;
-    color: red;
-    padding: 1px 4px;
-    border-radius: 5px; */
-    position: relative;
-    top: -3px;
-}
-.part3_table_two .table-slider .table-slider-box input[type=range]{
-    /* width: 180px; */
-    position: relative;
-    top: 13px;
-}
-
-
-/* Color change different */
-.part3_table_two table th{
-    background-color: #c55a11;
-    color: white;
-}
-.part3_table_two table td:nth-child(1){
-    background-color: #d9d9d9;
-}
-
-/* part3  table */
+/* part3  table three */
 .part3_table_three{
     display: none;
     bottom: 0px;
@@ -206,7 +46,7 @@
     border: 1px solid black;
 }
 .part3_table_three thead{
-    background-color: #c55a11;
+    background-color: #0000cc;
     color: white;
 }
 .part3_table_three thead tr th{
@@ -219,6 +59,13 @@
     text-align: center;
     font-weight: bold;
 }
+.part3_table_three tbody tr:nth-child(2n){
+    background-color: #eaeff7;
+}
+.part3_table_three tbody tr:nth-child(2n+1){
+    background-color: #d2deef;
+}
+/* 
 .part3_table_three td:nth-child(2){
     background-color: rgb(194, 194, 194);
 }
@@ -226,8 +73,8 @@
     background-color: rgb(194, 194, 194);
 }
 .part3_table_three td:nth-child(4){
-    background-color: rgb(194, 194, 194);
-}
+    background-color: rgb(194, 194, 194); */
+/* } */
 .part3_table_three td:nth-child(10){
     background-color: #ffff00;
 }
@@ -235,70 +82,7 @@
     background-color: #ffc000;
 }
 /* table four */
-.part3_table_four{
-    display: none;
-    bottom: 0px;
-    position: absolute;
-    left: 205px;
-    text-align: center;
-    gap: 20px;
-    border-collapse: collapse;
-}
-.part3_table_four td,tr,th{
-    border: 1px solid black;
-}
-.part3_table_four thead{
-    background-color: #0579cc;
-    color: white;
-}
-.part3_table_four thead tr th{
-    width: 64px;
-}
-.part3_table_four tbody tr{
-    height: 30px;
-}
-.part3_table_four td{
-    text-align: center;
-    font-weight: bold;
-}
 
-/* part 4 two */
-/* table four */
-.part3_table_four_2{
-    display: none;
-    top: 160px;
-    position: absolute;
-    left: 205px;
-    text-align: center;
-    border-collapse: collapse;
-}
-.part3_table_four_2 td,tr,th{
-    border: 1px solid black;
-}
-.part3_table_four_2 thead{
-    background-color: #0579cc;
-    color: white;
-}
-.part3_table_four_2 thead tr th{
-    width: 140px;
-}
-.part3_table_four_2 tbody tr{
-    height: 40px;
-}
-.part3_table_four_2 td{
-    text-align: center;
-    font-weight: bolder;
-}
-
-.part3_table_four_2 tbody tr:nth-child(1){
-    color: #ff0505!important;
-}
-.part3_table_four_2 tbody tr:nth-child(2){
-    color: #0909ff!important;
-}
-.part3_table_four_2 tbody tr:nth-child(3){
-    color: #05833d!important;
-}
 .deactive{
     pointer-events: none;
     cursor:not-allowed;
