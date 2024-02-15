@@ -181,7 +181,9 @@ part1_component_mosfet:this.allImgsDom[154],
 part1_component_resistance:this.allImgsDom[155],
 part1_component_voltage:this.allImgsDom[156],
 part_3_option_5:this.allImgsDom[157],
-
+part1_crrct_text:this.allImgsDom[158],
+part1_incrrct_text:this.allImgsDom[159],
+part1_crrct_circuit:this.allImgsDom[160],
 
 
       // * Question Mark

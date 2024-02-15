@@ -31,6 +31,55 @@
 
 /*  table styling */
 
+/* part3  table one */
+.part3_table_one{
+    display: none;
+    bottom: 0px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    gap: 20px;
+    border-collapse: collapse;
+}
+.part3_table_one td,tr,th{
+    border: 1px solid black;
+}
+.part3_table_one thead{
+    background-color: #0000cc;
+    color: white;
+}
+.part3_table_one thead tr th{
+    width: 64px;
+}
+.part3_table_one tbody tr{
+    height: 30px;
+}
+.part3_table_one td{
+    text-align: center;
+    font-weight: bold;
+}
+.part3_table_one tbody tr:nth-child(2n){
+    background-color: #eaeff7;
+}
+.part3_table_one tbody tr:nth-child(2n+1){
+    background-color: #d2deef;
+}
+/* 
+.part3_table_one td:nth-child(2){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_one td:nth-child(3){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_one td:nth-child(4){
+    background-color: rgb(194, 194, 194); */
+/* } */
+/* .part3_table_one td:nth-child(10){
+    background-color: #ffff00;
+}
+.part3_table_one td:nth-child(11){
+    background-color: #ffc000;
+} */
 
 /* part3  table three */
 .part3_table_three{
@@ -75,12 +124,12 @@
 .part3_table_three td:nth-child(4){
     background-color: rgb(194, 194, 194); */
 /* } */
-.part3_table_three td:nth-child(10){
+/* .part3_table_three td:nth-child(10){
     background-color: #ffff00;
 }
 .part3_table_three td:nth-child(11){
     background-color: #ffc000;
-}
+} */
 /* table four */
 
 .deactive{
@@ -205,6 +254,36 @@
     position: absolute;
 }
 
+/* ! check reset hint btn for ee3 */
+
+.ee3-btn-check{
+    background-color: #814141!important;
+    color: white;
+    font-weight: bold;
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    border-radius: 20px;
+}
+.ee3-btn-reset{
+    background-color: #055794!important;
+    color: white;
+    font-weight: bold;
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    border-radius: 20px;
+
+}
+.ee3-btn-hint{
+    background-color: #385238!important;
+    color: white;
+    font-weight: bold;
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    border-radius: 20px;
+}
 
 
 

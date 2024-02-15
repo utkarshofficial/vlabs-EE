@@ -854,6 +854,13 @@ part1_component_resistance : new Dom("part1_component_resistance"),
 part1_component_voltage : new Dom("part1_component_voltage"),
 part_3_option_5 : new Dom("part_3_option_5"),
 
+part1_crrct_text : new Dom("part1_crrct_text"),
+part1_incrrct_text : new Dom("part1_incrrct_text"),
+part1_crrct_circuit : new Dom("part1_crrct_circuit"),
+ee3_btn_check : new Dom(".ee3-btn-check"),
+ee3_btn_reset : new Dom(".ee3-btn-reset"),
+ee3_btn_hint : new Dom(".ee3-btn-hint"),
+
 
 // EE3 dom items added
 
@@ -2186,13 +2193,72 @@ part_3_option_5 : new Dom("part_3_option_5"),
       // Scenes.items.slider_box.hide();
 222
       //! Required positions
+      let reset = function(){
+        Scenes.steps[2]()  
+      }
+
+      let checkCnnctn = ""
+      let check = function(){
+        console.log(checkCnnctn)
+        if(checkCnnctn == "111111"){
+      Scenes.items.part1_crrct_text.set(10,40, null, 790)
+        }
+        else{
+      Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
+        }
+     
+      }
+
+      let hint = function(){
+
+        //hide previous components
+        
+      Scenes.items.part1_circuit.set(140,180,220).hide()
+      Scenes.items.box1.set(100,230,90).zIndex(2).hide()
+      Scenes.items.box2.set(185,140,80,135).zIndex(2).hide()
+      Scenes.items.box3.set(295,245,95).zIndex(2).hide()
+      Scenes.items.box4.set(360,140,80,115).zIndex(2).hide()
+      Scenes.items.box5.set(475,250,85).zIndex(2).hide()
+      Scenes.items.box6.set(588,250,95).zIndex(2).hide()
+
+      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).hide()
+      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).hide()
+      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).hide()
+      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).hide()
+      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).hide()
+      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).hide()
+
+      Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).hide()
+      Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).hide()
+      Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).hide()
+
+      Scenes.items.part1_crrct_text.set(10,40, null, 790).hide()
+
+      Scenes.items.part1_crrct_circuit.set(210,120, 250)
+
+          // after complete
+          Dom.setBlinkArrow(true, 790, 408).play()
+          setCC("Click 'Next' to go to next step")
+          setIsProcessRunning(false)
+
+      }
+
+      Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).item.onclick = check
+      Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).item.onclick = reset
+      Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).item.onclick = hint
+
+      // Scenes.items.part1_crrct_text.set(10,40, null, 790)
+      // Scenes.items.part1_incrrct_text.set(10,40, null, 790)
+      // Scenes.items.part1_crrct_circuit.set(210,120, 250)
+
+
       Scenes.items.part1_circuit.set(140,180,220)
-      Scenes.items.box1.set(100,230,90)
-      Scenes.items.box2.set(185,140,80,135)
-      Scenes.items.box3.set(295,245,95)
-      Scenes.items.box4.set(360,140,80,115)
-      Scenes.items.box5.set(475,250,85)
-      Scenes.items.box6.set(588,250,95)
+      Scenes.items.box1.set(100,230,90).zIndex(2)
+      Scenes.items.box2.set(185,140,80,135).zIndex(2)
+      Scenes.items.box3.set(295,245,95).zIndex(2)
+      Scenes.items.box4.set(360,140,80,115).zIndex(2)
+      Scenes.items.box5.set(475,250,85).zIndex(2)
+      Scenes.items.box6.set(588,250,95).zIndex(2)
       
 
       //!Correct positons
@@ -2204,28 +2270,91 @@ part_3_option_5 : new Dom("part_3_option_5"),
       // Scenes.items.part1_component_capacitor.set(497,220,120)
       // Scenes.items.part1_component_resistance.set(604,222,120)
       
-      Scenes.items.part1_component_voltage.set(5+40,-20,150)
-      Scenes.items.part1_component_inductor.set(85+70,-20,120)
-      Scenes.items.part1_component_capacitor.set(85+190+70,-20,120)
-      Scenes.items.part1_component_mosfet.set(85+190+80+70,-20,660)
-      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120)
-      Scenes.items.part1_component_resistance.set(85+190+350+70,-20,120)
+      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3)
+      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3)
+      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3)
+      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3)
+      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3)
+      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3)
 
       
           let compo = {
             box : null,
-            isBoxHorizontal : null,
             item : null,
           }
-
+      // box clicked
       let box1 = Scenes.items.box1
       box1.item.onclick = ()=>{
+        console.log("box1 clicked")
+        box1.scale(1.1)
         compo.box = box1
-        compo.isBoxHorizontal = false
       }
+      let box2 = Scenes.items.box2
+      box2.item.onclick = ()=>{
+        box2.scale(1.1)
+        console.log("box2 clicked")
+        compo.box = box2
+      }
+      let box3 = Scenes.items.box3
+      box3.item.onclick = ()=>{
+        box3.scale(1.1)
+        console.log("box3 clicked")
+        compo.box = box3
+      }
+      let box4 = Scenes.items.box4
+      box4.item.onclick = ()=>{
+        box4.scale(1.1)
+        console.log("box4 clicked")
+        compo.box = box4
+      }
+      let box5 = Scenes.items.box5
+      box5.item.onclick = ()=>{
+        box5.scale(1.1)
+        console.log("box5 clicked")
+        compo.box = box5
+      }
+      let box6 = Scenes.items.box6
+      box6.item.onclick = ()=>{
+        box6.scale(1.1)
+        console.log("box6 clicked")
+        compo.box = box6
+      }
+
+      //item click
       let item1 = Scenes.items.part1_component_voltage
       item1.item.onclick = ()=>{
+        console.log("item1 clicked")
         compo.item = item1
+        toSet();
+      }
+      let item2 = Scenes.items.part1_component_inductor
+      item2.item.onclick = ()=>{
+        console.log("item2 clicked")
+        compo.item = item2
+        toSet();
+      }
+      let item3 = Scenes.items.part1_component_capacitor
+      item3.item.onclick = ()=>{
+        console.log("item3 clicked")
+        compo.item = item3
+        toSet();
+      }
+      let item4 = Scenes.items.part1_component_mosfet
+      item4.item.onclick = ()=>{
+        console.log("item4 clicked")
+        compo.item = item4
+        toSet();
+      }
+      let item5 = Scenes.items.part1_component_diode
+      item5.item.onclick = ()=>{
+        console.log("item5 clicked")
+        compo.item = item5
+        toSet();
+      }
+      let item6 = Scenes.items.part1_component_resistance
+      item6.item.onclick = ()=>{
+        console.log("item6 clicked")
+        compo.item = item6
         toSet();
       }
 
@@ -2236,25 +2365,232 @@ part_3_option_5 : new Dom("part_3_option_5"),
       let boxName = compo.box
       let itemName = compo.item
 
-      if(boxName == box1 && itemName == item1){
+
+      //if item1 clicked
+      if(itemName == item1 && boxName == box1){
         box1.hide()
-        item1.set(118.5,180,150)
-        anime.timeline({
-          duration: 2000,
-          easing: "linear",
-        })
-        .add({
-          
-        })
-        
+        item1.set(118.5,178,150)
+        checkCnnctn+="1"
+        console.log(checkCnnctn)
+
       }
-    }
-    
+      if(itemName == item1 && boxName == box2){
+        item1.styles({
+          rotate: "90deg"
+        })
+        box2.hide()
+        item1.set(242,73,225)
+      }
+      if(itemName == item1 && boxName == box3){
+          box3.hide()
+        item1.set(307, 193,150)
+      }
+      if(itemName == item1 && boxName == box4){
+        item1.styles({
+          rotate: "90deg"
+        })
+        // box4.hide()
+        item1.set(415, 109)
+      }
+      if(itemName == item1 && boxName == box5){
+        // box5.hide()
+        item1.set(485, 194)
+      }
+      if(itemName == item1 && boxName == box6){
+            box6.hide()
+        item1.set(588, 194)
+      }
 
-    
+      //if item2 clicked
+      if(itemName == item2 && boxName == box1){
+        item2.styles({
+          rotate: "90deg"
+        })
+        box1.hide()
+        item2.set(100, 212)
+      }
+      if(itemName == item2 && boxName == box2){
+        box2.hide()
+        item2.set(171, 90)
+      }
+      if(itemName == item2 && boxName == box3){
+        item2.styles({
+          rotate: "90deg"
+        })
+        box3.hide()
+        item2.set(288, 230)
+      }
+      if(itemName == item2 && boxName == box4){
+        box4.hide()
+        item2.set(339, 90)
+        checkCnnctn+="1"
+        console.log(checkCnnctn)
 
+      }
+      if(itemName == item2 && boxName == box5){
+        item2.styles({
+          rotate: "90deg"
+        })
+        box5.hide()
+        item2.set(467, 230)
+
+      }
+      if(itemName == item2 && boxName == box6){
+        item2.styles({
+          rotate: "90deg"
+        })
+        box6.hide()
+        item2.set(569, 230)
+      }
 
       
+      //if item3 clicked
+      if(itemName == item3 && boxName == box1){
+        box1.hide()
+        item3.set(129, 195)
+      }
+      if(itemName == item3 && boxName == box2){
+        item3.styles({
+          rotate: "90deg"
+        })
+        box2.hide()
+        item3.set(235,133)
+      }
+      if(itemName == item3 && boxName == box3){
+        box3.hide()
+        item3.set(318, 213)
+      }
+      if(itemName == item3 && boxName == box4){
+        item3.styles({
+          rotate: "90deg"
+        })
+        box4.hide()
+        item3.set(399, 133)
+      }
+      if(itemName == item3 && boxName == box5){
+        box5.hide()
+        item3.set(496, 213)
+        checkCnnctn+="1"
+        console.log(checkCnnctn)
+      }
+      if(itemName == item3 && boxName == box6){
+        box6.hide()
+        item3.set(599, 213)
+      }
+
+       //if item4 clicked
+       if(itemName == item4 && boxName == box1){
+        item4.styles({
+          rotate: "90deg"
+        })
+        box1.hide()
+        item4.set(55, 205)
+     }
+      if(itemName == item4 && boxName == box2){
+        box2.hide()
+        item4.set(171, 124)
+        checkCnnctn+="1"
+        console.log(checkCnnctn)
+
+
+      }
+      if(itemName == item4 && boxName == box3){
+        item4.styles({
+          rotate: "90deg"
+        })
+        box3.hide()
+        item4.set(243, 221)
+      }
+      if(itemName == item4 && boxName == box4){
+        box4.hide()
+        item4.set(346, 124)
+      }
+      if(itemName == item4 && boxName == box5){
+        item4.styles({
+          rotate: "90deg"
+        })
+        box5.hide()
+        item4.set(420, 221)
+      }
+      if(itemName == item4 && boxName == box6){
+        item4.styles({
+          rotate: "90deg"
+        })
+        box6.hide()
+        item4.set(525, 221)
+      }
+
+      //if item5 clicked
+      if(itemName == item5 && boxName == box1){
+        box1.hide()
+        item5.set(134, 214)
+      }
+      if(itemName == item5 && boxName == box2){
+        item5.styles({
+          rotate: "90deg"
+        })
+        box2.hide()
+        item5.set(222, 144)
+      }
+      if(itemName == item5 && boxName == box3){
+            box3.hide()
+        item5.set(322, 230)
+        checkCnnctn+="1"
+        console.log(checkCnnctn)
+
+      }
+      if(itemName == item5 && boxName == box4){
+        item5.styles({
+          rotate: "90deg"
+        })
+          box4.hide()
+        item5.set(387, 144)
+      }
+      if(itemName == item5 && boxName == box5){
+            box5.hide()
+        item5.set(500, 230)
+      }
+      if(itemName == item5 && boxName == box6){
+          box6.hide()
+        item5.set(604, 230)
+      }
+
+
+      //if item6 clicked
+      if(itemName == item6 && boxName == box1){
+        box1.hide()
+        item6.set(132, 198)
+      }
+      if(itemName == item6 && boxName == box2){
+        item6.styles({
+          rotate: "90deg"
+        })
+        box2.hide()
+        item6.set(239, 129)
+      }
+      if(itemName == item6 && boxName == box3){
+            box3.hide()
+        item6.set(321, 214)
+      }
+      if(itemName == item6 && boxName == box4){
+        item6.styles({
+          rotate: "90deg"
+        })
+          box4.hide()
+        item6.set(402, 129)
+      }
+      if(itemName == item6 && boxName == box5){
+            box5.hide()
+        item6.set(498, 214)
+      }
+      if(itemName == item6 && boxName == box6){
+            box6.hide()
+            item6.set(601, 214)
+            checkCnnctn+="1"
+      }
+
+
+    }
       // ------ end
 
 
@@ -2669,10 +3005,11 @@ part_3_option_5 : new Dom("part_3_option_5"),
           Scenes.items.part_2_graph_3.show();
           currentGraph = Scenes.items.part_2_graph_3;
         }
+        setIsProcessRunning(false);
+        Dom.setBlinkArrow(true, 630, 315)
       };
       
-      // setIsProcessRunning(true);
-      // Dom.setBlinkArrow(true, 630, 315 )
+
 
       
       return true
@@ -2726,7 +3063,7 @@ part_3_option_5 : new Dom("part_3_option_5"),
         }
       }
 
-
+      resetSliderValue()
       // ! Final Position
     //  Scenes.items.tableCalc.show()
 
@@ -2816,13 +3153,13 @@ part_3_option_5 : new Dom("part_3_option_5"),
       //! Required Items
       // Scenes.items.circuit_full_3.set(230,-50,150)
       // Scenes.items.part_3_option_3.set(-30, 155)
-       Scenes.items.part3_table_three.set(0,160, null).scale(0.9)
+       Scenes.items.part3_table_one.set(0,160, null).scale(0.9)
       //  Scenes.items.right_tick_1.set(-5,175)
       Scenes.items.record_btn.set(770,220,70)
       Scenes.items.btn_delete.set(785,290)
       Scenes.items.btn_reset.set(787,350)
       // Scenes.items.part3_table_three.set(20)
-       let table = Scenes.items.part3_table_three.item
+       let table = Scenes.items.part3_table_one.item
        let valuesToMatch = []
         // * index to handle records
       let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
@@ -3146,8 +3483,8 @@ part_3_option_5 : new Dom("part_3_option_5"),
         tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
         tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
         tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-        tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-        tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+        // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
 
         // let x = tableRow.cells[9].innerHTML
         // let y = tableRow.cells[10].innerHTML
@@ -3162,8 +3499,8 @@ part_3_option_5 : new Dom("part_3_option_5"),
         //   Scenes.currentStep = 4
         // }
         // warning for sorting the data
-        if(recordBtnClickIdx==7){
-          setCC("Click 'Record' to sort the table according to D and plot the graph.")
+        if(recordBtnClickIdx==8){
+          setCC("Press Record")
         }
       }    
        
@@ -3684,7 +4021,7 @@ part_3_option_5 : new Dom("part_3_option_5"),
       );
       // setCC("Record 7 reading for 3 different load resistances.")
       // ! show the slider
-      Scenes.items.slider_box.set(-50)
+      Scenes.items.slider_box.set(10,-10).scale(0.9)
       Scenes.items.btn_next.show()
       
       
@@ -3692,428 +4029,13 @@ part_3_option_5 : new Dom("part_3_option_5"),
       // Scenes.items.circuit_full_3.set(230,-50,150)
       // Scenes.items.part_3_option_2.set(-20, 170-120).zIndex(2000)
       // Scenes.items.right_tick_1.set(-3,185-120).zIndex(2000)
-      Scenes.items.part3_table_two.show("flex")
-      // Scenes.items.graph2_arrow.set(-5,0)
-      Scenes.items.record_btn.set(750,270,70)
-      Scenes.items.btn_reset.set(770,350)
-
-      
-      // Scenes.items.btn_delete.set(100+20,350)
-
-      // to access thead of the table 
-      // Scenes.items.part3_table_two.item.children[0].tHead.rows[0].innerHTML
-
-       let table = Scenes.items.part3_table_two.item
-       let table1 = table.children[0]
-       let table2 = table.children[1]
-       let table3 = table.children[2]
-       let tableSliderInput = getAll(".table-slider-box input")
-
-       // for toggle the deactive section of slider 
-        function activeSlider(num){
-          let tableSlider = getAll(".table-slider")
-          tableSlider.forEach(ele=>{
-            ele.classList.add("deactive")
-          })
-          tableSlider[num].classList.remove("deactive")
-        }
-
-      // to handle records
-      let recordBtnClickIdx = (table3.rows[8].cells[1].innerHTML==""?0:1)
-
-      if(table3.rows[8].cells[1].innerHTML==""){
-        // initially active first slider
-        activeSlider(0)
-      }
-
-
-
-      // hide side bar
-      // Scenes.items.slider_R.item.style.opacity = 0
-      // Scenes.items.slider_D.item.style.opacity = 0
-      // Scenes.items.slider_R.hide()
-      // Scenes.items.slider_D.hide()
-      
-
-
-       // ! graph
-      Scenes.items.graph3.set(null,null,200,340)
-      let ctx = Scenes.items.graph3.item
-
-      let xLabel = "Duty Ratio (D)"
-      let yLabel = "Voltage Gain (M)"
-      let chart = null
-
-      function plotGraph(){
-        chart = new Chart(ctx,{
-          type: "scatter",
-          options: {
-            scales: {
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: yLabel,
-                    fontColor: 'black',
-                    fontSize: 17,
-  
-                  },
-                  ticks: { 
-                    beginAtZero:true,
-                    fontColor: 'black',
-                    fontSize: 14,
-                  }
-                },
-              ],
-              xAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: xLabel,
-                    fontColor: 'black',
-                    fontSize: 17,
-                  },
-                  ticks: { 
-                    beginAtZero:true,
-                    fontColor: 'black',
-                    fontSize: 14,
-                  }
-                },
-              ],
-            },
-          },
-        })
-      }
-
-      const graph = {
-        addDataset: (label,bgColor,data)=>{
-          chart.data.datasets.push(
-            {
-              label: label,
-              fill: false,
-              borderColor: bgColor,
-              backgroundColor: bgColor,
-              data: data,
-            }
-          )
-          chart.update()
-        },
-        addData(index,data){
-          if(data==undefined){
-            return
-          }
-          chart.data.datasets[index].data.push(data)
-          chart.update()
-        },
-        removeData(index){
-          chart.data.datasets[index].data.pop()
-          chart.update()
-        }
-      }
-      // ! Tutorial Function
-          function stepTutorial2(){
-            Dom.setBlinkArrowRed(true,60,-50,30,30,-90).play()
-            setCC("Select the value V<sub>g</sub>",6)
-    
-            sliders.vImg.onclick = ()=>{
-              sliderV()
-              sliders.vImg.click()
-              Dom.setBlinkArrowRed(true,125,110,null,null,-90).play()
-              setCC("Select the value of R<sub>1</sub>",5)
-    
-              tableSliderInput[0].onclick = ()=>{
-                Dom.setBlinkArrowRed(true,795,235,null,null,-90).play()
-                setCC("Press Record")
-    
-                tableSliderInput[1].onclick = ()=>{
-                  Dom.setBlinkArrowRed(true,795,235,null,null,-90).play()
-                  setCC("Press Record")
-
-                  tableSliderInput[2].onclick = ()=>{
-                    Dom.setBlinkArrowRed(true,795,235,null,null,-90).play()
-                    setCC("Press Record")
-      
-                    tableSliderInput.forEach(ele=>{
-                      ele.onclick = ()=>{}
-                    })
-                  }
-                }
-              }
-            }
-          }
-          if(recordBtnClickIdx == 0){
-            stepTutorial2()
-          }
-
-      
-      // stepTutorial()
-
-      // ! ------------> If data already present plot the graph
-      if(table3.rows[8].cells[1].innerHTML !== ""){
-          setIsProcessRunning(false)
-          Scenes.currentStep = 4
-      }else{
-        plotGraph()
-        Scenes.items.graph3.set(null,null,200,340)
-      }   
-
-       // ! 7 fixed dutry ration
-       let dutyRatio = [0.1,0.5,0.8,0.84,0.87,0.9,0.93]
-
-       // duty ratio will be disabled for all
-       disableSlider("r")
-       disableSlider("d")
-      
-       
-
-      
-      //  console.log("sneha")
-      //  console.log(table1.tHead.rows[0])
-      // ! Reset Button onclick
-      const resetAll = ()=>{
-        // todo reset the button style 5,10,15...
-        // and table data
-      }
-      
-      // //!onclick for delete btn
-      // Scenes.items.btn_delete.item.onclick =  function(){
-      //   if(recordBtnClickIdx == 0 || recordBtnClickIdx > 7){
-      //     return
-      //   }
-      //   let row = table.tBodies[0].rows
-      //   let n=11
-        
-      //   for(let i=1;i<n;i++){
-      //     row[recordBtnClickIdx-1].cells[i].innerHTML = "" ;
-      //   }
-      //   recordBtnClickIdx = recordBtnClickIdx-1
-      // }
-
-      //! onclick for reset 
-      Scenes.items.btn_reset.item.onclick = function(){
-        // reset table slider
-        tableSliderInput.forEach(ele=>{
-          ele.disabled = false
-          ele.value = ele.min
-        })
-        
-        var tables = [
-          table1.tBodies[0].rows,
-          table2.tBodies[0].rows,
-          table3.tBodies[0].rows
-        ]
-
-        // to empty cells of table
-        for(let table of tables){
-          for(let row of table){
-            row.cells[1].innerHTML = ""
-            row.cells[2].innerHTML = ""
-          }
-        }
-
-        // deactive others
-        activeSlider(0)
-        disableSlider("reset")
-
-        // active v
-        
-
-        Scenes.steps[6]()        
-        
-      }
-
-       // ! onclick for record
-       Scenes.items.record_btn.item.onclick = function(){
-         Dom.setBlinkArrow(-1)
-        
-        //  let allSliderValue = $(".range-slider__value");
-
-
-
-        //  tableHead1.innerHTML = resistanceValue
-        //  tableHead2.innerHTML = resistanceValue
-        //  tableHead3.innerHTML = resistanceValue
-         
-          if(recordBtnClickIdx < 7){
-
-            let vInValue = Number(sliders.v.value)
-            let resistanceValue = Number(tableSliderInput[0].value)  
-            tableSliderInput[0].disabled = true                  
-
-            if(recordBtnClickIdx==0){
-
-              // ! add dataset to graph
-              graph.addDataset(
-                `R = ${resistanceValue}`,
-                "red",
-                []
-              ) 
-
-              // disable the vIn slider after first click
-              disableSlider("v")
-
-              // tableHead1.cells[0].innerHTML = `R1 = ${resistanceValue} Ω`
-              // Scenes.items.slider_R.item.children[1].children[0].disabled = true
-              // Scenes.items.slider_R.item.classList.add("deactive")
-            }
-
-
-
-            updateValues(
-              vInValue,
-              dutyRatio[(recordBtnClickIdx)%7],
-              resistanceValue
-            )
-            
-            let tableRow = table1.tBodies[0].rows[recordBtnClickIdx++]
-            tableRow.cells[1].innerHTML = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-            tableRow.cells[2].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-
-            let x = tableRow.cells[0].innerHTML
-            let y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-
-            // ! add data to graph
-            graph.addData(0,{x:x,y:y})
-
-            if(recordBtnClickIdx==7){
-              // Scenes.items.slider_R.item.children[1].children[0].disabled = false
-              // Scenes.items.slider_R.item.classList.remove("deactive")
-              activeSlider(1)
-
-              // show arrow
-              Dom.setBlinkArrowRed(true,350,110,null,null,-90).play()
-              setCC("Select the value of R<sub>2</sub>",5)
-
-              
-            }
-          }
-          else if(recordBtnClickIdx < 14){
-
-            let vInValue = Number(sliders.v.value)
-            let resistanceValue = Number(tableSliderInput[1].value)  
-            tableSliderInput[1].disabled = true   
-
-            if(recordBtnClickIdx==7){
-              // ! add dataset to graph
-              graph.addDataset(
-                `R = ${resistanceValue}`,
-                "green",
-                []
-              )
-            }
-
-            if(recordBtnClickIdx%7==0){
-
-              // tableHead2.cells[0].innerHTML =  `R2 = ${resistanceValue} Ω`
-              // Scenes.items.slider_R.item.children[1].children[0].disabled = true
-              // Scenes.items.slider_R.item.classList.add("deactive")
-            }
-            
-
-            updateValues(
-              vInValue,
-              dutyRatio[(recordBtnClickIdx)%7],
-              resistanceValue
-            )
-
-            let tableRow = table2.tBodies[0].rows[recordBtnClickIdx++%7]
-            console.log(table2.tBodies[0].rows.innerHTML)
-            tableRow.cells[1].innerHTML = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-            tableRow.cells[2].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-
-            let x = tableRow.cells[0].innerHTML
-            let y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-
-            // ! add data to graph
-            graph.addData(1,{x:x,y:y})
-
-            if(recordBtnClickIdx==14){
-              // Scenes.items.slider_R.item.children[1].children[0].disabled = false
-              // Scenes.items.slider_R.item.classList.remove("deactive")
-              activeSlider(2)
-
-              // show arrow
-              Dom.setBlinkArrowRed(true,600,110,null,null,-90).play()
-              setCC("Select the value of R<sub>3</sub>",5)
-            }
-          } 
-          else if(recordBtnClickIdx < 21){
-            
-            let vInValue = Number(sliders.v.value)
-            let resistanceValue = Number(tableSliderInput[2].value)  
-            tableSliderInput[2].disabled = true  
-
-              if(recordBtnClickIdx==15){
-                // ! add dataset to graph
-                graph.addDataset(
-                  `R = ${resistanceValue}`,
-                  "blue",
-                  []
-                )
-              }
- 
-             if(recordBtnClickIdx == 15){
-              //  tableHead3.cells[0].innerHTML =  `R3 = ${resistanceValue} Ω`
-              //  Scenes.items.slider_R.item.children[1].children[0].disabled = true
-              //  Scenes.items.slider_R.item.classList.add("deactive")
-             }
-             
- 
-             updateValues(
-              vInValue,
-              dutyRatio[(recordBtnClickIdx)%7],
-              resistanceValue
-            )
- 
-            let tableRow = table3.tBodies[0].rows[recordBtnClickIdx++%7]
-            tableRow.cells[1].innerHTML = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-            tableRow.cells[2].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-
-             let x = tableRow.cells[0].innerHTML
-             let y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
- 
-             // ! add data to graph
-             graph.addData(2,{x:x,y:y})
-
-             if(recordBtnClickIdx==21){
-              // after complete
-              Dom.setBlinkArrowRed(-1)
-              Dom.setBlinkArrow(true, 790, 408).play();
-              setCC("Click 'Next' to go to next step");
-              setIsProcessRunning(false); 
-              Scenes.currentStep = 4
-             }
-          } 
-       }    
- 
-  
-      
-
-      
-      return true;
-    }),
-    (step6 = function () {
-      setIsProcessRunning(true);
- 
-      Scenes.setStepHeading(
-        "",
-        "Efficiency Plot."
-      )
-      // setCC("Record 7 reading for different Load Resistances (R0)")
-        // ! show the slider
-      Scenes.items.slider_box.set(-65)
-      Scenes.items.btn_next.show()
-
-      //! Required Items
-      // Scenes.items.circuit_full_3.set(230,-50,150)
-      // Scenes.items.part_3_option_3.set(-30, 155)
-       Scenes.items.part3_table_three.show()
+      Scenes.items.part3_table_one.set(10,140).scale(0.98)
       //  Scenes.items.right_tick_1.set(-5,175)
       Scenes.items.record_btn.set(770,220,70)
       Scenes.items.btn_delete.set(785,290)
       Scenes.items.btn_reset.set(787,350)
-      Scenes.items.part3_table_three.set(20)
-       let table = Scenes.items.part3_table_three.item
+      // Scenes.items.part3_table_three.set(20)
+       let table = Scenes.items.part3_table_one.item
        let valuesToMatch = []
         // * index to handle records
       let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
@@ -4221,24 +4143,63 @@ part_3_option_5 : new Dom("part_3_option_5"),
         }
       }
       if(recordBtnClickIdx == 0){
-        stepTutorial2()
+        // stepTutorial2()
       }
 
       
       function setDataToGraph(){
-        let graphData = []
-        var rows = table.tBodies[0].rows
-        let n = 7
-        for(let i=0;i<n;i++){
-          graphData.push(
-            {
-              x: rows[i].cells[9].innerHTML,
-              y: rows[i].cells[10].innerHTML
-            }
-          )
+
+        let characteristicsValue = Scenes.items.slider_C.item.value;
+
+        if(characteristicsValue == "D-vs-M"){
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 7
+          for(let i=0;i<n;i++){
+            graphData.push(
+              {
+                x: rows[i].cells[3].innerHTML,
+                y: rows[i].cells[5].innerHTML
+              }
+            )
+          }
+          plotGraph(graphData,"Efficiency","",yLabel)
+          Scenes.items.graph4.set(null,null,220,355)
+
         }
-        plotGraph(graphData,"Efficiency","",yLabel)
-        Scenes.items.graph4.set(null,null,220,355)
+        if(characteristicsValue == "D-vs-I"){
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 7
+          for(let i=0;i<n;i++){
+            graphData.push(
+              {
+                x: rows[i].cells[3].innerHTML,
+                y: rows[i].cells[7].innerHTML
+              }
+            )
+          }
+          plotGraph(graphData,"Efficiency","",yLabel)
+          Scenes.items.graph4.set(null,null,220,355)
+
+        }
+        if(characteristicsValue == "D-vs-V"){
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 7
+          for(let i=0;i<n;i++){
+            graphData.push(
+              {
+                x: rows[i].cells[3].innerHTML,
+                y: rows[i].cells[4].innerHTML
+              }
+            )
+          }
+          plotGraph(graphData,"Efficiency","",yLabel)
+          Scenes.items.graph4.set(null,null,220,355)
+
+        }
+       
       }
       // ! ------------> If data already present plot the graph
       if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
@@ -4257,7 +4218,7 @@ part_3_option_5 : new Dom("part_3_option_5"),
         // ! Please note this when plot the graph then show the graph ... 
         plotGraph([{}],"Efficiency","",yLabel,true) 
         Scenes.items.graph4.set(null,null,220,355)
-        disableSlider("reset")
+        // disableSlider("reset")
       }
 
       // // ! adding data set
@@ -4310,9 +4271,9 @@ part_3_option_5 : new Dom("part_3_option_5"),
          // for arrow system
          if(recordBtnClickIdx < 6){
             Dom.setBlinkArrowRed(true,560,75).play()
-            setCC("Change the value of R and Record it")
+            setCC("Change the value of D and Record it")
 
-            sliders.r.onclick = ()=>{
+              Scenes.items.slider_R.onclick = ()=>{
               Dom.setBlinkArrowRed(true,894,226).play()
               setCC("Press Record")
 
@@ -4322,30 +4283,30 @@ part_3_option_5 : new Dom("part_3_option_5"),
           Dom.setBlinkArrowRed(-1)
         }
         
-        let vInValue = Number(sliders.v.value)
-        let dutyRatioValue = Number(sliders.d.value)
-        let resistanceValue = Number(sliders.r.value)
+        let vInValue = Number(Scenes.items.slider_vIn.item.value)
+        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
+        let resistanceValue = Number(Scenes.items.slider_R.item.value)
         updateValues(vInValue,dutyRatioValue,resistanceValue)
 
         // ! Can't select same values
-        if(recordBtnClickIdx < 7 && valuesToMatch.indexOf(resistanceValue)!=-1){
+        if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(dutyRatioValue)!=-1){
           setCC("Please select different value.")
           return
         }else{
-          valuesToMatch.push(resistanceValue)
+          valuesToMatch.push(dutyRatioValue)
         }
 
         // ! sort the data
-        if(recordBtnClickIdx==7){
+        if(recordBtnClickIdx>=8){
 
           function sortTable(){
             var rows = table.tBodies[0].rows
 
-            let n=7
+            let n=8
             for(let i=0;i<n;i++){
                 for(let j=0;j<n-i-1;j++){
-                    let val1 = Number(rows[j].cells[9].innerHTML)
-                    let val2 = Number(rows[j+1].cells[9].innerHTML)
+                    let val1 = Number(rows[j].cells[8].innerHTML)
+                    let val2 = Number(rows[j+1].cells[8].innerHTML)
                     if(val1 > val2){
                         let temp = rows[j].innerHTML
                         rows[j].innerHTML = rows[j+1].innerHTML
@@ -4386,13 +4347,390 @@ part_3_option_5 : new Dom("part_3_option_5"),
         // deactivate the sliders after first value  done
         // todo
         if(recordBtnClickIdx == 0){
-          disableSlider("v")
-          disableSlider("d")
+          // disableSlider("v")
+          // disableSlider("d")
         }
         let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
         tableRow.cells[1].innerHTML = vInValue
-        tableRow.cells[2].innerHTML = dutyRatioValue
-        tableRow.cells[3].innerHTML = resistanceValue
+        tableRow.cells[2].innerHTML = resistanceValue
+        tableRow.cells[3].innerHTML = dutyRatioValue
+        tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
+        tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
+        tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
+        tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
+        // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+
+        // let x = tableRow.cells[9].innerHTML
+        // let y = tableRow.cells[10].innerHTML
+        // // ! addData to graph
+        // graph.addData(0,{x:x,y:y})
+
+        // if(recordBtnClickIdx>6){
+        //   // after complete
+        //   Dom.setBlinkArrow(true, 790, 408).play();
+        //   setCC("Click 'Next' to go to next step");
+        //   setIsProcessRunning(false); 
+        //   Scenes.currentStep = 4
+        // }
+        // warning for sorting the data
+        if(recordBtnClickIdx==8){
+          setCC("Press Record")
+        }
+      }    
+       
+      
+
+      
+      return true;
+    }),
+    (step6 = function () {
+      setIsProcessRunning(true);
+ 
+      Scenes.setStepHeading(
+        "",
+        "Efficiency Plot."
+      )
+      // setCC("Record 7 reading for different Load Resistances (R0)")
+        // ! show the slider
+      Scenes.items.slider_box.set(10,-10).scale(0.9)
+      Scenes.items.btn_next.show()
+
+      //! Required Items
+      // Scenes.items.circuit_full_3.set(230,-50,150)
+      // Scenes.items.part_3_option_3.set(-30, 155)
+      //  Scenes.items.right_tick_1.set(-5,175)
+      Scenes.items.record_btn.set(770,220,70)
+      Scenes.items.btn_delete.set(785,290)
+      Scenes.items.btn_reset.set(787,350)
+      Scenes.items.part3_table_three.set(-20,140).scale(0.9)
+       let table = Scenes.items.part3_table_three.item
+       let valuesToMatch = []
+        // * index to handle records
+      let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
+      
+      // * Generate option in select charactersits
+      let v = Scenes.items.slider_vIn.item
+      let c = Scenes.items.slider_C.item
+      let r = Scenes.items.slider_R.item
+      generateOption(c,[
+        "Po-vs-Losses",
+        "Po-vs-Efficiency",
+      ])
+      generateOption(v,[
+        "24",
+        "36",
+        "48",
+      ])
+      generateOption(r,[
+        "0.25",
+        "0.50",
+        "0.75",
+      ])
+      let slider_ = document.querySelector(".slider-box-container-4")
+      slider_.children[0].innerHTML = "R"
+      slider_.children[1].min = 10
+      slider_.children[1].max = 100
+      slider_.children[1].step = 1
+
+      // ! graph
+      Scenes.items.graph4.set(null,null,220,355)
+      let ctx = Scenes.items.graph4.item
+      
+      // let xLabel = "Output Power (Po)"
+      let xLabel = ""
+      let yLabel = "Efficiency (%)"
+      function plotGraph(data,label,xLabel,yLabel,beginAtZero=false){
+        let x = new Chart(ctx, {
+          type: "scatter",
+          plugins: [{
+            afterDraw: chart => {
+              var ctx = chart.chart.ctx;
+              ctx.save();
+              ctx.textAlign = 'center';
+              ctx.font = '18px Arial';
+              ctx.fillStyle = 'black';
+              ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
+              ctx.textAlign = 'left';
+              ctx.font = '10px Arial';
+              ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
+              ctx.restore();
+            },
+            
+          }],
+          data: {
+            datasets: [
+                {
+                  label: label,
+                  fill: false,
+                  borderColor: "red",
+                  backgroundColor: "red",
+                  data: data,
+                },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: yLabel,
+                    fontColor: 'black',
+                    fontSize: 17,
+  
+                  },
+                  ticks: { 
+                    beginAtZero:beginAtZero,
+                    fontColor: 'black',
+                    fontSize: 14,
+                  }
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: xLabel,
+                    fontColor: 'black',
+                    fontSize: 17,
+                  },
+                  ticks: { 
+                    beginAtZero:beginAtZero,
+                    fontColor: 'black',
+                    fontSize: 14,
+                  }
+                },
+              ],
+            },
+          },
+        })
+      }
+
+      // let slidersBox = document.querySelectorAll(".slider")
+      // let slidersBox = document.querySelectorAll(".range-slider__range")
+      function stepTutorial2(){
+
+        Dom.setBlinkArrowRed(true,50,-50,30,30,-90).play()
+        setCC("Select the value of V<sub>g</sub>")
+
+        sliders.vImg.onclick = ()=>{
+          sliderV()
+          sliders.vImg.click()
+          Dom.setBlinkArrowRed(true,215,110,null,null,90).play()
+          setCC("Set the value of D",5)
+
+          sliders.d.onclick = ()=>{
+            Dom.setBlinkArrowRed(true,560,75).play()
+            setCC("Set the value of R")
+
+            sliders.r.onclick = ()=>{
+              Dom.setBlinkArrowRed(true,894,226).play()
+              setCC("Press Record")
+
+              sliders.clearOnclick()
+            }
+          }
+        }
+      }
+      if(recordBtnClickIdx == 0){
+        // stepTutorial2()
+      }
+
+      
+      function setDataToGraph(){
+
+        let characteristicsValue = Scenes.items.slider_C.item.value;
+
+        if(characteristicsValue == "Po-vs-Losses"){
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 8
+          for(let i=0;i<n;i++){
+            graphData.push(
+              {
+                x: rows[i].cells[8].innerHTML,
+                y: rows[i].cells[9].innerHTML
+              }
+            )
+          }
+          plotGraph(graphData,"Efficiency","",yLabel)
+          Scenes.items.graph4.set(null,null,220,355)
+
+        }
+        if(characteristicsValue == "Po-vs-Efficiency"){
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 8
+          for(let i=0;i<n;i++){
+            graphData.push(
+              {
+                x: rows[i].cells[8].innerHTML,
+                y: rows[i].cells[10].innerHTML
+              }
+            )
+          }
+          plotGraph(graphData,"Efficiency","",yLabel)
+          Scenes.items.graph4.set(null,null,220,355)
+
+        }
+
+       
+      }
+      // ! ------------> If data already present plot the graph
+      if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
+        setIsProcessRunning(false)
+        Scenes.currentStep = 4
+
+        recordBtnClickIdx = 7
+        let rows = table.tBodies[0].rows
+        let n=7
+        // * to get old values from table for matching
+        for(let i=0;i<n;i++){
+          let val = rows[i].cells[2].innerHTML
+          valuesToMatch.push(Number(val))
+        }
+      }else{
+        // ! Please note this when plot the graph then show the graph ... 
+        plotGraph([{}],"Efficiency","",yLabel,true) 
+        Scenes.items.graph4.set(null,null,220,355)
+        // disableSlider("reset")
+      }
+
+      // // ! adding data set
+      // graph.addDataset(
+      //   "Efficiency",
+      //   "red",
+      //   []
+      // )
+       
+
+       //!onclick for delete btn
+       Scenes.items.btn_delete.item.onclick =  function(){
+        if(recordBtnClickIdx == 0 || recordBtnClickIdx > 8){
+          return
+        }
+        let row = table.tBodies[0].rows
+        let n=11
+        
+        for(let i=1;i<n;i++){
+          row[recordBtnClickIdx-1].cells[i].innerHTML = "" ;
+        }
+        recordBtnClickIdx = recordBtnClickIdx-1
+        if(recordBtnClickIdx==0){
+          disableSlider("reset")
+        }
+        valuesToMatch.pop()
+      }
+
+      //! onclick for reset 
+      Scenes.items.btn_reset.item.onclick = function(){
+        var rows = table.tBodies[0].rows
+        let n=7
+        let m=11
+  
+        for(let i=0;i<n;i++){
+          for(let j=1;j<m;j++){
+            rows[i].cells[j].innerHTML = "";
+          }
+        }
+
+        // reset all the parameters
+        // so just simply call this step again
+        sliders.reset()
+        Scenes.steps[7]()        
+        
+      }
+
+      // ! onclick for record
+      Scenes.items.record_btn.item.onclick = function(){ 
+         // for arrow system
+         if(recordBtnClickIdx < 6){
+            Dom.setBlinkArrowRed(true,560,75).play()
+            setCC("Change the value of D and Record it")
+
+              Scenes.items.slider_R.onclick = ()=>{
+              Dom.setBlinkArrowRed(true,894,226).play()
+              setCC("Press Record")
+
+              sliders.clearOnclick()
+            }
+        }else{
+          Dom.setBlinkArrowRed(-1)
+        }
+        
+        let vInValue = Number(Scenes.items.slider_vIn.item.value)
+        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
+        let resistanceValue = Number(Scenes.items.slider_R.item.value)
+        updateValues(vInValue,dutyRatioValue,resistanceValue)
+
+        // ! Can't select same values
+        if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(dutyRatioValue)!=-1){
+          setCC("Please select different value.")
+          return
+        }else{
+          valuesToMatch.push(dutyRatioValue)
+        }
+
+        // ! sort the data
+        if(recordBtnClickIdx>=8){
+
+          function sortTable(){
+            var rows = table.tBodies[0].rows
+
+            let n=8
+            for(let i=0;i<n;i++){
+                for(let j=0;j<n-i-1;j++){
+                    let val1 = Number(rows[j].cells[8].innerHTML)
+                    let val2 = Number(rows[j+1].cells[8].innerHTML)
+                    if(val1 > val2){
+                        let temp = rows[j].innerHTML
+                        rows[j].innerHTML = rows[j+1].innerHTML
+                        rows[j+1].innerHTML = temp
+                    }
+                }
+            }
+            for(let i=0;i<n;i++){
+                rows[i].cells[0].innerHTML = i+1
+            }
+          }
+          sortTable()
+
+          // * plot the graph
+          // adding parameter to x,y graph
+          // var rows = table.tBodies[0].rows
+          // let n = 7
+          // for(let i=0;i<n;i++){
+          //   graph.addData(0,
+          //     {
+          //       x: rows[i].cells[9].innerHTML,
+          //       y: rows[i].cells[10].innerHTML
+          //     }
+          //   )
+          // }
+          setDataToGraph()
+
+          // after complete
+          Dom.setBlinkArrow(true, 790, 408).play()
+          setCC("Click 'Next' to go to next step")
+          setIsProcessRunning(false)
+          Scenes.currentStep = 4
+        }
+
+
+        
+
+        // deactivate the sliders after first value  done
+        // todo
+        if(recordBtnClickIdx == 0){
+          // disableSlider("v")
+          // disableSlider("d")
+        }
+        let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
+        tableRow.cells[1].innerHTML = vInValue
+        tableRow.cells[2].innerHTML = resistanceValue
+        tableRow.cells[3].innerHTML = dutyRatioValue
         tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
         tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
         tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
@@ -4414,13 +4752,11 @@ part_3_option_5 : new Dom("part_3_option_5"),
         //   Scenes.currentStep = 4
         // }
         // warning for sorting the data
-        if(recordBtnClickIdx==7){
-          setCC("Click 'Record' to sort the table according to D and plot the graph.")
+        if(recordBtnClickIdx==8){
+          setCC("Press Record")
         }
       }    
        
-      
-
       
       return true
     }),
