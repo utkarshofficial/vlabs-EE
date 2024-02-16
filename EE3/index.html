@@ -159,7 +159,7 @@
             <!-- transparent layer for question -->
             <div class="transparent-box"></div>
             <section class="anime-header">
-              <p style="text-transform: uppercase;position: relative;left: -80px;">BOost converter</p>
+              <p style="text-transform: uppercase;position: relative;left: -80px;">Buck converter</p>
               
               <div class="btn-popup-box">
                 <p class="btn-popup">Procedure</p>
@@ -744,7 +744,15 @@
               <!-- !EE3 slider box  -->
               <div class="slider-box">
                 <div class="row1">
-                    <div class="slider-box-container-1">
+                    <div class="slider-box-container-3 select-container">
+                        <div class=" header header_c">Characteristics</div>
+                        <select class="slider slider_C" name="" value="D-vs-M" id="">
+                            <option value="D-vs-M">D-vs-M</option>
+                            <option value="D-vs-I">D-vs-I<sub>0</sub></option>
+                            <option value="D-vs-V">D-vs-V<sub>0</sub></option>
+                        </select>
+                    </div>
+                    <div class="slider-box-container-1 select-container">
                         <div class="header header_v">V <sub>in</sub> (V)</div>
                         <select class="slider slider_vIn" name="" value="24" id="">
                             <option value="24">24</option>
@@ -752,7 +760,7 @@
                             <option value="48">48</option>
                         </select>
                     </div>
-                    <div class="slider-box-container-2">
+                    <div class="slider-box-container-2 select-container">
                         <div class=" header header_r">R (Ω)</div>
                         <select class="slider slider_R" name="" value="12" id="">
                             <option value="12">12</option>
@@ -760,18 +768,10 @@
                             <option value="36">36</option>
                         </select>
                     </div>
-                    <div class="slider-box-container-3">
-                        <div class=" header header_c">Characteristics</div>
-                        <select class="slider slider_C" name="" value="D-vs-M" id="">
-                            <option value="D-vs-M">D-vs-M</option>
-                            <option value="D-vs-I">D-vs-I<sub>o</sub></option>
-                            <option value="D-vs-V">D-vs-V<sub>o</sub></option>
-                        </select>
-                    </div>
                 </div>
         
                 <div class="row2">
-                    <div class="slider-box-container-4">
+                    <div class="slider-box-container-4 select-container">
                         <div class="header header_d">D</div>
                         <input class="slider_D" type="range"
                         value="0.1"

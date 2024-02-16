@@ -3165,6 +3165,8 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
       let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
       
 
+      // generate option
+      sliders.generateOptionsFor(0)
 
        // ! graph
       Scenes.items.graph4.set(null,null,220,355)
@@ -3177,18 +3179,18 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
         let x = new Chart(ctx, {
           type: "scatter",
           plugins: [{
-            afterDraw: chart => {
-              var ctx = chart.chart.ctx;
-              ctx.save();
-              ctx.textAlign = 'center';
-              ctx.font = '18px Arial';
-              ctx.fillStyle = 'black';
-              ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-              ctx.textAlign = 'left';
-              ctx.font = '10px Arial';
-              ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-              ctx.restore();
-            },
+            // afterDraw: chart => {
+            //   var ctx = chart.chart.ctx;
+            //   ctx.save();
+            //   ctx.textAlign = 'center';
+            //   ctx.font = '18px Arial';
+            //   ctx.fillStyle = 'black';
+            //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
+            //   ctx.textAlign = 'left';
+            //   ctx.font = '10px Arial';
+            //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
+            //   ctx.restore();
+            // },
             
           }],
           data: {
@@ -3199,6 +3201,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
                   borderColor: "red",
                   backgroundColor: "red",
                   data: data,
+                  display: false,
                 },
             ],
           },
@@ -3207,7 +3210,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
               yAxes: [
                 {
                   scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: yLabel,
                     fontColor: 'black',
                     fontSize: 17,
@@ -3223,7 +3226,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
               xAxes: [
                 {
                   scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: xLabel,
                     fontColor: 'black',
                     fontSize: 17,
@@ -3275,11 +3278,29 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 
         let characteristicsValue = Scenes.items.slider_C.item.value;
 
-        if(characteristicsValue == "D-vs-M"){
+       
           let graphData = []
           var rows = table.tBodies[0].rows
-          let n = 7
+          let n = 8
           for(let i=0;i<n;i++){
+            let x = rows[i].cells[3].innerHTML
+            ,y=null
+            ,labely = null
+            ,labelx = "Duty Ratio (D)"
+            switch(characteristicsValue){
+              case  'D-vs-M': 
+                y = rows[i].cells[5].innerHTML
+                labely = "Voltage Gain (M)"
+                break
+              case  'D-vs-I': 
+                y = rows[i].cells[7].innerHTML
+                labely = "I (A)"
+                break
+              case  'D-vs-V': 
+                y = rows[i].cells[4].innerHTML
+                labely = "V (V)"
+                break
+            }
             graphData.push(
               {
                 x: rows[i].cells[3].innerHTML,
@@ -3290,40 +3311,6 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           plotGraph(graphData,"Efficiency","",yLabel)
           Scenes.items.graph4.set(null,null,220,355)
 
-        }
-        if(characteristicsValue == "D-vs-I"){
-          let graphData = []
-          var rows = table.tBodies[0].rows
-          let n = 7
-          for(let i=0;i<n;i++){
-            graphData.push(
-              {
-                x: rows[i].cells[3].innerHTML,
-                y: rows[i].cells[7].innerHTML
-              }
-            )
-          }
-          plotGraph(graphData,"Efficiency","",yLabel)
-          Scenes.items.graph4.set(null,null,220,355)
-
-        }
-        if(characteristicsValue == "D-vs-V"){
-          let graphData = []
-          var rows = table.tBodies[0].rows
-          let n = 7
-          for(let i=0;i<n;i++){
-            graphData.push(
-              {
-                x: rows[i].cells[3].innerHTML,
-                y: rows[i].cells[4].innerHTML
-              }
-            )
-          }
-          plotGraph(graphData,"Efficiency","",yLabel)
-          Scenes.items.graph4.set(null,null,220,355)
-
-        }
-       
       }
       // ! ------------> If data already present plot the graph
       if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
@@ -5092,7 +5079,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 5
 
 Scenes.next()
 // Scenes.steps[3]()

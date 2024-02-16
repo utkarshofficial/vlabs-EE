@@ -23,8 +23,6 @@
 .slider-box{
     /* display: none; */
     position: absolute;
-    top: -50px;
-    left: -50px;
     /* user-select: none; */
   }
 
