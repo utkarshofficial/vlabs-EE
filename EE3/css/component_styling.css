@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: "Cosmic Sans MS";
+    src: url(../fonts/ComicSansMS3.ttf);
+}
 
 .qs{
     cursor: pointer;
@@ -50,11 +53,18 @@
     width: 64px;
 }
 .part3_table_one tbody tr{
-    height: 30px;
+    height: 29px;
 }
 .part3_table_one td{
     text-align: center;
     font-weight: bold;
+    width: 100px;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+}
+.part3_table_one th{
+    font-size: 1.2em;
 }
 .part3_table_one tbody tr:nth-child(2n){
     background-color: #eaeff7;
@@ -99,12 +109,19 @@
 .part3_table_three thead tr th{
     width: 64px;
 }
-.part3_table_three tbody tr{
-    height: 30px;
+.part3_table_one tbody tr{
+    height: 29px;
 }
-.part3_table_three td{
+.part3_table_one td{
     text-align: center;
     font-weight: bold;
+    width: 150px;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+}
+.part3_table_one th{
+    font-size: 1.2em;
 }
 .part3_table_three tbody tr:nth-child(2n){
     background-color: #eaeff7;
@@ -137,11 +154,20 @@
     opacity: 0.5;
     box-shadow: none!important;
 }
+.disabled{
+    pointer-events: none;
+    cursor:not-allowed;
+    user-select: none;
+    opacity: 0.5;
+    box-shadow: none!important;
+}
 
 .graph_box{
+    display: none;
+    padding: 0 0 22px 22px;
     position: absolute;
     right: 10px;
-    top: -70px;
+    top: -75px;
     box-sizing: border-box;
     background-color: white;
     border-radius: 20px;
@@ -210,24 +236,47 @@
 
 /* ! Delte reset */
 .btn-delete{
-    background-color: #ff0505!important;
+    background-color: #05056f;
     color: white;
     font-weight: bold;
     display: none;
     z-index: 1000;
     position: absolute;
+    border-radius: 20px;
+    font-size: 1.25em;
+    padding: 12px 7px;
+    width: 90px;
     /* top: 360px;
     left: 10px;  */
     
 }
 
 .btn-reset{
-    background-color: #0579cc!important;
+    background-color: #5d8c3b;
     color: white;
     font-weight: bold;
     display: none;
     z-index: 1000;
     position: absolute;
+    border-radius: 20px;
+    font-size: 1.25em;
+    padding: 12px 7px;
+    width: 90px;
+    /* top: 360px;
+    left: 120px;  */
+    
+}
+.btn-record{
+    background-color: #975f52;
+    color: white;
+    font-weight: bold;
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    border-radius: 20px;
+    font-size: 1.25em;
+    padding: 12px 0px;
+    width: 90px;
     /* top: 360px;
     left: 120px;  */
     
@@ -289,16 +338,6 @@
     background-color: black!important;
 }
 
-/* Record btn */
-.btn-record:hover{
-    opacity: 0.9!important;
-    transform: scale(1.03)!important;
-}
-.btn-record:active{
-    opacity: 0.9!important;
-    transform: scale(0.99)!important;
-}
-
 .theory{
     height: 495px;
     width: 950px;
@@ -343,7 +382,7 @@
     left: 23px;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.619);
+    /* background-color: rgba(0, 0, 0, 0.619); */
     padding: 0 2px;
     height: 40px;
     border-radius: 10px;
@@ -351,26 +390,24 @@
   }
 
   .btn-popup{
-    padding: 5px;
+    padding: 8px 10px;
     margin: 0 2px;
     font-size: 17px;
     font-weight: bold;
     cursor:help;
     transition: 0.1s;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px white;
   }
 
   .btn-popup:nth-child(1){
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    background-color: green;
+    background-color: #8e4311;
   }
   .btn-popup:nth-child(2){
-    background-color: red;
+    background-color: #0505a4;
   }
   .btn-popup:nth-child(3){
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    background-color: blue;
+    background-color: #3f5f29;
   }
 
   .btn-popup:hover ~ .btn-popup-window{
@@ -457,4 +494,9 @@
 #vertex10 {
     left: 497px;
     top: 307px;
+}
+
+/* ! Added Font */
+.main-window{
+    font-family: "Cosmic Sans MS";
 }

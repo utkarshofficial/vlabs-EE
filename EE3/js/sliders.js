@@ -3,6 +3,7 @@ const sliders = {
   selectOpHeader1: document.querySelector(".header_v"),
   selectOpHeader2: document.querySelector(".header_r"),
   selectOpHeader3: document.querySelector(".header_c"),
+  selectContainers: document.querySelectorAll(".select-container"),
   //to catch the select option
   selectOp1: document.querySelector(".slider_C"),
   selectOp2: document.querySelector(".slider_vIn"),
@@ -23,7 +24,7 @@ const sliders = {
   //to change the option in select
   generateOptionsFor(stepIndex) {
     function genOptions(selectEleOpn,opsArr,opsArr2=null){
-      let strOps = "";
+      let strOps = `<option value="">Select</option>`;
       for (let ops in opsArr) {
         let ops2 = opsArr[ops]
         if(opsArr2!=null){
@@ -47,6 +48,7 @@ const sliders = {
         genOptions(this.selectOptions[2],[12,24,36])
 
         this.setSlider(0.1,0.9,0.01,"D")
+        this.enableAll()
         break
 
       case 2:
@@ -61,6 +63,7 @@ const sliders = {
         genOptions(this.selectOptions[2],[0.25,0.50,0.75])
 
         this.setSlider(10, 100, 1, "R (Ω)")
+        this.enableAll()
         break
       
       case 3:
@@ -74,6 +77,7 @@ const sliders = {
         genOptions(this.selectOptions[2],[0.25,0.50,0.75])
 
         this.hideSliderAndOption(3)
+        this.enableAll()
         break
     }
   },
@@ -91,8 +95,26 @@ const sliders = {
     }
   },
 
-  disable(selectEleOpn) {
-    selectEleOpn.item.disabled = "true";
+  disable(selectIndex) {
+    if(selectIndex < 3){
+      this.selectOptions[selectIndex].disabled = true
+      this.selectContainers[selectIndex].classList.add("disabled")
+    }
+    else{
+      this.slider.disabled = true
+      this.sliderInput.disabled = true
+      this.selectContainers[selectIndex].classList.add("disabled")
+    }
+  },
+  enableAll(){
+    this.selectOptions.forEach(ele=>{
+      ele.disable = false
+    })
+    this.selectContainers.forEach(ele=>{
+      ele.classList.remove("disabled")
+    })
+    this.slider.disabled = false
+    this.sliderInput.disabled = false
   },
   hideSliderAndOption(opsIdx){
     let sliderArr = document.querySelectorAll(".select-container")
@@ -112,7 +134,7 @@ const sliders = {
     this.sliderHeader.innerHTML = title
 
     this.changeValue(max)
-  }
+  },
 }
 
 sliders.init()

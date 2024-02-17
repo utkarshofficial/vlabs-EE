@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/chart.css" />
     <link rel="stylesheet" href="css/component_styling.css" />
     <link rel="stylesheet" href="css/sliders.css" />
+    <script src="./js/typed.js"></script>
   </head>
   <img src="" alt="" />
   <body>
@@ -162,9 +163,9 @@
               <p style="text-transform: uppercase;position: relative;left: -80px;">Buck converter</p>
               
               <div class="btn-popup-box">
-                <p class="btn-popup">Procedure</p>
-                <p class="btn-popup">Nomenclature</p>
-                <p class="btn-popup">Mathematical Expressions</p>
+                <p class="btn-popup">FORMULAE</p>
+                <p class="btn-popup">PROCEDURE</p>
+                <p class="btn-popup">NOMENCLATURE</p>
                 <img class="btn-popup-window" src="" alt="" >
                 <div class="btn-popup-window blur">
                 </div>
@@ -280,15 +281,24 @@
               <div class="graph_box graph_box2" >
                 <canvas class="graph graph2"></canvas>
               </div>
-              <div class="graph_box" >
+              <div class="graph_box graph_box3" >
                 <canvas class="graph graph3"></canvas>
               </div>
-              <div class="graph_box" >
+              <div class="graph_box graph_box4" >
                 <canvas class="graph graph4"></canvas>
               </div>
               <div class="graph_box graph_box5" >
                 <canvas class="graph graph5"></canvas>
               </div>
+              <!-- Label for graph -->
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp xLabel"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp yLabel"
+              ></span>
               
               <!-- ! for cicuit formulation -->
               <!-- Connection Points -->
@@ -753,7 +763,7 @@
                         </select>
                     </div>
                     <div class="slider-box-container-1 select-container">
-                        <div class="header header_v">V <sub>in</sub> (V)</div>
+                        <div class="header header_v">V<sub>in</sub> (V)</div>
                         <select class="slider slider_vIn" name="" value="24" id="">
                             <option value="24">24</option>
                             <option value="36">36</option>
@@ -785,6 +795,9 @@
 
               <!-- ! Delte Reset Buttons -->
               <!-- * Button template -->
+              <div class="btn btn-record">
+                Record                
+              </div>
               <div class="btn btn-reset">
                 Reset                
               </div>
@@ -1036,7 +1049,7 @@ alt="part_3_option_4.png"
 />
 
 <img
-class="btn-record main-window-imgs"
+class="main-window-imgs"
 style="cursor: pointer;z-index: 1000;"
 src="./src/images/record_btn.png"
 />
@@ -2090,7 +2103,7 @@ alt="part1_crrct_circuit.png"
             <section class="anime-footer">
               <btn style="display: none;" class="btn btn-back">Back</btn>
               <!-- * Bottom Subtitles Div -->
-              <div style="margin-left: 120px;" class="steps-subtitle">
+              <div style="margin-left: 40px;" class="steps-subtitle">
                 <!-- <p class="user-name">Hey👋 Sneha</p> -->
                 <p style="text-align: center; font-size: 1.3em; " class="subtitle" id="subtitle"></p>
               </div>
@@ -2107,7 +2120,6 @@ alt="part1_crrct_circuit.png"
     </div>
 
     <script src="js/src.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.js"></script>
     <script src="js/progressBar.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/formulas.js"></script>
