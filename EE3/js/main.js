@@ -910,7 +910,38 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
   graph5=null,
   graph6=null,
   graph7=null,
- ]
+ ],
+
+ chart: {
+  label1:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label2:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label3:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label4:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label5:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label6:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label7:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+ } 
 
 
 
@@ -3204,8 +3235,8 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
       let ctx = Scenes.items.graph1.item
 
       // ! Label for graph
-      let xLabel = "Label 1"
-      let yLabel = "Label 2"
+      let xLabel = Scenes.items.chart.label1.x
+      let yLabel = Scenes.items.chart.label1.y
       let dataLabel = "Data"
       
       // ! To Plot graph
@@ -3377,6 +3408,9 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
               }
             )
           }
+          Scenes.items.chart.label1.x = xLabel
+          Scenes.items.chart.label1.y = yLabel
+
           plotGraph(ctx,0,graphData,dataLabel,xLabel,yLabel,true)
           Scenes.items.graph1.set(null,null,220,355)
 
@@ -4085,61 +4119,97 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
       );
       // setCC("Record 7 reading for 3 different load resistances.")
       // ! show the slider
-      Scenes.items.slider_box.set(10,-10).scale(0.9)
+      Scenes.items.slider_box.set(25,15).scale(0.95)
       Scenes.items.btn_next.show()
-      
-      
+
       //! Required Items
       // Scenes.items.circuit_full_3.set(230,-50,150)
-      // Scenes.items.part_3_option_2.set(-20, 170-120).zIndex(2000)
-      // Scenes.items.right_tick_1.set(-3,185-120).zIndex(2000)
-      Scenes.items.part3_table_one.set(10,140).scale(0.98)
+      // Scenes.items.part_3_option_3.set(-30, 155)
       //  Scenes.items.right_tick_1.set(-5,175)
-      Scenes.items.record_btn.set(770,220,70)
-      Scenes.items.btn_delete.set(785,290)
-      Scenes.items.btn_reset.set(787,350)
+      Scenes.items.btn_record.set(240,-60)
+      Scenes.items.btn_delete.set(340,-60)
+      Scenes.items.btn_reset.set(440,-60)
       // Scenes.items.part3_table_three.set(20)
-       let table = Scenes.items.part3_table_one.item
+      Scenes.items.part3_table_two.set(-43,160, null).scale(0.9)
+       let table = Scenes.items.part3_table_two.item
+       let tableColumnMax = table.tBodies[0].rows[0].cells.length
+       let tableRowMax = table.tBodies[0].rows.length
+
        let valuesToMatch = []
         // * index to handle records
       let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
       
 
+      // generate option
+      sliders.generateOptionsFor(1)
 
        // ! graph
-      Scenes.items
-      Scenes.items.graph4.set(null,null,220,355)
-      let ctx = Scenes.items.graph4.item
+      Scenes.items.graph_box_1.set()
+      Scenes.items.graph1.set(null,null,220,355)
+      let ctx = Scenes.items.graph1.item
+
+      // ! Label for graph
+      let xLabel = "Label 1"
+      let yLabel = "Label 2"
+      let dataLabel = "Data"
       
-      // let xLabel = "Output Power (Po)"
-      let xLabel = ""
-      let yLabel = "Efficiency (%)"
-      function plotGraph(data,label,xLabel,yLabel,beginAtZero=false){
-        let x = new Chart(ctx, {
+      // ! To Plot graph
+      function plotGraph(
+        ctx,
+        graphIdx,
+        data,
+        dataLabel,
+        xLabel=null,
+        yLabel=null,
+        beginAtZero=false
+      ){
+        
+        // for label
+        Scenes.items.yLabel.set(487,33).setContent(yLabel).styles({
+          backgroundColor: "transperant",
+          textAlign: "center",
+          color: "black",
+          width: "170px", 
+          rotate: "-90deg",
+        })
+        Scenes.items.xLabel.set(720,140).setContent(xLabel).styles({
+          backgroundColor: "transperant",
+          color: "black",
+          width: "fit-content", 
+        })
+
+        // ! Destroy old graph
+        let graphRef = Scenes.items.chart[graphIdx]
+        if(graphRef!=null){
+          graphRef.destroy()
+        }
+        
+        graphRef = new Chart(ctx, {
           type: "scatter",
           plugins: [{
-            afterDraw: chart => {
-              var ctx = chart.chart.ctx;
-              ctx.save();
-              ctx.textAlign = 'center';
-              ctx.font = '18px Arial';
-              ctx.fillStyle = 'black';
-              ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-              ctx.textAlign = 'left';
-              ctx.font = '10px Arial';
-              ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-              ctx.restore();
-            },
+            // afterDraw: chart => {
+            //   var ctx = chart.chart.ctx;
+            //   ctx.save();
+            //   ctx.textAlign = 'center';
+            //   ctx.font = '18px Arial';
+            //   ctx.fillStyle = 'black';
+            //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
+            //   ctx.textAlign = 'left';
+            //   ctx.font = '10px Arial';
+            //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
+            //   ctx.restore();
+            // },
             
           }],
           data: {
             datasets: [
                 {
-                  label: label,
+                  label: dataLabel,
                   fill: false,
                   borderColor: "red",
                   backgroundColor: "red",
                   data: data,
+                  display: false,
                 },
             ],
           },
@@ -4148,7 +4218,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
               yAxes: [
                 {
                   scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: yLabel,
                     fontColor: 'black',
                     fontSize: 17,
@@ -4164,7 +4234,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
               xAxes: [
                 {
                   scaleLabel: {
-                    display: true,
+                    display: false,
                     labelString: xLabel,
                     fontColor: 'black',
                     fontSize: 17,
@@ -4179,36 +4249,84 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
             },
           },
         })
+     
+        Scenes.items.chart[graphIdx] = graphRef
       }
+
+      // for adding new datasets to graph
+      const graph = {
+        addDataset(chart,label,bgColor,data){
+          chart.data.datasets.push(
+            {
+              label: label,
+              fill: true,
+              borderColor: bgColor,
+              data: data,
+            }
+          )
+          chart.update()
+        },
+        addData(chart,index,data){
+          console.log(data)
+          if(data.length > 0){
+            chart.data.datasets[index].data = data
+          }else{
+            chart.data.datasets[index].data.push(data)
+          }
+          chart.update()
+        }
+      }
+
 
       // let slidersBox = document.querySelectorAll(".slider")
       // let slidersBox = document.querySelectorAll(".range-slider__range")
       function stepTutorial2(){
 
-        Dom.setBlinkArrowRed(true,50,-50,30,30,-90).play()
-        setCC("Select the value of V<sub>g</sub>")
+        Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
+        setCC("Select Characteristics")
 
-        sliders.vImg.onclick = ()=>{
-          sliderV()
-          sliders.vImg.click()
-          Dom.setBlinkArrowRed(true,215,110,null,null,90).play()
-          setCC("Set the value of D",5)
+        sliders.selectOp1.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,260,78,30,30,90).play()
+          setCC("Select V<sub>in</sub>")
+          
+          // * for highlighting table 
+          function addClassToTable(className){
+            let cls = ["v0-bg","m-bg","iIn-bg"]
+            for(let i of cls)
+              Scenes.items.part3_table_two.removeClass(i)
 
-          sliders.d.onclick = ()=>{
-            Dom.setBlinkArrowRed(true,560,75).play()
-            setCC("Set the value of R")
+            Scenes.items.part3_table_two.addClass(className)
+          }
+          switch(sliders.selectOp1.value){
+            case  'D-vs-M': 
+              addClassToTable("m-bg")
+              break
+            case  'D-vs-I': 
+                addClassToTable("iIn-bg")
+              break
+            case  'D-vs-V': 
+              addClassToTable("v0-bg")
+              break
+          }
 
-            sliders.r.onclick = ()=>{
-              Dom.setBlinkArrowRed(true,894,226).play()
-              setCC("Press Record")
+          sliders.selectOp2.oninput = ()=>{
+            Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
+            setCC("Select R")
 
-              sliders.clearOnclick()
+            sliders.selectOp3.oninput = ()=>{
+              Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
+              setCC("Select D")
+
+              sliders.slider.onclick = ()=>{
+                Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
+                setCC("Press Record")                
+              }
             }
           }
         }
       }
       if(recordBtnClickIdx == 0){
-        // stepTutorial2()
+        stepTutorial2()
       }
 
       
@@ -4216,73 +4334,63 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 
         let characteristicsValue = Scenes.items.slider_C.item.value;
 
-        if(characteristicsValue == "D-vs-M"){
-          let graphData = []
-          var rows = table.tBodies[0].rows
-          let n = 7
-          for(let i=0;i<n;i++){
-            graphData.push(
-              {
-                x: rows[i].cells[3].innerHTML,
-                y: rows[i].cells[5].innerHTML
-              }
-            )
-          }
-          plotGraph(graphData,"Efficiency","",yLabel)
-          Scenes.items.graph4.set(null,null,220,355)
-
-        }
-        if(characteristicsValue == "D-vs-I"){
-          let graphData = []
-          var rows = table.tBodies[0].rows
-          let n = 7
-          for(let i=0;i<n;i++){
-            graphData.push(
-              {
-                x: rows[i].cells[3].innerHTML,
-                y: rows[i].cells[7].innerHTML
-              }
-            )
-          }
-          plotGraph(graphData,"Efficiency","",yLabel)
-          Scenes.items.graph4.set(null,null,220,355)
-
-        }
-        if(characteristicsValue == "D-vs-V"){
-          let graphData = []
-          var rows = table.tBodies[0].rows
-          let n = 7
-          for(let i=0;i<n;i++){
-            graphData.push(
-              {
-                x: rows[i].cells[3].innerHTML,
-                y: rows[i].cells[4].innerHTML
-              }
-            )
-          }
-          plotGraph(graphData,"Efficiency","",yLabel)
-          Scenes.items.graph4.set(null,null,220,355)
-
-        }
        
+          let graphData = []
+          var rows = table.tBodies[0].rows
+          let n = 8
+          ,xLabel = "Duty Ratio (D)"
+          ,yLabel = ""
+          for(let i=0;i<n;i++){
+            let x = rows[i].cells[3].innerHTML
+            ,y=null 
+            switch(characteristicsValue){
+              case  'D-vs-M': 
+                y = rows[i].cells[5].innerHTML
+                yLabel = "Voltage Gain (M)"
+                setCC("Voltage gain linearly increases with increasing duty ratio for ideal case.")
+                break
+              case  'D-vs-I': 
+                y = rows[i].cells[7].innerHTML
+                yLabel = "I (A)"
+                setCC("Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case.")
+                break
+              case  'D-vs-V': 
+                y = rows[i].cells[4].innerHTML
+                yLabel = "V (V)"
+                setCC("Load voltage linearly increases with increasing duty ratio for ideal case.")
+                break
+            }
+            graphData.push(
+              {
+                x: x,
+                y: y,
+              }
+            )
+          }
+          plotGraph(ctx,0,graphData,dataLabel,xLabel,yLabel,true)
+          Scenes.items.graph1.set(null,null,220,355)
+
       }
       // ! ------------> If data already present plot the graph
       if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
         setIsProcessRunning(false)
         Scenes.currentStep = 4
 
-        recordBtnClickIdx = 7
+        // ! change the table column index who's changing
+        let changeableColumnIndx = 3
+
+        recordBtnClickIdx = 8
         let rows = table.tBodies[0].rows
-        let n=7
+      
         // * to get old values from table for matching
-        for(let i=0;i<n;i++){
-          let val = rows[i].cells[2].innerHTML
+        for(let i=0;i<tableColumnMax;i++){
+          let val = rows[i].cells[changeableColumnIndx].innerHTML
           valuesToMatch.push(Number(val))
         }
       }else{
         // ! Please note this when plot the graph then show the graph ... 
-        plotGraph([{}],"Efficiency","",yLabel,true) 
-        Scenes.items.graph4.set(null,null,220,355)
+        plotGraph(ctx,0,[{}],dataLabel,xLabel,yLabel,true) 
+        Scenes.items.graph1.set(null,null,220,355)
         // disableSlider("reset")
       }
 
@@ -4296,18 +4404,18 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 
        //!onclick for delete btn
        Scenes.items.btn_delete.item.onclick =  function(){
-        if(recordBtnClickIdx == 0 || recordBtnClickIdx > 8){
+        if(recordBtnClickIdx == 0 || recordBtnClickIdx > tableRowMax){
           return
         }
         let row = table.tBodies[0].rows
-        let n=11
         
-        for(let i=1;i<n;i++){
+        for(let i=1;i<tableColumnMax;i++){
           row[recordBtnClickIdx-1].cells[i].innerHTML = "" ;
         }
         recordBtnClickIdx = recordBtnClickIdx-1
         if(recordBtnClickIdx==0){
-          disableSlider("reset")
+          sliders.enableAll()
+          stepTutorial2()
         }
         valuesToMatch.pop()
       }
@@ -4315,43 +4423,47 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
       //! onclick for reset 
       Scenes.items.btn_reset.item.onclick = function(){
         var rows = table.tBodies[0].rows
-        let n=7
-        let m=11
   
-        for(let i=0;i<n;i++){
-          for(let j=1;j<m;j++){
+        for(let i=0;i<tableRowMax;i++){
+          for(let j=1;j<tableColumnMax;j++){
             rows[i].cells[j].innerHTML = "";
           }
         }
 
+        for(let i=0;i<tableRowMax;i++){
+          rows[i].cells[0].innerHTML = i+1;
+        }
+
         // reset all the parameters
         // so just simply call this step again
-        sliders.reset()
-        Scenes.steps[7]()        
+        Scenes.steps[6]()        
         
       }
 
       // ! onclick for record
-      Scenes.items.record_btn.item.onclick = function(){ 
-         // for arrow system
-         if(recordBtnClickIdx < 6){
-            Dom.setBlinkArrowRed(true,560,75).play()
-            setCC("Change the value of D and Record it")
+      Scenes.items.btn_record.item.onclick = function(){ 
 
-              Scenes.items.slider_R.onclick = ()=>{
-              Dom.setBlinkArrowRed(true,894,226).play()
-              setCC("Press Record")
-
-              sliders.clearOnclick()
-            }
-        }else{
-          Dom.setBlinkArrowRed(-1)
-        }
-        
+        // taking values from all sliders 
         let vInValue = Number(Scenes.items.slider_vIn.item.value)
         let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
         let resistanceValue = Number(Scenes.items.slider_R.item.value)
+
+        // * if all values not selected
+        if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
+          setCC("Select all values first.")
+          return
+        }
+
         updateValues(vInValue,dutyRatioValue,resistanceValue)
+        
+        // ! for arrow system
+        if(recordBtnClickIdx < tableRowMax-1){
+          Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
+          setCC("Select D")
+        }
+        else{
+          Dom.setBlinkArrowRed(-1)
+        }
 
         // ! Can't select same values
         if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(dutyRatioValue)!=-1){
@@ -4409,11 +4521,9 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 
         
 
-        // deactivate the sliders after first value  done
-        // todo
+        // ! deactivate the sliders after first value  done
         if(recordBtnClickIdx == 0){
-          // disableSlider("v")
-          // disableSlider("d")
+          sliders.disable(0,1,2)
         }
         let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
         tableRow.cells[1].innerHTML = vInValue
@@ -4424,8 +4534,9 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
         tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
         tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
         tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-        // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+        tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+        tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+        tableRow.cells[11].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
 
         // let x = tableRow.cells[9].innerHTML
         // let y = tableRow.cells[10].innerHTML
@@ -4442,9 +4553,11 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
         // warning for sorting the data
         if(recordBtnClickIdx==8){
           setCC("Press Record")
+          Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
+          setCC("Press Record") 
         }
       }    
-       
+      
       
       return true;
     }),
@@ -5155,8 +5268,8 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 6
- 
+Scenes.currentStep = 5
+
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()

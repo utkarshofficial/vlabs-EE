@@ -89,6 +89,67 @@
     background-color: #ffc000;
 } */
 
+/* part table two */
+.part3_table_two{
+    display: none;
+    bottom: 0px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    gap: 20px;
+    border-collapse: collapse;
+}
+.part3_table_two td,tr,th{
+    border: 1px solid black;
+}
+.part3_table_two thead{
+    background-color: #0000cc;
+    color: white;
+}
+.part3_table_two thead tr th{
+    width: 80px;
+    padding: 0 10.6px;
+}
+.part3_table_two tbody tr{
+    height: 29px;
+}
+.part3_table_two td{
+    text-align: center;
+    font-weight: bold;
+    width: 130px;
+    font-size: 1.2em;
+    padding: 0 3px;
+    margin: 0;
+}
+.part3_table_two th{
+    font-size: 1.2em;
+}
+.part3_table_two tbody tr:nth-child(2n){
+    background-color: #eaeff7;
+}
+.part3_table_two tbody tr:nth-child(2n+1){
+    background-color: #d2deef;
+}
+.part3_table_two.v0-bg td:nth-child(5){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_two.v0-bg td:nth-child(6){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_two.m-bg td:nth-child(7){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_two.m-bg td:nth-child(8){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_two.iIn-bg td:nth-child(9){
+    background-color: rgb(194, 194, 194);
+}
+.part3_table_two.iIn-bg td:nth-child(10){
+    background-color: rgb(194, 194, 194);
+}
+
+
 /* part3  table three */
 .part3_table_three{
     display: none;
@@ -151,14 +212,14 @@
     pointer-events: none;
     cursor:not-allowed;
     user-select: none;
-    opacity: 0.5;
+    opacity: 0.8;
     box-shadow: none!important;
 }
 .disabled{
     pointer-events: none;
     cursor:not-allowed;
     user-select: none;
-    opacity: 0.5;
+    opacity: 0.8;
     box-shadow: none!important;
 }
 

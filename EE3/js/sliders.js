@@ -95,20 +95,22 @@ const sliders = {
     }
   },
 
-  disable(selectIndex) {
-    if(selectIndex < 3){
-      this.selectOptions[selectIndex].disabled = true
-      this.selectContainers[selectIndex].classList.add("disabled")
-    }
-    else{
-      this.slider.disabled = true
-      this.sliderInput.disabled = true
-      this.selectContainers[selectIndex].classList.add("disabled")
-    }
+  disable(...selectIndex) {
+    selectIndex.forEach(index=>{
+      if(index < 3){
+        this.selectOptions[index].disabled = true
+        this.selectContainers[index].classList.add("disabled")
+      }
+      else{
+        this.slider.disabled = true
+        this.sliderInput.disabled = true
+        this.selectContainers[index].classList.add("disabled")
+      }
+    })
   },
   enableAll(){
     this.selectOptions.forEach(ele=>{
-      ele.disable = false
+      ele.disabled = false
     })
     this.selectContainers.forEach(ele=>{
       ele.classList.remove("disabled")
