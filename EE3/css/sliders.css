@@ -44,7 +44,7 @@
 }
 .slider-box .slider-box-container-4 .header_d{
     height: 10px;
-    width: 35px;
+    width: fit-content;
 }
 .slider-box .slider-box-container-4 {
     margin-top: 20px;

@@ -1,14 +1,15 @@
 const sliders = {
   //to catch the select option header
-  selectOpHeader1: document.querySelector(".header_v"),
-  selectOpHeader2: document.querySelector(".header_r"),
-  selectOpHeader3: document.querySelector(".header_c"),
+  selectOpHeader1: document.querySelector(".header_c"),
+  selectOpHeader2: document.querySelector(".header_v"),
+  selectOpHeader3: document.querySelector(".header_r"),
   selectContainers: document.querySelectorAll(".select-container"),
   //to catch the select option
   selectOp1: document.querySelector(".slider_C"),
   selectOp2: document.querySelector(".slider_vIn"),
   selectOp3: document.querySelector(".slider_R"),
   selectOptions: [],
+  selectOpHeaders: [],
   slider: document.querySelector(".slider_D"),
   sliderInput: document.querySelector(".slider_D_input"),
   sliderHeader: document.querySelector(".header_d"),
@@ -16,10 +17,11 @@ const sliders = {
   init(){
     this.selectOptions = [this.selectOp1,this.selectOp2,this.selectOp3]
     this.changeValue()
+    this.selectOpHeaders = [this.selectOpHeader1, this.selectOpHeader2, this.selectOpHeader3]
   },
   //to change the header of option
   changeHeader(idx, headerTitle) {
-    this.selectOptions[idx].innerHTML = headerTitle
+    this.selectOpHeaders[idx].innerHTML = headerTitle
   },
   //to change the option in select
   generateOptionsFor(stepIndex) {
@@ -68,10 +70,10 @@ const sliders = {
       
       case 3:
         this.changeHeader(0,"V<sub>in</sub> (V)")
-        genOptions(this.selectOptions[1],[24,36,48])
+        genOptions(this.selectOptions[0],[24,36,48])
         
         this.changeHeader(1,"R")
-        genOptions(this.selectOptions[2],[20,30,40])
+        genOptions(this.selectOptions[1],[20,30,40])
 
         this.changeHeader(2,"D")
         genOptions(this.selectOptions[2],[0.25,0.50,0.75])
@@ -97,13 +99,12 @@ const sliders = {
 
   disable(...selectIndex) {
     selectIndex.forEach(index=>{
-      if(index < 3){
-        this.selectOptions[index].disabled = true
-        this.selectContainers[index].classList.add("disabled")
-      }
-      else{
+      if(index==3){
         this.slider.disabled = true
         this.sliderInput.disabled = true
+        this.selectContainers[index].classList.add("disabled")
+      }else{
+        this.selectOptions[index].disabled = true
         this.selectContainers[index].classList.add("disabled")
       }
     })

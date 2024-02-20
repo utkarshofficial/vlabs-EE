@@ -184,6 +184,7 @@ part_3_option_5:this.allImgsDom[157],
 part1_crrct_text:this.allImgsDom[158],
 part1_incrrct_text:this.allImgsDom[159],
 part1_crrct_circuit:this.allImgsDom[160],
+part4_table_graph:this.allImgsDom[161],
 
 
       // * Question Mark
