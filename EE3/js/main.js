@@ -887,6 +887,8 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 
 // EE3 dom items added
 
+part1_box1 : new Dom(".part1_box1"),
+
 
 
 
@@ -2252,59 +2254,183 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 222
       //! Required positions
       let reset = function(){
-        Scenes.steps[2]()  
+              
+      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
+          rotate: "0deg"
+        })
+      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
+          rotate: "0deg"
+        })
+      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
+          rotate: "0deg"
+        })
+      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
+          rotate: "0deg"
+        })
+      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
+          rotate: "0deg"
+        })
+      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
+          rotate: "0deg"
+        })
+
+      Scenes.items.box1.set(100,230,90).zIndex(2)
+      Scenes.items.box2.set(185,140,80,135).zIndex(2)
+      Scenes.items.box3.set(295,245,95).zIndex(2)
+      Scenes.items.box4.set(360,140,80,115).zIndex(2)
+      Scenes.items.box5.set(475,250,85).zIndex(2)
+      Scenes.items.box6.set(588,250,95).zIndex(2)
+      
+
+      Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
+
+      ee3_btn_check.classList.add("btn-deactive")
+
+      resetActive = "";
+
+      for(let i in boxAnimes){
+        boxAnimes[i].pause();
+      }
+  
+        // Scenes.steps[2]()  
       }
 
-      let checkCnnctn = ""
+      let checkCnnctn = "";
+      let wrongNoTimes = "";
+
       let check = function(){
         console.log(checkCnnctn)
         if(checkCnnctn == "111111"){
-      Scenes.items.part1_crrct_text.set(10,40, null, 790)
-        }
-        else{
-      Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
-        }
-     
-      }
-
-      let hint = function(){
-
-        //hide previous components
-        
-      Scenes.items.part1_circuit.set(140,180,220).hide()
-      Scenes.items.box1.set(100,230,90).zIndex(2).hide()
-      Scenes.items.box2.set(185,140,80,135).zIndex(2).hide()
-      Scenes.items.box3.set(295,245,95).zIndex(2).hide()
-      Scenes.items.box4.set(360,140,80,115).zIndex(2).hide()
-      Scenes.items.box5.set(475,250,85).zIndex(2).hide()
-      Scenes.items.box6.set(588,250,95).zIndex(2).hide()
-
-      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).hide()
-      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).hide()
-      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).hide()
-      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).hide()
-      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).hide()
-      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).hide()
-
-      Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).hide()
-      Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).hide()
-      Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).hide()
-
-      Scenes.items.part1_crrct_text.set(10,40, null, 790).hide()
-
-      Scenes.items.part1_crrct_circuit.set(210,120, 250)
-
+        Scenes.items.part1_crrct_text.set(10,40, null, 790)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play()
           setCC("Click 'Next' to go to next step")
           setIsProcessRunning(false)
-
+        }
+        else{
+      Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
+      wrongNoTimes+="1";
+      if(wrongNoTimes == "11111"){
+        ee3_btn_hint.classList.remove("btn-deactive")
+      }
+      console.log("wrong no. of times",wrongNoTimes)
+        }
+     
       }
 
-      Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).item.onclick = check
-      Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).item.onclick = reset
-      Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).item.onclick = hint
+      let boxAnimes = [];
 
+      function boxAnime(){
+        var myObject = {
+          prop1: 0,
+          prop2: 0,
+          prop3: 0,
+          prop4: 0,
+          prop5: 0,
+          prop6: 0,
+        }
+        
+        let boxBlink_1 = anime({
+          targets: myObject,
+          prop1: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box1.item.style.filter = `hue-rotate(${(myObject.prop1)}deg)`;
+          },
+          loop: true,
+          autoplay: false,
+
+        });
+        let boxBlink_2 = anime({
+          targets: myObject,
+          prop2: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box2.item.style.filter = `hue-rotate(${(myObject.prop2)}deg)`;
+          },
+          autoplay: false,
+          loop: true,
+
+        });
+        let boxBlink_3 = anime({
+          targets: myObject,
+          prop3: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box3.item.style.filter = `hue-rotate(${(myObject.prop3)}deg)`;
+          },
+          autoplay: false,
+          loop: true,
+
+        });
+        let boxBlink_4 = anime({
+          targets: myObject,
+          prop4: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box4.item.style.filter = `hue-rotate(${(myObject.prop4)}deg)`;
+          },
+          autoplay: false,
+          loop: true,
+
+        });
+        let boxBlink_5 = anime({
+          targets: myObject,
+          prop5: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box5.item.style.filter = `hue-rotate(${(myObject.prop5)}deg)`;
+          },
+          autoplay: false,
+          loop: true,
+
+        });
+        let boxBlink_6 = anime({
+          targets: myObject,
+          prop6: 360,
+          easing: 'linear',
+          round: 1000,
+          update: function() {
+            box6.item.style.filter = `hue-rotate(${(myObject.prop6)}deg)`;
+          },
+          autoplay: false,
+          loop: true,
+
+        });
+
+         boxAnimes = [boxBlink_1, boxBlink_2, boxBlink_3, boxBlink_4, boxBlink_5, boxBlink_6]
+      }
+
+      let ee3_btn_check = Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).item
+      let ee3_btn_reset = Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).item
+      let ee3_btn_hint =  Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).item
+      
+      
+      ee3_btn_check.classList.add("btn-deactive")
+      ee3_btn_hint.classList.add("btn-deactive")
+
+
+      ee3_btn_check.onclick = check
+      ee3_btn_reset.onclick = reset
+
+      let isShow = 0;
+      Scenes.items.part1_crrct_circuit.set(20,-20, 450).zIndex(10).hide()
+      ee3_btn_hint.onclick = () => {
+        if(!isShow){
+          Scenes.items.part1_crrct_circuit.show()
+          isShow = 1;
+        }else{
+          Scenes.items.part1_crrct_circuit.hide()
+          isShow = 0
+        }
+      }
+
+    //  Scenes.items.part1_crrct_circuit.set(20,-20, 450).zIndex(10).hide()
       // Scenes.items.part1_crrct_text.set(10,40, null, 790)
       // Scenes.items.part1_incrrct_text.set(10,40, null, 790)
       // Scenes.items.part1_crrct_circuit.set(210,120, 250)
@@ -2328,52 +2454,56 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
       // Scenes.items.part1_component_capacitor.set(497,220,120)
       // Scenes.items.part1_component_resistance.set(604,222,120)
       
-      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3)
-      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3)
-      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3)
-      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3)
-      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3)
-      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3)
+      Scenes.items.part1_component_voltage.set(5+40,-20,150).rotate(0).zIndex(3)
+      Scenes.items.part1_component_inductor.set(85+70,-20,120).rotate(0).zIndex(3)
+      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).rotate(0).zIndex(3)
+      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).rotate(0).zIndex(3)
+      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).rotate(0).zIndex(3)
+      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).rotate(0).zIndex(3)
 
       
           let compo = {
             box : null,
             item : null,
           }
-      // box clicked
+      // !box clicked
+
+      boxAnime();
+
+  
       let box1 = Scenes.items.box1
       box1.item.onclick = ()=>{
+        boxAnimes[0].play();
         console.log("box1 clicked")
-        box1.scale(1.1)
         compo.box = box1
       }
       let box2 = Scenes.items.box2
       box2.item.onclick = ()=>{
-        box2.scale(1.1)
+        boxAnimes[1].play();
         console.log("box2 clicked")
         compo.box = box2
       }
       let box3 = Scenes.items.box3
       box3.item.onclick = ()=>{
-        box3.scale(1.1)
+        boxAnimes[2].play();
         console.log("box3 clicked")
         compo.box = box3
       }
       let box4 = Scenes.items.box4
       box4.item.onclick = ()=>{
-        box4.scale(1.1)
+        boxAnimes[3].play();
         console.log("box4 clicked")
         compo.box = box4
       }
       let box5 = Scenes.items.box5
       box5.item.onclick = ()=>{
-        box5.scale(1.1)
+        boxAnimes[4].play();
         console.log("box5 clicked")
         compo.box = box5
       }
       let box6 = Scenes.items.box6
       box6.item.onclick = ()=>{
-        box6.scale(1.1)
+        boxAnimes[5].play();
         console.log("box6 clicked")
         compo.box = box6
       }
@@ -2416,18 +2546,39 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
         toSet();
       }
 
-
+      let resetActive = "";
 
     //! function to set the element
     let toSet = function(){
+      
+      resetActive += "1";
+      console.log("reset active", resetActive)
+
+      if(resetActive == "111111"){
+        ee3_btn_check.classList.remove("btn-deactive")
+      }
+      
       let boxName = compo.box
       let itemName = compo.item
+
+      function toSetItem (target, left_=null, top_=null, height_=null, width_=null){
+        anime({
+          targets: target.item,
+          duration: 1000,
+          easing: "easeInOutQuad",
+          height: height_,
+          width: width_, 
+          left: left_,
+          top : top_
+        })
+      }
 
 
       //if item1 clicked
       if(itemName == item1 && boxName == box1){
         box1.hide()
-        item1.set(118.5,178,150)
+        toSetItem(item1, 118.5, 178, 150, null)
+        // item1.set(118.5,178,150)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -2437,26 +2588,31 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box2.hide()
-        item1.set(242,73,225)
+        // item1.set(242,73,225)
+        toSetItem(item1, 242,73,225)
       }
       if(itemName == item1 && boxName == box3){
           box3.hide()
-        item1.set(307, 193,150)
+        // item1.set(307, 193,150)
+        toSetItem(item1, 307, 193,150)
       }
       if(itemName == item1 && boxName == box4){
         item1.styles({
           rotate: "90deg"
         })
         // box4.hide()
-        item1.set(415, 109)
+        // item1.set(415, 109)
+        toSetItem(item1, 415, 109)
       }
       if(itemName == item1 && boxName == box5){
         // box5.hide()
-        item1.set(485, 194)
+        // item1.set(485, 194)
+        toSetItem(item1, 485, 194)
       }
       if(itemName == item1 && boxName == box6){
             box6.hide()
-        item1.set(588, 194)
+        // item1.set(588, 194)
+        toSetItem(item1, 588, 194)
       }
 
       //if item2 clicked
@@ -2465,22 +2621,26 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box1.hide()
-        item2.set(100, 212)
+        // item2.set(100, 212)
+        toSetItem(item2, 100, 212)
       }
       if(itemName == item2 && boxName == box2){
         box2.hide()
-        item2.set(171, 90)
+        toSetItem(item2, 171, 90)
+        // item2.set(171, 90)
       }
       if(itemName == item2 && boxName == box3){
         item2.styles({
           rotate: "90deg"
         })
         box3.hide()
-        item2.set(288, 230)
+        // item2.set(288, 230)
+        toSetItem(item2, 288, 230)
       }
       if(itemName == item2 && boxName == box4){
         box4.hide()
-        item2.set(339, 90)
+        toSetItem(item2, 339, 90)
+        // item2.set(339, 90)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -2490,7 +2650,8 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box5.hide()
-        item2.set(467, 230)
+        toSetItem(item2, 467, 230)
+        // item2.set(467, 230)
 
       }
       if(itemName == item2 && boxName == box6){
@@ -2498,42 +2659,49 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box6.hide()
-        item2.set(569, 230)
+        toSetItem(item2, 569, 230)
+        // item2.set(569, 230)
       }
 
       
       //if item3 clicked
       if(itemName == item3 && boxName == box1){
         box1.hide()
-        item3.set(129, 195)
+        // item3.set(129, 195)
+        toSetItem(item3, 129, 195)
       }
       if(itemName == item3 && boxName == box2){
         item3.styles({
           rotate: "90deg"
         })
         box2.hide()
-        item3.set(235,133)
+        // item3.set(235,133)
+        toSetItem(item3, 235,133)
       }
       if(itemName == item3 && boxName == box3){
         box3.hide()
-        item3.set(318, 213)
+        // item3.set(318, 213)
+        toSetItem(item3, 318, 213)
       }
       if(itemName == item3 && boxName == box4){
         item3.styles({
           rotate: "90deg"
         })
         box4.hide()
-        item3.set(399, 133)
+        // item3.set(399, 133)
+        toSetItem(item3, 399, 133)
       }
       if(itemName == item3 && boxName == box5){
         box5.hide()
-        item3.set(496, 213)
+        // item3.set(496, 213)
+        toSetItem(item3, 496, 213)
         checkCnnctn+="1"
         console.log(checkCnnctn)
       }
       if(itemName == item3 && boxName == box6){
         box6.hide()
-        item3.set(599, 213)
+        toSetItem(item3, 599, 213)
+        // item3.set(599, 213)
       }
 
        //if item4 clicked
@@ -2542,11 +2710,13 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box1.hide()
-        item4.set(55, 205)
+        toSetItem(item4, 55, 205)
+        // item4.set(55, 205)
      }
       if(itemName == item4 && boxName == box2){
         box2.hide()
-        item4.set(171, 124)
+        toSetItem(item4, 171, 124)
+        // item4.set(171, 124)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -2557,42 +2727,50 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
         box3.hide()
-        item4.set(243, 221)
+        toSetItem(item4, 243, 221)
+        // item4.set(243, 221)
+
       }
       if(itemName == item4 && boxName == box4){
         box4.hide()
-        item4.set(346, 124)
+        toSetItem(item4, 346, 124)
+        // item4.set(346, 124)
       }
       if(itemName == item4 && boxName == box5){
         item4.styles({
           rotate: "90deg"
         })
         box5.hide()
-        item4.set(420, 221)
+        toSetItem(item4, 420, 221)
+        // item4.set(420, 221)
       }
       if(itemName == item4 && boxName == box6){
         item4.styles({
           rotate: "90deg"
         })
         box6.hide()
-        item4.set(525, 221)
+        toSetItem(item4, 525, 221)
+        // item4.set(525, 221)
       }
 
       //if item5 clicked
       if(itemName == item5 && boxName == box1){
         box1.hide()
-        item5.set(134, 214)
+        toSetItem(item5,134, 214)
+        // item5.set(134, 214)
       }
       if(itemName == item5 && boxName == box2){
         item5.styles({
           rotate: "90deg"
         })
         box2.hide()
-        item5.set(222, 144)
+        toSetItem(item5, 222, 144)
+        // item5.set(222, 144)
       }
       if(itemName == item5 && boxName == box3){
             box3.hide()
-        item5.set(322, 230)
+        // item5.set(322, 230)
+        toSetItem(item5, 322, 230)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -2602,51 +2780,62 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
           rotate: "90deg"
         })
           box4.hide()
-        item5.set(387, 144)
+        // item5.set(387, 144)
+        toSetItem(item5, 387, 144)
       }
       if(itemName == item5 && boxName == box5){
             box5.hide()
-        item5.set(500, 230)
+            toSetItem(item5, 500, 230)
+        // item5.set(500, 230)
       }
       if(itemName == item5 && boxName == box6){
           box6.hide()
-        item5.set(604, 230)
+          toSetItem(item5, 604, 230)
+        // item5.set(604, 230)
       }
 
 
       //if item6 clicked
       if(itemName == item6 && boxName == box1){
         box1.hide()
-        item6.set(132, 198)
+        toSetItem(item6, 132, 198)
+        // item6.set(132, 198)
       }
       if(itemName == item6 && boxName == box2){
         item6.styles({
           rotate: "90deg"
         })
         box2.hide()
-        item6.set(239, 129)
+        toSetItem(item6, 239, 129)
+        // item6.set(239, 129)
       }
       if(itemName == item6 && boxName == box3){
             box3.hide()
-        item6.set(321, 214)
+        // item6.set(321, 214)
+        toSetItem(item6, 321, 214)
       }
       if(itemName == item6 && boxName == box4){
         item6.styles({
           rotate: "90deg"
         })
           box4.hide()
-        item6.set(402, 129)
+          toSetItem(item6, 402, 129)
+        // item6.set(402, 129)
       }
       if(itemName == item6 && boxName == box5){
             box5.hide()
-        item6.set(498, 214)
+            toSetItem(item6, 498, 214)
+        // item6.set(498, 214)
       }
       if(itemName == item6 && boxName == box6){
             box6.hide()
-            item6.set(601, 214)
+            toSetItem(item6, 602, 214)
+            // item6.set(601, 214)
             checkCnnctn+="1"
       }
-
+      
+      compo.box  = null
+      compo.item  = null
 
     }
       // ------ end
@@ -5268,7 +5457,7 @@ ee3_btn_hint : new Dom(".ee3-btn-hint"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 5
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()
