@@ -152,6 +152,7 @@
 
 /* part3  table three */
 .part3_table_three{
+    width: 1000px;
     display: none;
     bottom: 0px;
     position: absolute;
@@ -168,20 +169,20 @@
     color: white;
 }
 .part3_table_three thead tr th{
-    width: 64px;
+    width: 426px;
 }
-.part3_table_one tbody tr{
+.part3_table_three tbody tr{
     height: 29px;
 }
-.part3_table_one td{
+.part3_table_three td{
     text-align: center;
     font-weight: bold;
-    width: 150px;
+    width: 426px;
     font-size: 1.2em;
     padding: 0;
     margin: 0;
 }
-.part3_table_one th{
+.part3_table_three th{
     font-size: 1.2em;
 }
 .part3_table_three tbody tr:nth-child(2n){
@@ -212,20 +213,22 @@
     pointer-events: none;
     cursor:not-allowed;
     user-select: none;
-    opacity: 0.8;
+    opacity: 0.9;
     box-shadow: none!important;
 }
 .disabled{
     pointer-events: none;
     cursor:not-allowed;
     user-select: none;
-    opacity: 0.8;
+    opacity: 0.9;
     box-shadow: none!important;
 }
 
 .graph_box{
     display: none;
     padding: 0 0 22px 22px;
+    width: 377px;
+    height: 242px;
     position: absolute;
     right: 10px;
     top: -75px;
@@ -248,7 +251,7 @@
     opacity: 0.7;
     cursor: not-allowed;
     background-color: rgb(97, 97, 97);
-    box-shadow: 1px 1px 5px black;
+    box-shadow: none!important;
     color: black;
 }
 
