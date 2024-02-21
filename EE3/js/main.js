@@ -884,6 +884,16 @@ ee3_btn_reset : new Dom(".ee3-btn-reset"),
 ee3_btn_hint : new Dom(".ee3-btn-hint"),
 part4_table_graph : new Dom("part4_table_graph"),
 
+//ee3 symbol imgs added
+
+symbol_vIn : new Dom("symbol_vIn"),
+symbol_L : new Dom("symbol_L"),
+symbol_C : new Dom("symbol_C"),
+symbol_S : new Dom("symbol_S"),
+symbol_D : new Dom("symbol_D"),
+symbol_R : new Dom("symbol_R"),
+
+
 concept_development : new Dom(".concept_development"),
 
 // EE3 dom items added
@@ -2244,64 +2254,53 @@ part1_box1 : new Dom(".part1_box1"),
 
       Scenes.setStepHeading("Step-1", "Circuit Formulation");
 
-      // let vertexBox = new Dom(".vertex-box")
-      // vertexBox.show()
-
-      //! Required positions
-      // let tConst = -10
-      // let lConst = 0
-      // Scenes.items.component_battery.set(20+lConst, 30+tConst, 180);
-      // Scenes.items.component_inductor.set(200+lConst, 260+tConst, 132);
-      // Scenes.items.component_diode.set(380+lConst, 282+tConst, 70);
-      // Scenes.items.component_mosfet.set(420+lConst, -40+tConst, 750);
-      // Scenes.items.component_capacitor.set(640+lConst, 20+tConst, 230);
-      // Scenes.items.btn_check_connections.set(770, 250);
-      // Scenes.items.btn_circuit_diagram.set(780, 330);
-      // Scenes.items.part_1_text_for_crrct.set(585,340, 40).hide()
-      // Scenes.items.part_1_text_for_wrong.set(630,310, 110).hide()
-
-      // Scenes.items.slider_box.hide();
-222
-      //! Required positions
       let reset = function(){
-             
-        checkCnnctn = ""
-        Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
-            rotate: "0deg"
-          })
-        Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
-            rotate: "0deg"
-          })
-        Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
-            rotate: "0deg"
-          })
-        Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
-            rotate: "0deg"
-          })
-        Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
-            rotate: "0deg"
-          })
-        Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
-            rotate: "0deg"
-          })
+                 
+          Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
+              rotate: "0deg"
+            })
+          Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
+              rotate: "0deg"
+            })
+          Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
+              rotate: "0deg"
+            })
+          Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
+              rotate: "0deg"
+            })
+          Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
+              rotate: "0deg"
+            })
+          Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
+              rotate: "0deg"
+            })
 
-        Scenes.items.box1.set(100,230,90).zIndex(2)
-        Scenes.items.box2.set(185,140,80,135).zIndex(2)
-        Scenes.items.box3.set(295,245,95).zIndex(2)
-        Scenes.items.box4.set(360,140,80,115).zIndex(2)
-        Scenes.items.box5.set(475,250,85).zIndex(2)
-        Scenes.items.box6.set(588,250,95).zIndex(2)
-        
+          Scenes.items.box1.set(100,230,90).zIndex(2)
+          Scenes.items.box2.set(185,140,80,135).zIndex(2)
+          Scenes.items.box3.set(295,245,95).zIndex(2)
+          Scenes.items.box4.set(360,140,80,115).zIndex(2)
+          Scenes.items.box5.set(475,250,85).zIndex(2)
+          Scenes.items.box6.set(588,250,95).zIndex(2)
 
-        Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
+          Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
+          Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
+          Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
+          Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
+          Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
+          Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
+          
 
-        ee3_btn_check.classList.add("btn-deactive")
+          Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
 
-        resetActive = "";
+          ee3_btn_check.classList.add("btn-deactive")
 
-        for(let i in boxAnimes){
-          boxAnimes[i].pause();
-        }
+          resetActive = "";
+          checkCnnctn = "";
+          // wrongNoTimes = "";
+
+          for(let i in boxAnimes){
+            boxAnimes[i].pause();
+          }
   
         // Scenes.steps[2]()  
       }
@@ -2310,6 +2309,7 @@ part1_box1 : new Dom(".part1_box1"),
       let wrongNoTimes = "";
 
       let check = function(){
+        Dom.setBlinkArrowRed(-1)
         console.log(checkCnnctn)
         if(checkCnnctn == "111111"){
         Scenes.items.part1_crrct_text.set(10,40, null, 790)
@@ -2319,18 +2319,20 @@ part1_box1 : new Dom(".part1_box1"),
           setIsProcessRunning(false)
         }
         else{
-      Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
-      wrongNoTimes+="1";
-      if(wrongNoTimes == "11111"){
-        ee3_btn_hint.classList.remove("btn-deactive")
-      }
-      console.log("wrong no. of times",wrongNoTimes)
-        }
-     
+          Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
+          wrongNoTimes+="1";
+          if(wrongNoTimes == "11111"){
+                  Dom.setBlinkArrowRed(true,882,-18,30,30,90).play()
+            ee3_btn_hint.classList.remove("btn-deactive")
+          }
+          console.log("wrong no. of times",wrongNoTimes)
+            }
       }
 
       let boxAnimes = [];
 
+
+      //function to blink boxes to different color
       function boxAnime(){
         var myObject = {
           prop1: 0,
@@ -2432,6 +2434,7 @@ part1_box1 : new Dom(".part1_box1"),
       let isShow = 0;
       Scenes.items.part1_crrct_circuit.set(20,-20, 450).zIndex(10).hide()
       ee3_btn_hint.onclick = () => {
+        Dom.setBlinkArrowRed(-1)
         if(!isShow){
           Scenes.items.part1_crrct_circuit.show()
           isShow = 1;
@@ -2441,12 +2444,12 @@ part1_box1 : new Dom(".part1_box1"),
         }
       }
 
-    //  Scenes.items.part1_crrct_circuit.set(20,-20, 450).zIndex(10).hide()
-      // Scenes.items.part1_crrct_text.set(10,40, null, 790)
-      // Scenes.items.part1_incrrct_text.set(10,40, null, 790)
-      // Scenes.items.part1_crrct_circuit.set(210,120, 250)
+
+      //! Required items 
 
 
+      // Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
+      
       Scenes.items.part1_circuit.set(140,180,220)
       Scenes.items.box1.set(100,230,90).zIndex(2)
       Scenes.items.box2.set(185,140,80,135).zIndex(2)
@@ -2454,17 +2457,17 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.box4.set(360,140,80,115).zIndex(2)
       Scenes.items.box5.set(475,250,85).zIndex(2)
       Scenes.items.box6.set(588,250,95).zIndex(2)
-      
 
-      //!Correct positons
 
-      // Scenes.items.part1_component_voltage.set(118.5,180,150)
-      // Scenes.items.part1_component_inductor.set(165,90,120)
-      // Scenes.items.part1_component_mosfet.set(340,130,660)
-      // Scenes.items.part1_component_diode.set(322,229,120)
-      // Scenes.items.part1_component_capacitor.set(497,220,120)
-      // Scenes.items.part1_component_resistance.set(604,222,120)
+      // symbols required position
+      Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
+      Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
+      Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
+      Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
+      Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
+      Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
       
+      //!Correct positons      
       Scenes.items.part1_component_voltage.set(5+40,-20,150).rotate(0).zIndex(3)
       Scenes.items.part1_component_inductor.set(85+70,-20,120).rotate(0).zIndex(3)
       Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).rotate(0).zIndex(3)
@@ -2476,6 +2479,7 @@ part1_box1 : new Dom(".part1_box1"),
           let compo = {
             box : null,
             item : null,
+  
           }
       // !box clicked
 
@@ -2566,6 +2570,7 @@ part1_box1 : new Dom(".part1_box1"),
       console.log("reset active", resetActive)
 
       if(resetActive == "111111"){
+      Dom.setBlinkArrowRed(true,690,-18,30,30,90).play()
         ee3_btn_check.classList.remove("btn-deactive")
       }
       
@@ -2583,12 +2588,28 @@ part1_box1 : new Dom(".part1_box1"),
           top : top_
         })
       }
+      function toSetSymbol (target, left_ = null, top_ = null){
+        anime({
+          targets: target.item,
+          duration: 1000,
+          easing: "easeInOutQuad",
+          left: left_,
+          top : top_
+        })
+      }
 
-
-      //if item1 clicked
+      let vIn = Scenes.items.symbol_vIn
+      let L = Scenes.items.symbol_L
+      let C = Scenes.items.symbol_C
+      let S = Scenes.items.symbol_S
+      let D = Scenes.items.symbol_D
+      let R = Scenes.items.symbol_R
+      
+      //!if item1 clicked
       if(itemName == item1 && boxName == box1){
         box1.hide()
-        toSetItem(item1, 118.5, 178, 150, null)
+        toSetItem(item1, 118.5, 178)
+        toSetSymbol(vIn, 77, 183 )
         // item1.set(118.5,178,150)
         checkCnnctn+="1"
         console.log(checkCnnctn)
@@ -2600,33 +2621,41 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box2.hide()
         // item1.set(242,73,225)
-        toSetItem(item1, 242,73,225)
+        toSetItem(item1, 242,110)
+        toSetSymbol(vIn, 219, 205)
+
       }
       if(itemName == item1 && boxName == box3){
           box3.hide()
         // item1.set(307, 193,150)
         toSetItem(item1, 307, 193,150)
+        toSetSymbol(vIn, 252, 256 )
       }
       if(itemName == item1 && boxName == box4){
         item1.styles({
           rotate: "90deg"
         })
-        // box4.hide()
+        box4.hide()
         // item1.set(415, 109)
         toSetItem(item1, 415, 109)
+        toSetSymbol(vIn, 397, 204)
+
       }
       if(itemName == item1 && boxName == box5){
-        // box5.hide()
+        box5.hide()
         // item1.set(485, 194)
         toSetItem(item1, 485, 194)
+        toSetSymbol(vIn, 432 , 256)
+        
       }
       if(itemName == item1 && boxName == box6){
             box6.hide()
         // item1.set(588, 194)
         toSetItem(item1, 588, 194)
+        toSetSymbol(vIn, 535, 267 )
       }
 
-      //if item2 clicked
+      //!if item2 clicked
       if(itemName == item2 && boxName == box1){
         item2.styles({
           rotate: "90deg"
@@ -2634,10 +2663,13 @@ part1_box1 : new Dom(".part1_box1"),
         box1.hide()
         // item2.set(100, 212)
         toSetItem(item2, 100, 212)
+        toSetSymbol(L, 61, 251)
       }
       if(itemName == item2 && boxName == box2){
         box2.hide()
         toSetItem(item2, 171, 90)
+        toSetSymbol(L, 226, 209)
+
         // item2.set(171, 90)
       }
       if(itemName == item2 && boxName == box3){
@@ -2647,10 +2679,12 @@ part1_box1 : new Dom(".part1_box1"),
         box3.hide()
         // item2.set(288, 230)
         toSetItem(item2, 288, 230)
+        toSetSymbol(L, 254, 264)
       }
       if(itemName == item2 && boxName == box4){
         box4.hide()
         toSetItem(item2, 339, 90)
+        toSetSymbol(L, 393, 208)
         // item2.set(339, 90)
         checkCnnctn+="1"
         console.log(checkCnnctn)
@@ -2662,6 +2696,8 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box5.hide()
         toSetItem(item2, 467, 230)
+        toSetSymbol(L, 438, 263)
+
         // item2.set(467, 230)
 
       }
@@ -2671,15 +2707,18 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box6.hide()
         toSetItem(item2, 569, 230)
+        toSetSymbol(L, 550, 266)
+
         // item2.set(569, 230)
       }
 
       
-      //if item3 clicked
+      //! if item3 clicked
       if(itemName == item3 && boxName == box1){
         box1.hide()
         // item3.set(129, 195)
         toSetItem(item3, 129, 195)
+        toSetSymbol(C, 143, 191)
       }
       if(itemName == item3 && boxName == box2){
         item3.styles({
@@ -2688,11 +2727,14 @@ part1_box1 : new Dom(".part1_box1"),
         box2.hide()
         // item3.set(235,133)
         toSetItem(item3, 235,133)
+        toSetSymbol(C, 280, 180)
+
       }
       if(itemName == item3 && boxName == box3){
         box3.hide()
         // item3.set(318, 213)
         toSetItem(item3, 318, 213)
+        toSetSymbol(C, 334, 207)
       }
       if(itemName == item3 && boxName == box4){
         item3.styles({
@@ -2701,32 +2743,40 @@ part1_box1 : new Dom(".part1_box1"),
         box4.hide()
         // item3.set(399, 133)
         toSetItem(item3, 399, 133)
+        toSetSymbol(C, 445, 185)
       }
       if(itemName == item3 && boxName == box5){
         box5.hide()
         // item3.set(496, 213)
         toSetItem(item3, 496, 213)
+        toSetSymbol(C, 513, 211)
         checkCnnctn+="1"
         console.log(checkCnnctn)
+
       }
       if(itemName == item3 && boxName == box6){
         box6.hide()
         toSetItem(item3, 599, 213)
+        toSetSymbol(C, 613, 235)
+
         // item3.set(599, 213)
       }
 
-       //if item4 clicked
+       //! if item4 clicked
        if(itemName == item4 && boxName == box1){
         item4.styles({
           rotate: "90deg"
         })
         box1.hide()
         toSetItem(item4, 55, 205)
+        toSetSymbol(S, 148, 201)
         // item4.set(55, 205)
      }
       if(itemName == item4 && boxName == box2){
         box2.hide()
         toSetItem(item4, 171, 124)
+        toSetSymbol(S, 167, 121)
+
         // item4.set(171, 124)
         checkCnnctn+="1"
         console.log(checkCnnctn)
@@ -2739,12 +2789,16 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box3.hide()
         toSetItem(item4, 243, 221)
+        toSetSymbol(S, 339, 214)
+
         // item4.set(243, 221)
 
       }
       if(itemName == item4 && boxName == box4){
         box4.hide()
         toSetItem(item4, 346, 124)
+        toSetSymbol(S, 346, 123)
+
         // item4.set(346, 124)
       }
       if(itemName == item4 && boxName == box5){
@@ -2753,6 +2807,8 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box5.hide()
         toSetItem(item4, 420, 221)
+        toSetSymbol(S, 510, 215)
+
         // item4.set(420, 221)
       }
       if(itemName == item4 && boxName == box6){
@@ -2761,13 +2817,16 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box6.hide()
         toSetItem(item4, 525, 221)
+        toSetSymbol(S, 555, 217)
+
         // item4.set(525, 221)
       }
 
-      //if item5 clicked
+      // ! if item5 clicked
       if(itemName == item5 && boxName == box1){
         box1.hide()
         toSetItem(item5,134, 214)
+        toSetSymbol(D, 143, 214)
         // item5.set(134, 214)
       }
       if(itemName == item5 && boxName == box2){
@@ -2776,12 +2835,15 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box2.hide()
         toSetItem(item5, 222, 144)
+        toSetSymbol(D, 261, 184)
+
         // item5.set(222, 144)
       }
       if(itemName == item5 && boxName == box3){
             box3.hide()
         // item5.set(322, 230)
         toSetItem(item5, 322, 230)
+        toSetSymbol(D, 330, 232)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -2793,23 +2855,30 @@ part1_box1 : new Dom(".part1_box1"),
           box4.hide()
         // item5.set(387, 144)
         toSetItem(item5, 387, 144)
+        toSetSymbol(D, 432, 182)
+
       }
       if(itemName == item5 && boxName == box5){
             box5.hide()
             toSetItem(item5, 500, 230)
+        toSetSymbol(D, 509, 229)
+
         // item5.set(500, 230)
       }
       if(itemName == item5 && boxName == box6){
           box6.hide()
           toSetItem(item5, 604, 230)
+        toSetSymbol(D, 618, 237)
+
         // item5.set(604, 230)
       }
 
 
-      //if item6 clicked
+      //! if item6 clicked
       if(itemName == item6 && boxName == box1){
         box1.hide()
         toSetItem(item6, 132, 198)
+        toSetSymbol(R, 139, 195)
         // item6.set(132, 198)
       }
       if(itemName == item6 && boxName == box2){
@@ -2818,12 +2887,14 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box2.hide()
         toSetItem(item6, 239, 129)
+        toSetSymbol(R, 288, 178)
         // item6.set(239, 129)
       }
       if(itemName == item6 && boxName == box3){
             box3.hide()
         // item6.set(321, 214)
         toSetItem(item6, 321, 214)
+        toSetSymbol(R, 330, 212)
       }
       if(itemName == item6 && boxName == box4){
         item6.styles({
@@ -2831,16 +2902,20 @@ part1_box1 : new Dom(".part1_box1"),
         })
           box4.hide()
           toSetItem(item6, 402, 129)
-        // item6.set(402, 129)
+          toSetSymbol(R, 451, 181)
+          // item6.set(402, 129)
       }
       if(itemName == item6 && boxName == box5){
             box5.hide()
             toSetItem(item6, 498, 214)
+            toSetSymbol(R, 509, 213)
+
         // item6.set(498, 214)
       }
       if(itemName == item6 && boxName == box6){
             box6.hide()
             toSetItem(item6, 602, 214)
+            toSetSymbol(R, 618, 237)
             // item6.set(601, 214)
             checkCnnctn+="1"
       }
@@ -3810,8 +3885,7 @@ part1_box1 : new Dom(".part1_box1"),
         }
 
 
-        
-
+      
         // deactivate the sliders after first value  done
         // todo
         if(recordBtnClickIdx == 0){
@@ -3821,11 +3895,18 @@ part1_box1 : new Dom(".part1_box1"),
         tableRow.cells[1].innerHTML = vInValue
         tableRow.cells[2].innerHTML = resistanceValue
         tableRow.cells[3].innerHTML = dutyRatioValue
-        tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
-        tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
+        tableRow.cells[4].innerHTML = Number(Formulas.ideal.v0(values)).toFixed(2)
+        tableRow.cells[5].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
         tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
-        tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-        tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
+        tableRow.cells[7].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+
+        //!previous values 
+        // tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
+        // tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
+        // tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
+        // tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
+        // tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
         // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
         // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
 
@@ -4307,14 +4388,17 @@ part1_box1 : new Dom(".part1_box1"),
         tableRow.cells[1].innerHTML = vInValue
         tableRow.cells[2].innerHTML = resistanceValue
         tableRow.cells[3].innerHTML = dutyRatioValue
-        tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
-        tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
-        tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
-        tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-        tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-        tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-        tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
-        tableRow.cells[11].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+        tableRow.cells[4].innerHTML = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
+        tableRow.cells[5].innerHTML = Number(Formulas.ideal.v0(values)).toFixed(2)
+        tableRow.cells[6].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
+        tableRow.cells[7].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(Formulas.nonIdeal.i0(values)).toFixed(2)
+        tableRow.cells[9].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
+        tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
+        // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
+        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
+        // tableRow.cells[11].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
 
         // let x = tableRow.cells[9].innerHTML
         // let y = tableRow.cells[10].innerHTML
@@ -4719,8 +4803,8 @@ part1_box1 : new Dom(".part1_box1"),
           tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
           tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
           tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-          tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-          tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+          tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+          tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.losses(values)).toFixed(2)
           tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
   
           // let x = tableRow.cells[9].innerHTML
