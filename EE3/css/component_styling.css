@@ -583,3 +583,9 @@
     left: -330px;
     border: 1px solid #f5f29e;
 }
+
+/* *  concept dev */
+
+.concept_development{
+    display: none;
+}

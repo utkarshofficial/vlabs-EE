@@ -2941,45 +2941,43 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_next.show();
       function stepTutorial2(){
 
-        Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
-        setCC("Select Characteristics")
-
-        sliders.selectOp1.oninput = ()=>{
-          Dom.setBlinkArrowRed(true,260,78,30,30,90).play()
-          setCC("Select V<sub>in</sub>")
-
+        setCC("Select V<sub>in</sub>")
+          Dom.setBlinkArrowRed(true,110,89,30,30,90).play()
+          
           sliders.selectOp2.oninput = ()=>{
-            Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
+            Dom.setBlinkArrowRed(true,270,89,30,30,90).play()
             setCC("Select R")
 
             sliders.selectOp3.oninput = ()=>{
-              Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
+              Dom.setBlinkArrowRed(true,90,144,30,30,90).play()
               setCC("Select D")
 
               sliders.slider.onclick = ()=>{
-                Dom.setBlinkArrowRed(true,380,-10,30,30,90).play()
+                Dom.setBlinkArrowRed(true,400,8,30,30,90).play()
                 setCC("Press Record")                
               }
             }
-          }
         }
       }
       stepTutorial2()
       
 
   //! Required Items
-  Scenes.items.btn_record.set(355, -60)
-  Scenes.items.slider_box.set(0,25)
+  Scenes.items.btn_record.set(355, -40)
+  Scenes.items.slider_box.set(40,25)
   Scenes.items.part_2_circuit.set(10,200, 200)
   Scenes.items.slider_box.item.style.scale = "0.9";
-  Scenes.items.slider_C.item.st
+  sliders.hideSliderAndOption(0)
+
+  // sliders.disable(0)
+  // Scenes.items.slider_C.item.st
   // Scenes.items.hea.item.style.display = "none"
   // Scenes.items.slider_box.show("flex").set(-120, -40);
 
-  Scenes.items.part_2_graph_empty.set(660, -30, 350, 280);
-  Scenes.items.part_2_graph_1.set(660, -30, 350, 280).hide();
-  Scenes.items.part_2_graph_2.set(660, -30, 350, 280).hide();
-  Scenes.items.part_2_graph_3.set(660, -30, 350, 280).hide();
+  Scenes.items.part_2_graph_empty.set(640, -30, 350, 280);
+  Scenes.items.part_2_graph_1.set(640, -30, 350, 280).hide();
+  Scenes.items.part_2_graph_2.set(640, -30, 350, 280).hide();
+  Scenes.items.part_2_graph_3.set(640, -30, 350, 280).hide();
        
  
       // temp text on required positions
@@ -3359,8 +3357,13 @@ part1_box1 : new Dom(".part1_box1"),
           Scenes.items.part_2_graph_3.show();
           currentGraph = Scenes.items.part_2_graph_3;
         }
-        setIsProcessRunning(false);
-        Dom.setBlinkArrow(true, 630, 315)
+        // setIsProcessRunning(false);
+        // Dom.setBlinkArrow(true, 630, 315)
+
+        // after complete
+        Dom.setBlinkArrow(true, 790, 408).play()
+        setCC("Click 'Next' to go to next step")
+        setIsProcessRunning(false)
       };
       
 
@@ -5296,7 +5299,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 1
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()
