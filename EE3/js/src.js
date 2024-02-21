@@ -186,6 +186,15 @@ part1_incrrct_text:this.allImgsDom[159],
 part1_crrct_circuit:this.allImgsDom[160],
 part4_table_graph:this.allImgsDom[161],
 
+//symbol imgs added
+
+symbol_vIn : this.allImgsDom[162],
+symbol_L : this.allImgsDom[163],
+symbol_C : this.allImgsDom[164],
+symbol_S : this.allImgsDom[165],
+symbol_D : this.allImgsDom[166],
+symbol_R : this.allImgsDom[167],
+
 
       // * Question Mark
       domQs1: this.allQsDom[0],
