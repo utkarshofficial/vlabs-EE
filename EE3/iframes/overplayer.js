@@ -3,12 +3,14 @@ const overPlayer = {
   playBtn: document.querySelector(
     ".play-controls-container__play-pause-button"
   ),
+  playerNextBtn: document.querySelector(".navigation-controls__button_next"),
   headTitle: document.querySelector(".info-container__title div"),
   sliderIsPlaying: false,
   init() {
     this.hideTrialBanner();
     this.updateTitle();
   },
+
   slidePlay() {
     const touchStartOn = function (el, x, y) {
       var e, err;
@@ -79,11 +81,31 @@ const overPlayer = {
   },
   onPlayBtn(){
     window.setInterval(()=>{
-      this.playBtn.firstChild.firstChild.attributes.d.value[1]
+      let pauseBtnName = ""
+      let playBtnName = 5
+      let btnName = this.playBtn.firstChild.firstChild.attributes.d.value[1]
+      if(btnName == pauseBtnName){
+
+      }
     },10)
+  },
+  onSlidesEnd(nextBtnToggleFunc){
+    window.setInterval(()=>{
+      // slides endded
+      if(this.playBtn.disabled == true){
+        nextBtnToggleFunc()
+        this.playerNextBtn.disabled = false;
+        console.log(this.playerNextBtn.disabled)
+      }
+      // slides playing
+      else{
+        console.log(this.playerNextBtn.disabled)
+        this.playerNextBtn.disabled = true;
+      }
+    },1000)
   },
 };
 
 overPlayer.init();
-overPlayer.slidePlay();
+// overPlayer.slidePlay();
 
