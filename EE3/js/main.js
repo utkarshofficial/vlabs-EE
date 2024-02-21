@@ -5301,7 +5301,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 1
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()
