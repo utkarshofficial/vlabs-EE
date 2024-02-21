@@ -882,9 +882,9 @@ part1_crrct_circuit : new Dom("part1_crrct_circuit"),
 ee3_btn_check : new Dom(".ee3-btn-check"),
 ee3_btn_reset : new Dom(".ee3-btn-reset"),
 ee3_btn_hint : new Dom(".ee3-btn-hint"),
-part4_table_graph : new Dom(".part4_table_graph"),
+part4_table_graph : new Dom("part4_table_graph"),
 
-
+concept_development : new Dom(".concept_development"),
 
 // EE3 dom items added
 
@@ -2222,7 +2222,12 @@ part1_box1 : new Dom(".part1_box1"),
       // slides[i]()
       // resetNextBtn()
 
-
+      Scenes.items.concept_development.set().styles({
+        zIndex: "5000",
+        scale: "1.267 1.16",
+        top: "-68px",
+        position: "absolute",
+      })
 
 
         
@@ -2259,43 +2264,44 @@ part1_box1 : new Dom(".part1_box1"),
 222
       //! Required positions
       let reset = function(){
-              
-      Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
-          rotate: "0deg"
-        })
-      Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
-          rotate: "0deg"
-        })
-      Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
-          rotate: "0deg"
-        })
-      Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
-          rotate: "0deg"
-        })
-      Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
-          rotate: "0deg"
-        })
-      Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
-          rotate: "0deg"
-        })
+             
+        checkCnnctn = ""
+        Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
+            rotate: "0deg"
+          })
+        Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
+            rotate: "0deg"
+          })
+        Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
+            rotate: "0deg"
+          })
+        Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
+            rotate: "0deg"
+          })
+        Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
+            rotate: "0deg"
+          })
+        Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
+            rotate: "0deg"
+          })
 
-      Scenes.items.box1.set(100,230,90).zIndex(2)
-      Scenes.items.box2.set(185,140,80,135).zIndex(2)
-      Scenes.items.box3.set(295,245,95).zIndex(2)
-      Scenes.items.box4.set(360,140,80,115).zIndex(2)
-      Scenes.items.box5.set(475,250,85).zIndex(2)
-      Scenes.items.box6.set(588,250,95).zIndex(2)
-      
+        Scenes.items.box1.set(100,230,90).zIndex(2)
+        Scenes.items.box2.set(185,140,80,135).zIndex(2)
+        Scenes.items.box3.set(295,245,95).zIndex(2)
+        Scenes.items.box4.set(360,140,80,115).zIndex(2)
+        Scenes.items.box5.set(475,250,85).zIndex(2)
+        Scenes.items.box6.set(588,250,95).zIndex(2)
+        
 
-      Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
+        Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
 
-      ee3_btn_check.classList.add("btn-deactive")
+        ee3_btn_check.classList.add("btn-deactive")
 
-      resetActive = "";
+        resetActive = "";
 
-      for(let i in boxAnimes){
-        boxAnimes[i].pause();
-      }
+        for(let i in boxAnimes){
+          boxAnimes[i].pause();
+        }
   
         // Scenes.steps[2]()  
       }
@@ -2856,18 +2862,38 @@ part1_box1 : new Dom(".part1_box1"),
         "Step-2",
         "Voltage and current waveforms."
       )
-      Dom.setBlinkArrowRed(true, 80, -5, null, 35, 270).play();
-      setCC("Select the value of V<sub>in</sub>", 5);
+      
       Scenes.items.btn_next.show();
+      function stepTutorial2(){
 
-      Scenes.items.slider_vIn.item.onclick = ()=>{
-        Dom.setBlinkArrowRed(true, 240, -5, null, 35, 270).play();
-        setCC("Select the value of R", 5);
+        Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
+        setCC("Select Characteristics")
 
+        sliders.selectOp1.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,260,78,30,30,90).play()
+          setCC("Select V<sub>in</sub>")
+
+          sliders.selectOp2.oninput = ()=>{
+            Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
+            setCC("Select R")
+
+            sliders.selectOp3.oninput = ()=>{
+              Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
+              setCC("Select D")
+
+              sliders.slider.onclick = ()=>{
+                Dom.setBlinkArrowRed(true,380,-10,30,30,90).play()
+                setCC("Press Record")                
+              }
+            }
+          }
+        }
       }
+      stepTutorial2()
+      
 
   //! Required Items
-  Scenes.items.record_btn.set(355, -60, 70)
+  Scenes.items.btn_record.set(355, -60)
   Scenes.items.slider_box.set(0,25)
   Scenes.items.part_2_circuit.set(10,200, 200)
   Scenes.items.slider_box.item.style.scale = "0.9";
@@ -2961,7 +2987,8 @@ part1_box1 : new Dom(".part1_box1"),
       
  
       // ! onclick for record
-      Scenes.items.record_btn.item.onclick = function () {
+      Scenes.items.btn_record.item.onclick = function () {
+        Dom.setBlinkArrowRed(-1)
         // ! Activate the next btn right after the click
         // setCC("Click 'Next' to go to next step");
         // setIsProcessRunning(false);
@@ -3325,8 +3352,20 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.items.part_3_option_2,
         Scenes.items.part_3_option_3,
         Scenes.items.part_3_option_4,
+        Scenes.items.part_3_option_5,
       ]
 
+      // ! Destroy Graphs
+      function destroyGraphs(){
+        for(let i=0;i<7;i++){
+          if(Scenes.items.chart[i]!=null){
+            Scenes.items.chart[i].destroy()
+          }
+        }
+      }
+      // destroyGraphs()
+
+      
       //! RESET ALL THE SLIDER VALUES
       // sliders.reset()
       Scenes.forMathematicalExpressionBtn = 0
@@ -3359,6 +3398,13 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.forMathematicalExpressionBtn = 4
         Scenes.steps[3+5]()
       }
+      const opFive = ()=>{
+        
+
+        Scenes.optionsDone[3]=1;
+        Scenes.forMathematicalExpressionBtn = 5
+        Scenes.steps[2]()
+      }
       options[0].item.onclick = opOne
       rightTicks[0].item.onclick = opOne
 
@@ -3371,6 +3417,7 @@ part1_box1 : new Dom(".part1_box1"),
       options[3].item.onclick =  opFour
       rightTicks[3].item.onclick = opFour
 
+      options[4].item.onclick =  opFive
       // ! if all options done then exit
       let exit = true
       for(let i of Scenes.optionsDone){
@@ -3432,6 +3479,14 @@ part1_box1 : new Dom(".part1_box1"),
       let xLabel = Scenes.items.chart.label1.x
       let yLabel = Scenes.items.chart.label1.y
       let dataLabel = "Data"
+
+      // ! Forshowing graph labels
+      // graph idx is for  showing which graph is being shown
+      let graphIdx = 0
+      if(Scenes.items.chart[graphIdx] != null){
+        Scenes.items.xLabel.set().setContent(xLabel)
+        Scenes.items.yLabel.set().setContent(yLabel)
+      }
       
       // ! To Plot graph
       function plotGraph(
@@ -3604,7 +3659,7 @@ part1_box1 : new Dom(".part1_box1"),
           Scenes.items.chart.label1.x = xLabel
           Scenes.items.chart.label1.y = yLabel
 
-          plotGraph(ctx,0,graphData,dataLabel,xLabel,yLabel,true)
+          plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,true)
           Scenes.items.graph1.set(null,null,220,355)
 
       }
@@ -3626,7 +3681,7 @@ part1_box1 : new Dom(".part1_box1"),
         }
       }else{
         // ! Please note this when plot the graph then show the graph ... 
-        plotGraph(ctx,0,[{}],dataLabel,xLabel,yLabel,true) 
+        plotGraph(ctx,graphIdx,[{}],dataLabel,xLabel,yLabel,true) 
         Scenes.items.graph1.set(null,null,220,355)
         // disableSlider("reset")
       }
@@ -3798,509 +3853,6 @@ part1_box1 : new Dom(".part1_box1"),
       
       return true
     }),
-    // (step4 = function () {
-    //   Dom.hideAll(); 
-    //   // optionsDone
-    //   setIsProcessRunning(true);
-    //   Scenes.items.btn_next.show()
-    //   Scenes.items.contentAdderBox.setContent("");
-    //   Scenes.setStepHeading(
-    //     "",
-    //     "Ideal voltage gain plot."
-    //   );
-    //   // ! show the slider
-    //   Scenes.items.slider_box.set(0, 0)
-    //   // setCC("Record  7 reading for different Duty Ratio.")
-      
-    //   // ! required item
-    //   // circuit full 3 replaced by 2 because of changes
-    //   // Scenes.items.circuit_full_2.set(230,-50,175)
-    //   // Scenes.items.part_3_option_1.set(10, 170-15)
-    //   // Scenes.items.right_tick_1.set(-12,185-15)
-    //   // Scenes.items.graph1_arrow.set(-5,6)
-    //   Scenes.items.part3_table_one.set(10).show("flex")
-    //   Scenes.items.record_btn.set(610,365,60)
-    //   Scenes.items.btn_delete.set(730,365)
-    //   Scenes.items.btn_reset.set(820,365)
-    //   let valuesToMatch = [
-    //     [],
-    //     [],
-    //     []
-    //   ]
-
-    //   let table = Scenes.items.part3_table_three.item
-    //   // let table1 = table.children[0]
-    //   // let table2 = table.children[1]
-    //   // let table3 = table.children[2] 
-    //   // let tablesBody = [
-    //   //   table.children[0].tBodies[0],
-    //   //   table.children[1].tBodies[0],
-    //   //   table.children[2].tBodies[0]
-    //   // ]    
-    //   // let tableHeadTitle = getAll(".part3_table_one .title")
-    //    // * index to handle records
-    //   let recordBtnClickIdx = (table3.tBodies[0].rows[6].cells[2].innerHTML==""?0:7)
-
-    //   // disable voltage slider
-    //   disableSlider("v")
-
-     
-    //   // ! Tutorial Function
-
-    //   function stepTutorial2(){
-        
-    //     Dom.setBlinkArrowRed(true,570,75).play()
-    //     setCC("Set the value of R")
-
-    //     sliders.r.onclick = ()=>{
-    //       Dom.setBlinkArrowRed(true,642,330,null,null,-90).play()
-    //       setCC("Press Record")
-
-    //       sliders.d.onclick = ()=>{
-    //         Dom.setBlinkArrowRed(true,642,330,null,null,-90).play()
-    //         setCC("Press Record")
-    //       }
-    //     }
-    //   }
-    //   if(recordBtnClickIdx == 0){
-    //     stepTutorial2()
-    //   }
-      
-
-
-    //   // ! graph
-    //   // * add x,y parameters for graph
-    //   // let graphData = []
-      
-    //   let graph_box1 = new Dom(".graph_box1")
-    //   let graph_box2 = new Dom(".graph_box2")
-
-    //   Scenes.items.graph1.set(null,null,210,330)
-    //   Scenes.items.graph2.set(n ull,null,210,330)
-    //   graph_box2.set(null,145)
-
-    //   let ctx1 = Scenes.items.graph1.item
-    //   let ctx2 = Scenes.items.graph2.item
-
-    //   let chart1 = Scenes.items.chart.graph1
-    //   let chart2 = Scenes.items.chart.graph2
-    //   let isDataDeleteable = true
-    //   if(chart1==null){
-    //     isDataDeleteable = true
-    //   }else{
-    //     isDataDeleteable = false
-    //   }
-    //   // temp text for adding zero
-    //   Scenes.items.tempText.setContent(0).set(565,-89).styles({
-    //     rotate: "-90deg",
-    //     backgroundColor: "transparent",
-    //     fontSize: "10px",
-    //   })
-
-    //   function plotGraph(data1=[[],[],[]],data2=[[],[],[]]){
-    //     if(chart1!=null){
-    //       chart1.destroy()
-    //     }
-    //     if(chart2!=null){
-    //       chart2.destroy()
-    //     }
-    //     chart1 = new Chart(ctx1, {
-    //       type: "scatter",
-    //       data: {
-    //         datasets: [
-    //             {
-    //               label: "24 V",
-    //               fill: false,
-    //               borderColor: "red",
-    //               backgroundColor: "red",
-    //               data: data1[0],
-    //             },
-    //             {
-    //               label: "48 V",
-    //               fill: false,
-    //               borderColor: "green",
-    //               backgroundColor: "green",
-    //               data: data1[1],
-    //             },
-    //             {
-    //               label: "72 V",
-    //               fill: false,
-    //               borderColor: "blue",
-    //               backgroundColor: "blue",
-    //               data: data1[2],
-    //             },
-    //         ],
-    //       },
-    //       options: {
-    //         responsive: true,
-    //         maintainAspectRatio: false,
-    //         scales: {
-    //           yAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: true,
-    //                 labelString: "Load Voltage (V )",
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-  
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:true,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //           xAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: true,
-    //                 labelString: "Duty Ratio (D)",
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:true,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //                }
-    //             },
-    //           ],
-    //         },
-    //       },
-    //     })
-       
-    //     chart2 = new Chart(ctx2, {
-    //       type: "scatter",
-    //       data: {
-    //         datasets: [
-    //             {
-    //               label: "24 V",
-    //               fill: false,
-    //               borderColor: "red",
-    //               backgroundColor: "red",
-    //               data: data2[0],
-    //             },
-    //             {
-    //               label: "48 V",
-    //               fill: false,
-    //               borderColor: "green",
-    //               backgroundColor: "green",
-    //               data: data2[1],
-    //             },
-    //             {
-    //               label: "72 V",
-    //               fill: false,
-    //               borderColor: "blue",
-    //               backgroundColor: "blue",
-    //               data: data2[2],
-    //             },
-    //         ],
-    //       },
-    //       options: {
-    //         responsive: true,
-    //         maintainAspectRatio: false,
-    //         scales: {
-    //           yAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: true,
-    //                 labelString: "Voltage Gain (M)",
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-  
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:true,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //           xAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: true,
-    //                 labelString: "Duty Ratio (D)",
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:true,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //                }
-    //             },
-    //           ],
-    //         },
-    //       },
-    //     })
-       
-    //     Scenes.items.chart.graph1 = chart1
-    //     Scenes.items.chart.graph2 = chart2
-    //     graph_box1.set(null,null,210,330)
-    //     graph_box2.set(null,null,210,330)
-    //     // Scenes.items.graph1.set(null,null,210,330)
-    //     // Scenes.items.graph2.set(null,null,210,330)
-
-    //   }
-      
-
-    //   // get data
-    //   function setDataToGraph(){
-    //     Dom.setBlinkArrowRed(-1)
-    //     sliders.d.onclick = ()=>{}
-    //     isDataDeleteable = false
-    //     let data1 = [
-    //       [],
-    //       [],
-    //       [],
-    //     ]
-    //     let data2 = [
-    //       [],
-    //       [],
-    //       [],
-    //     ]
-
-    //     tablesBody.forEach((table,idx)=>{
-    //       let axes1 = []
-    //       let axes2 = []
-    //       for(let i=0;i<table.rows.length;i++){
-    //         let x = table.rows[i].cells[0].innerHTML
-    //         let y1 = table.rows[i].cells[1].innerHTML
-    //         let y2 = table.rows[i].cells[2].innerHTML
-        
-    //         // x is same for both
-    //         axes1.push({x:x,y:y1})
-    //         axes2.push({x:x,y:y2})
-    //       }
-    //       data1[idx] = axes1
-    //       data2[idx] = axes2
-    //     })
-
-      
-    //     plotGraph(data1,data2)
-    //   }
-
-    //   // to active the table header portion
-    //   function activePortion(idx=0){
-    //       let thead =   getAll(".part3_table_one .table-title")
-    //       thead.forEach(ele=>{
-    //         ele.classList.add("deactive")
-    //       })
-    //       if(idx!=-1)
-    //         thead[idx].classList.remove("deactive")
-    //   }
-    //   activePortion(0)
-
-    //   // ! ------------> If data already present plot the graph
-    //   if(table3.tBodies[0].rows[6].cells[2].innerHTML !== ""){
-    //     // setDataToGraph()= 
-    //       setIsProcessRunning(false)
-    //       Scenes.currentStep  = 4
-
-    //       recordBtnClickIdx = 21
-    //       let r=7
-    //       let tab=3
-    //       // * to get old values from table for matching
-    //       for(let i=0;i<tab;i++){
-    //         let arr = []
-    //         for(let j=0;j<r;j++){
-    //           arr.push(Number(tablesBody[i].rows[j].cells[0].innerHTML))
-    //         }
-    //         valuesToMatch.push(arr)
-    //       }
-
-    //       disableSlider("r")
-    //       disableSlider("v")
-    //       setDataToGraph()
-    //   }else{
-    //     plotGraph()
-    //   }
-       
-    //   //!onclick for delete btn
-    //   Scenes.items.btn_delete.item.onclick =  function(){
-    //     if((recordBtnClickIdx <= 0 || recordBtnClickIdx > 21) || !isDataDeleteable){
-    //       return
-    //     }
-
-    //     if(recordBtnClickIdx==0){
-    //       activePortion(0)
-    //     }else if(recordBtnClickIdx==7){
-    //       activePortion(0)
-    //       sliders.vImg.click()
-    //       sliders.vImg.click() 
-    //       currentTableIdx = 0
-    //     }else if(recordBtnClickIdx==14){
-    //       activePortion(1)
-    //       sliders.vImg.click()
-    //       sliders.vImg.click()
-    //       currentTableIdx = 1
-    //     }
-    //       if((recordBtnClickIdx-1)%7==0 || (recordBtnClickIdx-2)%7==0){
-    //         tablesBody[currentTableIdx].rows[(recordBtnClickIdx-1)%7].cells[1].innerHTML = "" ;
-    //         tablesBody[currentTableIdx].rows[(recordBtnClickIdx-1)%7].cells[2].innerHTML = "" ;
-    //       }else{
-    //         tablesBody[currentTableIdx].rows[(recordBtnClickIdx-1)%7].cells[0].innerHTML = "" ;
-    //         tablesBody[currentTableIdx].rows[(recordBtnClickIdx-1)%7].cells[1].innerHTML = "" ;
-    //         tablesBody[currentTableIdx].rows[(recordBtnClickIdx-1)%7].cells[2].innerHTML = "" ;
-    //       }
-    //     recordBtnClickIdx = recordBtnClickIdx-1
-    //     if(recordBtnClickIdx==0){
-    //       disableSlider("reset")
-    //       disableSlider("v")
-    //     }
-    //     valuesToMatch[currentTableIdx].pop()
-    //   }
-
-    //   //! onclick for reset 
-    //   Scenes.items.btn_reset.item.onclick = function(){
-    //     function tableReset(){
-    //       tablesBody.forEach((table,idx)=>{
-    //         for(let i=0;i<table.rows.length;i++){
-    //           table.rows[i].cells[0].innerHTML = ""
-    //           table.rows[i].cells[1].innerHTML = ""
-    //           table.rows[i].cells[2].innerHTML = ""
-    //         }
-
-    //         table.rows[0].cells[0].innerHTML = "0.1"
-    //         table.rows[1].cells[0].innerHTML = "0.9"
-    //       })
-
-    //     }
-    //     tableReset()
-
-    //     // reseting the graph
-    //     Scenes.items.chart.graph1.destroy()
-    //     Scenes.items.chart.graph2.destroy()
-
-    //     // reset all the parameters
-    //     // so just simply call this step again
-    //     sliders.reset()
-    //     Scenes.steps[5]() 
-        
-    //   }
-
-    //   let currentTableIdx = 0
-    //   // ! onclick for record
-    //   Scenes.items.record_btn.item.onclick = function(){
-    //     // for arrow system
-    //     if(
-    //       recordBtnClickIdx%7 == 0 || (recordBtnClickIdx-1)%7==0
-    //       || recordBtnClickIdx == 20
-    //     ){
-    //       // Dom.setBlinkArrowRed(-1)
-    //       // slidersBox[1].onclick = ()=>{}
-    //       Dom.setBlinkArrowRed(true,642,330,null,null,-90).play()
-    //       setCC("Press Record")
-    //     }else{
-    //       Dom.setBlinkArrowRed(true,295,75).play()
-    //       setCC("Change the value of Duty ratio (D) in steps and record it")
-    //       // slidersBox[1].onclick = ()=>{
-    //       //   Dom.setBlinkArrowRed(true,180,280).play()
-    //       //   setCC("Press record button",7)
-    //       // }
-    //     }
-
-    //     let vInValue = Number(sliders.v.value)
-    //     let dutyRatioValue = Number(sliders.d.value)
-    //     let resistanceValue = Number(sliders.r.value)
-
-    //     if(recordBtnClickIdx<7){
-    //       vInValue = 24
-    //       currentTableIdx = 0
-    //     }else if(recordBtnClickIdx<14){
-    //       vInValue = 48
-    //       currentTableIdx = 1
-    //     }else if(recordBtnClickIdx<21){
-    //       vInValue = 72
-    //       currentTableIdx = 2
-    //     }
-    //     if(recordBtnClickIdx==0){
-    //       activePortion(0)
-    //     }else if(recordBtnClickIdx==6){
-    //       activePortion(1)
-    //       sliders.vImg.click()
-    //     }else if(recordBtnClickIdx==13){
-    //       activePortion(2)
-    //       sliders.vImg.click()
-    //     }
-    //     if(recordBtnClickIdx%7==0){
-    //       dutyRatioValue = 0.1
-    //     }else if((recordBtnClickIdx-1)%7==0){
-    //       dutyRatioValue = 0.9
-    //     }
-    //     // diable resistance
-    //     if(recordBtnClickIdx==0){
-    //       disableSlider("r")
-    //     }
-        
-    //     updateValues(vInValue,dutyRatioValue,resistanceValue)
-
-    //     // ! Can't select same values
-    //     // todo do it <21 back 
-    //     if(recordBtnClickIdx < 21 && valuesToMatch[currentTableIdx].indexOf(dutyRatioValue)!=-1){
-    //       setCC("Please select different value.")
-    //       return
-    //     }else if(recordBtnClickIdx < 21){
-    //       valuesToMatch[currentTableIdx].push(dutyRatioValue)
-    //     }
-        
-    //     // ! sort the data
-    //     if(recordBtnClickIdx==21){
-    //       var rows = null
-
-    //       function sortTable(){
-    //         function so(){
-    //           let n=7
-    //           for(let i=0;i<n;i++){
-    //               for(let j=0;j<n-i-1;j++){
-    //                   if(rows[j].cells[0].innerHTML > rows[j+1].cells[0].innerHTML){
-    //                       let temp = rows[j].innerHTML
-    //                       rows[j].innerHTML = rows[j+1].innerHTML
-    //                       rows[j+1].innerHTML = temp
-    //                   }
-    //               }
-    //           }
-    //         }
-    //         for(let i=0;i<3;i++){
-    //           rows = tablesBody[i].rows
-    //           so()
-    //         }
-            
-    //       }
-    //       sortTable()
-
-    //       // * plot the graph
-    //       // adding parameter to x,y graph
-    //       // ! calling the graph update function
-    //       setDataToGraph()
-
-    //       // after complete
-    //       Dom.setBlinkArrow(true, 790, 408).play()
-    //       setCC("Click 'Next' to go to next step")
-    //       setIsProcessRunning(false)
-    //       Scenes.currentStep = 4
-    //     }
-
-    //     if(recordBtnClickIdx < 21){
-    //       let tableRow = tablesBody[currentTableIdx].rows[recordBtnClickIdx++%7]
-    //       tableRow.cells[0].innerHTML = dutyRatioValue
-    //       tableRow.cells[1].innerHTML = Number(Formulas.ideal.v0(values)).toFixed(2)
-    //       tableRow.cells[2].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
-    //     }
-
-    //     // warning for sorting the data
-    //     if(recordBtnClickIdx==7){
-    //       setCC("Click 'Record' to sort the table according to D and plot the graph.")
-    //     }
-
-        
-    //   }    
-
-    //   return true;
-
-    // }),
     (step5 = function () {
       setIsProcessRunning(true);
       Dom.hideAll()
@@ -4322,6 +3874,7 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_reset.set(440,-60)
       // Scenes.items.part3_table_three.set(20)
       Scenes.items.part3_table_two.set(-43,160, null).scale(0.9)
+
        let table = Scenes.items.part3_table_two.item
        let tableColumnMax = table.tBodies[0].rows[0].cells.length
        let tableRowMax = table.tBodies[0].rows.length
@@ -4337,12 +3890,21 @@ part1_box1 : new Dom(".part1_box1"),
        // ! graph
       Scenes.items.graph_box_2.set()
       Scenes.items.graph2.set(null,null,220,355)
-      let ctx = Scenes.items.graph1.item
+      let ctx = Scenes.items.graph2.item
 
       // ! Label for graph
-      let xLabel = "Label 1"
-      let yLabel = "Label 2"
-      let dataLabel = "Data"
+      let xLabel = Scenes.items.chart.label2.x
+      let yLabel = Scenes.items.chart.label2.y
+      let dataLabel1 = "Data"
+      let dataLabel2 = "Data"
+
+      // ! Forshowing graph labels
+      // graph idx is for  showing which graph is being shown
+      let graphIdx = 1
+      if(Scenes.items.chart[graphIdx] != null){
+        Scenes.items.xLabel.set().setContent(xLabel)
+        Scenes.items.yLabel.set().setContent(yLabel)
+      }
       
       // ! To Plot graph
       function plotGraph(
@@ -4402,6 +3964,7 @@ part1_box1 : new Dom(".part1_box1"),
                   data: data,
                   display: false,
                 },
+                
             ],
           },
           options: {
@@ -4452,8 +4015,9 @@ part1_box1 : new Dom(".part1_box1"),
           chart.data.datasets.push(
             {
               label: label,
-              fill: true,
+              fill: false,
               borderColor: bgColor,
+              backgroundColor: bgColor,
               data: data,
             }
           )
@@ -4526,42 +4090,63 @@ part1_box1 : new Dom(".part1_box1"),
       function setDataToGraph(){
 
         let characteristicsValue = Scenes.items.slider_C.item.value;
-
        
-          let graphData = []
+          let graphDataActual = []
+          let graphDataIdeal = []
           var rows = table.tBodies[0].rows
           let n = 8
           ,xLabel = "Duty Ratio (D)"
           ,yLabel = ""
           for(let i=0;i<n;i++){
             let x = rows[i].cells[3].innerHTML
-            ,y=null 
+            ,yActual = null 
+            ,yIdeal = null
             switch(characteristicsValue){
               case  'D-vs-M': 
-                y = rows[i].cells[5].innerHTML
-                yLabel = "Voltage Gain (M)"
-                setCC("Voltage gain linearly increases with increasing duty ratio for ideal case.")
+                yActual =  rows[i].cells[6].innerHTML
+                yIdeal =  rows[i].cells[7].innerHTML
+                yLabel = "M (D)"
+                dataLabel1 = "M(D) non-ideal"
+                dataLabel2 = "M(D) ideal"
+                setCC("Voltage gain depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
               case  'D-vs-I': 
-                y = rows[i].cells[7].innerHTML
-                yLabel = "I (A)"
-                setCC("Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case.")
+                yActual =  rows[i].cells[9].innerHTML
+                yIdeal =  rows[i].cells[10].innerHTML
+                yLabel = "I<sub>0</sub> (A)"
+                dataLabel1 = "I₀ (A) non-ideal"
+                dataLabel2 = "I₀ (A) ideal"
+                setCC("Load current is equal to load voltage by load resistance and it depends on the non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
               case  'D-vs-V': 
-                y = rows[i].cells[4].innerHTML
-                yLabel = "V (V)"
-                setCC("Load voltage linearly increases with increasing duty ratio for ideal case.")
+                yActual =  rows[i].cells[4].innerHTML
+                yIdeal =  rows[i].cells[5].innerHTML
+                yLabel = "V<sub>0</sub> (V)"
+                dataLabel1 = "V₀ (V) non-ideal"
+                dataLabel2 = "V₀ (V) ideal"
+                setCC("Voltage depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
             }
-            graphData.push(
+            graphDataActual.push(
               {
                 x: x,
-                y: y,
+                y: yActual,
+              }
+            )
+            graphDataIdeal.push(
+              {
+                x: x,
+                y: yIdeal,
               }
             )
           }
-          plotGraph(ctx,1,graphData,dataLabel,xLabel,yLabel,true)
-          Scenes.items.graph1.set(null,null,220,355)
+
+          Scenes.items.chart.label2.x = xLabel
+          Scenes.items.chart.label2.y = yLabel
+
+          plotGraph(ctx,graphIdx,graphDataActual,dataLabel1,xLabel,yLabel,true)
+          Scenes.items.graph2.set(null,null,220,355)
+          graph.addDataset(Scenes.items.chart[graphIdx],dataLabel2,"blue",graphDataIdeal)
 
       }
       // ! ------------> If data already present plot the graph
@@ -4582,8 +4167,8 @@ part1_box1 : new Dom(".part1_box1"),
         }
       }else{
         // ! Please note this when plot the graph then show the graph ... 
-        plotGraph(ctx,1,[{}],dataLabel,xLabel,yLabel,true) 
-        Scenes.items.graph1.set(null,null,220,355)
+        plotGraph(ctx,graphIdx,[{}],dataLabel1,xLabel,yLabel,true) 
+        Scenes.items.graph2.set(null,null,220,355)
         // disableSlider("reset")
       }
 
@@ -4747,7 +4332,6 @@ part1_box1 : new Dom(".part1_box1"),
         if(recordBtnClickIdx==8){
           setCC("Press Record")
           Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
-          setCC("Press Record") 
         }
       }    
       
@@ -4769,13 +4353,13 @@ part1_box1 : new Dom(".part1_box1"),
         //! Required Items
         Scenes.items.btn_record.set(240,-60)
         Scenes.items.btn_delete.set(340,-60)
-         Scenes.items.btn_reset.set(440,-60)
-         let table = Scenes.items.part3_table_three.set(-30,160, null).scale(0.9).item
-         let tableColumnMax = table.tBodies[0].rows[0].cells.length
-         let tableRowMax = table.tBodies[0].rows.length
+        Scenes.items.btn_reset.set(440,-60)
+        let table = Scenes.items.part3_table_three.set(-30,160, null).scale(0.9).item
+        let tableColumnMax = table.tBodies[0].rows[0].cells.length
+        let tableRowMax = table.tBodies[0].rows.length
   
-         let valuesToMatch = []
-          // * index to handle records
+        let valuesToMatch = []
+        // * index to handle records
         let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
         
   
@@ -4783,14 +4367,22 @@ part1_box1 : new Dom(".part1_box1"),
         sliders.generateOptionsFor(2)
   
          // ! graph
-        Scenes.items.graph_box_2.set()
-        Scenes.items.graph2.set(null,null,220,355)
-        let ctx = Scenes.items.graph2.item
+        Scenes.items.graph_box_3.set()
+        Scenes.items.graph3.set(null,null,220,355)
+        let ctx = Scenes.items.graph3.item
   
         // ! Label for graph
-        let xLabel = Scenes.items.chart.label1.x
-        let yLabel = Scenes.items.chart.label1.y
+        let xLabel = Scenes.items.chart.label3.x
+        let yLabel = Scenes.items.chart.label3.y
         let dataLabel = "Data"
+
+        // ! Forshowing graph labels
+        // graph idx is for  showing which graph is being shown
+        let graphIdx = 2
+        if(Scenes.items.chart[graphIdx] != null){
+          Scenes.items.xLabel.set().setContent(xLabel)
+          Scenes.items.yLabel.set().setContent(yLabel)
+        }
         
         // ! To Plot graph
         function plotGraph(
@@ -4955,10 +4547,11 @@ part1_box1 : new Dom(".part1_box1"),
                 }
               )
             }
-            Scenes.items.chart.label1.x = xLabel
-            Scenes.items.chart.label1.y = yLabel
+            Scenes.items.chart.label3.x = xLabel
+            Scenes.items.chart.label3.y = yLabel
   
-            plotGraph(ctx,2,graphData,dataLabel,xLabel,yLabel,true)
+            plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,true)
+            Scenes.items.graph3.set(null,null,220,355)
   
         }
 
@@ -4980,8 +4573,8 @@ part1_box1 : new Dom(".part1_box1"),
           }
         }else{
           // ! Please note this when plot the graph then show the graph ... 
-          plotGraph(ctx,2,[{}],dataLabel,xLabel,yLabel,true) 
-          Scenes.items.graph2.set(null,null,220,355)
+          plotGraph(ctx,graphIdx,[{}],dataLabel,xLabel,yLabel,true) 
+          Scenes.items.graph3.set(null,null,220,355)
           // disableSlider("reset")
         }
   
@@ -5173,12 +4766,14 @@ part1_box1 : new Dom(".part1_box1"),
        // ! graph
        
        sliders.generateOptionsFor(3)
-       Scenes.items.part4_table_graph.set(0,0)
+       Scenes.items.part4_table_graph.set(10,160,220,535)
        
-      let graph_box5 = new Dom(".graph_box5")
-      Scenes.items.graph4.set(null,null,190,290)
-      Scenes.items.graph5.set(null,200,190,290)
-      graph_box5.set(null,140)
+      let graph_box5 = new Dom(".graph_box4")
+      let graph_box4 = new Dom(".graph_box5")
+      Scenes.items.graph4.set(null,null,250,355)
+      Scenes.items.graph5.set(null,200,250,355)
+      graph_box4.set()
+      graph_box5.set(null,171)
       let ctx1 = Scenes.items.graph4.item
       let ctx2 = Scenes.items.graph5.item
       let chart1 = Scenes.items.chart[3]
@@ -5199,6 +4794,8 @@ part1_box1 : new Dom(".part1_box1"),
           ]
         },
         options: {
+          maintainAspectRatio: false,
+          responsive: true,
           legend: {
             display: false
           },
@@ -5254,10 +4851,10 @@ part1_box1 : new Dom(".part1_box1"),
           {
             type: "bar",
             data: {
-              labels: ["", "", "", ""],
+              labels: ["", "", ""],
               datasets: [
                 {
-                  backgroundColor: ['blue','red','purple', 'green'],
+                  backgroundColor: ['red','green','purple'],
                   // data: [10,10,20],
                 },
               ]
@@ -5269,15 +4866,17 @@ part1_box1 : new Dom(".part1_box1"),
                 ctx.textAlign = 'center';
                 ctx.font = '20px Arial';
                 ctx.fillStyle = 'black';
-                ctx.fillText('v         v         v        v', chart.chart.width - 120- 10 , chart.chart.height - 24);
+                ctx.fillText('v                   v                  v', chart.chart.width - 170, chart.chart.height - 32);
                 ctx.textAlign = 'left';
                 ctx.font = '12px Arial';
-                ctx.fillText('S               D               C              0', chart.chart.width - 200- 10, chart.chart.height - 16);
+                ctx.fillText('S                               D                               C', chart.chart.width - 275, chart.chart.height - 27);
                 ctx.restore();
               },
               
             }],
             options: {
+              maintainAspectRatio: false,
+              responsive: true,
               legend: {
                 display: false
               },
@@ -5317,10 +4916,10 @@ part1_box1 : new Dom(".part1_box1"),
           {
             type: "bar",
             data: {
-              labels: ["", "", "", ''],
+              labels: ["", "", ""],
               datasets: [
                 {
-                  backgroundColor: ['blue','red','purple', 'brown'],
+                  backgroundColor: ['red','green','purple'],
                   // data: [10,10,20],
                 },
               ]
@@ -5332,15 +4931,17 @@ part1_box1 : new Dom(".part1_box1"),
                 ctx.textAlign = 'center';
                 ctx.font = '20px Arial';
                 ctx.fillStyle = 'black';
-                ctx.fillText('i          i          i          i', chart.chart.width - 110 - 30 , chart.chart.height - 24);
+                ctx.fillText('i                   i                  i', chart.chart.width - 170, chart.chart.height - 32);
                 ctx.textAlign = 'left';
                 ctx.font = '12px Arial';
-                ctx.fillText('S               D               C                in', chart.chart.width - 195 - 30, chart.chart.height - 16);
+                ctx.fillText('S                               D                             C', chart.chart.width - 275, chart.chart.height - 27);
                 ctx.restore();
               },
               
             }],
             options: {
+              maintainAspectRatio: false,
+              responsive: true,
               legend: {
                 display: false
               },
@@ -5395,13 +4996,8 @@ part1_box1 : new Dom(".part1_box1"),
             setCC("Select R")
 
             sliders.selectOp3.oninput = ()=>{
-              Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
-              setCC("Select D")
-
-              sliders.slider.onclick = ()=>{
-                Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
-                setCC("Press Record")                
-              }
+              Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
+              setCC("Press Record")
             }
           }
         }
@@ -5440,57 +5036,71 @@ part1_box1 : new Dom(".part1_box1"),
         }else{
           plotGraph()
           // Scenes.items.graph2.set(null,null,190,355)
-          Scenes.items.graph4.set(null,null,190,290)
-          Scenes.items.graph5.set(null,200,190,290)
+          Scenes.items.graph4.set(null,null,250,355)
+          Scenes.items.graph5.set(null,200,250,355)
         }   
 
 
              
        
        // ! onclick for record
-       Scenes.items.record_btn.item.onclick = function(){
+       Scenes.items.btn_record.item.onclick = function(){
+
+         // taking values from all sliders 
+        let vInValue = Number(Scenes.items.slider_vIn.item.value)
+        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
+        let resistanceValue = Number(Scenes.items.slider_R.item.value)
+
+        // * if all values not selected
+        if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
+          setCC("Select all values first.")
+          return
+        }
+
         Dom.setBlinkArrowRed(-1)
-
-         let allSliderValue = $(".range-slider__value");
+        updateValues(vInValue,dutyRatioValue,resistanceValue)
  
-         let vInValue = Number(allSliderValue[0].innerHTML)
-         let dutyRatioValue = Number(allSliderValue[1].innerHTML)
-         let resistanceValue = Number(allSliderValue[2].value)
+        //  let tableRow = table.tBodies[0].rows[0]
+        //  tableRow.cells[1-1].innerHTML = vInValue
+        //  tableRow.cells[2-1].innerHTML = dutyRatioValue
+        //  tableRow.cells[3-1].innerHTML = resistanceValue
+        //  tableRow.cells[4-1].innerHTML = Number(Formulas.stress.v0(values)).toFixed(2)
+        //  tableRow.cells[5-1].innerHTML = Number(Formulas.stress.M(values)).toFixed(2)
+        //  tableRow.cells[6-1].innerHTML = Number(Formulas.stress.i_L2(values)).toFixed(2)
+        //  tableRow.cells[7-1].innerHTML = Number(Formulas.stress.i0(values)).toFixed(2)
 
-         updateValues(vInValue,dutyRatioValue,resistanceValue)
- 
-         let tableRow = table.tBodies[0].rows[0]
-         tableRow.cells[1-1].innerHTML = vInValue
-         tableRow.cells[2-1].innerHTML = dutyRatioValue
-         tableRow.cells[3-1].innerHTML = resistanceValue
-         tableRow.cells[4-1].innerHTML = Number(Formulas.stress.v0(values)).toFixed(2)
-         tableRow.cells[5-1].innerHTML = Number(Formulas.stress.M(values)).toFixed(2)
-         tableRow.cells[6-1].innerHTML = Number(Formulas.stress.i_L2(values)).toFixed(2)
-         tableRow.cells[7-1].innerHTML = Number(Formulas.stress.i0(values)).toFixed(2)
-
-         let iIn = Number(Formulas.stress.I_In(values)).toFixed(2)
-         let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
-         let iL2 = Number(Formulas.stress.i_L2(values)).toFixed(2)
-         let ic = Number(Formulas.stress.i_L2(values) - Formulas.stress.i0(values)).toFixed(2)
-         // table two changes
-         let table2Row = Scenes.items.part3_table_four_2.item.tBodies[0].rows
-        table2Row[0].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
-        table2Row[1].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
-        table2Row[2].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
+        //  let iIn = Number(Formulas.stress.I_In(values)).toFixed(2)
+        //  let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
+        //  let iL2 = Number(Formulas.stress.i_L2(values)).toFixed(2)
+        //  let ic = Number(Formulas.stress.i_L2(values) - Formulas.stress.i0(values)).toFixed(2)
+        //  // table two changes
+        //  let table2Row = Scenes.items.part3_table_four_2.item.tBodies[0].rows
+        // table2Row[0].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
+        // table2Row[1].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
+        // table2Row[2].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
         
-        table2Row[0].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
-        table2Row[1].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
-        table2Row[2].cells[2].innerHTML = `> (i<sub>L2</sub>-i<sub>0</sub>) (${ic})`
+        // table2Row[0].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
+        // table2Row[1].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
+        // table2Row[2].cells[2].innerHTML = `> (i<sub>L2</sub>-i<sub>0</sub>) (${ic})`
+
+        let vS = Number(Formulas.stress.v0(values)).toFixed(2)
+        let vD = Number(Formulas.stress.v0(values)).toFixed(2)
+        let vC = Number(Formulas.stress.v0(values)).toFixed(2)
+
+        let iS = Number(Formulas.stress.v0(values)).toFixed(2)
+        let iD = Number(Formulas.stress.v0(values)).toFixed(2)
+        let iC = Number(Formulas.stress.v0(values)).toFixed(2)
+
 
         // ! add values to graph
-        let graph1_data = [v0,v0,v0,v0]
-        let graph2_data = [iL2,iL2,ic,iIn]
+        let graph1_data = [vS,vD,vC]
+        let graph2_data = [iS,iD,iC]
 
         plotGraph()
         graph.addData(chart1,0,graph1_data)
         graph.addData(chart2,0,graph2_data)
-        Scenes.items.graph4.set(null,null,190,290)
-        Scenes.items.graph5.set(null,200,190,290)
+        Scenes.items.graph4.set(null,null,250,355)
+        Scenes.items.graph5.set(null,200,250,355)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
@@ -5602,7 +5212,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()

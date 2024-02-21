@@ -22,12 +22,11 @@
 
 }
 
-
-
 .anime-header{
     display: none;
     position: relative;
-    top: 0px
+    top: 0px;
+    z-index: 6000;
 }
 
 /* step2 - project intro */

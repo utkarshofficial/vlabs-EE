@@ -4,7 +4,7 @@ const overPlayer = {
     ".play-controls-container__play-pause-button"
   ),
   headTitle: document.querySelector(".info-container__title div"),
-
+  sliderIsPlaying: false,
   init() {
     this.hideTrialBanner();
     this.updateTitle();
@@ -65,6 +65,22 @@ const overPlayer = {
     }
     // ! pause
     return false;
+  },
+  addClassNameListener(elemId, callback) {
+    var elem = document.getElementById(elemId);
+    var lastClassName = elem.className;
+    window.setInterval( function() {   
+       var className = elem.className;
+        if (className !== lastClassName) {
+            callback();   
+            lastClassName = className;
+        }
+    },10)
+  },
+  onPlayBtn(){
+    window.setInterval(()=>{
+      this.playBtn.firstChild.firstChild.attributes.d.value[1]
+    },10)
   },
 };
 

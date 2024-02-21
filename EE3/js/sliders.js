@@ -39,6 +39,7 @@ const sliders = {
     switch(stepIndex){
       case 0:
       case 1:
+        this.enableAll()
         this.changeHeader(0,"Characteristics")
         genOptions(this.selectOptions[0],["D-vs-M","D-vs-I","D-vs-V"],
         ["D-vs-M","D-vs-I&#x2080;","D-vs-V&#x2080;"])
@@ -54,6 +55,7 @@ const sliders = {
         break
 
       case 2:
+        this.enableAll()
         this.changeHeader(0,"Characteristics")
         genOptions(this.selectOptions[0],["P-vs-Losses","P-vs-Efficiency"],
         ["P&#x2080;-vs-Losses","P&#x2080;-vs-Efficiency"])
@@ -69,6 +71,7 @@ const sliders = {
         break
       
       case 3:
+        this.enableAll()
         this.changeHeader(0,"V<sub>in</sub> (V)")
         genOptions(this.selectOptions[0],[24,36,48])
         
@@ -79,7 +82,6 @@ const sliders = {
         genOptions(this.selectOptions[2],[0.25,0.50,0.75])
 
         this.hideSliderAndOption(3)
-        this.enableAll()
         break
     }
   },
@@ -118,10 +120,17 @@ const sliders = {
     })
     this.slider.disabled = false
     this.sliderInput.disabled = false
+    this.showSliderAndOptions()
   },
   hideSliderAndOption(opsIdx){
     let sliderArr = document.querySelectorAll(".select-container")
     sliderArr[opsIdx].style.display="none"
+  },
+  showSliderAndOptions(){
+    for(let i =0; i<3;i++){
+      this.selectContainers[i].style.display = "block"
+    }
+    this.selectContainers[3].style.display = "flex"
   },
 
   setSlider(min,max,step,title){
