@@ -412,26 +412,14 @@
 }
 
 
-.btn-transparent{
-    display: none;
-    position: absolute;
-    width: 64px;
-    height: 44px;
-    bottom: -95px;
-    right: 3px;
-    /* background-color: red; */
-    z-index: 2001;
-}
 .btn-transparent {
     display: none;
     position: absolute;
-    /* width: 64px; */
-    /* height: 48px; */
+    width: 92px;
+    height: 38px;
     bottom: -95px;
-    right: 1px;
-    /* background-color: red; */
-    font-size: 1.2em;
-    z-index: 2001;
+    right: 4px;
+    z-index: 6000;
   }
   
   
@@ -584,8 +572,7 @@
     border: 1px solid #f5f29e;
 }
 
-/* *  concept dev */
-
+/* * concept dev */
 .concept_development{
     display: none;
 }

@@ -1114,7 +1114,7 @@ part1_box1 : new Dom(".part1_box1"),
           
         }
       }
-      nextBtnToggle()
+      // nextBtnToggle()
 
       // ! uncomment after done
       function resetNextBtn(){
@@ -2238,6 +2238,8 @@ part1_box1 : new Dom(".part1_box1"),
         top: "-68px",
         position: "absolute",
       })
+
+      overPlayer.onSlidesEnd(nextBtnToggle)
 
 
         
@@ -5299,7 +5301,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()
