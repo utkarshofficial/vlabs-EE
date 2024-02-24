@@ -38,7 +38,7 @@
     width: 30px;
     border: 0;
     transform: rotate(90deg);
-    background: url('./src/images/sliders/slider_tip.png');
+    background: url('../src/images/sliders/slider_tip.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
