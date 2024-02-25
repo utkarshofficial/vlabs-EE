@@ -1,231 +1,95 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/btn_connections.png"
-        alt="btn_connections.png"
+        src="./src/images/part_2_conncection_cable_a2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_connectons_completed.png"
-        alt="btn_connectons_completed.png"
+        src="./src/images/part_2_conncection_cable_n2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_instructions.png"
-        alt="btn_instructions.png"
+        src="./src/images/part_2_conncection_cable_p1.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_nomenclature.png"
-        alt="btn_nomenclature.png"
+        src="./src/images/part_2_conncection_cable_p2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_plot.png"
-        alt="btn_plot.png"
+        src="./src/images/part_2_conncection_cable_r2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_procedure.png"
-        alt="btn_procedure.png"
+        src="./src/images/part_2_conncection_cable_s.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_reset.png"
-        alt="btn_reset.png"
+        src="./src/images/part_2_conncection_cable_v1.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/btn_start_experiment.png"
-        alt="btn_start_experiment.png"
+        src="./src/images/part_2_conncection_cable_v2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/method_1_cable_black_bottom.png"
-        alt="method_1_cable_black_bottom.png"
+        src="./src/images/part_2_conncection_cable_vg1.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/method_1_cable_black_top.png"
-        alt="method_1_cable_black_top.png"
+        src="./src/images/part_2_conncection_cable_vg2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/method_1_cable_blue.png"
-        alt="method_1_cable_blue.png"
+        src="./src/images/part_2_conncection_supply_1_green_button.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/method_1_cable_green.png"
-        alt="method_1_cable_green.png"
+        src="./src/images/part_2_conncection_supply_2_green_button.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/method_1_cable_pink.png"
-        alt="method_1_cable_pink.png"
+        src="./src/images/part_2_connections_components.png"
     />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_1_cable_purple.png"
-        alt="method_1_cable_purple.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_1_cable_red.png"
-        alt="method_1_cable_red.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_1_cable_yellow.png"
-        alt="method_1_cable_yellow.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_2_cable_green.png"
-        alt="method_2_cable_green.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_2_cable_red.png"
-        alt="method_2_cable_red.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/method_2_cable_yellow.png"
-        alt="method_2_cable_yellow.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_instructions_box.png"
-        alt="part_1_instructions_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_procedure_box.png"
-        alt="part_1_procedure_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_select_option_1_1.png"
-        alt="part_1_select_option_1_1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_select_option_1_2.png"
-        alt="part_1_select_option_1_2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_select_option_2.png"
-        alt="part_1_select_option_2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_select_option_3.png"
-        alt="part_1_select_option_3.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_select_option_full.png"
-        alt="part_1_select_option_full.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_slide_1.png"
-        alt="part_1_slide_1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_1_slide_2.png"
-        alt="part_1_slide_2.png"
-    />
-    
- 
     
 
-btn_connections:this.allImgsDom[168],
-btn_connectons_completed:this.allImgsDom[169],
-btn_instructions:this.allImgsDom[170],
-btn_nomenclature:this.allImgsDom[171],
-btn_plot:this.allImgsDom[172],
-btn_procedure:this.allImgsDom[173],
-btn_reset:this.allImgsDom[174],
-btn_start_experiment:this.allImgsDom[175],
-method_1_cable_black_bottom:this.allImgsDom[176],
-method_1_cable_black_top:this.allImgsDom[177],
-method_1_cable_blue:this.allImgsDom[178],
-method_1_cable_green:this.allImgsDom[179],
-method_1_cable_pink:this.allImgsDom[180],
-method_1_cable_purple:this.allImgsDom[181],
-method_1_cable_red:this.allImgsDom[182],
-method_1_cable_yellow:this.allImgsDom[183],
-method_2_cable_green:this.allImgsDom[184],
-method_2_cable_red:this.allImgsDom[185],
-method_2_cable_yellow:this.allImgsDom[186],
-part_1_instructions_box:this.allImgsDom[187],
-part_1_procedure_box:this.allImgsDom[188],
-part_1_select_option_1_1:this.allImgsDom[189],
-part_1_select_option_1_2:this.allImgsDom[190],
-part_1_select_option_2:this.allImgsDom[191],
-part_1_select_option_3:this.allImgsDom[192],
-part_1_select_option_full:this.allImgsDom[193],
-part_1_slide_1:this.allImgsDom[194],
-part_1_slide_2:this.allImgsDom[195],
+part_2_conncection_cable_a2:this.allImgsDom[index++],
+part_2_conncection_cable_n2:this.allImgsDom[index++],
+part_2_conncection_cable_p1:this.allImgsDom[index++],
+part_2_conncection_cable_p2:this.allImgsDom[index++],
+part_2_conncection_cable_r2:this.allImgsDom[index++],
+part_2_conncection_cable_s:this.allImgsDom[index++],
+part_2_conncection_cable_v1:this.allImgsDom[index++],
+part_2_conncection_cable_v2:this.allImgsDom[index++],
+part_2_conncection_cable_vg1:this.allImgsDom[index++],
+part_2_conncection_cable_vg2:this.allImgsDom[index++],
+part_2_conncection_supply_1_green_button:this.allImgsDom[index++],
+part_2_conncection_supply_2_green_button:this.allImgsDom[index++],
+part_2_connections_components:this.allImgsDom[index++],
 
 
-
-btn_connections : new Dom("btn_connections"),
-btn_connectons_completed : new Dom("btn_connectons_completed"),
-btn_instructions : new Dom("btn_instructions"),
-btn_nomenclature : new Dom("btn_nomenclature"),
-btn_plot : new Dom("btn_plot"),
-btn_procedure : new Dom("btn_procedure"),
-btn_reset : new Dom("btn_reset"),
-btn_start_experiment : new Dom("btn_start_experiment"),
-method_1_cable_black_bottom : new Dom("method_1_cable_black_bottom"),
-method_1_cable_black_top : new Dom("method_1_cable_black_top"),
-method_1_cable_blue : new Dom("method_1_cable_blue"),
-method_1_cable_green : new Dom("method_1_cable_green"),
-method_1_cable_pink : new Dom("method_1_cable_pink"),
-method_1_cable_purple : new Dom("method_1_cable_purple"),
-method_1_cable_red : new Dom("method_1_cable_red"),
-method_1_cable_yellow : new Dom("method_1_cable_yellow"),
-method_2_cable_green : new Dom("method_2_cable_green"),
-method_2_cable_red : new Dom("method_2_cable_red"),
-method_2_cable_yellow : new Dom("method_2_cable_yellow"),
-part_1_instructions_box : new Dom("part_1_instructions_box"),
-part_1_procedure_box : new Dom("part_1_procedure_box"),
-part_1_select_option_1_1 : new Dom("part_1_select_option_1_1"),
-part_1_select_option_1_2 : new Dom("part_1_select_option_1_2"),
-part_1_select_option_2 : new Dom("part_1_select_option_2"),
-part_1_select_option_3 : new Dom("part_1_select_option_3"),
-part_1_select_option_full : new Dom("part_1_select_option_full"),
-part_1_slide_1 : new Dom("part_1_slide_1"),
-part_1_slide_2 : new Dom("part_1_slide_2"),
+part_2_conncection_cable_a2 : new Dom("part_2_conncection_cable_a2"),
+part_2_conncection_cable_n2 : new Dom("part_2_conncection_cable_n2"),
+part_2_conncection_cable_p1 : new Dom("part_2_conncection_cable_p1"),
+part_2_conncection_cable_p2 : new Dom("part_2_conncection_cable_p2"),
+part_2_conncection_cable_r2 : new Dom("part_2_conncection_cable_r2"),
+part_2_conncection_cable_s : new Dom("part_2_conncection_cable_s"),
+part_2_conncection_cable_v1 : new Dom("part_2_conncection_cable_v1"),
+part_2_conncection_cable_v2 : new Dom("part_2_conncection_cable_v2"),
+part_2_conncection_cable_vg1 : new Dom("part_2_conncection_cable_vg1"),
+part_2_conncection_cable_vg2 : new Dom("part_2_conncection_cable_vg2"),
+part_2_conncection_supply_1_green_button : new Dom("part_2_conncection_supply_1_green_button"),
+part_2_conncection_supply_2_green_button : new Dom("part_2_conncection_supply_2_green_button"),
+part_2_connections_components : new Dom("part_2_connections_components"),

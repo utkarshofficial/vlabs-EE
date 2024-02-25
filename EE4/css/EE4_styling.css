@@ -1,0 +1,40 @@
+.part_2_connections_box{
+  display: none;
+}
+
+.connections-box{
+    border: solid 1px black;
+    display: flex;
+    width: 504px;
+    position: absolute;
+    z-index: 100;
+  }
+  .connections-box .btn-box span{
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .connections-box .head{
+    background-color: #ffc000;
+    width: 70px!important;
+  }
+  .connections-box .btn-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 44px;
+    border-radius: none;
+    cursor: pointer;
+  }
+  .connections-box .middle-border{
+    border-bottom: 2px solid;
+    width: 502px;
+    top: 30px;
+    position: absolute;
+  }
+
+  .part_2_connections_box{
+    display: none;
+  }

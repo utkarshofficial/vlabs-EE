@@ -678,46 +678,11 @@ const Scenes = {
     tempTitle59: new Dom(".temp-title59"),
     tempTitle60: new Dom(".temp-title60"),
 
+    concept_development: new Dom(".concept_development"),
+
     contentAdderBox: new Dom(".content-adder-box"),
     btn_save: new Dom(".btn-save"),
     btn_next: new Dom(".btn-next"),
-
-    box_img: new Dom("box_img"),
-    component_battery: new Dom("component_battery"),
-    component_capacitor: new Dom("component_capacitor"),
-    component_diode: new Dom("component_diode"),
-    component_inductor: new Dom("component_inductor"),
-    component_mosfet: new Dom("component_mosfet"),
-    component_register: new Dom("component_register"),
-    full_circuit: new Dom("full_circuit"),
-    full_circuit2: new Dom("full_circuit2"),
-    circuit_full_2: new Dom("circuit_full_2"),
-    circuit_full_3: new Dom("circuit_full_3"),
-    graph_arrow: new Dom("part_3_graph_arrow"),
-    part_3_option_1: new Dom("part_3_option_1"),
-    part_3_option_2: new Dom("part_3_option_2"),
-    part_3_option_3: new Dom("part_3_option_3"),
-    part_3_option_4: new Dom("part_3_option_4"),
-    record_btn: new Dom("record_btn"),
-    part3_table_one: new Dom(".part3_table_one"),
-    part3_table_two: new Dom(".part3_table_two"),
-    part3_table_three: new Dom(".part3_table_three"),
-    part3_table_four: new Dom(".part3_table_four"),
-    part3_table_four_2: new Dom(".part3_table_four_2"),
-    slider_vIn: new Dom(".slider_vIn"),
-    slider_D: new Dom(".slider_D"),
-    slider_R: new Dom(".slider_R"),
-    slider_C: new Dom(".slider_C"),
-    part_2_circuit: new Dom("part_2_circuit"),
-    part_2_graph_1: new Dom("part_2_graph_1"),
-    part_2_graph_2: new Dom("part_2_graph_2"),
-    part_2_graph_3: new Dom("part_2_graph_3"),
-    run_btn: new Dom("run_btn"),
-    slider_box: new Dom(".slider-box"),
-    right_tick_1: new Dom("right_tick_1"),
-    right_tick_2: new Dom("right_tick_2"),
-    right_tick_3: new Dom("right_tick_3"),
-    right_tick_4: new Dom("right_tick_4"),
     graph1: new Dom(".graph1"),
     graph2: new Dom(".graph2"),
     graph3: new Dom(".graph3"),
@@ -730,119 +695,23 @@ const Scenes = {
     graph_box_5: new Dom(".graph_box5"),
     xLabel: new Dom(".xLabel"),
     yLabel: new Dom(".yLabel"),
-    graph1_arrow: new Dom("graph1_arrow"),
-    graph2_arrow: new Dom("graph2_arrow"),
-    part_2_graph_empty: new Dom("part_2_graph_empty"),
-    part_3_option_4_graph: new Dom("part_3_option_4_graph"),
+
+    part3_table_one: new Dom(".part3_table_one"),
+    part3_table_two: new Dom(".part3_table_two"),
+    part3_table_three: new Dom(".part3_table_three"),
+    part3_table_four: new Dom(".part3_table_four"),
+    part3_table_four_2: new Dom(".part3_table_four_2"),
+    slider_vIn: new Dom(".slider_vIn"),
+    slider_D: new Dom(".slider_D"),
+    slider_R: new Dom(".slider_R"),
+    slider_C: new Dom(".slider_C"),
+    slider_box: new Dom(".slider-box"),
+   
     btn_delete: new Dom(".btn-delete"),
     btn_reset: new Dom(".btn-reset"),
     btn_record: new Dom(".btn-record"),
     btn_check_connections: new Dom(".btn-check-connections"),
     btn_circuit_diagram: new Dom(".btn-circuit-diagram"),
-
-    // Theory
-    slide_1: new Dom("slide_1"),
-    slide_2: new Dom("slide_2"),
-    slide_3_page_1: new Dom("slide_3_page_1"),
-    slide_3_page_2: new Dom("slide_3_page_2"),
-    slide_3_page_3: new Dom("slide_3_page_3"),
-    slide_3_page_4: new Dom("slide_3_page_4"),
-    slide_4_page_1: new Dom("slide_4_page_1"),
-    slide_4_page_1_fan: new Dom("slide_4_page_1_fan"),
-    slide_4_page_2_battery_1: new Dom("slide_4_page_2_battery_1"),
-    slide_4_page_2_battery_2: new Dom("slide_4_page_2_battery_2"),
-    slide_4_page_2_battery_3: new Dom("slide_4_page_2_battery_3"),
-    slide_4_page_2_volt_text: new Dom("slide_4_page_2_volt_text"),
-    slide_4_page_3_text_1: new Dom("slide_4_page_3_text_1"),
-    slide_4_page_3_text_2: new Dom("slide_4_page_3_text_2"),
-    slide_4_page_3_wire: new Dom("slide_4_page_3_wire"),
-    slide_5_page_1: new Dom("slide_5_page_1"),
-    slide_5_page_2_text_1: new Dom("slide_5_page_2_text_1"),
-    slide_5_page_2_volt_text: new Dom("slide_5_page_2_volt_text"),
-    slide_5_page_3_1_text_1: new Dom("slide_5_page_3_1_text_1"),
-    slide_5_page_3_2_wire: new Dom("slide_5_page_3_2_wire"),
-    slide_5_page_3_3_light: new Dom("slide_5_page_3_3_light"),
-    slide_5_page_3_4_blast: new Dom("slide_5_page_3_4_blast"),
-    slide_5_page_3_5_cross: new Dom("slide_5_page_3_5_cross"),
-    slide_5_page_3_6_emoji: new Dom("slide_5_page_3_6_emoji"),
-    slide_5_page_3_7_text_2: new Dom("slide_5_page_3_7_text_2"),
-    slide_5_page_3_8_text_3: new Dom("slide_5_page_3_8_text_3"),
-    slide_5_page_4_1_text_1: new Dom("slide_5_page_4_1_text_1"),
-    slide_6_page_1: new Dom("slide_6_page_1"),
-    slide_6_page_2_1_text_1: new Dom("slide_6_page_2_1_text_1"),
-    slide_6_page_2_2_emoji_blink: new Dom("slide_6_page_2_2_emoji_blink"),
-    slide_6_page_3_1_text_1: new Dom("slide_6_page_3_1_text_1"),
-    slide_6_page_3_2_emoji_blink: new Dom("slide_6_page_3_2_emoji_blink"),
-    slide_7_page_1_1: new Dom("slide_7_page_1_1"),
-    slide_7_page_1_2: new Dom("slide_7_page_1_2"),
-    slide_7_page_1_3: new Dom("slide_7_page_1_3"),
-    slide_8_page_1: new Dom("slide_8_page_1"),
-    slide_8_page_2_and_rotate_the_fan: new Dom(
-      "slide_8_page_2_and_rotate_the_fan"
-    ),
-    slide_8_page_3_1: new Dom("slide_8_page_3_1"),
-    slide_8_page_3_2_light: new Dom("slide_8_page_3_2_light"),
-    slide_8_page_3_3_blank: new Dom("slide_8_page_3_3_blank"),
-    slide_8_page_3_4_emoji: new Dom("slide_8_page_3_4_emoji"),
-    slide_8_page_3_5_text: new Dom("slide_8_page_3_5_text"),
-    slide_9: new Dom("slide_9"),
-    slide_10_page_1: new Dom("slide_10_page_1"),
-    slide_10_page_2: new Dom("slide_10_page_2"),
-    slide_10_page_3: new Dom("slide_10_page_3"),
-    slide_10_page_4_1: new Dom("slide_10_page_4_1"),
-    slide_10_page_4_2_plus: new Dom("slide_10_page_4_2_plus"),
-    slide_10_page_4_3_minus: new Dom("slide_10_page_4_3_minus"),
-    slide_10_page_4_4_arrow: new Dom("slide_10_page_4_4_arrow"),
-    slide_10_page_4_5_text: new Dom("slide_10_page_4_5_text"),
-    slide_11_page_1: new Dom("slide_11_page_1"),
-    slide_11_page_2_1: new Dom("slide_11_page_2_1"),
-    slide_11_page_2_2_blink: new Dom("slide_11_page_2_2_blink"),
-    slide_11_page_3_1: new Dom("slide_11_page_3_1"),
-    slide_11_page_3_2_rotate_it: new Dom("slide_11_page_3_2_rotate_it"),
-    slide_11_page_3_3_text_and_arrow: new Dom(
-      "slide_11_page_3_3_text_and_arrow"
-    ),
-    slide_12_page_1: new Dom("slide_12_page_1"),
-    slide_12_page_2_1_pwm_blink: new Dom("slide_12_page_2_1_pwm_blink"),
-    slide_12_page_2_2: new Dom("slide_12_page_2_2"),
-    slide_12_page_2_3_text: new Dom("slide_12_page_2_3_text"),
-    slide_12_page_3_1_pwn_blink: new Dom("slide_12_page_3_1_pwn_blink"),
-    slide_12_page_3_2: new Dom("slide_12_page_3_2"),
-    slide_12_page_3_3_text: new Dom("slide_12_page_3_3_text"),
-    slide_12_page_3_4_text_2: new Dom("slide_12_page_3_4_text_2"),
-    slide_13_page_1: new Dom("slide_13_page_1"),
-    slide_13_page_2: new Dom("slide_13_page_2"),
-    slide_13_page_3_1_plus: new Dom("slide_13_page_3_1_plus"),
-    slide_13_page_3_2_minus_rotate_both: new Dom(
-      "slide_13_page_3_2_minus_rotate_both"
-    ),
-    slide_13_page_3_4: new Dom("slide_13_page_3_4"),
-    slide_13_page_3_5_text: new Dom("slide_13_page_3_5_text"),
-    slide_14_helper: new Dom("slide_14_helper"),
-    slide_14_page_1: new Dom("slide_14_page_1"),
-    slide_14_page_1_ball: new Dom("slide_14_page_1_ball"),
-    slide_14_page_2_1_blink: new Dom("slide_14_page_2_1_blink"),
-    slide_14_page_2_2_text: new Dom("slide_14_page_2_2_text"),
-    slide_14_page_3_1_symbols: new Dom("slide_14_page_3_1_symbols"),
-    slide_14_page_3_2_green_graph_and_start_ball: new Dom(
-      "slide_14_page_3_2_green_graph_and_start_ball"
-    ),
-    slide_14_page_3_3_white_image_for_blue_line: new Dom(
-      "slide_14_page_3_3_white_image_for_blue_line"
-    ),
-    slide_15_page_1: new Dom("slide_15_page_1"),
-    slide_15_page_1_ball: new Dom("slide_15_page_1_ball"),
-    slide_15_page_1_green_graph: new Dom("slide_15_page_1_green_graph"),
-    slide_15_page_1_minus: new Dom("slide_15_page_1_minus"),
-    slide_15_page_1_plus: new Dom("slide_15_page_1_plus"),
-    slide_15_page_2_1_blink: new Dom("slide_15_page_2_1_blink"),
-    slide_15_page_2_2_text: new Dom("slide_15_page_2_2_text"),
-    slide_15_page_3_1_arrow_and_text: new Dom(
-      "slide_15_page_3_1_arrow_and_text"
-    ),
-    slide_15_page_3_1_white: new Dom("slide_15_page_3_1_white"),
-    slide_15_page_3_2_graph: new Dom("slide_15_page_3_2_graph"),
-    slide_15_page_3_3_text: new Dom("slide_15_page_3_3_text"),
 
     btn_transparent: new Dom(".btn-transparent"),
 
@@ -857,44 +726,6 @@ const Scenes = {
     part_1_text_for_crrct: new Dom("part_1_text_for_crrct"),
     part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
 
-    //EE3 img added
-    box1: new Dom("box1"),
-    box2: new Dom("box2"),
-    box3: new Dom("box3"),
-    box4: new Dom("box4"),
-    box5: new Dom("box5"),
-    box6: new Dom("box6"),
-    part1_circuit: new Dom("part1_circuit"),
-    part1_component_capacitor: new Dom("part1_component_capacitor"),
-    part1_component_diode: new Dom("part1_component_diode"),
-    part1_component_inductor: new Dom("part1_component_inductor"),
-    part1_component_mosfet: new Dom("part1_component_mosfet"),
-    part1_component_resistance: new Dom("part1_component_resistance"),
-    part1_component_voltage: new Dom("part1_component_voltage"),
-    part_3_option_5: new Dom("part_3_option_5"),
-
-    part1_crrct_text: new Dom("part1_crrct_text"),
-    part1_incrrct_text: new Dom("part1_incrrct_text"),
-    part1_crrct_circuit: new Dom("part1_crrct_circuit"),
-    ee3_btn_check: new Dom(".ee3-btn-check"),
-    ee3_btn_reset: new Dom(".ee3-btn-reset"),
-    ee3_btn_hint: new Dom(".ee3-btn-hint"),
-    part4_table_graph: new Dom("part4_table_graph"),
-
-    //ee3 symbol imgs added
-
-    symbol_vIn: new Dom("symbol_vIn"),
-    symbol_L: new Dom("symbol_L"),
-    symbol_C: new Dom("symbol_C"),
-    symbol_S: new Dom("symbol_S"),
-    symbol_D: new Dom("symbol_D"),
-    symbol_R: new Dom("symbol_R"),
-
-    concept_development: new Dom(".concept_development"),
-
-    // EE3 dom items added
-
-    part1_box1: new Dom(".part1_box1"),
 
     // !EE4 images added
 
@@ -960,6 +791,25 @@ const Scenes = {
     part_1_table_2_col_9: new Dom(".part_1_table_2_col_9"),
     part_1_table_2_col_10: new Dom(".part_1_table_2_col_10"),
     // ! new items dom
+
+    // part2
+    part_2_conncection_cable_a2 : new Dom("part_2_conncection_cable_a2"),
+    part_2_conncection_cable_n2 : new Dom("part_2_conncection_cable_n2"),
+    part_2_conncection_cable_p1 : new Dom("part_2_conncection_cable_p1"),
+    part_2_conncection_cable_p2 : new Dom("part_2_conncection_cable_p2"),
+    part_2_conncection_cable_r2 : new Dom("part_2_conncection_cable_r2"),
+    part_2_conncection_cable_s : new Dom("part_2_conncection_cable_s"),
+    part_2_conncection_cable_v1 : new Dom("part_2_conncection_cable_v1"),
+    part_2_conncection_cable_v2 : new Dom("part_2_conncection_cable_v2"),
+    part_2_conncection_cable_vg1 : new Dom("part_2_conncection_cable_vg1"),
+    part_2_conncection_cable_vg2 : new Dom("part_2_conncection_cable_vg2"),
+    part_2_conncection_supply_1_green_button : new Dom("part_2_conncection_supply_1_green_button"),
+    part_2_conncection_supply_2_green_button : new Dom("part_2_conncection_supply_2_green_button"),
+    part_2_connections_components : new Dom("part_2_connections_components"),
+    // connection box
+    part_2_connections_box: new Dom(".part_2_connections_box"),
+
+
     domQs1: new Dom("domQs1"),
     domQs2: new Dom("domQs2"),
     domQs3: new Dom("domQs3"),
@@ -3503,420 +3353,66 @@ const Scenes = {
       setIsProcessRunning(true);
 
       Scenes.setStepHeading("Step-2", "Transfer Characteristics.");
-      // setCC("Record 7 reading for different Load Resistances (R0)")
-      // ! show the slider
-      Scenes.items.slider_box.set(25, 15).scale(0.95);
       Scenes.items.btn_next.show();
+      // ! Step Connection
 
-      //! Required Items
-      // Scenes.items.circuit_full_3.set(230,-50,150)
-      // Scenes.items.part_3_option_3.set(-30, 155)
-      Scenes.items.part3_table_one.set(-10, 160, null).scale(0.9);
-      //  Scenes.items.right_tick_1.set(-5,175)
-      Scenes.items.btn_record.set(240, -60);
-      Scenes.items.btn_delete.set(340, -60);
-      Scenes.items.btn_reset.set(440, -60);
-      // Scenes.items.part3_table_three.set(20)
-      let table = Scenes.items.part3_table_one.item;
-      let tableColumnMax = table.tBodies[0].rows[0].cells.length;
-      let tableRowMax = table.tBodies[0].rows.length;
+      // required elements 
+      Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(1);
+      Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(1);
+      Scenes.items.btn_connectons_completed
+        .set(750 + 40, 190 + 110, 50, 147)
+        .zIndex(1);
+      Scenes.items.btn_start_experiment
+        .set(750 + 40, 190 + 165, 50, 147)
+        .zIndex(1);
+      Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(1);
 
-      let valuesToMatch = [];
-      // * index to handle records
-      let recordBtnClickIdx =
-        table.tBodies[0].rows[6].cells[4].innerHTML == "" ? 0 : 7;
+      // required images
+      let images = [
+        Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
+        Scenes.items.part_2_conncection_supply_1_green_button.set(0,0).zIndex(2).hide(),
+        Scenes.items.part_2_conncection_supply_2_green_button.set(0,0).zIndex(2).hide(),
+      ]
 
-      // generate option
-      sliders.generateOptionsFor(0);
+      let cables = [
+        Scenes.items.part_2_conncection_cable_p1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_s.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_a2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_r2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_p2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_n2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_v1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_v2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_vg1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_vg2.set(0,0).zIndex(5).hide(),
+      ]
 
-      // ! graph
-      Scenes.items.graph_box_1.set();
-      Scenes.items.graph1.set(null, null, 220, 355);
-      let ctx = Scenes.items.graph1.item;
+      let cables_color = [
+        "#e40000",
+        "#4f699a",
+        "#008039",
+        "#0d0d0d",
+        "#f9c101",
+        "#7f3a0b",
+        "#b6355d",
+        "#851b85",
+        "#073007",
+        "#7c5565",
+      ]
 
-      // ! Label for graph
-      let xLabel = Scenes.items.chart.label1.x;
-      let yLabel = Scenes.items.chart.label1.y;
-      let dataLabel = "Data";
+      // Connection Logic
+      Scenes.items.part_2_connections_box.set(435,-40).show("flex")
+      let box_buttons = document.querySelectorAll(".part_2_connections_box button")
 
-      // ! Forshowing graph labels
-      // graph idx is for  showing which graph is being shown
-      let graphIdx = 0;
-      if (Scenes.items.chart[graphIdx] != null) {
-        Scenes.items.xLabel.set().setContent(xLabel);
-        Scenes.items.yLabel.set().setContent(yLabel);
-      }
-
-      // ! To Plot graph
-      function plotGraph(
-        ctx,
-        graphIdx,
-        data,
-        dataLabel,
-        xLabel = null,
-        yLabel = null,
-        beginAtZero = false
-      ) {
-        // for label
-        Scenes.items.yLabel.set(487, 33).setContent(yLabel).styles({
-          backgroundColor: "transperant",
-          textAlign: "center",
-          color: "black",
-          width: "170px",
-          rotate: "-90deg",
-        });
-        Scenes.items.xLabel.set(720, 140).setContent(xLabel).styles({
-          backgroundColor: "transperant",
-          color: "black",
-          width: "fit-content",
-        });
-
-        // ! Destroy old graph
-        let graphRef = Scenes.items.chart[graphIdx];
-        if (graphRef != null) {
-          graphRef.destroy();
+      box_buttons.forEach((ele,i)=>{
+        ele.onclick = ()=>{
+          cables[i].show()
+          ele.style.backgroundColor = cables_color[i]
+          ele.style.color = "white"
+          ele.style.textShadow = "1px 1px black"
         }
+      })
 
-        graphRef = new Chart(ctx, {
-          type: "scatter",
-          plugins: [
-            {
-              // afterDraw: chart => {
-              //   var ctx = chart.chart.ctx;
-              //   ctx.save();
-              //   ctx.textAlign = 'center';
-              //   ctx.font = '18px Arial';
-              //   ctx.fillStyle = 'black';
-              //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-              //   ctx.textAlign = 'left';
-              //   ctx.font = '10px Arial';
-              //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-              //   ctx.restore();
-              // },
-            },
-          ],
-          data: {
-            datasets: [
-              {
-                label: dataLabel,
-                fill: false,
-                borderColor: "red",
-                backgroundColor: "red",
-                data: data,
-                display: false,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: false,
-                    labelString: yLabel,
-                    fontColor: "black",
-                    fontSize: 17,
-                  },
-                  ticks: {
-                    beginAtZero: beginAtZero,
-                    fontColor: "black",
-                    fontSize: 14,
-                  },
-                },
-              ],
-              xAxes: [
-                {
-                  scaleLabel: {
-                    display: false,
-                    labelString: xLabel,
-                    fontColor: "black",
-                    fontSize: 17,
-                  },
-                  ticks: {
-                    beginAtZero: beginAtZero,
-                    fontColor: "black",
-                    fontSize: 14,
-                  },
-                },
-              ],
-            },
-          },
-        });
-
-        Scenes.items.chart[graphIdx] = graphRef;
-      }
-
-      // let slidersBox = document.querySelectorAll(".slider")
-      // let slidersBox = document.querySelectorAll(".range-slider__range")
-      function stepTutorial2() {
-        Dom.setBlinkArrowRed(true, 100, 78, 30, 30, 90).play();
-        setCC("Select Characteristics");
-
-        sliders.selectOp1.oninput = () => {
-          Dom.setBlinkArrowRed(true, 260, 78, 30, 30, 90).play();
-          setCC("Select V<sub>in</sub>");
-
-          sliders.selectOp2.oninput = () => {
-            Dom.setBlinkArrowRed(true, 430, 78, 30, 30, 90).play();
-            setCC("Select R");
-
-            sliders.selectOp3.oninput = () => {
-              Dom.setBlinkArrowRed(true, 100, 138, 30, 30, 90).play();
-              setCC("Select D");
-
-              sliders.slider.onclick = () => {
-                Dom.setBlinkArrowRed(true, 280, -10, 30, 30, 90).play();
-                setCC("Press Record");
-              };
-            };
-          };
-        };
-      }
-      if (recordBtnClickIdx == 0) {
-        stepTutorial2();
-      }
-
-      function setDataToGraph() {
-        let characteristicsValue = Scenes.items.slider_C.item.value;
-
-        let graphData = [];
-        var rows = table.tBodies[0].rows;
-        let n = 8,
-          xLabel = "Duty Ratio (D)",
-          yLabel = "";
-        for (let i = 0; i < n; i++) {
-          let x = rows[i].cells[3].innerHTML,
-            y = null;
-          switch (characteristicsValue) {
-            case "D-vs-M":
-              y = rows[i].cells[5].innerHTML;
-              yLabel = "Voltage Gain (M)";
-              setCC(
-                "Voltage gain linearly increases with increasing duty ratio for ideal case."
-              );
-              break;
-            case "D-vs-I":
-              y = rows[i].cells[7].innerHTML;
-              yLabel = "I (A)";
-              setCC(
-                "Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case."
-              );
-              break;
-            case "D-vs-V":
-              y = rows[i].cells[4].innerHTML;
-              yLabel = "V (V)";
-              setCC(
-                "Load voltage linearly increases with increasing duty ratio for ideal case."
-              );
-              break;
-          }
-          graphData.push({
-            x: x,
-            y: y,
-          });
-        }
-        Scenes.items.chart.label1.x = xLabel;
-        Scenes.items.chart.label1.y = yLabel;
-
-        plotGraph(ctx, graphIdx, graphData, dataLabel, xLabel, yLabel, true);
-        Scenes.items.graph1.set(null, null, 220, 355);
-      }
-      // ! ------------> If data already present plot the graph
-      if (table.tBodies[0].rows[6].cells[2].innerHTML !== "") {
-        setIsProcessRunning(false);
-        Scenes.currentStep = 4;
-
-        // ! change the table column index who's changing
-        let changeableColumnIndx = 3;
-
-        recordBtnClickIdx = 8;
-        let rows = table.tBodies[0].rows;
-
-        // * to get old values from table for matching
-        for (let i = 0; i < tableColumnMax; i++) {
-          let val = rows[i].cells[changeableColumnIndx].innerHTML;
-          valuesToMatch.push(Number(val));
-        }
-      } else {
-        // ! Please note this when plot the graph then show the graph ...
-        plotGraph(ctx, graphIdx, [{}], dataLabel, xLabel, yLabel, true);
-        Scenes.items.graph1.set(null, null, 220, 355);
-        // disableSlider("reset")
-      }
-
-      // // ! adding data set
-      // graph.addDataset(
-      //   "Efficiency",
-      //   "red",
-      //   []
-      // )
-
-      //!onclick for delete btn
-      Scenes.items.btn_delete.item.onclick = function () {
-        if (recordBtnClickIdx == 0 || recordBtnClickIdx > tableRowMax) {
-          return;
-        }
-        let row = table.tBodies[0].rows;
-
-        for (let i = 1; i < tableColumnMax; i++) {
-          row[recordBtnClickIdx - 1].cells[i].innerHTML = "";
-        }
-        recordBtnClickIdx = recordBtnClickIdx - 1;
-        if (recordBtnClickIdx == 0) {
-          sliders.enableAll();
-        }
-        valuesToMatch.pop();
-      };
-
-      //! onclick for reset
-      Scenes.items.btn_reset.item.onclick = function () {
-        var rows = table.tBodies[0].rows;
-
-        for (let i = 0; i < tableRowMax; i++) {
-          for (let j = 1; j < tableColumnMax; j++) {
-            rows[i].cells[j].innerHTML = "";
-          }
-        }
-
-        for (let i = 0; i < tableRowMax; i++) {
-          rows[i].cells[0].innerHTML = i + 1;
-        }
-
-        // reset all the parameters
-        // so just simply call this step again
-        Scenes.steps[5]();
-      };
-
-      // ! onclick for record
-      Scenes.items.btn_record.item.onclick = function () {
-        // taking values from all sliders
-        let vInValue = Number(Scenes.items.slider_vIn.item.value);
-        let dutyRatioValue = Number(Scenes.items.slider_D.item.value);
-        let resistanceValue = Number(Scenes.items.slider_R.item.value);
-
-        // * if all values not selected
-        if (vInValue == "" || dutyRatioValue == "" || resistanceValue == "") {
-          setCC("Select all values first.");
-          return;
-        }
-
-        updateValues(vInValue, dutyRatioValue, resistanceValue);
-
-        // ! for arrow system
-        if (recordBtnClickIdx < tableRowMax - 1) {
-          Dom.setBlinkArrowRed(true, 100, 138, 30, 30, 90).play();
-          setCC("Select D");
-        } else {
-          Dom.setBlinkArrowRed(-1);
-        }
-
-        // ! Can't select same values
-        if (
-          recordBtnClickIdx < 8 &&
-          valuesToMatch.indexOf(dutyRatioValue) != -1
-        ) {
-          setCC("Please select different value.");
-          return;
-        } else {
-          valuesToMatch.push(dutyRatioValue);
-        }
-
-        // ! sort the data
-        if (recordBtnClickIdx >= 8) {
-          function sortTable() {
-            var rows = table.tBodies[0].rows;
-
-            let n = 8;
-            for (let i = 0; i < n; i++) {
-              for (let j = 0; j < n - i - 1; j++) {
-                let val1 = Number(rows[j].cells[8].innerHTML);
-                let val2 = Number(rows[j + 1].cells[8].innerHTML);
-                if (val1 > val2) {
-                  let temp = rows[j].innerHTML;
-                  rows[j].innerHTML = rows[j + 1].innerHTML;
-                  rows[j + 1].innerHTML = temp;
-                }
-              }
-            }
-            for (let i = 0; i < n; i++) {
-              rows[i].cells[0].innerHTML = i + 1;
-            }
-          }
-          sortTable();
-
-          // * plot the graph
-          // adding parameter to x,y graph
-          // var rows = table.tBodies[0].rows
-          // let n = 7
-          // for(let i=0;i<n;i++){
-          //   graph.addData(0,
-          //     {
-          //       x: rows[i].cells[9].innerHTML,
-          //       y: rows[i].cells[10].innerHTML
-          //     }
-          //   )
-          // }
-          setDataToGraph();
-
-          // after complete
-          Dom.setBlinkArrow(true, 790, 408).play();
-          setCC("Click 'Next' to go to next step");
-          setIsProcessRunning(false);
-          Scenes.currentStep = 4;
-        }
-
-        // deactivate the sliders after first value  done
-        // todo
-        if (recordBtnClickIdx == 0) {
-          sliders.disable(0, 1, 2);
-        }
-        let tableRow = table.tBodies[0].rows[recordBtnClickIdx++];
-        tableRow.cells[1].innerHTML = vInValue;
-        tableRow.cells[2].innerHTML = resistanceValue;
-        tableRow.cells[3].innerHTML = dutyRatioValue;
-        tableRow.cells[4].innerHTML = Number(Formulas.ideal.v0(values)).toFixed(
-          2
-        );
-        tableRow.cells[5].innerHTML = Number(Formulas.ideal.M(values)).toFixed(
-          2
-        );
-        tableRow.cells[6].innerHTML = Number(
-          Formulas.efficiencyPlot.iIn(values)
-        ).toFixed(2);
-        tableRow.cells[7].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(
-          2
-        );
-        tableRow.cells[8].innerHTML = Number(
-          Formulas.efficiencyPlot.p0(values)
-        ).toFixed(2);
-
-        //!previous values
-        // tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
-        // tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
-        // tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
-        // tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-        // tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-        // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-        // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
-
-        // let x = tableRow.cells[9].innerHTML
-        // let y = tableRow.cells[10].innerHTML
-        // // ! addData to graph
-        // graph.addData(0,{x:x,y:y})
-
-        // if(recordBtnClickIdx>6){
-        //   // after complete
-        //   Dom.setBlinkArrow(true, 790, 408).play();
-        //   setCC("Click 'Next' to go to next step");
-        //   setIsProcessRunning(false);
-        //   Scenes.currentStep = 4
-        // }
-        // warning for sorting the data
-        if (recordBtnClickIdx == 8) {
-          setCC("Press Record");
-          Dom.setBlinkArrowRed(true, 280, -10, 30, 30, 90).play();
-        }
-      };
 
       return true;
     }),
@@ -5300,7 +4796,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3;
+Scenes.currentStep =5;
 
 Scenes.next();
 // Scenes.steps[3]()
@@ -5371,13 +4867,6 @@ function btnPopupBox() {
   };
 }
 btnPopupBox();
-
-// Scenes.steps[2]()
-// Scenes.steps[6]()
-// Scenes.steps[5]()
-// Scenes.steps[5]()
-// Scenes.steps[5]()
-// Scenes.steps[6]()
 
 // i really enjoyed the voice of keybord
 // its amazing
