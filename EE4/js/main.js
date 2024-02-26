@@ -4796,7 +4796,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep =5;
+Scenes.currentStep = 2;
 
 Scenes.next();
 // Scenes.steps[3]()
