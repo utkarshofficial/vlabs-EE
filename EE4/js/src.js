@@ -80,8 +80,8 @@ const src = {
       part_2_conncection_cable_v2:this.allImgsDom[index++],
       part_2_conncection_cable_vg1:this.allImgsDom[index++],
       part_2_conncection_cable_vg2:this.allImgsDom[index++],
-      part_2_conncection_supply_1_green_button:this.allImgsDom[index++],
-      part_2_conncection_supply_2_green_button:this.allImgsDom[index++],
+      part_2_conncection_supply_1_red_button:this.allImgsDom[index++],
+      part_2_conncection_supply_2_red_button:this.allImgsDom[index++],
       part_2_connections_components:this.allImgsDom[index++],
 
       // * Question Mark

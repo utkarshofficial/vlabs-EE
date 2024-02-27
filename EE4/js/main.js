@@ -803,8 +803,8 @@ const Scenes = {
     part_2_conncection_cable_v2 : new Dom("part_2_conncection_cable_v2"),
     part_2_conncection_cable_vg1 : new Dom("part_2_conncection_cable_vg1"),
     part_2_conncection_cable_vg2 : new Dom("part_2_conncection_cable_vg2"),
-    part_2_conncection_supply_1_green_button : new Dom("part_2_conncection_supply_1_green_button"),
-    part_2_conncection_supply_2_green_button : new Dom("part_2_conncection_supply_2_green_button"),
+    part_2_conncection_supply_1_red_button : new Dom("part_2_conncection_supply_1_red_button"),
+    part_2_conncection_supply_2_red_button : new Dom("part_2_conncection_supply_2_red_button"),
     part_2_connections_components : new Dom("part_2_connections_components"),
     // connection box
     part_2_connections_box: new Dom(".part_2_connections_box"),
@@ -3357,21 +3357,21 @@ const Scenes = {
       // ! Step Connection
 
       // required elements 
-      Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(1);
-      Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(1);
+      Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(10);
+      Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(10);
       Scenes.items.btn_connectons_completed
         .set(750 + 40, 190 + 110, 50, 147)
-        .zIndex(1);
+        .zIndex(10);
       Scenes.items.btn_start_experiment
         .set(750 + 40, 190 + 165, 50, 147)
-        .zIndex(1);
-      Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(1);
+        .zIndex(10);
+      Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(10);
 
       // required images
       let images = [
         Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_green_button.set(0,0).zIndex(2).hide(),
-        Scenes.items.part_2_conncection_supply_2_green_button.set(0,0).zIndex(2).hide(),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(150,118,20,23).zIndex(10),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(155,311,22,23).zIndex(10),
       ]
 
       let cables = [
@@ -3401,11 +3401,26 @@ const Scenes = {
       ]
 
       // Connection Logic
-      Scenes.items.part_2_connections_box.set(435,-40).show("flex")
+      Scenes.items.part_2_connections_box.set(435,-40).hide()
+      // onclick
+      Scenes.items.btn_connections.item.onclick = ()=>{
+        Scenes.items.part_2_connections_box.show("flex")
+        Dom.setBlinkArrowRed(true,500,35,35,null,90).play()
+      }
       let box_buttons = document.querySelectorAll(".part_2_connections_box button")
 
+      let btnClickedCount = 0
       box_buttons.forEach((ele,i)=>{
         ele.onclick = ()=>{
+          // increasing count of complete connection
+          if(ele.style.color!="white"){
+            btnClickedCount++
+            if(btnClickedCount==10){
+              Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
+              setCC("Click on Connections Completed")
+            }
+          }
+          
           cables[i].show()
           ele.style.backgroundColor = cables_color[i]
           ele.style.color = "white"
@@ -3413,8 +3428,42 @@ const Scenes = {
         }
       })
 
+      Dom.setBlinkArrowRed(true,745,250,35,null,180).play()
+      setCC("Click on Connections")
 
-      return true;
+      //! Onclick for check connections
+      Scenes.items.btn_connectons_completed.item.onclick = ()=>{
+        
+        if(btnClickedCount==10){
+          
+          //! First red button click 
+          Scenes.items.part_1_slide_3_compo_1_text.set(178,144,50).zIndex(10)
+          Dom.setBlinkArrowRed(true,186,113).play()
+          setCC("Switch on Main Supply")
+          Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
+            
+            Scenes.items.part_2_conncection_supply_1_red_button.hide()
+            Scenes.items.part_1_slide_3_compo_1_text.hide()
+            //! Second red button click
+            
+            Scenes.items.part_1_slide_3_compo_2_text.set(178,338,56).zIndex(10)
+            Dom.setBlinkArrowRed(true,186,306).play()
+            setCC("Switch on Gate Supply")
+
+            Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
+              Scenes.items.part_2_conncection_supply_2_red_button.hide()
+              Scenes.items.part_1_slide_3_compo_2_text.hide()
+
+              Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
+              setCC("Click on Start Experiment")
+            }
+          }
+          
+        }
+      }
+
+
+      return true
     }),
     (step5 = function () {
       setIsProcessRunning(true);
@@ -4796,7 +4845,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2;
+Scenes.currentStep = 5;
 
 Scenes.next();
 // Scenes.steps[3]()
@@ -4866,7 +4915,7 @@ function btnPopupBox() {
     }
   };
 }
-btnPopupBox();
+// btnPopupBox();
 
 // i really enjoyed the voice of keybord
 // its amazing

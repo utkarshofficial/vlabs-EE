@@ -376,5 +376,23 @@ body{
     border-radius: 10px;
   }
 
+  .pointer{
+    cursor: pointer;
+  }
+
+  .btn-img{
+    transition: 0.1s;
+  }
+  .btn-img:hover{
+    scale: 0.95;
+  }
+  .btn-img:active{
+    filter: opacity(0.9);
+  }
+
+  .btn-img-disabled{
+    /* filter: grayscale(1); */
+  }
+
   
   
