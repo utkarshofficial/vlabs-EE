@@ -1,152 +1,136 @@
 const sliders = {
-  //to catch the select option header
-  selectOpHeader1: document.querySelector(".header_c"),
-  selectOpHeader2: document.querySelector(".header_v"),
-  selectOpHeader3: document.querySelector(".header_r"),
-  selectContainers: document.querySelectorAll(".select-container"),
-  //to catch the select option
-  selectOp1: document.querySelector(".slider_C"),
-  selectOp2: document.querySelector(".slider_vIn"),
-  selectOp3: document.querySelector(".slider_R"),
-  selectOptions: [],
-  selectOpHeaders: [],
-  slider: document.querySelector(".slider_D"),
-  sliderInput: document.querySelector(".slider_D_input"),
-  sliderHeader: document.querySelector(".header_d"),
-  
+  slider_vIn: new Dom(".slider_vIn"),
+  slider_vGs: new Dom(".slider_vGs"),
+  slider_R: new Dom(".slider_R"),
+
+  slider_vIn_label: new Dom(".temp-title5"),
+  slider_vGs_label: new Dom(".temp-title6"),
+  slider_R_label: new Dom(".temp-title7"),
+
+  //! we using temptitle10 as a record btn
+  // show we can update the table according to the button click
+  btn_record: new Dom(".temp-title10"),
+
+
   init(){
-    this.selectOptions = [this.selectOp1,this.selectOp2,this.selectOp3]
-    this.changeValue()
-    this.selectOpHeaders = [this.selectOpHeader1, this.selectOpHeader2, this.selectOpHeader3]
+    this.updateLabels()
+    let styles = {
+      fontSize: "small",
+      padding: "0 5px",
+      textAlign: "center",
+      width: "fit-content",
+      color: "black",
+      border: "2px solid black",
+      backgroundColor: "white",
+    }
+    this.slider_vIn_label.styles(styles)
+    this.slider_vGs_label.styles(styles)
+    this.slider_R_label.styles(styles)
   },
-  //to change the header of option
-  changeHeader(idx, headerTitle) {
-    this.selectOpHeaders[idx].innerHTML = headerTitle
-  },
-  //to change the option in select
-  generateOptionsFor(stepIndex) {
-    function genOptions(selectEleOpn,opsArr,opsArr2=null){
-      let strOps = `<option value="">Select</option>`;
-      for (let ops in opsArr) {
-        let ops2 = opsArr[ops]
-        if(opsArr2!=null){
-          ops2 = opsArr2[ops]
+  
+  // part: 1_1, 1_2, 2
+  showSliderFor(part){
+    switch(part){
+      case "1_1":
+
+        break
+
+      case "1_2":
+
+        break
+        
+      case "2":
+        this.slider_vIn.set(34,33,23).zIndex(10)
+        this.slider_vGs.set(4,364,23).zIndex(10)
+        this.slider_R.set(329,362,23).zIndex(10)
+
+        this.slider_vIn_label.set(185,65)
+        this.slider_vGs_label.set(242,364)
+        this.slider_R_label.set(502,364)
+        
+        // ! vGs onclick
+        var differences = [69, 27, 26, 28, 25, 25, 19];
+        var currentDifferenceIndex = 0;
+        // for the slider vgs
+        let value_vGs = 0
+        this.slider_vGs.item.onclick = ( )=>{
+          if (currentDifferenceIndex < differences.length) {
+            // Get the current difference
+            var currentDifference = differences[currentDifferenceIndex];
+            if(currentDifferenceIndex==0)
+              value_vGs = 4
+            else
+              value_vGs++
+    
+            // Animate the translation on each click
+            this.sliderAnime(this.slider_vGs,currentDifference,value_vGs)
+            currentDifferenceIndex++;
+
+            // !we using temptitle10 as a record btn
+            this.btn_record.item.click()
+          }
         }
-        strOps += `<option value="${opsArr[ops]}">${ops2}</option>`;
-      }
-      selectEleOpn.innerHTML = strOps;
-    }
-    switch(stepIndex){
-      case 0:
-      case 1:
-        this.enableAll()
-        this.changeHeader(0,"Characteristics")
-        genOptions(this.selectOptions[0],["D-vs-M","D-vs-I","D-vs-V"],
-        ["D-vs-M","D-vs-I&#x2080;","D-vs-V&#x2080;"])
 
-        this.changeHeader(1,"V<sub>in</sub> (V)")
-        genOptions(this.selectOptions[1],[24,36,48])
-        
-        this.changeHeader(2,"R (Ω)")
-        genOptions(this.selectOptions[2],[12,24,36])
+        // ! vIn onclick 
+        this.slider_vIn.item.onclick = ()=>{
+          let value_vIn = 200
+          this.sliderAnime(this.slider_vIn,0,value_vIn,159)
+        }
 
-        this.setSlider(0.1,0.9,0.01,"D")
-        this.enableAll()
-        break
-
-      case 2:
-        this.enableAll()
-        this.changeHeader(0,"Characteristics")
-        genOptions(this.selectOptions[0],["P-vs-Losses","P-vs-Efficiency"],
-        ["P&#x2080;-vs-Losses","P&#x2080;-vs-Efficiency"])
-
-        this.changeHeader(1,"V<sub>in</sub> (V)")
-        genOptions(this.selectOptions[1],[24,36,48])
-        
-        this.changeHeader(2,"D")
-        genOptions(this.selectOptions[2],[0.25,0.50,0.75])
-
-        this.setSlider(10, 100, 1, "R (Ω)")
-        this.enableAll()
-        break
-      
-      case 3:
-        this.enableAll()
-        this.changeHeader(0,"V<sub>in</sub> (V)")
-        genOptions(this.selectOptions[0],[24,36,48])
-        
-        this.changeHeader(1,"R")
-        genOptions(this.selectOptions[1],[20,30,40])
-
-        this.changeHeader(2,"D")
-        genOptions(this.selectOptions[2],[0.25,0.50,0.75])
-
-        this.hideSliderAndOption(3)
+        // ! R onclick 
+        this.slider_R.item.onclick = ()=>{
+          let value_R = 50
+          this.sliderAnime(this.slider_R,0,value_R,376)
+        }
         break
     }
   },
-
-  changeValue(maxValue) {
-    this.slider.oninput = () => {
-      this.sliderInput.value = this.slider.value;
-    }
-
-    this.sliderInput.onkeyup = () => {
-      if (this.slider.value > maxValue) {
-        this.slider.value = maxValue;
+  sliderAnime(target,translateX,value,left="",complete=null){
+    anime({
+      targets: target.item,
+      translateX: `+=${translateX}`, 
+      left: left,
+      easing: 'easeInOutQuad', 
+      duration: 600, 
+      complete: ()=> {
+        this.updateLabels()
+        if(complete!=null){
+          complete()
+        }
       }
-      this.slider.value = this.sliderInput.value;
-    }
+    });
+    // set value of slider
+    target.item.attributes['value'].value = value
   },
+  updateLabels(){
+    this.slider_vIn_label.setContent(
+      `${this.getVal(this.slider_vIn)}<br>volts`
+    )
+    this.slider_vGs_label.setContent(
+      `${this.getVal(this.slider_vGs)}<br>volts`
+    )
+    this.slider_R_label.setContent(
+      `${this.getVal(this.slider_R)}<br>ohms`
+    )
+  },
+  labelAnime(target,value){
+    // let currentValue = Number(target.item.innerHTML.slice(0,target.item.innerHTML.indexOf("<")))
 
-  disable(...selectIndex) {
-    selectIndex.forEach(index=>{
-      if(index==3){
-        this.slider.disabled = true
-        this.sliderInput.disabled = true
-        this.selectContainers[index].classList.add("disabled")
-      }else{
-        this.selectOptions[index].disabled = true
-        this.selectContainers[index].classList.add("disabled")
-      }
-    })
+    // anime({
+    //   targets: target.item,
+    //   duration: 600,
+    //   easing: "linear",
+    //   innerHTML: [currentValue,]
+    // })
   },
-  enableAll(){
-    this.selectOptions.forEach(ele=>{
-      ele.disabled = false
-    })
-    this.selectContainers.forEach(ele=>{
-      ele.classList.remove("disabled")
-    })
-    this.slider.disabled = false
-    this.sliderInput.disabled = false
-    this.showSliderAndOptions()
-  },
-  hideSliderAndOption(opsIdx){
-    let sliderArr = document.querySelectorAll(".select-container")
-    sliderArr[opsIdx].style.display="none"
-  },
-  showSliderAndOptions(){
-    for(let i =0; i<3;i++){
-      this.selectContainers[i].style.display = "block"
-    }
-    this.selectContainers[3].style.display = "flex"
-  },
-
-  setSlider(min,max,step,title){
-    this.slider.value = min
-    this.slider.min = min
-    this.slider.max = max
-    this.slider.step = step
-
-    this.sliderInput.value = min
-    this.sliderInput.min = min
-    this.sliderInput.max = max
-
-    this.sliderHeader.innerHTML = title
-
-    this.changeValue(max)
-  },
+  getVal(dom){
+    return dom.item.attributes['value'].value
+  }
 }
 
-sliders.init()
+setTimeout(() => {
+  sliders.init()
+  // Change this for your step
+  sliders.showSliderFor("2")
+}, 1000);
+

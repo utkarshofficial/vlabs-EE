@@ -38,3 +38,24 @@
   .part_1_1_connections_box{
     display: none;
   }
+
+/* Table style */
+.table{
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.table td, .table th {
+  height: 25px;
+  padding: 0 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.part_2_table th{
+  background-color: #002060;
+  color: white;
+}

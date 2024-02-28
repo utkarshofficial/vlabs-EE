@@ -267,15 +267,6 @@ const setIsProcessRunning = (value) => {
   }
 };
 
-// global for document object
-const get = (query) => {
-  return document.querySelector(query);
-};
-
-const getAll = (query) => {
-  return document.querySelectorAll(query);
-};
-
 const show = (ele, disp = "block", opa = 1) => {
   ele.style.display = disp;
   ele.style.opacity = opa;
@@ -350,225 +341,7 @@ function setCC(text = null, speed = 25) {
   return ccDom;
 }
 
-class Dom {
-  constructor(selector) {
-    this.item = null;
-    if (selector[0] == "." || selector[0] == "#") {
-      this.item = get(selector);
-    } else if (selector instanceof HTMLElement) {
-      this.item = selector;
-    } else {
-      this.item = src.get(selector);
-    }
-    this.selector = selector;
-    // push
-  }
-  hidden(isHidden) {
-    if (isHidden == false) this.item.style.visibility = "visible";
-    else this.item.style.visibility = "hidden";
-  }
-  setContent(text) {
-    this.item.innerHTML = text;
-    return this;
-  }
-  zIndex(idx) {
-    this.item.style.zIndex = idx;
-    return this;
-  }
-  opacity(val = 1) {
-    this.item.style.opacity = val;
-    return this;
-  }
-  rotate(deg) {
-    this.item.style.transform = `rotate(${deg}deg)`;
-    return this;
-  }
-  addClass(className) {
-    this.item.classList.add(className);
-    return this;
-  }
-  removeClass(className) {
-    this.item.classList.remove(className);
-    return this;
-  }
-  borderRadius(amount) {
-    amount += "px";
-    this.styles({
-      borderRadius: amount,
-    });
-  }
-  scale(val = 1) {
-    this.item.style.scale = val;
-    return this;
-  }
-  get() {
-    return this.item;
-  }
-  set(
-    left = null,
-    top = null,
-    height = null,
-    width = null,
-    bottom = null,
-    right = null,
-    disp = "block"
-  ) {
-    // coordinates
-    this.left = left;
-    this.top = top;
-    this.bottom = bottom;
-    this.right = right;
-    this.height = height;
-    this.width = width;
-    this.item.style.opacity = 1;
-    this.item.style.transform = "translateX(0) translateY(0)";
-
-    if (this.left !== null) this.item.style.left = String(this.left) + "px";
-    if (this.top !== null) this.item.style.top = String(this.top) + "px";
-    if (this.bottom !== null)
-      this.item.style.bottom = String(this.bottom) + "px";
-    if (this.right !== null) this.item.style.right = String(this.right) + "px";
-    if (this.height !== null)
-      this.item.style.height = String(this.height) + "px";
-    if (this.width !== null) this.item.style.width = String(this.width) + "px";
-    this.show(disp);
-    return this;
-  }
-  show(disp = "block") {
-    //! push for every element
-    this.push();
-
-    this.item.style.display = disp;
-    // this.opacity();
-    return this;
-  }
-  hide() {
-    this.item.style.display = "none";
-    return this;
-  }
-  play(speed = 1) {
-    this.item.play();
-    this.item.playbackRate = speed;
-    return this;
-  }
-  // for setting styles
-  styles(props) {
-    for (let property in props) {
-      this.item.style[property] = props[property];
-    }
-    return this;
-  }
-  // * static elements/objects of anime
-  static arrayOfAnimes = [];
-  static arrayOfItems = [];
-  static animePush(animeObj) {
-    Dom.arrayOfAnimes.push(animeObj);
-  }
-  static resetAnimeItems() {
-    Dom.arrayOfAnimes = [];
-  }
-  static hideAll() {
-    //to empty the setCC
-    setCC("");
-    // to delete all content of content adder menu
-    Scenes.items.contentAdderBox.setContent("");
-    for (let i of Dom.arrayOfItems) {
-      i.hide();
-      i.opacity();
-    }
-    // * reset animes
-    for (let i of Dom.arrayOfAnimes) {
-      // to reset each anime after back btn pressed
-      i.reset();
-    }
-    Dom.resetItems();
-  }
-  static resetItems() {
-    Dom.arrayOfItems = [];
-  }
-  static setBlinkArrowRed(
-    isX = true,
-    left = null,
-    top = null,
-    height = 30,
-    width = null,
-    rotate = 0
-  ) {
-    let blinkArrow = new Dom(".blinkArrowRed")
-      .set(left, top, height, width)
-      .rotate(rotate)
-      .zIndex(10000);
-    if (isX === -1) {
-      blinkArrow.hide();
-      return;
-    }
-    let x = 0,
-      y = 0;
-    if (isX) {
-      x = 20;
-    } else {
-      y = 20;
-    }
-    var blink = anime({
-      targets: blinkArrow.item,
-      easing: "easeInOutQuad",
-      opacity: 1,
-      translateX: x,
-      translateY: y,
-      direction: "alternate",
-      loop: true,
-      autoplay: false,
-      duration: 300,
-    });
-
-    return blink;
-  }
-  static setBlinkArrow(
-    isX = true,
-    left = null,
-    top = null,
-    height = 60,
-    width = 60,
-    rotate = 0
-  ) {
-    // because we added the blinkArrow image out of the anime-main
-    top += 130;
-    let blinkArrow = new Dom(".blinkArrow")
-      .set(left, top, height, width)
-      .rotate(rotate)
-      .zIndex(10000);
-    if (isX === -1) {
-      blinkArrow.hide();
-      return;
-    }
-    let x = 0,
-      y = 0;
-    if (isX) {
-      x = 20;
-    } else {
-      y = 20;
-    }
-    var blink = anime({
-      targets: blinkArrow.item,
-      easing: "easeInOutQuad",
-      opacity: 1,
-      translateX: x,
-      translateY: y,
-      direction: "alternate",
-      loop: true,
-      autoplay: false,
-      duration: 300,
-    });
-
-    return blink;
-  }
-  push() {
-    if (this.selector != ".anime-header") Dom.arrayOfItems.push(this);
-    return this;
-  }
-  forMathematicalExpressionBtn = 0;
-}
-
+// ! class Dom{} is send to seperate file
 // * for cursor pointer
 function cursorPointer(ele) {
   ele.style.cursor = "pointer";
@@ -701,11 +474,10 @@ const Scenes = {
     part3_table_three: new Dom(".part3_table_three"),
     part3_table_four: new Dom(".part3_table_four"),
     part3_table_four_2: new Dom(".part3_table_four_2"),
+    
     slider_vIn: new Dom(".slider_vIn"),
-    slider_D: new Dom(".slider_D"),
+    slider_vGs: new Dom(".slider_vGs"),
     slider_R: new Dom(".slider_R"),
-    slider_C: new Dom(".slider_C"),
-    slider_box: new Dom(".slider-box"),
    
     btn_delete: new Dom(".btn-delete"),
     btn_reset: new Dom(".btn-reset"),
@@ -832,6 +604,8 @@ const Scenes = {
     part_1_components_1 : new Dom("part_1_components_1"),
     part_1_components_2 : new Dom("part_1_components_2"),
 
+    // part2 calculation
+    part_2_calculation_components : new Dom("part_2_calculation_components"),
 
     domQs1: new Dom("domQs1"),
     domQs2: new Dom("domQs2"),
@@ -880,6 +654,132 @@ const Scenes = {
         y: "Label 1",
       },
     },
+  },
+  // ! To Plot graph
+  plotGraph(
+    ctx,
+    graphIdx,
+    data,
+    dataLabel,
+    xLabel = null,
+    yLabel = null,
+    beginAtZero = false
+  ) {
+    // for label
+    Scenes.items.yLabel.set(504, 263).setContent(yLabel).styles({
+      backgroundColor: "transperant",
+      textAlign: "center",
+      color: "black",
+      width: "170px",
+      rotate: "-90deg",
+      zIndex: 10,
+    });
+    Scenes.items.xLabel.set(664, 375).setContent(xLabel).styles({
+      backgroundColor: "transperant",
+      color: "black",
+      width: "fit-content",
+      zIndex: 10,
+    });
+
+    // ! Destroy old graph
+    let graphRef = Scenes.items.chart[graphIdx];
+    if (graphRef != null) {
+      graphRef.destroy();
+    }
+
+    graphRef = new Chart(ctx, {
+      type: "scatter",
+      plugins: [
+        {
+          // afterDraw: chart => {
+          //   var ctx = chart.chart.ctx;
+          //   ctx.save();
+          //   ctx.textAlign = 'center';
+          //   ctx.font = '18px Arial';
+          //   ctx.fillStyle = 'black';
+          //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
+          //   ctx.textAlign = 'left';
+          //   ctx.font = '10px Arial';
+          //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
+          //   ctx.restore();
+          // },
+        },
+      ],
+      data: {
+        datasets: [
+          {
+            label: dataLabel,
+            fill: false,
+            borderColor: "red",
+            backgroundColor: "red",
+            data: data,
+            display: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: false,
+                labelString: yLabel,
+                fontColor: "black",
+                fontSize: 17,
+              },
+              ticks: {
+                beginAtZero: beginAtZero,
+                fontColor: "black",
+                fontSize: 14,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: false,
+                labelString: xLabel,
+                fontColor: "black",
+                fontSize: 17,
+              },
+              ticks: {
+                beginAtZero: beginAtZero,
+                fontColor: "black",
+                fontSize: 14,
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    Scenes.items.chart[graphIdx] = graphRef;
+    return graphRef
+  },
+
+  // for adding new datasets to graph
+  graphFeatures: {
+    addDataset(chart, label, bgColor, data) {
+      chart.data.datasets.push({
+        label: label,
+        fill: false,
+        borderColor: bgColor,
+        backgroundColor: bgColor,
+        data: data,
+      });
+      chart.update();
+    },
+    addData(chart, index, data) {
+      console.log(data);
+      if (data.length > 0) {
+        chart.data.datasets[index].data = data;
+      } else {
+        chart.data.datasets[index].data.push(data);
+      }
+      chart.update();
+    }
   },
   deleteAll() {
     for (i in this.img) {
@@ -3637,12 +3537,64 @@ const Scenes = {
           }
         }
       }
-      partConnections()
+      hideConnectionStepImgs()
+      // partConnections()
 
       //! Graph Part
       function partCalculation(){
-        
+        Scenes.items.part_2_calculation_components.set(0,0)
+        Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
+        Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
+        Scenes.items.btn_plot.set(785,70,50).zIndex(10)
+
+        // * Graph section
+        Scenes.items.graph_box_3.set(575,162,null,370).zIndex(10)
+        let ctx = Scenes.items.graph3.item
+        let graphIdx = 2
+        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
+        let yLabel = "Drain Current (I<sub>D</sub>)"
+        let dataLabel = "vDS = 50"
+        // ploting empty graph
+        let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
+
+
+        let table = new Dom(".part_2_table").set(600,-76).item
+        // * assume tempTitle10 as a btn record
+        let btn_record = sliders.btn_record.item
+
+        // ! btn_record onclick
+        let recordBtnIdx = 0
+        btn_record.onclick = ()=>{
+          let rows = table.tBodies[0].rows
+          if(recordBtnIdx >= rows.length){
+            return
+          }
+
+          // * Filling Table
+          rows[recordBtnIdx].cells[0].innerHTML = "10"
+          rows[recordBtnIdx].cells[1].innerHTML = "12"
+          recordBtnIdx++
+
+          // to plot the data
+          if(recordBtnIdx == rows.length){
+            // todo arrow for plot and active the plot btn
+            // ! btn Plot onclick
+            Scenes.items.btn_plot.item.onclick = ()=>{
+              console.log("don")
+              let data = []
+              for(let row of rows){
+                let x = row.cells[0].innerHTML
+                let y = row.cells[1].innerHTML
+                data.push({x,y})
+              }
+
+              Scenes.graphFeatures.addData(graphRef,0,data)
+            }
+          }
+        }
+
       }
+      partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
@@ -5034,7 +4986,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3;
+Scenes.currentStep = 5;
 
 Scenes.next();
 // Scenes.steps[3]()
