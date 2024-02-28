@@ -16,11 +16,11 @@ def dom(name):
     return f'{name1} : new Dom("{name1}"),\n'
 
 
-sneha_folder_path = "E:\\office project\\vlabs-EE\\EE4\\src\\images\\exp4\\part2\\"
+sneha_folder_path = "E:\\office project\\vlabs-EE\\EE4\\src\\images\\new imgs\\"
 
-utkarsh_folder_path = "S:\\Users\\Utkarsh\\Documents\\Office Main\\All Projects Repo\\vlabs-EE\\EE4\\src\\images\\exp4\\part2\\"
+# utkarsh_folder_path = "S:\\Users\\Utkarsh\\Documents\\Office Main\\All Projects Repo\\vlabs-EE\\EE4\\src\\images\\exp4\\part2\\"
 
-names = os.listdir(utkarsh_folder_path)
+names = os.listdir(sneha_folder_path)
 
 # namesStr = ''
 # for name in names:

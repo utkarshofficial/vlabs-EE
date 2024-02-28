@@ -84,6 +84,30 @@ const src = {
       part_2_conncection_supply_2_red_button:this.allImgsDom[index++],
       part_2_connections_components:this.allImgsDom[index++],
 
+      //* new images added
+      
+
+part_1_1_cable_a2:this.allImgsDom[index++],
+part_1_1_cable_n2:this.allImgsDom[index++],
+part_1_1_cable_p1:this.allImgsDom[index++],
+part_1_1_cable_p2:this.allImgsDom[index++],
+part_1_1_cable_r2:this.allImgsDom[index++],
+part_1_1_cable_s:this.allImgsDom[index++],
+part_1_1_cable_v1:this.allImgsDom[index++],
+part_1_1_cable_v2:this.allImgsDom[index++],
+part_1_2_cable_a1:this.allImgsDom[index++],
+part_1_2_cable_cp:this.allImgsDom[index++],
+part_1_2_cable_dvp:this.allImgsDom[index++],
+part_1_2_cable_n2:this.allImgsDom[index++],
+part_1_2_cable_p1:this.allImgsDom[index++],
+part_1_2_cable_p2:this.allImgsDom[index++],
+part_1_2_cable_r1:this.allImgsDom[index++],
+part_1_2_cable_s:this.allImgsDom[index++],
+part_1_2_cable_v1:this.allImgsDom[index++],
+part_1_2_cable_v2:this.allImgsDom[index++],
+part_1_components_1:this.allImgsDom[index++],
+part_1_components_2:this.allImgsDom[index++],
+
       // * Question Mark
       domQs1: this.allQsDom[0],
       domQs2: this.allQsDom[1],
