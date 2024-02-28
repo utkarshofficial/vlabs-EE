@@ -3402,22 +3402,34 @@ const Scenes = {
 
       // Connection Logic
       Scenes.items.part_2_connections_box.set(435,-40).hide()
-      // onclick
+
+      //! connection box onclick
       Scenes.items.btn_connections.item.onclick = ()=>{
         Scenes.items.part_2_connections_box.show("flex")
+        // ! connection table arrow move
         Dom.setBlinkArrowRed(true,500,35,35,null,90).play()
+        setCC("")
       }
       let box_buttons = document.querySelectorAll(".part_2_connections_box button")
 
+      //! connection box onclick
       let btnClickedCount = 0
+      let connectionBtnArrow = 500
+      let arrowLeftGap = 43
       box_buttons.forEach((ele,i)=>{
         ele.onclick = ()=>{
           // increasing count of complete connection
           if(ele.style.color!="white"){
             btnClickedCount++
+            //! move arrow 
+            connectionBtnArrow += arrowLeftGap
+            Dom.setBlinkArrowRed(true,connectionBtnArrow,35,35,null,90).play()
+            
             if(btnClickedCount==10){
               Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
               setCC("Click on Connections Completed")
+
+              Scenes.items.btn_connections.item.onclick = ()=>{}
             }
           }
           
@@ -3459,6 +3471,16 @@ const Scenes = {
             }
           }
           
+        }
+        else{
+          Scenes.items.part_1_incomplete_connection.set(570,300,50).zIndex(10)
+          anime({
+            targets: Scenes.items.part_1_incomplete_connection.item,
+            delay: 2000,
+            complete(){
+              Scenes.items.part_1_incomplete_connection.hide()
+            }
+          })
         }
       }
 
