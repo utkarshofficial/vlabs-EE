@@ -808,6 +808,29 @@ const Scenes = {
     part_2_connections_components : new Dom("part_2_connections_components"),
     // connection box
     part_2_connections_box: new Dom(".part_2_connections_box"),
+    part_1_1_connections_box: new Dom(".part_1_1_connections_box"),
+
+    //new images added for part1 
+    part_1_1_cable_a2 : new Dom("part_1_1_cable_a2"),
+    part_1_1_cable_n2 : new Dom("part_1_1_cable_n2"),
+    part_1_1_cable_p1 : new Dom("part_1_1_cable_p1"),
+    part_1_1_cable_p2 : new Dom("part_1_1_cable_p2"),
+    part_1_1_cable_r2 : new Dom("part_1_1_cable_r2"),
+    part_1_1_cable_s : new Dom("part_1_1_cable_s"),
+    part_1_1_cable_v1 : new Dom("part_1_1_cable_v1"),
+    part_1_1_cable_v2 : new Dom("part_1_1_cable_v2"),
+    part_1_2_cable_a1 : new Dom("part_1_2_cable_a1"),
+    part_1_2_cable_cp : new Dom("part_1_2_cable_cp"),
+    part_1_2_cable_dvp : new Dom("part_1_2_cable_dvp"),
+    part_1_2_cable_n2 : new Dom("part_1_2_cable_n2"),
+    part_1_2_cable_p1 : new Dom("part_1_2_cable_p1"),
+    part_1_2_cable_p2 : new Dom("part_1_2_cable_p2"),
+    part_1_2_cable_r1 : new Dom("part_1_2_cable_r1"),
+    part_1_2_cable_s : new Dom("part_1_2_cable_s"),
+    part_1_2_cable_v1 : new Dom("part_1_2_cable_v1"),
+    part_1_2_cable_v2 : new Dom("part_1_2_cable_v2"),
+    part_1_components_1 : new Dom("part_1_components_1"),
+    part_1_components_2 : new Dom("part_1_components_2"),
 
 
     domQs1: new Dom("domQs1"),
@@ -3026,230 +3049,346 @@ const Scenes = {
 
     //   return true;
     // }),
+
     (step2 = function () {
       setIsProcessRunning(true);
 
       Scenes.setStepHeading("", "Output Characterisitics Using Meters.");
-
       Scenes.items.btn_next.show();
-      function stepTutorial2() {
-        setCC("Select V<sub>in</sub>");
-        Dom.setBlinkArrowRed(true, 110, 89, 30, 30, 90).play();
+      // ! Step Connection
 
-        sliders.selectOp2.oninput = () => {
-          Dom.setBlinkArrowRed(true, 270, 89, 30, 30, 90).play();
-          setCC("Select R");
-
-          sliders.selectOp3.oninput = () => {
-            Dom.setBlinkArrowRed(true, 90, 144, 30, 30, 90).play();
-            setCC("Select D");
-
-            sliders.slider.onclick = () => {
-              Dom.setBlinkArrowRed(true, 400, 8, 30, 30, 90).play();
-              setCC("Press Record");
-            };
-          };
-        };
-      }
-      // stepTutorial2()
-      //! Required Items
-
-      Scenes.items.part_1_slide_1.set(0, -30, 440, 950);
-      Scenes.items.btn_instructions.set(750 + 40, 200, 50).zIndex(1);
-      Scenes.items.btn_connections.set(750 + 40, 200 + 55, 50).zIndex(1);
+      // required elements 
+      Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(10);
+      Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(10);
       Scenes.items.btn_connectons_completed
-        .set(750 + 40, 200 + 110, 50, 147)
-        .zIndex(1);
+        .set(750 + 40, 190 + 110, 50, 147)
+        .zIndex(10);
       Scenes.items.btn_start_experiment
-        .set(750 + 40, 200 + 165, 50, 147)
-        .zIndex(1);
-      Scenes.items.btn_reset.set(660, 200 + 165, 40).zIndex(1);
+        .set(750 + 40, 190 + 165, 50, 147)
+        .zIndex(10);
+      Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(10);
 
+      // required images
+      let images = [
+        // Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
+        // Scenes.items.part_2_conncection_supply_1_red_button.set(150,118,20,23).zIndex(10),
+        // Scenes.items.part_2_conncection_supply_2_red_button.set(155,311,22,23).zIndex(10),
 
-      // Scenes.items.part_1_table_1.set(520,-60)
-      // Scenes.items.method_1_cable_red.set(55,170, 230).zIndex(1)
-      // Scenes.items.method_1_cable_blue.set(352,346, 48).zIndex(1)
-      // Scenes.items.method_1_cable_green.set(460,95, 300).zIndex(1)
-      // Scenes.items.method_1_cable_black_top.set(0,-20, 230).zIndex(2)
-      // Scenes.items.method_1_cable_yellow.set(75,350,50).zIndex(2)
-      // Scenes.items.method_1_cable_black_bottom.set(30,300, 100).zIndex(2)
-      // Scenes.items.method_1_cable_pink.set(270,150, 230).zIndex(2)
-      // Scenes.items.method_1_cable_purple.set(350,150, 230).zIndex(2)
+        Scenes.items.part_1_components_1.set(0,0)
 
-      // Scenes.items.part_1_incomplete_connection.set(620, 310, 50, 160)
+      ]
 
+      let cables = [
+        Scenes.items.part_1_1_cable_p1.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_s.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_a2.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_r2.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_p2.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_n2.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_v1.set(0,0).zIndex(1).hide(),
+        Scenes.items.part_1_1_cable_v2.set(0,0).zIndex(1).hide(),
+      ]
 
+      let cables_color = [
+        "#970101",
+        "#1a2f55",
+        "#186a3b",
+        "#181818",
+        "#ffd90e",
+        "#181818",
+        "#cf426d",
+        "#560056",
+      ]
+      
+      // Connection Logic
+      // Scenes.items.part_1_1_connections_box.set(435,-40)
+      // onclick
+      Scenes.items.btn_connections.item.onclick = ()=>{
+        Scenes.items.part_1_1_connections_box.set(480, -40).show("flex")
+        Dom.setBlinkArrowRed(true,555,35,35,null,90).play()
+      }
+      let box_buttons = document.querySelectorAll(".part_1_1_connections_box button")
 
-      Dom.setBlinkArrowRed(true, 755, 210, 30, 30, 180).play();
-
-      let cableJoin = 0;
-
-      let options = [
-        Scenes.items.btn_instructions,
-        Scenes.items.btn_connections,
-        Scenes.items.btn_connectons_completed,
-        Scenes.items.btn_start_experiment,
-        Scenes.items.btn_reset,
-      ];
-
-      //! onclick for INSTRUCTIONS
-      const opOne = () => {
-        Scenes.items.part_1_instructions_box.set(220, 60, 250).zIndex(2);
-        Dom.setBlinkArrowRed(true, 755, 265, 30, 30, 180).play();
-      };
-
-      //! onclick for CONNECTIONS
-      const opTwo = () => {
-        Scenes.items.part_1_instructions_box.hide()
-        Scenes.items.part_1_table_1.set(520,-60)
-
-        let cols = [
-          Scenes.items.part_1_table_1_col_1,
-          Scenes.items.part_1_table_1_col_2,
-          Scenes.items.part_1_table_1_col_3,
-          Scenes.items.part_1_table_1_col_4,
-          Scenes.items.part_1_table_1_col_5,
-          Scenes.items.part_1_table_1_col_6,
-          Scenes.items.part_1_table_1_col_7,
-          Scenes.items.part_1_table_1_col_8,
-        ]
-
-        const opOne = () => {
-          Scenes.items.method_1_cable_red.set(55,170, 230).zIndex(1)
-          cableJoin++;
-        }
-
-        const opTwo = () => {
-          Scenes.items.method_1_cable_blue.set(352,346, 48).zIndex(1)
-          cableJoin++;
+      let btnClickedCount = 0
+      box_buttons.forEach((ele,i)=>{
+        ele.onclick = ()=>{
+          // increasing count of complete connection
+          if(ele.style.color!="white"){
+            btnClickedCount++
+            if(btnClickedCount==10){
+              Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
+              setCC("Click on Connections Completed")
+            }
+          }
           
+          cables[i].show()
+          ele.style.backgroundColor = cables_color[i]
+          ele.style.color = "white"
+          ele.style.textShadow = "1px 1px black"
         }
-        const opThree = () => {
-          Scenes.items.method_1_cable_green.set(460,95, 300).zIndex(1)
-          cableJoin++;
+      })
 
-        }
-        const opFour = () => {
-          Scenes.items.method_1_cable_black_top.set(0,-20, 230).zIndex(2)
-          cableJoin++;
+      Dom.setBlinkArrowRed(true,745,250,35,null,180).play()
+      setCC("Click on Connections")
 
-        }
-        const opFive = () => {
-          Scenes.items.method_1_cable_yellow.set(75,350,50).zIndex(2)
-          cableJoin++;
-
-        }
-        const opSix = () => {
-          Scenes.items.method_1_cable_black_bottom.set(30,300, 100).zIndex(2)
-          cableJoin++;
-
-        }
-        const opSeven = () => {
-          Scenes.items.method_1_cable_pink.set(270,150, 230).zIndex(2)
-          cableJoin++;
-
-        }
-        const opEight = () => {
-          Scenes.items.method_1_cable_purple.set(350,150, 230).zIndex(2)
-          cableJoin++;
-          console.log(cableJoin);
-        }
-
+      //! Onclick for check connections
+      Scenes.items.btn_connectons_completed.item.onclick = ()=>{
         
-        cols[0].item.onclick = opOne
-        cols[1].item.onclick = opTwo
-        cols[2].item.onclick = opThree
-        cols[3].item.onclick = opFour
-        cols[4].item.onclick = opFive
-        cols[5].item.onclick = opSix
-        cols[6].item.onclick = opSeven
-        cols[7].item.onclick = opEight
+        if(btnClickedCount==10){
+          
+          //! First red button click 
+          Scenes.items.part_1_slide_3_compo_1_text.set(178,144,50).zIndex(10)
+          Dom.setBlinkArrowRed(true,186,113).play()
+          setCC("Switch on Main Supply")
+          // Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
+            
+          //   Scenes.items.part_2_conncection_supply_1_red_button.hide()
+          //   Scenes.items.part_1_slide_3_compo_1_text.hide()
+          //   //! Second red button click
+            
+          //   Scenes.items.part_1_slide_3_compo_2_text.set(178,338,56).zIndex(10)
+          //   Dom.setBlinkArrowRed(true,186,306).play()
+          //   setCC("Switch on Gate Supply")
 
+          //   Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
+          //     Scenes.items.part_2_conncection_supply_2_red_button.hide()
+          //     Scenes.items.part_1_slide_3_compo_2_text.hide()
 
-
-        Dom.setBlinkArrowRed(true, 755, 320, 30, 30, 180).play();
-      };
-
-      //! onclick for CONNECTIONS COMPLETED
-      const opThree = () => {
-        if(cableJoin < 8){
-           Scenes.items.part_1_incomplete_connection.set(620, 310, 50, 160)
-        }
-
-        Dom.setBlinkArrowRed(true, 755, 375, 30, 30, 180).play();
-      };
-
-           let cables = [
-          Scenes.items.method_1_cable_black_bottom,
-          Scenes.items.method_1_cable_black_top,
-          Scenes.items.method_1_cable_blue,
-          Scenes.items.method_1_cable_green,
-          Scenes.items.method_1_cable_pink,
-          Scenes.items.method_1_cable_purple,
-          Scenes.items.method_1_cable_red,
-          Scenes.items.method_1_cable_yellow,
-        ]
-
-
-      //! onclick for START EXPERIMENT
-      const opFour = () => {
-        //* Remove all previous images
-
-        for(let cable of cables){
-          cable.hide();
-        }
-
-        Scenes.items.part_1_slide_1.hide();
-        Scenes.items.btn_instructions.hide();
-        Scenes.items.btn_connections.hide();
-        Scenes.items.btn_connectons_completed.hide();
-        Scenes.items.btn_start_experiment.hide();
-        Scenes.items.btn_reset.hide();
-        Scenes.items.part_1_table_1.hide();
-
-        //*set new images
-        Scenes.items.part_1_slide_2.set(0, -20, 610, 500);
-
-        Scenes.items.btn_plot.set(505, 180, 50).zIndex(1);
-        Scenes.items.btn_procedure.set(505, 200 + 120, 40, 150).zIndex(1);
-        Scenes.items.btn_nomenclature.set(505, 200 + 165, 40, 180).zIndex(1);
-        Scenes.items.part3_table_two.set(505, -70, null, 410);
-
-
-        // Dom.setBlinkArrowRed(true, 755, 210, 30, 30, 180).play();
-        Dom.setBlinkArrowRed(-1)
-      };
-
-      //! onclick for RESET
-      const opFive = () => {
+          //     Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
+          //     setCC("Click on Start Experiment")
+          //   }
+          // }
         
-        // let cables = [
-        //   Scenes.items.method_1_cable_black_bottom,
-        //   Scenes.items.method_1_cable_black_top,
-        //   Scenes.items.method_1_cable_blue,
-        //   Scenes.items.method_1_cable_green,
-        //   Scenes.items.method_1_cable_pink,
-        //   Scenes.items.method_1_cable_purple,
-        //   Scenes.items.method_1_cable_red,
-        //   Scenes.items.method_1_cable_yellow,
-        // ]
-
-        for(let cable of cables){
-          cable.hide();
         }
+      }
 
-        cableJoin = 0;
-        
-      };
 
-      options[0].item.onclick = opOne;
-      options[1].item.onclick = opTwo;
-      options[2].item.onclick = opThree;
-      options[3].item.onclick = opFour;
-      options[4].item.onclick = opFive;
-
-      return true;
+      return true
     }),
+    // (step2 = function () {
+    //   setIsProcessRunning(true);
+
+    //   Scenes.setStepHeading("", "Output Characterisitics Using Meters.");
+
+    //   Scenes.items.btn_next.show();
+    //   function stepTutorial2() {
+    //     setCC("Select V<sub>in</sub>");
+    //     Dom.setBlinkArrowRed(true, 110, 89, 30, 30, 90).play();
+
+    //     sliders.selectOp2.oninput = () => {
+    //       Dom.setBlinkArrowRed(true, 270, 89, 30, 30, 90).play();
+    //       setCC("Select R");
+
+    //       sliders.selectOp3.oninput = () => {
+    //         Dom.setBlinkArrowRed(true, 90, 144, 30, 30, 90).play();
+    //         setCC("Select D");
+
+    //         sliders.slider.onclick = () => {
+    //           Dom.setBlinkArrowRed(true, 400, 8, 30, 30, 90).play();
+    //           setCC("Press Record");
+    //         };
+    //       };
+    //     };
+    //   }
+    //   // stepTutorial2()
+    //   //! Required Items
+
+    //   Scenes.items.part_1_slide_1.set(0, -30, 440, 950);
+    //   Scenes.items.btn_instructions.set(750 + 40, 200, 50).zIndex(1);
+    //   Scenes.items.btn_connections.set(750 + 40, 200 + 55, 50).zIndex(1);
+    //   Scenes.items.btn_connectons_completed
+    //     .set(750 + 40, 200 + 110, 50, 147)
+    //     .zIndex(1);
+    //   Scenes.items.btn_start_experiment
+    //     .set(750 + 40, 200 + 165, 50, 147)
+    //     .zIndex(1);
+    //   Scenes.items.btn_reset.set(660, 200 + 165, 40).zIndex(1);
+
+
+    //   // Scenes.items.part_1_table_1.set(520,-60)
+    //   // Scenes.items.method_1_cable_red.set(55,170, 230).zIndex(1)
+    //   // Scenes.items.method_1_cable_blue.set(352,346, 48).zIndex(1)
+    //   // Scenes.items.method_1_cable_green.set(460,95, 300).zIndex(1)
+    //   // Scenes.items.method_1_cable_black_top.set(0,-20, 230).zIndex(2)
+    //   // Scenes.items.method_1_cable_yellow.set(75,350,50).zIndex(2)
+    //   // Scenes.items.method_1_cable_black_bottom.set(30,300, 100).zIndex(2)
+    //   // Scenes.items.method_1_cable_pink.set(270,150, 230).zIndex(2)
+    //   // Scenes.items.method_1_cable_purple.set(350,150, 230).zIndex(2)
+
+    //   // Scenes.items.part_1_incomplete_connection.set(620, 310, 50, 160)
+
+
+
+    //   Dom.setBlinkArrowRed(true, 755, 210, 30, 30, 180).play();
+
+    //   let cableJoin = 0;
+
+    //   let options = [
+    //     Scenes.items.btn_instructions,
+    //     Scenes.items.btn_connections,
+    //     Scenes.items.btn_connectons_completed,
+    //     Scenes.items.btn_start_experiment,
+    //     Scenes.items.btn_reset,
+    //   ];
+
+    //   //! onclick for INSTRUCTIONS
+    //   const opOne = () => {
+    //     Scenes.items.part_1_instructions_box.set(220, 60, 250).zIndex(2);
+    //     Dom.setBlinkArrowRed(true, 755, 265, 30, 30, 180).play();
+    //   };
+
+    //   //! onclick for CONNECTIONS
+    //   const opTwo = () => {
+    //     Scenes.items.part_1_instructions_box.hide()
+    //     Scenes.items.part_1_table_1.set(520,-60)
+
+    //     let cols = [
+    //       Scenes.items.part_1_table_1_col_1,
+    //       Scenes.items.part_1_table_1_col_2,
+    //       Scenes.items.part_1_table_1_col_3,
+    //       Scenes.items.part_1_table_1_col_4,
+    //       Scenes.items.part_1_table_1_col_5,
+    //       Scenes.items.part_1_table_1_col_6,
+    //       Scenes.items.part_1_table_1_col_7,
+    //       Scenes.items.part_1_table_1_col_8,
+    //     ]
+
+    //     const opOne = () => {
+    //       Scenes.items.method_1_cable_red.set(55,170, 230).zIndex(1)
+    //       cableJoin++;
+    //     }
+
+    //     const opTwo = () => {
+    //       Scenes.items.method_1_cable_blue.set(352,346, 48).zIndex(1)
+    //       cableJoin++;
+          
+    //     }
+    //     const opThree = () => {
+    //       Scenes.items.method_1_cable_green.set(460,95, 300).zIndex(1)
+    //       cableJoin++;
+
+    //     }
+    //     const opFour = () => {
+    //       Scenes.items.method_1_cable_black_top.set(0,-20, 230).zIndex(2)
+    //       cableJoin++;
+
+    //     }
+    //     const opFive = () => {
+    //       Scenes.items.method_1_cable_yellow.set(75,350,50).zIndex(2)
+    //       cableJoin++;
+
+    //     }
+    //     const opSix = () => {
+    //       Scenes.items.method_1_cable_black_bottom.set(30,300, 100).zIndex(2)
+    //       cableJoin++;
+
+    //     }
+    //     const opSeven = () => {
+    //       Scenes.items.method_1_cable_pink.set(270,150, 230).zIndex(2)
+    //       cableJoin++;
+
+    //     }
+    //     const opEight = () => {
+    //       Scenes.items.method_1_cable_purple.set(350,150, 230).zIndex(2)
+    //       cableJoin++;
+    //       console.log(cableJoin);
+    //     }
+
+        
+    //     cols[0].item.onclick = opOne
+    //     cols[1].item.onclick = opTwo
+    //     cols[2].item.onclick = opThree
+    //     cols[3].item.onclick = opFour
+    //     cols[4].item.onclick = opFive
+    //     cols[5].item.onclick = opSix
+    //     cols[6].item.onclick = opSeven
+    //     cols[7].item.onclick = opEight
+
+
+
+    //     Dom.setBlinkArrowRed(true, 755, 320, 30, 30, 180).play();
+    //   };
+
+    //   //! onclick for CONNECTIONS COMPLETED
+    //   const opThree = () => {
+    //     if(cableJoin < 8){
+    //        Scenes.items.part_1_incomplete_connection.set(620, 310, 50, 160)
+    //     }
+
+    //     Dom.setBlinkArrowRed(true, 755, 375, 30, 30, 180).play();
+    //   };
+
+    //        let cables = [
+    //       Scenes.items.method_1_cable_black_bottom,
+    //       Scenes.items.method_1_cable_black_top,
+    //       Scenes.items.method_1_cable_blue,
+    //       Scenes.items.method_1_cable_green,
+    //       Scenes.items.method_1_cable_pink,
+    //       Scenes.items.method_1_cable_purple,
+    //       Scenes.items.method_1_cable_red,
+    //       Scenes.items.method_1_cable_yellow,
+    //     ]
+
+
+    //   //! onclick for START EXPERIMENT
+    //   const opFour = () => {
+    //     //* Remove all previous images
+
+    //     for(let cable of cables){
+    //       cable.hide();
+    //     }
+
+    //     Scenes.items.part_1_slide_1.hide();
+    //     Scenes.items.btn_instructions.hide();
+    //     Scenes.items.btn_connections.hide();
+    //     Scenes.items.btn_connectons_completed.hide();
+    //     Scenes.items.btn_start_experiment.hide();
+    //     Scenes.items.btn_reset.hide();
+    //     Scenes.items.part_1_table_1.hide();
+
+    //     //*set new images
+    //     Scenes.items.part_1_slide_2.set(0, -20, 610, 500);
+
+    //     Scenes.items.btn_plot.set(505, 180, 50).zIndex(1);
+    //     Scenes.items.btn_procedure.set(505, 200 + 120, 40, 150).zIndex(1);
+    //     Scenes.items.btn_nomenclature.set(505, 200 + 165, 40, 180).zIndex(1);
+    //     Scenes.items.part3_table_two.set(505, -70, null, 410);
+
+
+    //     // Dom.setBlinkArrowRed(true, 755, 210, 30, 30, 180).play();
+    //     Dom.setBlinkArrowRed(-1)
+    //   };
+
+    //   //! onclick for RESET
+    //   const opFive = () => {
+        
+    //     // let cables = [
+    //     //   Scenes.items.method_1_cable_black_bottom,
+    //     //   Scenes.items.method_1_cable_black_top,
+    //     //   Scenes.items.method_1_cable_blue,
+    //     //   Scenes.items.method_1_cable_green,
+    //     //   Scenes.items.method_1_cable_pink,
+    //     //   Scenes.items.method_1_cable_purple,
+    //     //   Scenes.items.method_1_cable_red,
+    //     //   Scenes.items.method_1_cable_yellow,
+    //     // ]
+
+    //     for(let cable of cables){
+    //       cable.hide();
+    //     }
+
+    //     cableJoin = 0;
+        
+    //   };
+
+    //   options[0].item.onclick = opOne;
+    //   options[1].item.onclick = opTwo;
+    //   options[2].item.onclick = opThree;
+    //   options[3].item.onclick = opFour;
+    //   options[4].item.onclick = opFive;
+
+    //   return true;
+    // }),
     (step3 = function () {
       setIsProcessRunning(true);
       Scenes.items.btn_next.show();
@@ -4845,7 +4984,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 5;
+Scenes.currentStep = 3;
 
 Scenes.next();
 // Scenes.steps[3]()

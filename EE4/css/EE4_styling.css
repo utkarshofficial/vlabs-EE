@@ -1,7 +1,3 @@
-.part_2_connections_box{
-  display: none;
-}
-
 .connections-box{
     border: solid 1px black;
     display: flex;
@@ -36,5 +32,9 @@
   }
 
   .part_2_connections_box{
+    display: none;
+  }
+
+  .part_1_1_connections_box{
     display: none;
   }
