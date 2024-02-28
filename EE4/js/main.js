@@ -3402,6 +3402,7 @@ const Scenes = {
         "#073007",
         "#7c5565",
       ]
+      
       function hideConnectionStepImgs(){
         let allImages = [
           ...btns,...images,...cables
