@@ -1049,23 +1049,6 @@ concept_development: new Dom(".concept_development"),
       Scenes.items.part_1_text_for_wrong.set(630,310, 110).hide()
       Scenes.items.part_1_text_for_circuit_diagram.set(0,0).zIndex(2000).hide()
 
-      // * Circuit Diagram Btn
-      // Scenes.items.btn_circuit_diagram.item.classList.add("btn-deactive")
-      Scenes.items.btn_circuit_diagram.item.onclick = ()=>{
-        if(Scenes.items.part_1_text_for_circuit_diagram.item.style.display=="none"){
-          Scenes.items.part_1_text_for_circuit_diagram.show()
-          Scenes.items.btn_circuit_diagram.styles({
-            boxShadow: "none"
-          })
-        }else{
-          Scenes.items.part_1_text_for_circuit_diagram.hide()
-          Scenes.items.btn_circuit_diagram.styles({
-            boxShadow: "3px 2px 4px 0px black"
-          })
-        }
-      }
-     
-
       function isConnectionsRight(connections){
         let target = null
         if(connections){
@@ -1148,6 +1131,20 @@ concept_development: new Dom(".concept_development"),
                 // * for connection wrong
                 isConnectionsRight(false)
                 Scenes.items.btn_circuit_diagram.item.classList.remove("btn-deactive")
+                // * Circuit Diagram Btn
+                Scenes.items.btn_circuit_diagram.item.onclick = ()=>{
+                  if(Scenes.items.part_1_text_for_circuit_diagram.item.style.display=="none"){
+                    Scenes.items.part_1_text_for_circuit_diagram.show()
+                    Scenes.items.btn_circuit_diagram.styles({
+                      boxShadow: "none"
+                    })
+                  }else{
+                    Scenes.items.part_1_text_for_circuit_diagram.hide()
+                    Scenes.items.btn_circuit_diagram.styles({
+                      boxShadow: "3px 2px 4px 0px black"
+                    })
+                  }
+                }
                 // alert("wrong")
                 return false
               }
@@ -3409,7 +3406,7 @@ concept_development: new Dom(".concept_development"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()
