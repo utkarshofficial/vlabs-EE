@@ -1082,7 +1082,7 @@ part1_box1 : new Dom(".part1_box1"),
       // require
       Scenes.items.slider_box.hide()
       
-      let btn_transparent = Scenes.items.btn_transparent.set().item;
+      let btn_transparent = Scenes.items.btn_transparent.set().zIndex(6000).item;
 
       Scenes.items.concept_development.set().styles({
         zIndex: "5000",
