@@ -2166,13 +2166,6 @@ const Scenes = {
       Scenes.items.part_1_select_option_2.set(170, 153, 100, 416).zIndex(1);
       Scenes.items.part_1_select_option_3.set(150, 275, 100, 462).zIndex(1);
 
-      let rightTicks = [
-        Scenes.items.right_tick_1.set(20, 280).hide(),
-        Scenes.items.right_tick_2.set(208, 280).hide().zIndex(2001),
-        Scenes.items.right_tick_3.set(435, 280).hide(),
-        Scenes.items.right_tick_4.set(630, 280).hide(),
-      ];
-
       // ! onclicks for all options
       let options = [
         Scenes.items.part_1_select_option_1_1,
@@ -2720,8 +2713,7 @@ const Scenes = {
           }
         }
       }
-      hideConnectionStepImgs()
-      // partConnections()
+      partConnections()
 
       //! Graph Part
       function partCalculation(){
@@ -2729,6 +2721,8 @@ const Scenes = {
         Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
         Scenes.items.btn_plot.set(785,70,50).zIndex(10)
+        // * Calling slider
+        sliders.showSliderFor("2")
 
         // * Graph section
         Scenes.items.graph_box_3.set(575,162,null,370).zIndex(10)
@@ -2776,7 +2770,6 @@ const Scenes = {
         }
 
       }
-      partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{

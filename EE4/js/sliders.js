@@ -125,12 +125,16 @@ const sliders = {
   },
   getVal(dom){
     return dom.item.attributes['value'].value
+  },
+  showSlider(part){
+    setTimeout(() => {
+      sliders.init()
+      // Change this for your step
+      sliders.showSliderFor(part)
+    }, 1000); 
   }
 }
 
-setTimeout(() => {
-  sliders.init()
-  // Change this for your step
-  sliders.showSliderFor("2")
-}, 1000);
+sliders.init()
+
 
