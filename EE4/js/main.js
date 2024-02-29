@@ -608,6 +608,11 @@ const Scenes = {
     // part2 calculation
     part_2_calculation_components : new Dom("part_2_calculation_components"),
 
+    //* 29 feb new imgs
+    
+    part_1_1_calculations : new Dom("part_1_1_calculations"),
+    part_1_2_calculations : new Dom("part_1_2_calculations"),
+
     domQs1: new Dom("domQs1"),
     domQs2: new Dom("domQs2"),
     domQs3: new Dom("domQs3"),
@@ -3348,7 +3353,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2;
+Scenes.currentStep = 4;
 
 Scenes.next();
 // Scenes.steps[3]()
