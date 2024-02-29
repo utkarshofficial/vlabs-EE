@@ -1,95 +1,11 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_a2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_n2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_p1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_p2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_r2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_s.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_v1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_v2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_vg1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_cable_vg2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_supply_1_green_button.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_conncection_supply_2_green_button.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/part_2_connections_components.png"
+        src="./src/images/part_2_calculation_components.png"
     />
     
 
-part_2_conncection_cable_a2:this.allImgsDom[index++],
-part_2_conncection_cable_n2:this.allImgsDom[index++],
-part_2_conncection_cable_p1:this.allImgsDom[index++],
-part_2_conncection_cable_p2:this.allImgsDom[index++],
-part_2_conncection_cable_r2:this.allImgsDom[index++],
-part_2_conncection_cable_s:this.allImgsDom[index++],
-part_2_conncection_cable_v1:this.allImgsDom[index++],
-part_2_conncection_cable_v2:this.allImgsDom[index++],
-part_2_conncection_cable_vg1:this.allImgsDom[index++],
-part_2_conncection_cable_vg2:this.allImgsDom[index++],
-part_2_conncection_supply_1_green_button:this.allImgsDom[index++],
-part_2_conncection_supply_2_green_button:this.allImgsDom[index++],
-part_2_connections_components:this.allImgsDom[index++],
+part_2_calculation_components:this.allImgsDom[index++],
 
 
-part_2_conncection_cable_a2 : new Dom("part_2_conncection_cable_a2"),
-part_2_conncection_cable_n2 : new Dom("part_2_conncection_cable_n2"),
-part_2_conncection_cable_p1 : new Dom("part_2_conncection_cable_p1"),
-part_2_conncection_cable_p2 : new Dom("part_2_conncection_cable_p2"),
-part_2_conncection_cable_r2 : new Dom("part_2_conncection_cable_r2"),
-part_2_conncection_cable_s : new Dom("part_2_conncection_cable_s"),
-part_2_conncection_cable_v1 : new Dom("part_2_conncection_cable_v1"),
-part_2_conncection_cable_v2 : new Dom("part_2_conncection_cable_v2"),
-part_2_conncection_cable_vg1 : new Dom("part_2_conncection_cable_vg1"),
-part_2_conncection_cable_vg2 : new Dom("part_2_conncection_cable_vg2"),
-part_2_conncection_supply_1_green_button : new Dom("part_2_conncection_supply_1_green_button"),
-part_2_conncection_supply_2_green_button : new Dom("part_2_conncection_supply_2_green_button"),
-part_2_connections_components : new Dom("part_2_connections_components"),
+part_2_calculation_components : new Dom("part_2_calculation_components"),
