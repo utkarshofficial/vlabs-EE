@@ -110,6 +110,8 @@ const src = {
 
       // part2 calculation 
       part_2_calculation_components:this.allImgsDom[index++],
+      part_1_1_calculations:this.allImgsDom[index++],
+      part_1_2_calculations:this.allImgsDom[index++],
 
 
       // * Question Mark
