@@ -82,12 +82,12 @@
     box-shadow: inset 2px 2px 5px 1px black;
 }
 .part3_table_one table:nth-child(2) .table-title{
-    background-color: blue;
+    background-color: #05bc57;
     /* border: 5px ridge blue; */
     box-shadow: inset 2px 2px 5px 1px black;
 }
 .part3_table_one table:nth-child(3) .table-title{
-    background-color: #05bc57;
+    background-color: blue;
     /* border: 5px ridge #05bc57; */
     box-shadow: inset 2px 2px 5px 1px black;
 }
@@ -149,7 +149,7 @@
     font-size: 15px;
     top: 7px;
     left: 49px;
-    color: black;
+    color: white;
     font-weight: bolder!important;
 }
 .part3_table_two .table-slider .lines{
@@ -623,3 +623,14 @@
     top: 20px
 }
 
+.concept_development{
+    display: none;
+}
+
+.btn-connections{
+    display: none;
+}
+
+#overPlayerNextBtn{
+    display: none;
+}

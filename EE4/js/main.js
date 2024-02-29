@@ -3577,7 +3577,6 @@ const Scenes = {
 
           // to plot the data
           if(recordBtnIdx == rows.length){
-            // todo arrow for plot and active the plot btn
             // ! btn Plot onclick
             Scenes.items.btn_plot.item.onclick = ()=>{
               console.log("don")

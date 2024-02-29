@@ -172,6 +172,7 @@ let sliders = {
         sliders.d.max = "0.9";
         sliders.d.step = "0.01";
         sliders.d.value = "0.01";
+        document.querySelector(".d .value-box input").readonly = false
         document.querySelector(".slider-D-arrow").style.left = "218px"
         disableSlider("reset")
     },
