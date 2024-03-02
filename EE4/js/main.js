@@ -1062,16 +1062,16 @@ const Scenes = {
         Scenes.items.part_1_1_cable_v2.set(0,0).zIndex(9).hide(),
       ]
 
-    let cables_color = [
-        "#970101",
-        "#1a2f55",
-        "#186a3b",
-        "#181818",
-        "#ffd90e",
-        "#181818",
-        "#cf426d",
-        "#560056",
-      ]
+      let cables_color = [
+          "#970101",
+          "#1a2f55",
+          "#186a3b",
+          "#181818",
+          "#ffd90e",
+          "#181818",
+          "#cf426d",
+          "#560056",
+        ]
 
 
       function hideConnectionStepImgs(){
@@ -1083,6 +1083,8 @@ const Scenes = {
         })
         Dom.setBlinkArrowRed(-1)
       }
+
+
       //! Connection Part
       function partConnections(){
          // Connection Logic
@@ -1172,9 +1174,64 @@ const Scenes = {
       partConnections()
 
       //! Graph Part
-      function partCalculation(){
-        
+    function partCalculation(){
+        Scenes.items.part_1_1_calculations.set(-15,0)
+        Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
+        Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
+        Scenes.items.btn_plot.set(495,170,50).zIndex(10)
+        // * Calling slider
+        sliders.showSliderFor("2")
+
+        // * Graph section
+        Scenes.items.graph_box_3.set(575,162,null,370).zIndex(10)
+        let ctx = Scenes.items.graph3.item
+        let graphIdx = 2
+        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
+        let yLabel = "Drain Current (I<sub>D</sub>)"
+        let dataLabel = "vDS = 50"
+        // ploting empty graph
+        let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
+
+
+        // let table = new Dom(".part_2_table").set(600,-76).item
+
+        let table = new Dom(".part3_table_two").set(500,-76).item
+
+        // * assume tempTitle10 as a btn record
+        let btn_record = sliders.btn_record.item
+
+        // ! btn_record onclick
+        let recordBtnIdx = 0
+        btn_record.onclick = ()=>{
+          let rows = table.tBodies[0].rows
+          if(recordBtnIdx >= rows.length){
+            return
+          }
+
+          // * Filling Table
+          rows[recordBtnIdx].cells[0].innerHTML = "10"
+          rows[recordBtnIdx].cells[1].innerHTML = "12"
+          recordBtnIdx++
+
+          // to plot the data
+          if(recordBtnIdx == rows.length){
+            // ! btn Plot onclick
+            Scenes.items.btn_plot.item.onclick = ()=>{
+              console.log("don")
+              let data = []
+              for(let row of rows){
+                let x = row.cells[0].innerHTML
+                let y = row.cells[1].innerHTML
+                data.push({x,y})
+              }
+
+              Scenes.graphFeatures.addData(graphRef,0,data)
+            }
+          }
+        }
+
       }
+
 
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
@@ -2141,7 +2198,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2;
+Scenes.currentStep = 3;
 
 Scenes.next();
 // Scenes.steps[3]()
@@ -2227,3 +2284,4 @@ function btnPopupBox() {
 //   infoElement.style.top = y + "px";
 //   infoElement.style.left = x + 20 + "px";
 // }
+
