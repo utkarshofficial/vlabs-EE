@@ -1,0 +1,115 @@
+
+
+EE1 - Boost Converter (Mr. Rahul Garg): Timeline
+    Project Received on:- 12 Dec 2023
+        - Meeting 12,13,14 Dec for explanation
+        - Initial Project Started
+
+    15 Dec 2023: 1_a First examples and modifications
+        - Doubts and some examples required for Development
+        - ✅ 19 Dec 2023: Given update Done 
+
+    23 Dec 2023: 1_b Second Part of Simulation Received
+        - Second Part is Developed on
+        - ✅ 26 Dec 2023: Given update Done
+
+    27 Dec 2023: 1_c Part 3 section 4 of Simulation
+        - ✅ 27 Dec 2023: Given update Done
+
+    28 Dec 2023: 1_d correction and updates like slider value changes
+        - ✅ 30 Dec 2023: Given update Done
+        
+    03 Jan 2024: 1_e updates and new formulas 
+        - ✅ 08 Jan 2024: Given update Done
+
+    11 Jan 2024: 1_f Big change Concept Development Recieved to add in simulation
+        - ✅ 13 Jan 2024: Concept Developed added
+
+    15 Jan 2024: Akshat Sir sent the Submited the project
+        - ✅ 15 Jan 2024
+
+    -- HOLD --
+
+    --// Meanwhile EE2 (Mr. Rahul Garg) Started on 23 Jan 2024 //--
+
+    23 Jan 2024: Subtitles Received (only PPT not word File) for Concept Developed
+        - ✅ 29 Jan  2024: Subtitles Done
+
+    13 Feb 2024: In meeting live changes were added
+        - ✅ 13 Feb 2024: Done
+
+    15 Feb 2024: Abbreviations new nomenclature
+        - ✅ 15 Feb 2024: Done
+    
+    15 Feb 2024: Boost Converter Received but Hold for
+
+
+EE2 - Boost Converter Electrical (Mr. Rahul Garg): Timline
+    Project Received on:- 23 Jan 2024
+
+    6 Feb 2024: Meeting for suggestions to change circuit formulation part (by Virtuality Team)
+
+    --// Meanwhile EE3 (Ms. Akankshi Trivedi) Started on 05 Feb 2024 //--
+
+    7 Feb 2024: 
+        - ✅ Beta version is Done
+
+    14 Feb 2024: Changes and Suggestion 
+        - ✅ Merged
+    
+    02 Mar 2024:
+        - Minor Fix
+        - ✅ Fixed
+    
+
+EE3 - Buck Converter (Ms. Akankshi Trivedi): Timeline
+    Project Received on:- 05 Feb 2024
+
+    10 Feb 2024: Meeting for Doubts and suggestions
+    
+    
+    15 Feb 2024: Second Meeting and New Changes Received
+        - Review of Step 1,2,3 
+        - Major Structure Change in Table
+
+    21 Feb 2024: 
+        - ✅ Beta Version sent and Table Update added
+        - Meeting for Review
+        - Final chagnes will come on friday (as disscused in meeting with Akshat Sir) 26th February 2024
+    
+    26 Feb 2024: 
+        - Till then no update received
+
+
+EE4 - Mosfet Characteristics (Mr. Utkarsha Dey): Timeline
+    Project Received on:- 20 Feb 2024
+
+    20 Feb 2024: 
+        - Meeting for Project explanation
+    
+    22 Feb 2024: 
+        - Meeting for doubts clearence 
+
+    29 Feb 2024:
+        - ✅ Beta Version Given (Simulator and Concept Developed in septated manner)
+
+    01 Mar 2024:
+        - Meeting 
+        - Cosmetic Changes i.e. component size increament
+    
+
+EE5 - SCR (Mr. Utkarsha Dey): Timeline
+    Project Received on:- 01 March 2024    
+
+
+
+
+
+
+
+
+
+ 
+
+
+
