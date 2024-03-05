@@ -810,10 +810,17 @@ const Scenes = {
   incCurrentSubStep() {
     this.subCurrentStep++;
   },
-  setStepHeading(step, description) {
+  setStepHeading(step, description,hide) {
     Scenes.items.stepTitle.setContent(step);
     Scenes.items.stepDescription.setContent(description);
     Scenes.items.stepHeading.show("flex").push();
+    if(hide){
+      let st={
+        visibility: "hidden"
+      }
+      Scenes.items.stepTitle.styles(st)
+      Scenes.items.stepDescription.styles(st)
+    }
   },
   // for typing hello text
   intru: null,
@@ -1026,7 +1033,7 @@ const Scenes = {
     (step2 = function () {
       setIsProcessRunning(true);
 
-      Scenes.setStepHeading("", "Output Characterisitics Using Meters.");
+      Scenes.setStepHeading("", "",true);
       Scenes.items.btn_next.show();
       // ! Step Connection
 
@@ -1045,7 +1052,7 @@ const Scenes = {
 
       // required images
       let images = [
-        Scenes.items.part_1_components_1.set(0,0).zIndex(1),
+        Scenes.items.part_1_components_1.set(0,-70,495,975).zIndex(1),
         Scenes.items.part_2_conncection_supply_1_red_button.set(166,118,24,25).zIndex(10),
         Scenes.items.part_2_conncection_supply_2_red_button.set(173,310,24,25).zIndex(10),
         Scenes.items.part_1_1_connections_box,
@@ -1061,6 +1068,10 @@ const Scenes = {
         Scenes.items.part_1_1_cable_v1.set(0,0).zIndex(8).hide(),
         Scenes.items.part_1_1_cable_v2.set(0,0).zIndex(9).hide(),
       ]
+
+      cables.forEach(ele=>{
+        ele.set(0,-70,495,975)
+      })
 
       let cables_color = [
           "#970101",
