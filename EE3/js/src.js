@@ -195,6 +195,8 @@ symbol_S : this.allImgsDom[165],
 symbol_D : this.allImgsDom[166],
 symbol_R : this.allImgsDom[167],
 
+part_2_graph_data_upper : this.allImgsDom[168],
+
 
       // * Question Mark
       domQs1: this.allQsDom[0],

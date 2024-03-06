@@ -55,7 +55,15 @@ const Formulas = {
         M(values){
             // const rl = 1, rSW = 0.4, vFD = 0.7, rc = 0.45
             
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // * these values are in final change ppt
+            // old values
+            // const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // new 
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
 
             // let upper = 1 - ((vFD * Formulas.one_minus_D(values.D)) /  values.vIn)
@@ -76,9 +84,11 @@ const Formulas = {
         },
         v0(values){
 
-            // let ans = this.M(values) * values.vIn
-            
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
             let upper1 = values.vIn * values.D * values.R
             let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
@@ -93,7 +103,11 @@ const Formulas = {
         },
         i0(values){
                         
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
             let upper1 = values.vIn * values.D
             let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
@@ -112,12 +126,16 @@ const Formulas = {
         //! Requires v0, M, iIn, i0, p0, Losses, efficiency 
     
         v0(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
             let upper1 = values.vIn * values.D * values.R
             let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
 
-            let ans1 = upper1/ bottom1
+            let ans1 = upper1 / bottom1
             let ans2 = vFD * Formulas.one_minus_D(values.D)
             let ans3 = vSFD * values.D
 
@@ -126,7 +144,11 @@ const Formulas = {
             return Number(ans.toFixed(4))
         },
         M(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
             let upper1 = values.R * values.D 
             let upper2 = vFD * Formulas.one_minus_D(values.D)
@@ -146,7 +168,11 @@ const Formulas = {
             return Number(ans.toFixed(4))
         },
         i0(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
+            // value type conversion
+            let mini = Math.pow(10,-3) // mini
+            let micro = Math.pow(10,-6) // micro
+
+            const L= 1 * mini, C=100 * micro, R=48, rD=2 * mini, rL=1, rS=0.3, vFD=0.7, vSFD = 0.2;
 
             let upper1 = values.vIn * values.D
             let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)

@@ -893,6 +893,7 @@ symbol_S : new Dom("symbol_S"),
 symbol_D : new Dom("symbol_D"),
 symbol_R : new Dom("symbol_R"),
 
+part_2_graph_data_upper: new Dom("part_2_graph_data_upper"),
 
 concept_development : new Dom(".concept_development"),
 
@@ -1834,7 +1835,7 @@ part1_box1 : new Dom(".part1_box1"),
   //! Required Items
   Scenes.items.btn_record.set(355, -40)
   Scenes.items.slider_box.set(40,25)
-  Scenes.items.part_2_circuit.set(10,200, 200)
+  Scenes.items.part_2_circuit.set(10,155, 220)
   Scenes.items.slider_box.item.style.scale = "0.9";
   sliders.hideSliderAndOption(0)
 
@@ -1843,10 +1844,15 @@ part1_box1 : new Dom(".part1_box1"),
   // Scenes.items.hea.item.style.display = "none"
   // Scenes.items.slider_box.show("flex").set(-120, -40);
 
-  Scenes.items.part_2_graph_empty.set(640, -30, 350, 280);
-  Scenes.items.part_2_graph_1.set(640, -30, 350, 280).hide();
-  Scenes.items.part_2_graph_2.set(640, -30, 350, 280).hide();
-  Scenes.items.part_2_graph_3.set(640, -30, 350, 280).hide();
+  let l = 530
+  let t = -50
+  let h = 410
+  let w = 370
+  Scenes.items.part_2_graph_data_upper.set(l,t,h,w).zIndex(2)
+  Scenes.items.part_2_graph_empty.set(l, t, h, w);
+  Scenes.items.part_2_graph_1.set(l, t, h, w).hide();
+  Scenes.items.part_2_graph_2.set(l, t, h, w).hide();
+  Scenes.items.part_2_graph_3.set(l, t, h, w).hide();
        
  
       // temp text on required positions
@@ -2582,18 +2588,12 @@ part1_box1 : new Dom(".part1_box1"),
             switch(characteristicsValue){
               case  'D-vs-M': 
                 y = rows[i].cells[5].innerHTML
-                yLabel = "Voltage Gain (M)"
-                setCC("Voltage gain linearly increases with increasing duty ratio for ideal case.")
                 break
               case  'D-vs-I': 
                 y = rows[i].cells[7].innerHTML
-                yLabel = "I (A)"
-                setCC("Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case.")
                 break
               case  'D-vs-V': 
                 y = rows[i].cells[4].innerHTML
-                yLabel = "V (V)"
-                setCC("Load voltage linearly increases with increasing duty ratio for ideal case.")
                 break
             }
             graphData.push(
@@ -2603,6 +2603,23 @@ part1_box1 : new Dom(".part1_box1"),
               }
             )
           }
+
+          //for labeling
+          switch(characteristicsValue){
+            case  'D-vs-M': 
+              yLabel = "Voltage Gain (M)"
+              setCC("Voltage gain linearly increases with increasing duty ratio for ideal case.")
+              break
+            case  'D-vs-I': 
+              yLabel = "I (A)"
+              setCC("Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case.")
+              break
+            case  'D-vs-V': 
+              yLabel = "V (V)"
+              setCC("Load voltage linearly increases with increasing duty ratio for ideal case.")
+              break
+          }
+
           Scenes.items.chart.label1.x = xLabel
           Scenes.items.chart.label1.y = yLabel
 
@@ -3058,26 +3075,14 @@ part1_box1 : new Dom(".part1_box1"),
               case  'D-vs-M': 
                 yActual =  rows[i].cells[6].innerHTML
                 yIdeal =  rows[i].cells[7].innerHTML
-                yLabel = "M (D)"
-                dataLabel1 = "M(D) non-ideal"
-                dataLabel2 = "M(D) ideal"
-                setCC("Voltage gain depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
               case  'D-vs-I': 
                 yActual =  rows[i].cells[9].innerHTML
                 yIdeal =  rows[i].cells[10].innerHTML
-                yLabel = "I<sub>0</sub> (A)"
-                dataLabel1 = "I₀ (A) non-ideal"
-                dataLabel2 = "I₀ (A) ideal"
-                setCC("Load current is equal to load voltage by load resistance and it depends on the non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
               case  'D-vs-V': 
                 yActual =  rows[i].cells[4].innerHTML
                 yIdeal =  rows[i].cells[5].innerHTML
-                yLabel = "V<sub>0</sub> (V)"
-                dataLabel1 = "V₀ (V) non-ideal"
-                dataLabel2 = "V₀ (V) ideal"
-                setCC("Voltage depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
                 break
             }
             graphDataActual.push(
@@ -3092,6 +3097,28 @@ part1_box1 : new Dom(".part1_box1"),
                 y: yIdeal,
               }
             )
+          }
+
+          // for loop fix
+          switch(characteristicsValue){
+            case  'D-vs-M': 
+              yLabel = "M (D)"
+              dataLabel1 = "M(D) non-ideal"
+              dataLabel2 = "M(D) ideal"
+              setCC("Voltage gain depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              break
+            case  'D-vs-I': 
+              yLabel = "I<sub>0</sub> (A)"
+              dataLabel1 = "I₀ (A) non-ideal"
+              dataLabel2 = "I₀ (A) ideal"
+              setCC("Load current is equal to load voltage by load resistance and it depends on the non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              break
+            case  'D-vs-V': 
+              yLabel = "V<sub>0</sub> (V)"
+              dataLabel1 = "V₀ (V) non-ideal"
+              dataLabel2 = "V₀ (V) ideal"
+              setCC("Voltage depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              break
           }
 
           Scenes.items.chart.label2.x = xLabel
@@ -3452,11 +3479,11 @@ part1_box1 : new Dom(".part1_box1"),
   
             sliders.selectOp2.oninput = ()=>{
               Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
-              setCC("Select R")
+              setCC("Select D")
   
               sliders.selectOp3.oninput = ()=>{
                 Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
-                setCC("Select D")
+                setCC("Select R")
   
                 sliders.slider.onclick = ()=>{
                   Dom.setBlinkArrowRed(true,280,-10,30,30,90).play()
@@ -3479,21 +3506,21 @@ part1_box1 : new Dom(".part1_box1"),
             let graphData = []
             var rows = table.tBodies[0].rows
             let n = 8
-            ,xLabel = "Duty Ratio (D)"
+            ,xLabel = "Output Power (P<sub>o</sub>)"
             ,yLabel = ""
+            ,startFromZero = true
+            ,p0vsLosses = false
             for(let i=0;i<n;i++){
-              let x = rows[i].cells[3].innerHTML
+              let x = rows[i].cells[8].innerHTML
               ,y=null 
               switch(characteristicsValue){
                 case  'P-vs-Losses': 
                   y = rows[i].cells[9].innerHTML
-                  yLabel = "Losses (W)"
-                  setCC("Due to loading effect, at higher load resistances, losses are more.")
+                  p0vsLosses = true
                   break
                 case  'P-vs-Efficiency': 
+                  startFromZero = false
                   y = rows[i].cells[10].innerHTML
-                  yLabel = "Efficiencty (%)"
-                  setCC("Due to loading effect, at higher load resistances, efficiency decreases.")
                   break
               }
               graphData.push(
@@ -3503,10 +3530,18 @@ part1_box1 : new Dom(".part1_box1"),
                 }
               )
             }
+            // setting labels
+            if(p0vsLosses){
+              yLabel = "Losses (W)"
+              setCC("Due to loading effect, at higher load resistances, losses are more.")
+            }else{
+              yLabel = "Efficiencty (%)"
+              setCC("Due to loading effect, at higher load resistances, efficiency decreases.")
+            }
             Scenes.items.chart.label3.x = xLabel
             Scenes.items.chart.label3.y = yLabel
   
-            plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,true)
+            plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,startFromZero)
             Scenes.items.graph3.set(null,null,220,355)
   
         }
@@ -3583,9 +3618,10 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.items.btn_record.item.onclick = function(){ 
   
           // taking values from all sliders 
+          // ! note dutyratio slider is now Resistance Slider and resistance is duty
           let vInValue = Number(Scenes.items.slider_vIn.item.value)
-          let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
-          let resistanceValue = Number(Scenes.items.slider_R.item.value)
+          let dutyRatioValue = Number(Scenes.items.slider_R.item.value)
+          let resistanceValue = Number(Scenes.items.slider_D.item.value)
   
           // * if all values not selected
           if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
@@ -3598,18 +3634,18 @@ part1_box1 : new Dom(".part1_box1"),
           // ! for arrow system
           if(recordBtnClickIdx < tableRowMax-1){
             Dom.setBlinkArrowRed(true,100,138,30,30,90).play()
-            setCC("Select D")
+            setCC("Select R")
           }
           else{
             Dom.setBlinkArrowRed(-1)
           }
   
           // ! Can't select same values
-          if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(dutyRatioValue)!=-1){
+          if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(resistanceValue)!=-1){
             setCC("Please select different value.")
             return
           }else{
-            valuesToMatch.push(dutyRatioValue)
+            valuesToMatch.push(resistanceValue)
           }
   
           // ! sort the data
@@ -3667,6 +3703,7 @@ part1_box1 : new Dom(".part1_box1"),
           if(recordBtnClickIdx == 0){
             sliders.disable(0,1,2)
           }
+
           let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
           tableRow.cells[1].innerHTML = vInValue
           tableRow.cells[2].innerHTML = resistanceValue
@@ -3709,7 +3746,7 @@ part1_box1 : new Dom(".part1_box1"),
  
       Scenes.setStepHeading(
         "",
-        "Component Stress and Selection"
+        "Component Stress"
       )
         // ! show the slider
       Scenes.items.slider_box.set(25,15).scale(0.95)
@@ -3722,7 +3759,18 @@ part1_box1 : new Dom(".part1_box1"),
        // ! graph
        
        sliders.generateOptionsFor(3)
-       Scenes.items.part4_table_graph.set(10,160,220,535)
+       Scenes.items.part4_table_graph.set(0,160,250,555)
+       // temp label for the table
+       let st = {
+        width: "fit-content"
+       }
+       let st3 = {
+        ...st,
+        fontSize: "15px"
+       }
+       Scenes.items.tempTitle1.set(443,253).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
+       Scenes.items.tempTitle2.set(443,293).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
+       Scenes.items.tempTitle3.set(433,335.5).setContent("V<sub>o</sub> V/(∆I<sub>L</sub>/2) A").styles(st3)
        
       let graph_box5 = new Dom(".graph_box4")
       let graph_box4 = new Dom(".graph_box5")
@@ -3737,65 +3785,6 @@ part1_box1 : new Dom(".part1_box1"),
       
       let xLabel = ""
       let yLabel = ""
-
-      let config = {
-        type: "bar",
-        data: {
-          labels: ["Vs", "Vd", "Vc", "Vo"],
-          datasets: [
-            {
-              backgroundColor: ['blue','red','purple','green'],
-              // data: [10,10,20],
-            },
-          ]
-        },
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          legend: {
-            display: false
-          },
-          title:{
-            display: true,
-            text: "Voltage Stress"
-          },
-          plugins: [{
-            afterDraw: chart => {
-              var ctx = chart.chart.ctx;
-              ctx.save();
-              ctx.textAlign = 'center';
-              ctx.font = '18px Arial';
-              ctx.fillStyle = 'black';
-              ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-              ctx.textAlign = 'left';
-              ctx.font = '10px Arial';
-              ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-              ctx.restore();
-            },
-            
-          }],
-          scales: {
-            yAxes: [
-              {
-                scaleLabel: {
-                  display: false,
-                  labelString:yLabel,
-                },
-                ticks: { beginAtZero:true }
-              },
-            ],
-            xAxes: [
-              {
-                scaleLabel: {
-                  display: false,
-                  labelString: xLabel,
-                },
-                ticks: { beginAtZero:true }
-              },
-            ],
-          },
-        },
-      }
 
       function plotGraph(){
         if(chart1!=null){
@@ -4016,37 +4005,22 @@ part1_box1 : new Dom(".part1_box1"),
         Dom.setBlinkArrowRed(-1)
         updateValues(vInValue,dutyRatioValue,resistanceValue)
  
-        //  let tableRow = table.tBodies[0].rows[0]
-        //  tableRow.cells[1-1].innerHTML = vInValue
-        //  tableRow.cells[2-1].innerHTML = dutyRatioValue
-        //  tableRow.cells[3-1].innerHTML = resistanceValue
-        //  tableRow.cells[4-1].innerHTML = Number(Formulas.stress.v0(values)).toFixed(2)
-        //  tableRow.cells[5-1].innerHTML = Number(Formulas.stress.M(values)).toFixed(2)
-        //  tableRow.cells[6-1].innerHTML = Number(Formulas.stress.i_L2(values)).toFixed(2)
-        //  tableRow.cells[7-1].innerHTML = Number(Formulas.stress.i0(values)).toFixed(2)
+        // for table data (temp title data)
+        let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
+        let iLP = Number(Formulas.stress.iLP(values)).toFixed(2)
+        let iLby2 = Number(Formulas.stress.iL(values)/2).toFixed(2)
 
-        //  let iIn = Number(Formulas.stress.I_In(values)).toFixed(2)
-        //  let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
-        //  let iL2 = Number(Formulas.stress.i_L2(values)).toFixed(2)
-        //  let ic = Number(Formulas.stress.i_L2(values) - Formulas.stress.i0(values)).toFixed(2)
-        //  // table two changes
-        //  let table2Row = Scenes.items.part3_table_four_2.item.tBodies[0].rows
-        // table2Row[0].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
-        // table2Row[1].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
-        // table2Row[2].cells[1].innerHTML = `> v<sub>0</sub> (${v0})`
-        
-        // table2Row[0].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
-        // table2Row[1].cells[2].innerHTML = `> i<sub>L2</sub> (${iL2})`
-        // table2Row[2].cells[2].innerHTML = `> (i<sub>L2</sub>-i<sub>0</sub>) (${ic})`
+        let vS = vInValue
+        let vD = vInValue
+        let vC = v0
 
-        let vS = Number(Formulas.stress.v0(values)).toFixed(2)
-        let vD = Number(Formulas.stress.v0(values)).toFixed(2)
-        let vC = Number(Formulas.stress.v0(values)).toFixed(2)
+        let iS = iLP
+        let iD = iLP
+        let iC = iLby2
 
-        let iS = Number(Formulas.stress.v0(values)).toFixed(2)
-        let iD = Number(Formulas.stress.v0(values)).toFixed(2)
-        let iC = Number(Formulas.stress.v0(values)).toFixed(2)
-
+        Scenes.items.tempTitle1.setContent(`${vInValue} V/${iLP} A`)
+        Scenes.items.tempTitle2.setContent(`${vInValue} V/${iLP} A`)
+        Scenes.items.tempTitle3.setContent(`${v0} V/${iLby2} A`)
 
         // ! add values to graph
         let graph1_data = [vS,vD,vC]
@@ -4168,7 +4142,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()
