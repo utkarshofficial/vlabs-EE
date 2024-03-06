@@ -2427,7 +2427,6 @@ part1_box1 : new Dom(".part1_box1"),
        let valuesToMatch = []
         // * index to handle records
       let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
-      
 
       // generate option
       sliders.generateOptionsFor(0)
@@ -2614,20 +2613,32 @@ part1_box1 : new Dom(".part1_box1"),
           }
 
           //for labeling
+          let conclusionFront = ""
           switch(characteristicsValue){
+
             case  'D-vs-M': 
               yLabel = "Voltage Gain (M)"
+              conclusionFront = "The voltage gain linearly increases with increasing duty ratio for ideal case."
               setCC("The conclusion of these observations is that the voltage gain linearly increases with increasing duty ratio in ideal case.")
               break
+
             case  'D-vs-I': 
               yLabel = "I (A)"
+              conclusionFront = "The load current linearly increases with increasing duty ratio."
               setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.")
               break
+
             case  'D-vs-V': 
               yLabel = "V (V)"
+              conclusionFront = "The Load voltage linearly increases with increasing duty ratio for ideal case."
               setCC("The conclusion of these observation is that the load voltage linearly increases with increasing duty ratio for ideal case.")
               break
           }
+
+          // ! For front conclusion
+          Anime.fade(
+            Scenes.items.tempTitle1.set(null,100).setContent(conclusionFront).addClass("conclusion").item
+          )
 
           Scenes.items.chart.label1.x = xLabel
           Scenes.items.chart.label1.y = yLabel
@@ -3109,26 +3120,38 @@ part1_box1 : new Dom(".part1_box1"),
           }
 
           // for loop fix
+          let conclusionFront = ""
           switch(characteristicsValue){
+
             case  'D-vs-M': 
               yLabel = "M (D)"
               dataLabel1 = "M(D) non-ideal"
               dataLabel2 = "M(D) ideal"
-              setCC("The conclusion of these observation is that Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components.")
+              conclusionFront = "Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components."
+              setCC("The conclusion of these observation is that Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components.",3)
               break
+
             case  'D-vs-I': 
               yLabel = "I<sub>0</sub> (A)"
               dataLabel1 = "I₀ (A) non-ideal"
               dataLabel2 = "I₀ (A) ideal"
-              setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.")
+              conclusionFront = "The load current linearly increases with increasing duty ratio."
+              setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.",3)
               break
+
             case  'D-vs-V': 
               yLabel = "V<sub>0</sub> (V)"
               dataLabel1 = "V₀ (V) non-ideal"
               dataLabel2 = "V₀ (V) ideal"
-              setCC("The conclusion of these observation is that load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components.")
+              conclusionFront = "Load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components."
+              setCC("The conclusion of these observation is that load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components.",3)
               break
           }
+
+          // ! For front conclusion
+          Anime.fade(
+            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item,1,13
+          )
 
           Scenes.items.chart.label2.x = xLabel
           Scenes.items.chart.label2.y = yLabel
@@ -3540,18 +3563,27 @@ part1_box1 : new Dom(".part1_box1"),
               )
             }
             // setting labels
-            if(p0vsLosses){
-              yLabel = "Losses (W)"
-              setCC("The conclusion of these observation is that the losses increase with loading effect.")
-            }else{
-              yLabel = "Efficiencty (%)"
-              setCC("The conclusion of these observation is that due to loading effect the efficiency decreases.")
-            }
-            Scenes.items.chart.label3.x = xLabel
-            Scenes.items.chart.label3.y = yLabel
-  
-            plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,startFromZero)
-            Scenes.items.graph3.set(null,null,220,355)
+          let conclusionFront = ""
+          if(p0vsLosses){
+            yLabel = "Losses (W)"
+            conclusionFront = "Losses increase with loading effect."
+            setCC("The conclusion of these observation is that the losses increase with loading effect.")
+          }else{
+            yLabel = "Efficiencty (%)"
+            conclusionFront = "Loading effect the efficiency decreases."
+            setCC("The conclusion of these observation is that due to loading effect the efficiency decreases.")
+          }
+
+          // ! For front conclusion
+          Anime.fade(
+            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
+          )
+          
+          Scenes.items.chart.label3.x = xLabel
+          Scenes.items.chart.label3.y = yLabel
+
+          plotGraph(ctx,graphIdx,graphData,dataLabel,xLabel,yLabel,startFromZero)
+          Scenes.items.graph3.set(null,null,220,355)
   
         }
 
@@ -4044,6 +4076,14 @@ part1_box1 : new Dom(".part1_box1"),
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
           setCC("Here, the bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
+
+          let conclusionFront = "The bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart."
+
+          // ! For front conclusion
+          Anime.fade(
+            Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").item
+          )
+          
           setIsProcessRunning(false); 
           Scenes.currentStep = 4
 
@@ -4152,7 +4192,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 5
+Scenes.currentStep = 8
 
 Scenes.next()
 // Scenes.steps[3]()
