@@ -1053,8 +1053,8 @@ const Scenes = {
       // required images
       let images = [
         Scenes.items.part_1_components_1.set(0,-70,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(166,118,24,25).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(173,310,24,25).zIndex(10),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(171,76,28,25).zIndex(10),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(178,312,29,25).zIndex(10),
         Scenes.items.part_1_1_connections_box,
       ]
 
@@ -1069,8 +1069,11 @@ const Scenes = {
         Scenes.items.part_1_1_cable_v2.set(0,0).zIndex(9).hide(),
       ]
 
+      // ! for increasing the size
+      let l = 0,t = -70, h = 495, w = 975 
+      Scenes.items.part_1_components_1.set(l,t,h,w).zIndex(1)
       cables.forEach(ele=>{
-        ele.set(0,-70,495,975)
+        ele.set(l,t,h,w).hide()
       })
 
       let cables_color = [
@@ -1099,20 +1102,20 @@ const Scenes = {
       //! Connection Part
       function partConnections(){
          // Connection Logic
-        Scenes.items.part_1_1_connections_box.set(435,-40).hide()
+        Scenes.items.part_1_1_connections_box.set(514,-70).hide()
 
         //! connection box onclick
         Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_1_1_connections_box.show("flex")
           // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,510,35,35,null,90).play()
+          Dom.setBlinkArrowRed(true,580,5,35,null,90).play()
           setCC("")
         }
         let box_buttons = document.querySelectorAll(".part_1_1_connections_box button")
 
         //! connection box onclick
         let btnClickedCount = 0
-        let connectionBtnArrow = 500
+        let connectionBtnArrow = 580
         let arrowLeftGap = 46
         box_buttons.forEach((ele,i)=>{
           ele.onclick = ()=>{
@@ -1121,7 +1124,7 @@ const Scenes = {
               btnClickedCount++
               //! move arrow 
               connectionBtnArrow += arrowLeftGap
-              Dom.setBlinkArrowRed(true,connectionBtnArrow,35,35,null,90).play()
+              Dom.setBlinkArrowRed(true,connectionBtnArrow,5,35,null,90).play()
               
               if(btnClickedCount==8){
                 Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
@@ -1147,8 +1150,8 @@ const Scenes = {
           if(btnClickedCount==8){
             
             //! First red button click 
-            Scenes.items.part_1_slide_3_compo_1_text.set(178,144,50).zIndex(10)
-            Dom.setBlinkArrowRed(true,186,113).play()
+            Scenes.items.part_1_slide_3_compo_1_text.set(208,114,50).zIndex(10)
+            Dom.setBlinkArrowRed(true,206,73).play()
             setCC("Switch on Main Supply")
             Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
               
@@ -1156,8 +1159,8 @@ const Scenes = {
               Scenes.items.part_1_slide_3_compo_1_text.hide()
               //! Second red button click
               
-              Scenes.items.part_1_slide_3_compo_2_text.set(182,338,56).zIndex(10)
-              Dom.setBlinkArrowRed(true,186,306).play()
+              Scenes.items.part_1_slide_3_compo_2_text.set(212,348,56).zIndex(10)
+              Dom.setBlinkArrowRed(true,206,308).play()
               setCC("Switch on Gate Supply")
 
               Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
@@ -1186,7 +1189,7 @@ const Scenes = {
 
       //! Graph Part
     function partCalculation(){
-        Scenes.items.part_1_1_calculations.set(-15,0)
+        Scenes.items.part_1_1_calculations.set(-15,-70,480,950)
         Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
         Scenes.items.btn_plot.set(495,170,50).zIndex(10)

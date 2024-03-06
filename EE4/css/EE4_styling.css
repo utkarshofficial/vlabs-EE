@@ -37,11 +37,17 @@
 
   .part_1_1_connections_box{
     display: none;
+    width: auto;
+  }
+  .part_1_1_connections_box .middle-border{
+    width: 422px;
   }
 
   .part_1_2_connections_box{
     display: none;
   }
+
+
 /* Table style */
 .table{
   display: none;

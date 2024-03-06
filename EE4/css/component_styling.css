@@ -92,11 +92,10 @@
 /* part table two */
 .part3_table_two{
     display: none;
-    bottom: 0px;
     position: absolute;
     right: 10px;
+    width: 500px;
     text-align: center;
-    gap: 20px;
     border-collapse: collapse;
 }
 .part3_table_two td,tr,th{
@@ -108,22 +107,22 @@
     color: white;
 }
 .part3_table_two thead tr th{
-    width: 80px;
-    padding: 0 10.6px;
+    width: 10px;
+    font-size: 16px;
+    padding: 0;
+    height: 60px;
 }
+
 .part3_table_two tbody tr{
-    height: 29px;
+    height: 20px;
 }
 .part3_table_two td{
     text-align: center;
     font-weight: bold;
-    width: 130px;
-    font-size: 1.2em;
-    padding: 0 3px;
+    width: 10px;
+    font-size: 16px;
+    padding: 0 14px!important;
     margin: 0;
-}
-.part3_table_two th{
-    font-size: 1.2em;
 }
 /* .part3_table_two tbody tr:nth-child(2n){
     background-color: #eaeff7;
