@@ -2239,10 +2239,15 @@ part1_box1 : new Dom(".part1_box1"),
         // setIsProcessRunning(false);
         // Dom.setBlinkArrow(true, 630, 315)
 
+        // speak test
+        setCC("For the these set input voltage and duty ratio, various component voltage and current waveforms are displayed here.",6)
+
         // after complete
-        Dom.setBlinkArrow(true, 790, 408).play()
-        setCC("Click 'Next' to go to next step")
-        setIsProcessRunning(false)
+        setTimeout(()=>{
+          Dom.setBlinkArrow(true, 790, 408).play()
+          // setCC("Click 'Next' to go to next step")
+          setIsProcessRunning(false)
+        },5000)
       };
       
 
@@ -2612,15 +2617,15 @@ part1_box1 : new Dom(".part1_box1"),
           switch(characteristicsValue){
             case  'D-vs-M': 
               yLabel = "Voltage Gain (M)"
-              setCC("Voltage gain linearly increases with increasing duty ratio for ideal case.")
+              setCC("The conclusion of these observations is that the voltage gain linearly increases with increasing duty ratio in ideal case.")
               break
             case  'D-vs-I': 
               yLabel = "I (A)"
-              setCC("Load current is equal to load voltage by load resistance and it linearly increases with increasing duty ratio for ideal case.")
+              setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.")
               break
             case  'D-vs-V': 
               yLabel = "V (V)"
-              setCC("Load voltage linearly increases with increasing duty ratio for ideal case.")
+              setCC("The conclusion of these observation is that the load voltage linearly increases with increasing duty ratio for ideal case.")
               break
           }
 
@@ -3109,19 +3114,19 @@ part1_box1 : new Dom(".part1_box1"),
               yLabel = "M (D)"
               dataLabel1 = "M(D) non-ideal"
               dataLabel2 = "M(D) ideal"
-              setCC("Voltage gain depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              setCC("The conclusion of these observation is that Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components.")
               break
             case  'D-vs-I': 
               yLabel = "I<sub>0</sub> (A)"
               dataLabel1 = "I₀ (A) non-ideal"
               dataLabel2 = "I₀ (A) ideal"
-              setCC("Load current is equal to load voltage by load resistance and it depends on the non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.")
               break
             case  'D-vs-V': 
               yLabel = "V<sub>0</sub> (V)"
               dataLabel1 = "V₀ (V) non-ideal"
               dataLabel2 = "V₀ (V) ideal"
-              setCC("Voltage depends on the load resistance and  non-ideal voltage drops of components and hence it is drooping as compared to ideal case.")
+              setCC("The conclusion of these observation is that load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components.")
               break
           }
 
@@ -3537,10 +3542,10 @@ part1_box1 : new Dom(".part1_box1"),
             // setting labels
             if(p0vsLosses){
               yLabel = "Losses (W)"
-              setCC("Due to loading effect, at higher load resistances, losses are more.")
+              setCC("The conclusion of these observation is that the losses increase with loading effect.")
             }else{
               yLabel = "Efficiencty (%)"
-              setCC("Due to loading effect, at higher load resistances, efficiency decreases.")
+              setCC("The conclusion of these observation is that due to loading effect the efficiency decreases.")
             }
             Scenes.items.chart.label3.x = xLabel
             Scenes.items.chart.label3.y = yLabel
@@ -4038,6 +4043,7 @@ part1_box1 : new Dom(".part1_box1"),
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
+          setCC("Here, the bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
           setIsProcessRunning(false); 
           Scenes.currentStep = 4
 
@@ -4146,7 +4152,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 5
 
 Scenes.next()
 // Scenes.steps[3]()
