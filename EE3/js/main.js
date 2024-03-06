@@ -4075,7 +4075,7 @@ part1_box1 : new Dom(".part1_box1"),
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
-          setCC("Here, the bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
+          setCC("The bar shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
 
           let conclusionFront = "The bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart."
 
