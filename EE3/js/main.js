@@ -1145,12 +1145,13 @@ part1_box1 : new Dom(".part1_box1"),
               rotate: "0deg"
             })
 
-          Scenes.items.box1.set(100,230,90).zIndex(2)
-          Scenes.items.box2.set(185,140,80,135).zIndex(2)
-          Scenes.items.box3.set(295,245,95).zIndex(2)
-          Scenes.items.box4.set(360,140,80,115).zIndex(2)
-          Scenes.items.box5.set(475,250,85).zIndex(2)
-          Scenes.items.box6.set(588,250,95).zIndex(2)
+          Scenes.items.part1_circuit.set(140,180,220)
+          Scenes.items.box2.set(213,143,80,90).zIndex(2)
+          Scenes.items.box4.set(410,143,80,90).zIndex(2)
+          Scenes.items.box1.set(96,248,90).zIndex(2)
+          Scenes.items.box3.set(317,248,90).zIndex(2)
+          Scenes.items.box5.set(515,248,90).zIndex(2)
+          Scenes.items.box6.set(612,248,90).zIndex(2)
 
           Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
           Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
@@ -1494,7 +1495,7 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box2.hide()
         // item1.set(242,73,225)
-        toSetItem(item1, 250,112)
+        toSetItem(item1, 250,110.5)
         toSetSymbol(vIn, 219, 205)
 
       }
@@ -1502,7 +1503,7 @@ part1_box1 : new Dom(".part1_box1"),
           box3.hide()
         // item1.set(307, 193,150)
         toSetItem(item1, 324.4, 193,150)
-        toSetSymbol(vIn, 252, 256 )
+        toSetSymbol(vIn, 272, 256)
       }
       if(itemName == item1 && boxName == box4){
         item1.styles({
@@ -1510,7 +1511,7 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box4.hide()
         // item1.set(415, 109)
-        toSetItem(item1, 450, 112)
+        toSetItem(item1, 450, 110.5)
         toSetSymbol(vIn, 397, 204)
 
       }
@@ -1518,14 +1519,14 @@ part1_box1 : new Dom(".part1_box1"),
         box5.hide()
         // item1.set(485, 194)
         toSetItem(item1, 521.8, 194)
-        toSetSymbol(vIn, 432 , 256)
+        toSetSymbol(vIn, 462, 256)
         
       }
       if(itemName == item1 && boxName == box6){
             box6.hide()
         // item1.set(588, 194)
         toSetItem(item1, 606.4, 194)
-        toSetSymbol(vIn, 535, 267 )
+        toSetSymbol(vIn, 665, 267)
       }
 
       //!if item2 clicked
@@ -1540,7 +1541,7 @@ part1_box1 : new Dom(".part1_box1"),
       }
       if(itemName == item2 && boxName == box2){
         box2.hide()
-        toSetItem(item2, 200, 95)
+        toSetItem(item2, 200, 94)
         toSetSymbol(L, 226, 209)
 
         // item2.set(171, 90)
@@ -1552,11 +1553,11 @@ part1_box1 : new Dom(".part1_box1"),
         box3.hide()
         // item2.set(288, 230)
         toSetItem(item2, 312.5, 258)
-        toSetSymbol(L, 254, 264)
+        toSetSymbol(L, 288, 256)
       }
       if(itemName == item2 && boxName == box4){
         box4.hide()
-        toSetItem(item2, 400, 95)
+        toSetItem(item2, 400, 94)
         toSetSymbol(L, 393, 208)
         // item2.set(339, 90)
         checkCnnctn+="1"
@@ -1569,7 +1570,7 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box5.hide()
         toSetItem(item2, 510.5, 258)
-        toSetSymbol(L, 438, 263)
+        toSetSymbol(L, 488, 256)
 
         // item2.set(467, 230)
 
@@ -1580,7 +1581,7 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box6.hide()
         toSetItem(item2, 594.5, 258)
-        toSetSymbol(L, 550, 266)
+        toSetSymbol(L, 665, 267)
 
         // item2.set(569, 230)
       }
@@ -1607,7 +1608,7 @@ part1_box1 : new Dom(".part1_box1"),
         box3.hide()
         // item3.set(318, 213)
         toSetItem(item3, 335.8, 206)
-        toSetSymbol(C, 334, 207)
+        toSetSymbol(C, 288, 256)
       }
       if(itemName == item3 && boxName == box4){
         item3.styles({
@@ -1616,13 +1617,13 @@ part1_box1 : new Dom(".part1_box1"),
         box4.hide()
         // item3.set(399, 133)
         toSetItem(item3, 438,127.7)
-        toSetSymbol(C, 445, 185)
+        toSetSymbol(C, 455, 185)
       }
       if(itemName == item3 && boxName == box5){
         box5.hide()
         // item3.set(496, 213)
         toSetItem(item3, 533.4, 206)
-        toSetSymbol(C, 513, 211)
+        toSetSymbol(C, 488, 256)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -1630,7 +1631,7 @@ part1_box1 : new Dom(".part1_box1"),
       if(itemName == item3 && boxName == box6){
         box6.hide()
         toSetItem(item3, 617.9, 206)
-        toSetSymbol(C, 613, 235)
+        toSetSymbol(C, 665, 267)
 
         // item3.set(599, 213)
       }
@@ -1662,7 +1663,7 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box3.hide()
         toSetItem(item4, 247, 220)
-        toSetSymbol(S, 339, 214)
+        toSetSymbol(S, 299, 200)
 
         // item4.set(243, 221)
 
@@ -1670,7 +1671,7 @@ part1_box1 : new Dom(".part1_box1"),
       if(itemName == item4 && boxName == box4){
         box4.hide()
         toSetItem(item4, 384, 135)
-        toSetSymbol(S, 346, 123)
+        toSetSymbol(S, 366, 123)
 
         // item4.set(346, 124)
       }
@@ -1680,17 +1681,17 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box5.hide()
         toSetItem(item4, 444, 220)
-        toSetSymbol(S, 510, 215)
+        toSetSymbol(S, 490, 200)
 
         // item4.set(420, 221)
       }
       if(itemName == item4 && boxName == box6){
         item4.styles({
-          rotate: "90deg"
+          rotate: "-90deg"
         })
         box6.hide()
-        toSetItem(item4, 528.9, 220)
-        toSetSymbol(S, 555, 217)
+        toSetItem(item4, 579.9, 220)
+        toSetSymbol(S, 580, 210)
 
         // item4.set(525, 221)
       }
@@ -1716,7 +1717,7 @@ part1_box1 : new Dom(".part1_box1"),
             box3.hide()
         // item5.set(322, 230)
         toSetItem(item5, 341.4, 220)
-        toSetSymbol(D, 330, 232)
+        toSetSymbol(D, 288, 256)
         checkCnnctn+="1"
         console.log(checkCnnctn)
 
@@ -1728,20 +1729,20 @@ part1_box1 : new Dom(".part1_box1"),
           box4.hide()
         // item5.set(387, 144)
         toSetItem(item5, 422, 138)
-        toSetSymbol(D, 432, 182)
+        toSetSymbol(D, 462, 182)
 
       }
       if(itemName == item5 && boxName == box5){
             box5.hide()
             toSetItem(item5, 539, 220)
-        toSetSymbol(D, 509, 229)
+          toSetSymbol(D, 488, 256)
 
         // item5.set(500, 230)
       }
       if(itemName == item5 && boxName == box6){
           box6.hide()
           toSetItem(item5, 623.5, 220)
-        toSetSymbol(D, 618, 237)
+        toSetSymbol(D, 655, 267)
 
         // item5.set(604, 230)
       }
@@ -1760,14 +1761,14 @@ part1_box1 : new Dom(".part1_box1"),
         })
         box2.hide()
         toSetItem(item6, 239, 124.5)
-        toSetSymbol(R, 288, 178)
+        toSetSymbol(R, 278, 188)
         // item6.set(239, 129)
       }
       if(itemName == item6 && boxName == box3){
             box3.hide()
         // item6.set(321, 214)
         toSetItem(item6, 340.8, 206)
-        toSetSymbol(R, 330, 212)
+        toSetSymbol(R, 288, 256)
       }
       if(itemName == item6 && boxName == box4){
         item6.styles({
@@ -1775,20 +1776,20 @@ part1_box1 : new Dom(".part1_box1"),
         })
           box4.hide()
           toSetItem(item6, 439, 124.5)
-          toSetSymbol(R, 451, 181)
+          toSetSymbol(R, 451, 198)
           // item6.set(402, 129)
       }
       if(itemName == item6 && boxName == box5){
             box5.hide()
             toSetItem(item6, 538.4, 206)
-            toSetSymbol(R, 509, 213)
+            toSetSymbol(R, 488, 256)
 
         // item6.set(498, 214)
       }
       if(itemName == item6 && boxName == box6){
             box6.hide()
             toSetItem(item6, 622.9, 206)
-            toSetSymbol(R, 618, 237)
+            toSetSymbol(R, 655, 267)
             // item6.set(601, 214)
             checkCnnctn+="1"
       }
