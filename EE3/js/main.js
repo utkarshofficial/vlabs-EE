@@ -1124,41 +1124,70 @@ part1_box1 : new Dom(".part1_box1"),
 
       Scenes.setStepHeading("Step-1", "Circuit Formulation");
 
+      // temp text load source
+      let st = {
+        color: "red",
+        fontSize: "20px",
+      }
+      let st2 = {
+        width: "250px",
+        fontSize: "20px",
+        color: "red",
+        textAlign: "center",
+        backgroundColor: "white",
+        padding: "10px",
+        borderRadius: "12px"
+      }
+      // ! Show Text
+      let textSelectBox = 'Select the "box"'
+      let textSelectComponent = 'Select the "component" to be placed in the box'
+      Scenes.items.tempTitle17.set(30,270).setContent("Load").styles(st)
+      Scenes.items.tempTitle18.set(675,320).setContent("Source").styles(st)
+
+      let frontText = Scenes.items.tempTitle19.set(680).setContent(textSelectBox).styles(st2)
+      Anime.fadeIn(frontText.item,0.5)
+      setCC(textSelectBox)
+
+      function showFrontText(isBox){
+        if(isBox){
+          setCC(textSelectComponent)
+          frontText.setContent(textSelectComponent)
+        }else{
+          frontText.setContent(textSelectBox)
+          setCC(textSelectBox)
+        }
+      }
+
       let reset = function(){
-                 
-          Scenes.items.part1_component_voltage.set(5+40,-20,150).zIndex(3).styles({
-              rotate: "0deg"
-            })
-          Scenes.items.part1_component_inductor.set(85+70,-20,120).zIndex(3).styles({
-              rotate: "0deg"
-            })
-          Scenes.items.part1_component_capacitor.set(85+190+70,-20,130).zIndex(3).styles({
-              rotate: "0deg"
-            })
-          Scenes.items.part1_component_mosfet.set(250+160,-40, 140).zIndex(3).styles({
-              rotate: "0deg"
-            })
-          Scenes.items.part1_component_diode.set(85+190+270+70,-20,120).zIndex(3).styles({
-              rotate: "0deg"
-            })
-          Scenes.items.part1_component_resistance.set(85+190+350+70,-31,132).zIndex(3).styles({
-              rotate: "0deg"
-            })
 
-          Scenes.items.part1_circuit.set(140,180,220)
-          Scenes.items.box2.set(213,143,80,90).zIndex(2)
-          Scenes.items.box4.set(410,143,80,90).zIndex(2)
-          Scenes.items.box1.set(96,248,90).zIndex(2)
-          Scenes.items.box3.set(317,248,90).zIndex(2)
-          Scenes.items.box5.set(515,248,90).zIndex(2)
-          Scenes.items.box6.set(612,248,90).zIndex(2)
-
-          Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
-          Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
-          Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
-          Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
-          Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
-          Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
+            frontText.show()
+            showFrontText(false)
+            
+            Scenes.items.part1_circuit.set(140,180,220)
+            Scenes.items.box2.set(213,143,80,90).zIndex(2)
+            Scenes.items.box4.set(410,143,80,90).zIndex(2)
+            Scenes.items.box1.set(96,248,90).zIndex(2)
+            Scenes.items.box3.set(317,248,90).zIndex(2)
+            Scenes.items.box5.set(515,248,90).zIndex(2)
+            Scenes.items.box6.set(612,248,90).zIndex(2)
+      
+      
+            // symbols required position
+            Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
+            Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
+            Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
+            Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
+            Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
+            Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
+            
+            //!Correct positons      
+            let st = { rotate: "0deg" }
+            Scenes.items.part1_component_voltage.set(5+40,-20,152,73).styles(st).zIndex(3)
+            Scenes.items.part1_component_inductor.set(85+70,-20,116).styles(st).zIndex(3)
+            Scenes.items.part1_component_capacitor.set(85+190+70,-20,141).styles(st).zIndex(3)
+            Scenes.items.part1_component_mosfet.set(440,-10, 150).styles(st).zIndex(3)
+            Scenes.items.part1_component_diode.set(85+190+270+70,-20,136).styles(st).zIndex(3)
+            Scenes.items.part1_component_resistance.set(85+190+350+70,-31,149).styles(st).zIndex(3)
           
 
           Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
@@ -1193,8 +1222,9 @@ part1_box1 : new Dom(".part1_box1"),
           Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
           wrongNoTimes+="1";
           if(wrongNoTimes == "11111"){
-                  Dom.setBlinkArrowRed(true,882,-18,30,30,90).play()
+            Dom.setBlinkArrowRed(true,882,-18,30,30,90).play()
             ee3_btn_hint.classList.remove("btn-deactive")
+            frontText.hide()
           }
           console.log("wrong no. of times",wrongNoTimes)
             }
@@ -1362,36 +1392,48 @@ part1_box1 : new Dom(".part1_box1"),
         boxAnimes[0].play();
         console.log("box1 clicked")
         compo.box = box1
+        // added text
+        showFrontText(true)
       }
       let box2 = Scenes.items.box2
       box2.item.onclick = ()=>{
         boxAnimes[1].play();
         console.log("box2 clicked")
         compo.box = box2
+        // added text
+        showFrontText(true)
       }
       let box3 = Scenes.items.box3
       box3.item.onclick = ()=>{
         boxAnimes[2].play();
         console.log("box3 clicked")
         compo.box = box3
+        // added text
+        showFrontText(true)
       }
       let box4 = Scenes.items.box4
       box4.item.onclick = ()=>{
         boxAnimes[3].play();
         console.log("box4 clicked")
         compo.box = box4
+        // added text
+        showFrontText(true)
       }
       let box5 = Scenes.items.box5
       box5.item.onclick = ()=>{
         boxAnimes[4].play();
         console.log("box5 clicked")
         compo.box = box5
+        // added text
+        showFrontText(true)
       }
       let box6 = Scenes.items.box6
       box6.item.onclick = ()=>{
         boxAnimes[5].play();
         console.log("box6 clicked")
         compo.box = box6
+        // added text
+        showFrontText(true)
       }
 
       //item click
@@ -1400,36 +1442,48 @@ part1_box1 : new Dom(".part1_box1"),
         console.log("item1 clicked")
         compo.item = item1
         toSet();
+        // added text
+        showFrontText(false)
       }
       let item2 = Scenes.items.part1_component_inductor
       item2.item.onclick = ()=>{
         console.log("item2 clicked")
         compo.item = item2
         toSet();
+        // added text
+        showFrontText(false)
       }
       let item3 = Scenes.items.part1_component_capacitor
       item3.item.onclick = ()=>{
         console.log("item3 clicked")
         compo.item = item3
         toSet();
+        // added text
+        showFrontText(false)
       }
       let item4 = Scenes.items.part1_component_mosfet
       item4.item.onclick = ()=>{
         console.log("item4 clicked")
         compo.item = item4
         toSet();
+        // added text
+        showFrontText(false)
       }
       let item5 = Scenes.items.part1_component_diode
       item5.item.onclick = ()=>{
         console.log("item5 clicked")
         compo.item = item5
         toSet();
+        // added text
+        showFrontText(false)
       }
       let item6 = Scenes.items.part1_component_resistance
       item6.item.onclick = ()=>{
         console.log("item6 clicked")
         compo.item = item6
         toSet();
+        // added text
+        showFrontText(false)
       }
 
       let resetActive = "";
@@ -4192,7 +4246,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 8
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()
