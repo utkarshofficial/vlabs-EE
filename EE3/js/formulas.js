@@ -4,17 +4,13 @@ const Formulas = {
     },
     step2:{
         v0(values){
-            let ans = values.vIn / Formulas.one_minus_D(values.D)
+            let ans = values.D * values.vIn;
             return Number(ans.toFixed(4))
         },
         i0(values){
-            let ans = this.v0(values) / values.R
+            let ans = (values.vIn * values.D) / values.R
             return Number(ans.toFixed(4))
         },
-        iIn(values){
-            let ans = this.i0(values) / Formulas.one_minus_D(values.D)
-            return Number(ans.toFixed(4))
-        }
     },
     ideal:{
         // v0(values){

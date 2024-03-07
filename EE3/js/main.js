@@ -1350,7 +1350,7 @@ part1_box1 : new Dom(".part1_box1"),
 
 
       // Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
-      
+
       Scenes.items.part1_circuit.set(140,180,220)
       Scenes.items.box2.set(213,143,80,90).zIndex(2)
       Scenes.items.box4.set(410,143,80,90).zIndex(2)
@@ -1906,81 +1906,37 @@ part1_box1 : new Dom(".part1_box1"),
   let t = -50
   let h = 410
   let w = 370
-  Scenes.items.part_2_graph_data_upper.set(l,t,h,w).zIndex(2)
+  Scenes.items.part_2_graph_data_upper.set(l-50,t,h,w+58).zIndex(2)
   Scenes.items.part_2_graph_empty.set(l, t, h, w);
   Scenes.items.part_2_graph_1.set(l, t, h, w).hide();
   Scenes.items.part_2_graph_2.set(l, t, h, w).hide();
   Scenes.items.part_2_graph_3.set(l, t, h, w).hide();
        
+  // ! temp values and text
+  let st = {
+    backgroundColor: "white",
+    border: "2px solid black",
+    color: "black",
+    borderRadius: "0",
+    width: "fit-content",
+    textAlign: "center",
+    padding: "0 5px",
+  }
+  let textLabels = [
+    vLon = Scenes.items.tempTitle25.set(714,91).setContent("0 V").styles(st),
+    vLoff = Scenes.items.tempTitle26.set(850,130).setContent("0 V").styles(st),
+    vDon = Scenes.items.tempTitle27.set(714,151).setContent("0 V").styles(st),
+    vDoff = Scenes.items.tempTitle28.set(850,182).setContent("0 V").styles(st),
+    vSwon = Scenes.items.tempTitle29.set(634,193).setContent("0 V").styles(st),
+    vSwoff = Scenes.items.tempTitle30.set(744,213).setContent("0 V").styles(st),
+    iL = Scenes.items.tempTitle31.set(844,40).setContent("0 I").styles(st),
+    iSwon = Scenes.items.tempTitle32.set(680,241).setContent("0 I").styles(st),
+    iSwoff = Scenes.items.tempTitle33.set(752,261).setContent("0 I").styles(st),
+    iDon = Scenes.items.tempTitle34.set(623,292).setContent("0 I").styles(st),
+    iDoff = Scenes.items.tempTitle35.set(773,298).setContent("0 I").styles(st),
+  ]    
  
-      // temp text on required positions
-      // let allTempTitles = [
-
-      //   //temp titles for inductor
-      //   Scenes.items.tempTitle1.setContent("0").set(554+4, -23+25),
-      //   Scenes.items.tempTitle2.setContent("0").set(634+4, -23+25),
-      //   Scenes.items.tempTitle3.setContent("0").set(690+4, -23+25),
-      //   Scenes.items.tempTitle4.setContent("0").set(548+4+2, -3+22),
-      //   Scenes.items.tempTitle5.setContent("0").set(548+4+2, 14+22),
-      //   Scenes.items.tempTitle6.setContent("0").set(620+4+2, -3+22),
-      //   Scenes.items.tempTitle7.setContent("0").set(620+4+2, 14+22),
-      //   Scenes.items.tempTitle8.setContent("0").set(694+4, 4+25-3),
-
-      //   //temp titles for switch
-      //   Scenes.items.tempTitle9.setContent("0").set(550, 100+16),
-      //   Scenes.items.tempTitle10.setContent("0").set(618+6, 102+12),
-      //   Scenes.items.tempTitle11.setContent("0").set(702+6, 100+14),
-      //   Scenes.items.tempTitle12.setContent("0").set(547+6, 125+11),
-      //   Scenes.items.tempTitle13.setContent("0").set(550+6, 141+11),
-      //   Scenes.items.tempTitle14.setContent("0").set(615, 134+9),
-      //   Scenes.items.tempTitle15.setContent("0").set(693+4, 132+10),
-
-      //   //for diode d
-      //   Scenes.items.tempTitle16.setContent("0").set(555+5, 228+1),
-      //   Scenes.items.tempTitle17.setContent("0").set(618, 228),
-      //   Scenes.items.tempTitle18.setContent("0").set(695+5, 228),
-      //   Scenes.items.tempTitle19.setContent("0").set(548+6, 255),
-      //   Scenes.items.tempTitle20.setContent("0").set(617+6, 249),
-      //   Scenes.items.tempTitle21.setContent("0").set(618+6, 266-1),
-      //   Scenes.items.tempTitle22.setContent("0").set(703+5, 257),
-                
-      //   //for capacitor
-      //   Scenes.items.tempTitle23.setContent("0").set(553+7, 355-10),
-      //   Scenes.items.tempTitle24.setContent("0").set(625+7, 355-10),
-      //   Scenes.items.tempTitle25.setContent("0").set(698+4, 355-10),
-      //   Scenes.items.tempTitle26.setContent("0").set(552+7, 385-13),
-      //   Scenes.items.tempTitle27.setContent("0").set(627+6, 376-13),
-      //   Scenes.items.tempTitle28.setContent("0").set(629+7, 393-14),
-      //   Scenes.items.tempTitle29.setContent("0").set(690+3, 384-13),
-        
-      //   //source maasurements
-      //   Scenes.items.tempTitle30.setContent("0").set(268+11, 230),
-      //   Scenes.items.tempTitle31.setContent("0").set(340+11, 230),
-      //   Scenes.items.tempTitle32.setContent("0").set(412+8, 230),
-      //   Scenes.items.tempTitle33.setContent("0").set(264+11+1, 252-2),
-      //   Scenes.items.tempTitle34.setContent("0").set(266+11, 269-2),
-      //   Scenes.items.tempTitle35.setContent("0").set(264 + 72+11, 252-2),
-      //   Scenes.items.tempTitle36.setContent("0").set(266 + 72+11, 269-2),
-      //   Scenes.items.tempTitle37.setContent("0").set(411+11-2, 259-1),
-
-      //   //load measurements
-      //   Scenes.items.tempTitle38.setContent("0").set(268+9, 230+128-12+2),
-      //   Scenes.items.tempTitle39.setContent("0").set(340+9, 230+128-12+2),
-      //   Scenes.items.tempTitle40.setContent("0").set(412+9, 230+128-12+2),
-      //   Scenes.items.tempTitle41.setContent("0").set(268+9-3+3, 230+128+25-12-2+2),
-      //   Scenes.items.tempTitle42.setContent("0").set(340+9-3, 230+128+25-12-2+2),
-      //   Scenes.items.tempTitle43.setContent("0").set(412+9-3, 230+128+25-12-2+2),
-      // ];
-      // allTempTitles.forEach(ele=>{
-      //   ele.styles({
-      //     color : "white",
-      //     backgroundColor : "black",
-      //     fontSize: "0.8em",
-      //     width : "28px",
-      //   })
-      // })
- 
-       let currentGraph = Scenes.items.part_2_graph_empty
+      let currentGraph = Scenes.items.part_2_graph_empty
 
        
       // *  chage the step size of the sliders
@@ -1996,284 +1952,41 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_record.item.onclick = function () {
         Dom.setBlinkArrowRed(-1)
         // ! Activate the next btn right after the click
-        // setCC("Click 'Next' to go to next step");
-        // setIsProcessRunning(false);
-        
-        // after complete
-        // Dom.setBlinkArrow(true, 790, 408).play();
-        // let allSliderValue = $(".range-slider__value");
-        
-        // let vInValue = Number(allSliderValue[0].innerHTML);
-        // let dutyRatioValue = Number(allSliderValue[1].innerHTML);
-        // let resistanceValue = Number(allSliderValue[2].value);
         
         
-        // Scenes.items.tempTitle2.setContent(v0);
-        
-        // let dutyRatioValue = Number(sliders.d.value);
-        // let resistanceValue = Number(sliders.r.value);
-        // let vG = Number(sliders.v.value);
-        // updateValues(vG, dutyRatioValue, resistanceValue);
-        
-        // let v0 = Number(Formulas.step2.v0(values)).toFixed(1);
-        // let iIn = Number(Formulas.step2.iIn(values)).toFixed(1);
-        // let i0 = Number(Formulas.step2.i0(values)).toFixed(1);
-        // let i1 = Number(Formulas.step2.i0(values)).toFixed(1);
-        // let i2 = Number(Formulas.step2.i0(values)).toFixed(1);
-        
-        // if (dutyRatioValue == 0.25) {
-        //   updateValues(vG, dutyRatioValue, resistanceValue);
+        let vInValue = Number(Scenes.items.slider_vIn.item.value)
+        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
+        let resistanceValue = Number(Scenes.items.slider_R.item.value)
 
+        updateValues(vInValue,dutyRatioValue,resistanceValue)
 
-        // //temp titles for inductor
-        // Scenes.items.tempTitle1.setContent(vG)
-        // Scenes.items.tempTitle2.setContent(v0 - vG)
-        // Scenes.items.tempTitle3.setContent("0")
-        // Scenes.items.tempTitle4.setContent(i1)
-        // Scenes.items.tempTitle5.setContent(i2)
-        // Scenes.items.tempTitle6.setContent(i2)
-        // Scenes.items.tempTitle7.setContent(i1)
-        // Scenes.items.tempTitle8.setContent(iIn)
+        // setting values from formulas
+        function setTempTitleAndValues(showValues=false,vInValue=0){  
+    
+          let v0 = Number(Formulas.step2.v0(values)).toFixed(2)
+          let i0  = Number(Formulas.step2.i0(values)).toFixed(2)
+          let textValues = [
+            vLon = `${ vInValue - v0} V`,
+            vLoff = `${ -v0} V`,
+            vDon = `${ vInValue} V`,
+            vDoff = `${ 0} V`,
+            vSwon = `${ 0} V`,
+            vSwoff = `${ vInValue} V`,
+            iL = `${ i0} A`,
+            iSwon = `${ i0} A`,
+            iSwoff = `${ 0} A`,
+            iDon = `${ i0} A`,
+            iDoff = `${ 0} A`,
+          ]  
+      
+          if(showValues){
+            textLabels.forEach((ele,idx)=>{
+              ele.setContent(textValues[idx])
+            })
+          }
+        }
+        setTempTitleAndValues(true,vInValue)
 
-        // //temp titles for switch
-        // Scenes.items.tempTitle9.setContent("0")
-        // Scenes.items.tempTitle10.setContent(v0)
-        // Scenes.items.tempTitle11.setContent((1-dutyRatioValue) * v0)
-        // Scenes.items.tempTitle12.setContent(i1)
-        // Scenes.items.tempTitle13.setContent(i2)
-        // Scenes.items.tempTitle14.setContent("0")
-        // Scenes.items.tempTitle15.setContent(dutyRatioValue * iIn)
-
-        // //for diode d
-        // Scenes.items.tempTitle16.setContent(v0)
-        // Scenes.items.tempTitle17.setContent("0")
-        // Scenes.items.tempTitle18.setContent(dutyRatioValue*v0)
-        // Scenes.items.tempTitle19.setContent("0")
-        // Scenes.items.tempTitle20.setContent(i2)
-        // Scenes.items.tempTitle21.setContent(i1)
-        // Scenes.items.tempTitle22.setContent((1-dutyRatioValue) * iIn)
-                
-        // //for capacitor
-        // Scenes.items.tempTitle23.setContent(v0)
-        // Scenes.items.tempTitle24.setContent(v0)
-        // Scenes.items.tempTitle25.setContent(v0)
-        // Scenes.items.tempTitle26.setContent(i0)
-        // Scenes.items.tempTitle27.setContent(i2-i0)
-        // Scenes.items.tempTitle28.setContent(i1-i0)
-        // Scenes.items.tempTitle29.setContent("0")
-        
-        // //source maasurements
-        // Scenes.items.tempTitle30.setContent(vG)
-        // Scenes.items.tempTitle31.setContent(vG)
-        // Scenes.items.tempTitle32.setContent(vG)
-        // Scenes.items.tempTitle33.setContent(i1)
-        // Scenes.items.tempTitle34.setContent(i2)
-        // Scenes.items.tempTitle35.setContent(i2)
-        // Scenes.items.tempTitle36.setContent(i1)
-        // Scenes.items.tempTitle37.setContent(iIn)
-
-        // //load measurements
-        // Scenes.items.tempTitle38.setContent(v0)
-        // Scenes.items.tempTitle39.setContent(v0)
-        // Scenes.items.tempTitle40.setContent(v0)
-        // Scenes.items.tempTitle41.setContent(i0)
-        // Scenes.items.tempTitle42.setContent(i0)
-        // Scenes.items.tempTitle43.setContent(i0)
-
-          
-
-        //   currentGraph.hide();
-        //   Scenes.items.part_2_graph_1.show();
-        //   currentGraph = Scenes.items.part_2_graph_1;
-        // }
-
-        // if (dutyRatioValue == 0.5) {
-
-        //   updateValues(vG, dutyRatioValue, resistanceValue);
-
-
-        //   //temp titles for inductor
-        //   Scenes.items.tempTitle1.setContent(vG)
-        //   Scenes.items.tempTitle2.setContent(v0 - vG)
-        //   Scenes.items.tempTitle3.setContent("0")
-        //   Scenes.items.tempTitle4.setContent(i1)
-        //   Scenes.items.tempTitle5.setContent(i2)
-        //   Scenes.items.tempTitle6.setContent(i2)
-        //   Scenes.items.tempTitle7.setContent(i1)
-        //   Scenes.items.tempTitle8.setContent(iIn)
-  
-        //   //temp titles for switch
-        //   Scenes.items.tempTitle9.setContent("0")
-        //   Scenes.items.tempTitle10.setContent(v0)
-        //   Scenes.items.tempTitle11.setContent((1-dutyRatioValue) * v0)
-        //   Scenes.items.tempTitle12.setContent(i1)
-        //   Scenes.items.tempTitle13.setContent(i2)
-        //   Scenes.items.tempTitle14.setContent("0")
-        //   Scenes.items.tempTitle15.setContent(dutyRatioValue * iIn)
-  
-        //   //for diode d
-        //   Scenes.items.tempTitle16.setContent(v0)
-        //   Scenes.items.tempTitle17.setContent("0")
-        //   Scenes.items.tempTitle18.setContent(dutyRatioValue*v0)
-        //   Scenes.items.tempTitle19.setContent("0")
-        //   Scenes.items.tempTitle20.setContent(i2)
-        //   Scenes.items.tempTitle21.setContent(i1)
-        //   Scenes.items.tempTitle22.setContent((1-dutyRatioValue) * iIn)
-                  
-        //   //for capacitor
-        //   Scenes.items.tempTitle23.setContent(v0)
-        //   Scenes.items.tempTitle24.setContent(v0)
-        //   Scenes.items.tempTitle25.setContent(v0)
-        //   Scenes.items.tempTitle26.setContent(i0)
-        //   Scenes.items.tempTitle27.setContent(i2-i0)
-        //   Scenes.items.tempTitle28.setContent(i1-i0)
-        //   Scenes.items.tempTitle29.setContent("0")
-          
-        //   //source maasurements
-        //   Scenes.items.tempTitle30.setContent(vG)
-        //   Scenes.items.tempTitle31.setContent(vG)
-        //   Scenes.items.tempTitle32.setContent(vG)
-        //   Scenes.items.tempTitle33.setContent(i1)
-        //   Scenes.items.tempTitle34.setContent(i2)
-        //   Scenes.items.tempTitle35.setContent(i2)
-        //   Scenes.items.tempTitle36.setContent(i1)
-        //   Scenes.items.tempTitle37.setContent(iIn)
-  
-        //   //load measurements
-        //   Scenes.items.tempTitle38.setContent(v0)
-        //   Scenes.items.tempTitle39.setContent(v0)
-        //   Scenes.items.tempTitle40.setContent(v0)
-        //   Scenes.items.tempTitle41.setContent(i0)
-        //   Scenes.items.tempTitle42.setContent(i0)
-        //   Scenes.items.tempTitle43.setContent(i0)
-
-        //   // updateValues(vInValue, dutyRatioValue, resistanceValue);
-
-        //   // Scenes.items.tempTitle1.setContent(vInValue);
-        //   // Scenes.items.tempTitle2.setContent(Number(v0 - iIn).toFixed(1));
-        //   // Scenes.items.tempTitle3.setContent(iIn);
-        //   // Scenes.items.tempTitle4.setContent(iIn);
-
-        //   // Scenes.items.tempTitle5.setContent(v0);
-        //   // Scenes.items.tempTitle6.setContent(iIn);
-
-        //   // Scenes.items.tempTitle7.setContent(v0);
-        //   // Scenes.items.tempTitle8.setContent(v0);
-        //   // Scenes.items.tempTitle9.setContent(Number(iIn - i0).toFixed(1));
-
-        //   // Scenes.items.tempTitle10.setContent(vInValue);
-        //   // Scenes.items.tempTitle11.setContent(vInValue);
-        //   // Scenes.items.tempTitle12.setContent(iIn);
-        //   // Scenes.items.tempTitle13.setContent(iIn);
-
-        //   // Scenes.items.tempTitle14.setContent(v0);
-        //   // Scenes.items.tempTitle15.setContent(iIn);
-
-        //   // Scenes.items.tempTitle16.setContent(v0);
-        //   // Scenes.items.tempTitle17.setContent(v0);
-        //   // Scenes.items.tempTitle18.setContent(i0);
-        //   // Scenes.items.tempTitle19.setContent(i0);
-
-        //   currentGraph.hide();
-        //   Scenes.items.part_2_graph_2.show();
-        //   currentGraph = Scenes.items.part_2_graph_2;
-        // }
-
-        // if (dutyRatioValue == 0.75) {
-
-        //   updateValues(vG, dutyRatioValue, resistanceValue);
-
-
-        //   //temp titles for inductor
-        //   Scenes.items.tempTitle1.setContent(vG)
-        //   Scenes.items.tempTitle2.setContent(v0 - vG)
-        //   Scenes.items.tempTitle3.setContent("0")
-        //   Scenes.items.tempTitle4.setContent(i1)
-        //   Scenes.items.tempTitle5.setContent(i2)
-        //   Scenes.items.tempTitle6.setContent(i2)
-        //   Scenes.items.tempTitle7.setContent(i1)
-        //   Scenes.items.tempTitle8.setContent(iIn)
-  
-        //   //temp titles for switch
-        //   Scenes.items.tempTitle9.setContent("0")
-        //   Scenes.items.tempTitle10.setContent(v0)
-        //   Scenes.items.tempTitle11.setContent((1-dutyRatioValue) * v0)
-        //   Scenes.items.tempTitle12.setContent(i1)
-        //   Scenes.items.tempTitle13.setContent(i2)
-        //   Scenes.items.tempTitle14.setContent("0")
-        //   Scenes.items.tempTitle15.setContent(dutyRatioValue * iIn)
-  
-        //   //for diode d
-        //   Scenes.items.tempTitle16.setContent(v0)
-        //   Scenes.items.tempTitle17.setContent("0")
-        //   Scenes.items.tempTitle18.setContent(dutyRatioValue*v0)
-        //   Scenes.items.tempTitle19.setContent("0")
-        //   Scenes.items.tempTitle20.setContent(i2)
-        //   Scenes.items.tempTitle21.setContent(i1)
-        //   Scenes.items.tempTitle22.setContent((1-dutyRatioValue) * iIn)
-                  
-        //   //for capacitor
-        //   Scenes.items.tempTitle23.setContent(v0)
-        //   Scenes.items.tempTitle24.setContent(v0)
-        //   Scenes.items.tempTitle25.setContent(v0)
-        //   Scenes.items.tempTitle26.setContent(i0)
-        //   Scenes.items.tempTitle27.setContent(i2-i0)
-        //   Scenes.items.tempTitle28.setContent(i1-i0)
-        //   Scenes.items.tempTitle29.setContent("0")
-          
-        //   //source maasurements
-        //   Scenes.items.tempTitle30.setContent(vG)
-        //   Scenes.items.tempTitle31.setContent(vG)
-        //   Scenes.items.tempTitle32.setContent(vG)
-        //   Scenes.items.tempTitle33.setContent(i1)
-        //   Scenes.items.tempTitle34.setContent(i2)
-        //   Scenes.items.tempTitle35.setContent(i2)
-        //   Scenes.items.tempTitle36.setContent(i1)
-        //   Scenes.items.tempTitle37.setContent(iIn)
-  
-        //   //load measurements
-        //   Scenes.items.tempTitle38.setContent(v0)
-        //   Scenes.items.tempTitle39.setContent(v0)
-        //   Scenes.items.tempTitle40.setContent(v0)
-        //   Scenes.items.tempTitle41.setContent(i0)
-        //   Scenes.items.tempTitle42.setContent(i0)
-        //   Scenes.items.tempTitle43.setContent(i0)
-
-        //   // updateValues(vInValue, dutyRatioValue, resistanceValue);
-
-        //   // Scenes.items.tempTitle1.setContent(vInValue);
-        //   // Scenes.items.tempTitle2.setContent(Number(v0 - iIn).toFixed(1));
-        //   // Scenes.items.tempTitle3.setContent(iIn);
-        //   // Scenes.items.tempTitle4.setContent(iIn);
-
-        //   // Scenes.items.tempTitle5.setContent(v0);
-        //   // Scenes.items.tempTitle6.setContent(iIn);
-
-        //   // Scenes.items.tempTitle7.setContent(v0);
-        //   // Scenes.items.tempTitle8.setContent(v0);
-        //   // Scenes.items.tempTitle9.setContent(Number(iIn - i0).toFixed(1));
-
-        //   // Scenes.items.tempTitle10.setContent(vInValue);
-        //   // Scenes.items.tempTitle11.setContent(vInValue);
-        //   // Scenes.items.tempTitle12.setContent(iIn);
-        //   // Scenes.items.tempTitle13.setContent(iIn);
-
-        //   // Scenes.items.tempTitle14.setContent(v0);
-        //   // Scenes.items.tempTitle15.setContent(iIn);
-
-        //   // Scenes.items.tempTitle16.setContent(v0);
-        //   // Scenes.items.tempTitle17.setContent(v0);
-        //   // Scenes.items.tempTitle18.setContent(i0);
-        //   // Scenes.items.tempTitle19.setContent(i0);
-
-        //   currentGraph.hide();
-        //   Scenes.items.part_2_graph_3.show();
-        //   currentGraph = Scenes.items.part_2_graph_3;
-
-        //   // completed
-        // }
-        
-        let dutyRatioValue = Number(Scenes.items.slider_D.item.value);
 
         if (dutyRatioValue == 0.25){
           currentGraph.hide();
@@ -4246,7 +3959,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()
