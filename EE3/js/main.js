@@ -1963,8 +1963,8 @@ part1_box1 : new Dom(".part1_box1"),
         // setting values from formulas
         function setTempTitleAndValues(showValues=false,vInValue=0){  
     
-          let v0 = Number(Formulas.step2.v0(values)).toFixed(2)
-          let i0  = Number(Formulas.step2.i0(values)).toFixed(2)
+          let v0 = Number(Formulas.step2.v0(values)).toFixed(1)
+          let i0  = Number(Formulas.step2.i0(values)).toFixed(1)
           let textValues = [
             vLon = `${ vInValue - v0} V`,
             vLoff = `${ -v0} V`,
@@ -3959,7 +3959,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()

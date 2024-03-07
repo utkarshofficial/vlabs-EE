@@ -253,7 +253,7 @@ const Formulas = {
         //     let ans = this.v0(values) * this.i0(values)
         //     return Number(ans.toFixed(4))
         // },
-        
+            
     },
 }
 
