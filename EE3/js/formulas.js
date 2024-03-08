@@ -115,7 +115,11 @@ const Formulas = {
             let ans = ans1 - ans2 - ans3
             
             return Number(ans.toFixed(4))
-        }
+        },
+        iIn(values){
+            let ans = (values.D * this.v0(values)) / values.R
+            return Number(ans.toFixed(4))
+        },
     },
     efficiencyPlot:{
 
@@ -264,6 +268,7 @@ let values = {
 }
 
 function updateValues(vIn,D,R){
+    console.log(vIn,D,R)
     values = {
         vIn:vIn,
         D:D,

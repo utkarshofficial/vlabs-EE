@@ -1141,8 +1141,8 @@ part1_box1 : new Dom(".part1_box1"),
       // ! Show Text
       let textSelectBox = 'Select the "box"'
       let textSelectComponent = 'Select the "component" to be placed in the box'
-      Scenes.items.tempTitle17.set(30,270).setContent("Load").styles(st)
-      Scenes.items.tempTitle18.set(675,320).setContent("Source").styles(st)
+      Scenes.items.tempTitle17.set(675,320).setContent("Load").styles(st)
+      Scenes.items.tempTitle18.set(25,270).setContent("Source").styles(st)
 
       let frontText = Scenes.items.tempTitle19.set(680).setContent(textSelectBox).styles(st2)
       Anime.fadeIn(frontText.item,0.5)
@@ -1906,7 +1906,7 @@ part1_box1 : new Dom(".part1_box1"),
   let t = -50
   let h = 410
   let w = 370
-  Scenes.items.part_2_graph_data_upper.set(l-50,t,h,w+58).zIndex(2)
+  Scenes.items.part_2_graph_data_upper.set(l-50,t,h,w+58).zIndex(2).hide()
   Scenes.items.part_2_graph_empty.set(l, t, h, w);
   Scenes.items.part_2_graph_1.set(l, t, h, w).hide();
   Scenes.items.part_2_graph_2.set(l, t, h, w).hide();
@@ -1923,17 +1923,17 @@ part1_box1 : new Dom(".part1_box1"),
     padding: "0 5px",
   }
   let textLabels = [
-    vLon = Scenes.items.tempTitle25.set(714,91).setContent("0 V").styles(st),
-    vLoff = Scenes.items.tempTitle26.set(850,130).setContent("0 V").styles(st),
-    vDon = Scenes.items.tempTitle27.set(714,151).setContent("0 V").styles(st),
-    vDoff = Scenes.items.tempTitle28.set(850,182).setContent("0 V").styles(st),
-    vSwon = Scenes.items.tempTitle29.set(634,193).setContent("0 V").styles(st),
-    vSwoff = Scenes.items.tempTitle30.set(744,213).setContent("0 V").styles(st),
-    iL = Scenes.items.tempTitle31.set(844,40).setContent("0 I").styles(st),
-    iSwon = Scenes.items.tempTitle32.set(680,241).setContent("0 I").styles(st),
-    iSwoff = Scenes.items.tempTitle33.set(752,261).setContent("0 I").styles(st),
-    iDon = Scenes.items.tempTitle34.set(623,292).setContent("0 I").styles(st),
-    iDoff = Scenes.items.tempTitle35.set(773,298).setContent("0 I").styles(st),
+    vLon = Scenes.items.tempTitle25.set(714,91).setContent("0 V").styles(st).hide(),
+    vLoff = Scenes.items.tempTitle26.set(850,130).setContent("0 V").styles(st).hide(),
+    vDon = Scenes.items.tempTitle27.set(714,151).setContent("0 V").styles(st).hide(),
+    vDoff = Scenes.items.tempTitle28.set(850,182).setContent("0 V").styles(st).hide(),
+    vSwon = Scenes.items.tempTitle29.set(634,193).setContent("0 V").styles(st).hide(),
+    vSwoff = Scenes.items.tempTitle30.set(744,213).setContent("0 V").styles(st).hide(),
+    iL = Scenes.items.tempTitle31.set(844,40).setContent("0 I").styles(st).hide(),
+    iSwon = Scenes.items.tempTitle32.set(680,241).setContent("0 I").styles(st).hide(),
+    iSwoff = Scenes.items.tempTitle33.set(752,261).setContent("0 I").styles(st).hide(),
+    iDon = Scenes.items.tempTitle34.set(623,292).setContent("0 I").styles(st).hide(),
+    iDoff = Scenes.items.tempTitle35.set(773,298).setContent("0 I").styles(st).hide(),
   ]    
  
       let currentGraph = Scenes.items.part_2_graph_empty
@@ -1947,7 +1947,7 @@ part1_box1 : new Dom(".part1_box1"),
       dutyRatioSlider.step = "0.25";
       Scenes.items.slider_D.item.value = "0.25";
       
- 
+      let isOneTimeOver = false
       // ! onclick for record
       Scenes.items.btn_record.item.onclick = function () {
         Dom.setBlinkArrowRed(-1)
@@ -1979,11 +1979,15 @@ part1_box1 : new Dom(".part1_box1"),
             iDoff = `${ 0} A`,
           ]  
       
+          // also show the all values and graph uppper image
+          Scenes.items.part_2_graph_data_upper.show()
           if(showValues){
             textLabels.forEach((ele,idx)=>{
-              ele.setContent(textValues[idx])
+              ele.setContent(textValues[idx]).show()
             })
           }
+
+
         }
         setTempTitleAndValues(true,vInValue)
 
@@ -2007,7 +2011,10 @@ part1_box1 : new Dom(".part1_box1"),
         // Dom.setBlinkArrow(true, 630, 315)
 
         // speak test
-        setCC("For the these set input voltage and duty ratio, various component voltage and current waveforms are displayed here.",6)
+        if(isOneTimeOver==false){
+          setCC("For the these set input voltage and duty ratio, various component voltage and current waveforms are displayed here.",6)
+          isOneTimeOver = true
+        }
 
         // after complete
         setTimeout(()=>{
@@ -2159,7 +2166,7 @@ part1_box1 : new Dom(".part1_box1"),
       if(exit){
         // after complete
         // Dom.setBlinkArrow(true, 790, 408).play();
-        setCC("Simulator Done");
+        setCC("Simulation Done");
         setIsProcessRunning(false);
       }
 
@@ -3090,9 +3097,10 @@ part1_box1 : new Dom(".part1_box1"),
         tableRow.cells[5].innerHTML = Number(Formulas.ideal.v0(values)).toFixed(2)
         tableRow.cells[6].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
         tableRow.cells[7].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
-        tableRow.cells[8].innerHTML = Number(Formulas.nonIdeal.i0(values)).toFixed(2)
-        tableRow.cells[9].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
-        tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(Formulas.nonIdeal.iIn(values)).toFixed(2)
+        tableRow.cells[9].innerHTML = Number(Formulas.nonIdeal.i0(values)).toFixed(2)
+        tableRow.cells[10].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
+        tableRow.cells[11].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
         // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
         // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
         // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
@@ -3418,7 +3426,7 @@ part1_box1 : new Dom(".part1_box1"),
   
           // reset all the parameters
           // so just simply call this step again
-          Scenes.steps[5]()        
+          Scenes.steps[7]()        
           
         }
   
@@ -3565,9 +3573,25 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_delete.set(340,-60)
        Scenes.items.btn_reset.set(440,-60)
        // ! graph
-       
+      
        sliders.generateOptionsFor(3)
        Scenes.items.part4_table_graph.set(0,160,250,555)
+       //graph labels
+       let st_label = {
+        backgroundColor: "white",
+        color: "black",
+        fontSize: "20px",
+        width: "300px",
+        textAlign: "center",
+        margin: "0",
+        
+       }
+       
+       let l1 = "<span>i<sub>s</sub></span> <span>i<sub>d</sub></span> <span>i<sub>c</sub></span>"
+       let l2 = "<span>v<sub>s</sub></span> <span>v<sub>d</sub></span> <span>v<sub>c</sub></span>"
+       Scenes.items.tempTitle51.set(620,118).setContent(l1).styles(st_label).addClass("graph_labels")
+       Scenes.items.tempTitle52.set(620,364).setContent(l2).styles(st_label).addClass("graph_labels")
+
        // temp label for the table
        let st = {
         width: "fit-content"
@@ -3576,9 +3600,9 @@ part1_box1 : new Dom(".part1_box1"),
         ...st,
         fontSize: "15px"
        }
-       Scenes.items.tempTitle1.set(443,253).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
-       Scenes.items.tempTitle2.set(443,293).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
-       Scenes.items.tempTitle3.set(433,335.5).setContent("V<sub>o</sub> V/(∆I<sub>L</sub>/2) A").styles(st3)
+       Scenes.items.tempTitle53.set(443,253).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
+       Scenes.items.tempTitle54.set(443,293).setContent("V<sub>in</sub> V/I<sub>L,p</sub> A").styles(st)
+       Scenes.items.tempTitle55.set(433,335.5).setContent("V<sub>o</sub> V/(∆I<sub>L</sub>/2) A").styles(st3)
        
       let graph_box5 = new Dom(".graph_box4")
       let graph_box4 = new Dom(".graph_box5")
@@ -3772,7 +3796,6 @@ part1_box1 : new Dom(".part1_box1"),
           chart.update()
         },
         addData(chart,index,data){
-          console.log(data)
           if(data.length > 0){
             chart.data.datasets[index].data = data
           }else{
@@ -3794,15 +3817,21 @@ part1_box1 : new Dom(".part1_box1"),
         }   
 
 
-             
+      // ! onclick for reset
+      Scenes.items.btn_reset.item.onclick = function(){
+        // reset all the parameters
+        // so just simply call this step again
+        Scenes.items.chart[3] = null
+        Scenes.steps[8]()        
+      }
        
        // ! onclick for record
        Scenes.items.btn_record.item.onclick = function(){
 
          // taking values from all sliders 
-        let vInValue = Number(Scenes.items.slider_vIn.item.value)
-        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
-        let resistanceValue = Number(Scenes.items.slider_R.item.value)
+        let vInValue = Number(sliders.selectOp1.value)
+        let dutyRatioValue = Number(sliders.selectOp3.value)
+        let resistanceValue = Number(sliders.selectOp2.value)
 
         // * if all values not selected
         if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
@@ -3818,6 +3847,8 @@ part1_box1 : new Dom(".part1_box1"),
         let iLP = Number(Formulas.stress.iLP(values)).toFixed(2)
         let iLby2 = Number(Formulas.stress.iL(values)/2).toFixed(2)
 
+        console.log(vInValue,dutyRatioValue,resistanceValue)
+
         let vS = vInValue
         let vD = vInValue
         let vC = v0
@@ -3826,9 +3857,9 @@ part1_box1 : new Dom(".part1_box1"),
         let iD = iLP
         let iC = iLby2
 
-        Scenes.items.tempTitle1.setContent(`${vInValue} V/${iLP} A`)
-        Scenes.items.tempTitle2.setContent(`${vInValue} V/${iLP} A`)
-        Scenes.items.tempTitle3.setContent(`${v0} V/${iLby2} A`)
+        Scenes.items.tempTitle53.setContent(`${vInValue} V/${iLP} A`)
+        Scenes.items.tempTitle54.setContent(`${vInValue} V/${iLP} A`)
+        Scenes.items.tempTitle55.setContent(`${v0} V/${iLby2} A`)
 
         // ! add values to graph
         let graph1_data = [vS,vD,vC]
@@ -3848,7 +3879,7 @@ part1_box1 : new Dom(".part1_box1"),
 
           // ! For front conclusion
           Anime.fade(
-            Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").item
+            Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
           )
           
           setIsProcessRunning(false); 

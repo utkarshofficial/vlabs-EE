@@ -142,10 +142,10 @@
 .part3_table_two.m-bg td:nth-child(8){
     background-color: rgb(194, 194, 194);
 }
-.part3_table_two.iIn-bg td:nth-child(9){
+.part3_table_two.iIn-bg td:nth-child(10){
     background-color: rgb(194, 194, 194);
 }
-.part3_table_two.iIn-bg td:nth-child(10){
+.part3_table_two.iIn-bg td:nth-child(11){
     background-color: rgb(194, 194, 194);
 }
 
@@ -606,3 +606,7 @@
     padding: 11px;
     top: 100px;
 }
+
+.temp.graph_labels span{
+    margin: 38px;
+} 
