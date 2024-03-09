@@ -1185,7 +1185,7 @@ const Scenes = {
           }
         }
       }
-      partConnections()
+      // partConnections()
 
       //! Graph Part
     function partCalculation(){
@@ -1194,7 +1194,7 @@ const Scenes = {
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
         Scenes.items.btn_plot.set(495,170,50).zIndex(10)
         // * Calling slider
-        sliders.showSliderFor("2")
+        sliders.showSliderFor("1_1")
 
         // * Graph section
         Scenes.items.graph_box_3.set(575,162,null,370).zIndex(10)
@@ -1209,7 +1209,7 @@ const Scenes = {
 
         // let table = new Dom(".part_2_table").set(600,-76).item
 
-        let table = new Dom(".part3_table_two").set(500,-76).item
+        let table = new Dom(".part3_table_two").set(600,-76).zIndex(10).item
 
         // * assume tempTitle10 as a btn record
         let btn_record = sliders.btn_record.item
@@ -1223,8 +1223,8 @@ const Scenes = {
           }
 
           // * Filling Table
-          rows[recordBtnIdx].cells[0].innerHTML = "10"
-          rows[recordBtnIdx].cells[1].innerHTML = "12"
+          rows[recordBtnIdx+1].cells[0].innerHTML = "10"
+          rows[recordBtnIdx+1].cells[1].innerHTML = "12"
           recordBtnIdx++
 
           // to plot the data
@@ -1245,6 +1245,10 @@ const Scenes = {
         }
 
       }
+      // todo remove 
+      hideConnectionStepImgs()
+      partCalculation()
+
 
 
       //! onclick start btn
@@ -2222,7 +2226,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 4
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()

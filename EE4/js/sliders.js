@@ -32,7 +32,52 @@ const sliders = {
   showSliderFor(part){
     switch(part){
       case "1_1":
+        var temp1 = -62
+        var temp2 = -15
+        this.slider_vIn.set(34+temp2,33+temp1,23).zIndex(10)
+        this.slider_vIn_label.set(185+temp2,65+temp1)
 
+        this.slider_vGs.set(4,364,23).zIndex(10)
+        this.slider_vGs_label.set(242,364)
+        
+        this.slider_R.set(329,362,23).zIndex(10)
+        this.slider_R_label.set(502,364)
+
+        
+        // ! vGs onclick
+        var differences = [69, 27, 26, 28, 25, 25, 19];
+        var currentDifferenceIndex = 0;
+        // for the slider vgs
+        var value_vGs = 0
+        this.slider_vGs.item.onclick = ( )=>{
+          if (currentDifferenceIndex < differences.length) {
+            // Get the current difference
+            var currentDifference = differences[currentDifferenceIndex];
+            if(currentDifferenceIndex==0)
+              value_vGs = 4
+            else
+              value_vGs++
+    
+            // Animate the translation on each click
+            this.sliderAnime(this.slider_vGs,currentDifference,value_vGs)
+            currentDifferenceIndex++;
+
+            // !we using temptitle10 as a record btn
+            this.btn_record.item.click()
+          }
+        }
+
+        // ! vIn onclick 
+        this.slider_vIn.item.onclick = ()=>{
+          let value_vIn = 200
+          this.sliderAnime(this.slider_vIn,0,value_vIn,159)
+        }
+
+        // ! R onclick 
+        this.slider_R.item.onclick = ()=>{
+          let value_R = 50
+          this.sliderAnime(this.slider_R,0,value_R,376)
+        }
         break
 
       case "1_2":
@@ -52,7 +97,7 @@ const sliders = {
         var differences = [69, 27, 26, 28, 25, 25, 19];
         var currentDifferenceIndex = 0;
         // for the slider vgs
-        let value_vGs = 0
+        var value_vGs = 0
         this.slider_vGs.item.onclick = ( )=>{
           if (currentDifferenceIndex < differences.length) {
             // Get the current difference
