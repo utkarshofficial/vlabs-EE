@@ -32,35 +32,35 @@ const sliders = {
   showSliderFor(part){
     switch(part){
       case "1_1":
+        var temp2 = -10
         var temp1 = -62
-        var temp2 = -15
         this.slider_vIn.set(34+temp2,33+temp1,23).zIndex(10)
         this.slider_vIn_label.set(185+temp2,65+temp1)
 
-        this.slider_vGs.set(4,364,23).zIndex(10)
-        this.slider_vGs_label.set(242,364)
+        this.slider_vGs.set(10,369,23).zIndex(10)
+        this.slider_vGs_label.set(168,325)
         
-        this.slider_R.set(329,362,23).zIndex(10)
-        this.slider_R_label.set(502,364)
+        this.slider_R.set(266,365,23).zIndex(10)
+        this.slider_R_label.set(446,360)
 
         
         // ! vGs onclick
-        var differences = [69, 27, 26, 28, 25, 25, 19];
-        var currentDifferenceIndex = 0;
+        var differences = [65, 89, 113, 138, 187];
+        var vals = [4,6,8,10,15]
+        var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
         var value_vGs = 0
         this.slider_vGs.item.onclick = ( )=>{
-          if (currentDifferenceIndex < differences.length) {
+          if (currentDifferenceIndex_vGs < differences.length) {
             // Get the current difference
-            var currentDifference = differences[currentDifferenceIndex];
-            if(currentDifferenceIndex==0)
-              value_vGs = 4
-            else
-              value_vGs++
-    
+            var currentDifference = differences[currentDifferenceIndex_vGs];
+            
+            // setting the value of label
+            value_vGs = vals[currentDifferenceIndex_vGs]
+
             // Animate the translation on each click
-            this.sliderAnime(this.slider_vGs,currentDifference,value_vGs)
-            currentDifferenceIndex++;
+            this.sliderAnime(this.slider_vGs,null,value_vGs,currentDifference)
+            currentDifferenceIndex_vGs++;
 
             // !we using temptitle10 as a record btn
             this.btn_record.item.click()
@@ -68,15 +68,33 @@ const sliders = {
         }
 
         // ! vIn onclick 
+        var defaultLeftPos = 24
+        differences = [53,76,101,126,152,175];
+        vals = [40,80,120,160,200,240]
+        currentDifferenceIndex_vIn = 0;
+        // for slider vIn
         this.slider_vIn.item.onclick = ()=>{
-          let value_vIn = 200
-          this.sliderAnime(this.slider_vIn,0,value_vIn,159)
+          if (currentDifferenceIndex_vIn < differences.length) {
+            // Get the current difference
+            var currentDifference = differences[currentDifferenceIndex_vIn];
+            
+            // setting the value of label
+            var value = vals[currentDifferenceIndex_vIn]
+
+            // Animate the translation on each click
+            this.sliderAnime(this.slider_vIn,null,value,currentDifference)
+            currentDifferenceIndex_vIn++;
+
+            // !we using temptitle10 as a record btn
+            this.btn_record.item.click()
+          }
         }
 
         // ! R onclick 
         this.slider_R.item.onclick = ()=>{
           let value_R = 50
-          this.sliderAnime(this.slider_R,0,value_R,376)
+          var left = 317
+          this.sliderAnime(this.slider_R,0,value_R,left)
         }
         break
 
@@ -85,13 +103,15 @@ const sliders = {
         break
         
       case "2":
-        this.slider_vIn.set(34,33,23).zIndex(10)
-        this.slider_vGs.set(4,364,23).zIndex(10)
-        this.slider_R.set(329,362,23).zIndex(10)
+        this.slider_vIn.set(34,-44,23).zIndex(10)
+        this.slider_vIn_label.set(185,-10)
 
-        this.slider_vIn_label.set(185,65)
-        this.slider_vGs_label.set(242,364)
-        this.slider_R_label.set(502,364)
+        this.slider_vGs.set(4,364-18,23).zIndex(10)
+        this.slider_vGs_label.set(242,364-18)
+        
+        this.slider_R.set(329,362-18,23).zIndex(10)
+        this.slider_R_label.set(502,364-18)
+
         
         // ! vGs onclick
         var differences = [69, 27, 26, 28, 25, 25, 19];

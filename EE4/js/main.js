@@ -1189,27 +1189,32 @@ const Scenes = {
 
       //! Graph Part
     function partCalculation(){
-        Scenes.items.part_1_1_calculations.set(-15,-70,480,950)
-        Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
-        Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
-        Scenes.items.btn_plot.set(495,170,50).zIndex(10)
+        Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
+        Scenes.items.btn_procedure.set(790,132,37).zIndex(10)
+        Scenes.items.btn_nomenclature.set(610,132,37,160).zIndex(10)
+        Scenes.items.btn_plot.set(512,129,43,80).zIndex(10)
         // * Calling slider
         sliders.showSliderFor("1_1")
 
         // * Graph section
-        Scenes.items.graph_box_3.set(575,162,null,370).zIndex(10)
+        Scenes.items.graph_box_3.set(514,174,null,428).zIndex(10)
         let ctx = Scenes.items.graph3.item
         let graphIdx = 2
         let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
         let yLabel = "Drain Current (I<sub>D</sub>)"
         let dataLabel = "vDS = 50"
+        // for setting xy label of graph in position
+        function setXYLabel(){
+          Scenes.items.xLabel.set(633,387)
+          Scenes.items.yLabel.set(443,277)
+        }
         // ploting empty graph
         let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
-
-
+        setXYLabel()
+        
         // let table = new Dom(".part_2_table").set(600,-76).item
 
-        let table = new Dom(".part3_table_two").set(600,-76).zIndex(10).item
+        let table = new Dom(".part3_table_two").set(513,-76).zIndex(10).item
 
         // * assume tempTitle10 as a btn record
         let btn_record = sliders.btn_record.item
@@ -1445,7 +1450,7 @@ const Scenes = {
     (step4 = function () {
       setIsProcessRunning(true);
 
-      Scenes.setStepHeading("Step-2", "Transfer Characteristics.");
+      Scenes.setStepHeading("Step-2", "Transfer Characteristics.",true);
       Scenes.items.btn_next.show();
       // ! Step Connection
 
@@ -1483,6 +1488,13 @@ const Scenes = {
         Scenes.items.part_2_conncection_cable_vg2.set(0,0).zIndex(5).hide(),
       ]
 
+      // ! for increasing the size
+      let l = 0,t = -85, h = 495, w = 965 
+      Scenes.items.part_2_connections_components.set(l,t,h,w).zIndex(1)
+      cables.forEach(ele=>{
+        ele.set(l,t,h,w).hide()
+      })
+
       let cables_color = [
         "#e40000",
         "#4f699a",
@@ -1508,20 +1520,20 @@ const Scenes = {
       //! Connection Part
       function partConnections(){
          // Connection Logic
-        Scenes.items.part_2_connections_box.set(435,-40).hide()
+        Scenes.items.part_2_connections_box.set(442,-84).hide()
 
         //! connection box onclick
         Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_2_connections_box.show("flex")
           // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,500,35,35,null,90).play()
+          Dom.setBlinkArrowRed(true,510,-7,35,null,90).play()
           setCC("")
         }
         let box_buttons = document.querySelectorAll(".part_2_connections_box button")
 
         //! connection box onclick
         let btnClickedCount = 0
-        let connectionBtnArrow = 500
+        let connectionBtnArrow = 510
         let arrowLeftGap = 43
         box_buttons.forEach((ele,i)=>{
           ele.onclick = ()=>{
@@ -1530,7 +1542,7 @@ const Scenes = {
               btnClickedCount++
               //! move arrow 
               connectionBtnArrow += arrowLeftGap
-              Dom.setBlinkArrowRed(true,connectionBtnArrow,35,35,null,90).play()
+              Dom.setBlinkArrowRed(true,connectionBtnArrow,-7,35,null,90).play()
               
               if(btnClickedCount==10){
                 Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
@@ -1595,7 +1607,7 @@ const Scenes = {
 
       //! Graph Part
       function partCalculation(){
-        Scenes.items.part_2_calculation_components.set(0,0)
+        Scenes.items.part_2_calculation_components.set(0,-85,475,950)
         Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
         Scenes.items.btn_plot.set(785,70,50).zIndex(10)
@@ -1634,7 +1646,6 @@ const Scenes = {
           if(recordBtnIdx == rows.length){
             // ! btn Plot onclick
             Scenes.items.btn_plot.item.onclick = ()=>{
-              console.log("don")
               let data = []
               for(let row of rows){
                 let x = row.cells[0].innerHTML
@@ -1666,7 +1677,7 @@ const Scenes = {
       Scenes.setStepHeading("Step-3", "Switching Characteristics.");
       // setCC("Record 7 reading for 3 different load resistances.")
       // ! show the slider
-      Scenes.items.slider_box.set(25, 15).scale(0.95);
+      // Scenes.items.slider_box.set(25, 15).scale(0.95);
       Scenes.items.btn_next.show();
 
       //! Required Items

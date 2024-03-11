@@ -71,17 +71,18 @@
 
 /* part3 table */
 .part3_table_two{
-  width: fit-content;
+  width: 430px;
 }
 
 .part3_table_two th,
 .part3_table_two td
 {
+  width: 73px!important;
   font-size: 13px;  
-  padding: 0 10px!important;
+  padding: 0!important;
 }
 
 .part3_table_two th{
-  font-size: 12px!important;  
+  font-size: 15px!important;  
   height: 15px!important;
 }
