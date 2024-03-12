@@ -1,11 +1,53 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/part_2_calculation_components.png"
+        src="./src/images/part_3_components.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_graph.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_off_button.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_table_1.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_table_2.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_table_3.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_text.png"
     />
     
 
-part_2_calculation_components:this.allImgsDom[index++],
+part_3_components:this.allImgsDom[index++],
+part_3_graph:this.allImgsDom[index++],
+part_3_off_button:this.allImgsDom[index++],
+part_3_table_1:this.allImgsDom[index++],
+part_3_table_2:this.allImgsDom[index++],
+part_3_table_3:this.allImgsDom[index++],
+part_3_text:this.allImgsDom[index++],
 
 
-part_2_calculation_components : new Dom("part_2_calculation_components"),
+part_3_components : new Dom("part_3_components"),
+part_3_graph : new Dom("part_3_graph"),
+part_3_off_button : new Dom("part_3_off_button"),
+part_3_table_1 : new Dom("part_3_table_1"),
+part_3_table_2 : new Dom("part_3_table_2"),
+part_3_table_3 : new Dom("part_3_table_3"),
+part_3_text : new Dom("part_3_text"),
