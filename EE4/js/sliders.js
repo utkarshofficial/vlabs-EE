@@ -64,6 +64,10 @@ const sliders = {
 
             // !we using temptitle10 as a record btn
             // this.btn_record.item.click()
+            
+            // * show arrow for vIn
+            Dom.setBlinkArrowRed(true,13,-72,35,null,-90).play()
+            setCC("Select V<sub>in</sub>")
           }
         }
 
@@ -87,6 +91,16 @@ const sliders = {
 
             // !we using temptitle10 as a record btn
             this.btn_record.item.click()
+
+            // * show arrow for vIn
+            Dom.setBlinkArrowRed(true,13,-72,35,null,-90).play()
+            setCC("Select V<sub>in</sub>")
+
+            if(currentDifferenceIndex_vIn == differences_vIn.length){
+              // * show arrow for plot
+              Dom.setBlinkArrowRed(true,529,87,35,null,-90).play()
+              setCC("Click on 'Plot'")
+            }
           }else{
             // reset this value because of behaviour of slide
             currentDifferenceIndex_vIn = 0 
@@ -98,6 +112,11 @@ const sliders = {
           let value_R = 50
           var left = 317
           this.sliderAnime(this.slider_R,0,value_R,left)
+
+          // * show arrow for vGs
+          Dom.setBlinkArrowRed(true,0,320,35,null,-90).play()
+          setCC("Select V<sub>GS</sub>")
+          
         }
         break
 
@@ -159,7 +178,13 @@ const sliders = {
         let currentLabelValue = 0
         // vIn values
         let vIn_accept_range = [0,40,80,120,160,200,240]  
+        // onclick accept range for vgs
+        let vGs_accept_range = [5,6,8,10]
         this.slider_vIn.item.onclick = ()=>{
+          // vIn
+          if(currentDifferenceIndex_vGs > differences_vGs.length){
+              return
+          }
           // rotate slider with neddle
           anime.timeline({
             easing: "linear",
@@ -186,7 +211,11 @@ const sliders = {
               }
             },
             complete:()=>{
-              vIn_accept_range = [0,40,80,120,160,200,240]  
+              if(currentDifferenceIndex_vGs < differences_vGs.length){
+                vIn_accept_range = [0,40,80,120,160,200,240]  
+              }else{
+                currentDifferenceIndex_vGs++
+              }
             }
           },0)
           .add({
