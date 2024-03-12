@@ -1046,7 +1046,7 @@ const Scenes = {
       if (exit) {
         // after complete
         // Dom.setBlinkArrow(true, 790, 408).play();
-        setCC("Simulator Done");
+        setCC("Simulation Done");
         setIsProcessRunning(false);
       }
 
@@ -1240,9 +1240,9 @@ const Scenes = {
         sliders.showSliderFor("1_1")
 
         // * Graph section
-        Scenes.items.graph_box_3.set(514,174,null,428).zIndex(10)
-        let ctx = Scenes.items.graph3.item
-        let graphIdx = 2
+        Scenes.items.graph_box_1.set(514,174,null,428).zIndex(10)
+        let ctx = Scenes.items.graph1.item
+        let graphIdx = 0
         let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
         let yLabel = "Drain Current (I<sub>D</sub>)"
         let dataLabel = ""
@@ -1350,6 +1350,8 @@ const Scenes = {
                 Dom.setBlinkArrow(true, 790, 544).play();
                 setCC("Click 'Next' to go to next step");
                 setIsProcessRunning(false);
+                // for going to the second step
+                Scenes.currentStep = 2
               }
             }
           }
@@ -1572,9 +1574,9 @@ const Scenes = {
         sliders.showSliderFor("1_2")
 
         // * Graph section
-        Scenes.items.graph_box_3.set(499,138,270,440).zIndex(10)
-        let ctx = Scenes.items.graph3.item
-        let graphIdx = 2
+        Scenes.items.graph_box_2.set(499,138,270,440).zIndex(10)
+        let ctx = Scenes.items.graph2.item
+        let graphIdx = 1
         let xLabel = "Dra to source voltage (V<sub>DS</sub>)"
         let yLabel = "Drain Current (I<sub>D</sub>)"
         let dataLabel = ""
@@ -1905,6 +1907,8 @@ const Scenes = {
               Dom.setBlinkArrow(true, 790, 544).play();
               setCC("Click 'Next' to go to next step");
               setIsProcessRunning(false);
+              // for going to the second step
+              Scenes.currentStep = 2
             }
           }
         }
@@ -2030,7 +2034,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 5
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()

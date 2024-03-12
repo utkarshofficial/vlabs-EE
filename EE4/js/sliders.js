@@ -231,6 +231,8 @@ const sliders = {
                 Dom.setBlinkArrow(true, 790, 544).play();
                 setCC("Click 'Next' to go to next step");
                 setIsProcessRunning(false);
+                // for going to the second step
+                Scenes.currentStep = 2
               }
             }
           },0)
