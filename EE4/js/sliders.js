@@ -279,6 +279,23 @@ const sliders = {
     
             // Animate the translation on each click
             this.sliderAnime(this.slider_vGs,currentDifference,value_vGs)
+
+            if(currentDifferenceIndex==0){
+              // * show arrow for vIn
+              Dom.setBlinkArrowRed(true,22,-90,35,null,-90).play()
+              setCC("Select V<sub>in</sub>")
+            }
+            else if(currentDifferenceIndex == differences.length - 1){
+              // * show arrow for plot
+              Dom.setBlinkArrowRed(true,802,30,35,null,-90).play()
+              setCC("Click on 'Plot'")
+            }
+            else{
+              // * show arrow for vGs
+              Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
+              setCC("Select V<sub>GS</sub>")
+            }
+            
             currentDifferenceIndex++;
 
             // !we using temptitle10 as a record btn
@@ -290,12 +307,20 @@ const sliders = {
         this.slider_vIn.item.onclick = ()=>{
           let value_vIn = 200
           this.sliderAnime(this.slider_vIn,0,value_vIn,159)
+
+          // * show arrow for vGs
+          Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
+          setCC("Select V<sub>GS</sub>")
         }
 
         // ! R onclick 
         this.slider_R.item.onclick = ()=>{
           let value_R = 50
           this.sliderAnime(this.slider_R,0,value_R,376)
+
+          // * show arrow for vGs
+          Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
+          setCC("Select V<sub>GS</sub>")
         }
         break
     }

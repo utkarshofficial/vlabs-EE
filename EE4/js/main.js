@@ -1373,7 +1373,6 @@ const Scenes = {
 
     (step3 = function () {
       setIsProcessRunning(true);
-      Dom.setBlinkArrowRed()
       Scenes.setStepHeading("", "using oscilloscope",true)
       Scenes.items.btn_next.show();
       // ! Step Connection
@@ -1690,8 +1689,8 @@ const Scenes = {
       // required images
       let images = [
         Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(150,118,20,23).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(155,311,22,23).zIndex(10),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(153,60,24,23).zIndex(10),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(158,296,27,23).zIndex(10),
         Scenes.items.part_2_connections_box,
       ]
 
@@ -1738,9 +1737,26 @@ const Scenes = {
         Dom.setBlinkArrowRed(-1)
       }
       //! Connection Part
+      // to enable startExp Button
+      let partConnectionsIsComplete = false
       function partConnections(){
          // Connection Logic
         Scenes.items.part_2_connections_box.set(442,-84).hide()
+
+        // ! btn_reset onclick
+        Scenes.items.btn_reset.item.onclick = ()=>{
+          let box_buttons_reset = document.querySelectorAll(".part_2_connections_box button")
+          let temps = {
+            textShadow: "none",
+            color: "black",
+            backgroundColor: "transparent"
+          }
+          box_buttons_reset.forEach(ele=>{
+            let ele_Dom = new Dom(ele)
+            ele_Dom.styles(temps)
+          })
+          Scenes.steps[5]()
+        }
 
         //! connection box onclick
         Scenes.items.btn_connections.item.onclick = ()=>{
@@ -1788,8 +1804,8 @@ const Scenes = {
           if(btnClickedCount==10){
             
             //! First red button click 
-            Scenes.items.part_1_slide_3_compo_1_text.set(178,144,50).zIndex(10)
-            Dom.setBlinkArrowRed(true,186,113).play()
+            Scenes.items.part_1_slide_3_compo_1_text.set(178,144-55,50).zIndex(10)
+            Dom.setBlinkArrowRed(true,186,113-55).play()
             setCC("Switch on Main Supply")
             Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
               
@@ -1797,8 +1813,8 @@ const Scenes = {
               Scenes.items.part_1_slide_3_compo_1_text.hide()
               //! Second red button click
               
-              Scenes.items.part_1_slide_3_compo_2_text.set(178,338,56).zIndex(10)
-              Dom.setBlinkArrowRed(true,186,306).play()
+              Scenes.items.part_1_slide_3_compo_2_text.set(178,338-13,56).zIndex(10)
+              Dom.setBlinkArrowRed(true,186,306-13).play()
               setCC("Switch on Gate Supply")
 
               Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
@@ -1807,6 +1823,7 @@ const Scenes = {
 
                 Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
                 setCC("Click on Start Experiment")
+                partConnectionsIsComplete = true
               }
             }
             
@@ -1823,10 +1840,14 @@ const Scenes = {
           }
         }
       }
-      // partConnections()
+      partConnections()
 
       //! Graph Part
       function partCalculation(){
+        // show arrow for R
+        Dom.setBlinkArrowRed(true,317,302,35,null,-90).play()
+        setCC("Select R")
+
         Scenes.items.part_2_calculation_components.set(0,-85,475,950)
         Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
@@ -1834,11 +1855,8 @@ const Scenes = {
         // * Calling slider
         sliders.showSliderFor("2")
 
-        // * StepTutorial
-        Dom.setBlinkArrowRed(true,112,115,35,null,90)
-
         // * Graph section
-        Scenes.items.graph_box_3.set(580,162,null,365).zIndex(10)
+        Scenes.items.graph_box_3.set(580,162,242,365).zIndex(10)
         let ctx = Scenes.items.graph3.item
         let graphIdx = 2
         let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
@@ -1882,22 +1900,26 @@ const Scenes = {
               }
 
               Scenes.graphFeatures.addData(graphRef,0,data)
+
+              Dom.setBlinkArrowRed(-1)
+              Dom.setBlinkArrow(true, 790, 544).play();
+              setCC("Click 'Next' to go to next step");
+              setIsProcessRunning(false);
             }
           }
         }
 
       }
 
-      // todo remove
-      hideConnectionStepImgs()
-      partCalculation()
-
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
-        // * Hide preivous
-        hideConnectionStepImgs()
-        // * calculation part
-        partCalculation()
+        // to enable the button
+        if(partConnectionsIsComplete){
+          // * Hide preivous
+          hideConnectionStepImgs()
+          // * calculation part
+          partCalculation()
+        }
       }
 
       return true
@@ -2008,7 +2030,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 4
+Scenes.currentStep = 5
 
 Scenes.next()
 // Scenes.steps[3]()
