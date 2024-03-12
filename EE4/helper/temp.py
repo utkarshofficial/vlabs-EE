@@ -16,7 +16,7 @@ def dom(name):
     return f'{name1} : new Dom("{name1}"),\n'
 
 
-sneha_folder_path = "E:\\office project\\vlabs-EE\\EE4\\src\\images\\new imgs\\"
+sneha_folder_path = "E:\\office project\\vlabs-EE\\EE4\\src\\images\\29 feb\\"
 
 # utkarsh_folder_path = "S:\\Users\\Utkarsh\\Documents\\Office Main\\All Projects Repo\\vlabs-EE\\EE4\\src\\images\\exp4\\part2\\"
 
