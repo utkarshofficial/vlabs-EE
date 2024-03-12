@@ -157,11 +157,13 @@ const sliders = {
         // 11, 160
         // label value 0 to 240
         let currentLabelValue = 0
+        // vIn values
+        let vIn_accept_range = [0,40,80,120,160,200,240]  
         this.slider_vIn.item.onclick = ()=>{
           // rotate slider with neddle
           anime.timeline({
             easing: "linear",
-            duration: 5000,
+            duration: 8000,
           })
           .add({
             targets: this.slider_vIn.item,
@@ -173,6 +175,18 @@ const sliders = {
               this.slider_vIn_label.setContent(
                 `${labelValue}<br>volts`
               )
+
+              // ! click the recrod btn
+              let acceptedValueIndex = vIn_accept_range.indexOf(labelValue)
+              if(acceptedValueIndex!=-1){
+                this.btn_record.item.click()
+                // for disabling for old value      
+                vIn_accept_range[acceptedValueIndex] = -1
+                return
+              }
+            },
+            complete:()=>{
+              vIn_accept_range = [0,40,80,120,160,200,240]  
             }
           },0)
           .add({

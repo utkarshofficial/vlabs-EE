@@ -1501,7 +1501,7 @@ const Scenes = {
         Scenes.items.part_1_2_calculations.set(3,-70,480,963)
         Scenes.items.btn_procedure.set(790-10,90,37).zIndex(10)
         Scenes.items.btn_nomenclature.set(610-10,90,37,160).zIndex(10)
-        Scenes.items.btn_plot.set(512-10,88,43,80).zIndex(10)
+        // Scenes.items.btn_plot.set(512-10,88,43,80).zIndex(10)
 
         // neddle vGs rotate (-1,multipoint) deg
         Scenes.items.niddle_vGs.set(536,29,74).rotate(-1).zIndex(10)
@@ -1516,7 +1516,7 @@ const Scenes = {
         Scenes.items.graph_box_3.set(499,138,270,440).zIndex(10)
         let ctx = Scenes.items.graph3.item
         let graphIdx = 2
-        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
+        let xLabel = "Dra to source voltage (V<sub>DS</sub>)"
         let yLabel = "Drain Current (I<sub>D</sub>)"
         let dataLabel = ""
         // for setting xy label of graph in position
@@ -1537,76 +1537,46 @@ const Scenes = {
 
         // ! btn_record onclick
         let recordBtnIdx = 0
-        
+        // ! calculation value object
+        let calculationValues = {
+          vDs: [],
+          iD: [],
+        }
+
         btn_record.onclick = ()=>{
-          let rows = table.tBodies[0].rows
-          if(recordBtnIdx > rows.length){
-            return
-          }
-
-          // * Filling Table
-          let colIdx = {
-            4:1,
-            6:2,
-            8:3,
-            10:4,
-            15:5,
-          }
-          let firstValue = 4
           let vGs_value = sliders.slider_vGs.getValue()
-          let vIn_value = sliders.slider_vIn.getValue()
+          let vIn_value = Math.round(sliders.slider_vIn.getValue())
           let R_value = sliders.slider_R.getValue()
+          let firstValue = 0
 
-          // seting column index for filling the table
-          if(vGs_value == firstValue){
-            rows[recordBtnIdx+1].cells[0].innerHTML = "10"
+          let vGs_idx = {
+            5:0,
+            6:1,
+            8:2,
+            10:3,
           }
-          rows[recordBtnIdx+1].cells[colIdx[vGs_value]].innerHTML = vIn_value
-          recordBtnIdx++
-          console.log(colIdx[vGs_value])
-          // to plot the data
-          if(recordBtnIdx == rows.length - 1){
-            
-            
-            // ! btn Plot onclick
-            Scenes.items.btn_plot.item.onclick = ()=>{
-              // goto default position for vIn value and recordBtnIdx = 0
-              function resetFun(){
-                recordBtnIdx=0
-                let defaultLeftPos = 24
-                Anime.moveLeft(sliders.slider_vIn.item,defaultLeftPos)
-              }
-              // for adding data to graph
-              function addDataToGraph(){
-                let data = []
-                for(let row of rows){
-                  let x = vGs_value
-                  let y = row.cells[colIdx[vGs_value]].innerHTML
-                  data.push({x,y})
-                }
-                let bgColors = [
-                  "-",
-                  "#da120f",
-                  "#0607c2",
-                  "#e413e6",
-                  "#25de22",
-                  "#000000"
-                ]
-                let bgColor = bgColors[colIdx[vGs_value]]
-                let labelForDataSet = `Vgs = ${vGs_value}V`
 
-                // add data set
-                Scenes.graphFeatures.addDataset(graphRef,labelForDataSet,bgColor,data)
-              }              
-              
-              if(vGs_value!=15){
-                resetFun()
-              }
-              let totalDatasets = 5
-              if(Scenes.graphFeatures.getSizeOfDatasets(graphRef) < totalDatasets){
-                addDataToGraph()
-              }
-            }
+          // vIn values
+          let vIn_accept_range = [0,40,80,120,160,200,240]  
+          let acceptedValueIndex = vIn_accept_range.indexOf(vIn_value)
+          
+          // for the first value add data set
+          if(vIn_value==firstValue){
+            // add datasets to graph
+            let bgColors = [
+              "#ff0000",
+              "#375623",
+              "#7030a0",
+              "#ffc000",
+            ]
+            let bgColor = bgColors[vGs_idx[vGs_value]]
+            let labelForDataSet = `Vgs = ${vGs_value}V`
+
+            // add data set
+            Scenes.graphFeatures.addDataset(graphRef,labelForDataSet,bgColor,[])            
+          }
+          else{
+            
           }
         }
 
@@ -1954,7 +1924,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 4
 
 Scenes.next()
 // Scenes.steps[3]()

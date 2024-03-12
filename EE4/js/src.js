@@ -114,13 +114,9 @@ const src = {
       
       part_1_1_calculations:this.allImgsDom[index++],
       part_1_2_calculations:this.allImgsDom[index++],
-      
-      slider_vGs: this.allImgsDom[index++],
-      slider_vIn: this.allImgsDom[index++],
-      slider_R: this.allImgsDom[index++],
 
-      //part3 images added
       
+      //part3 images added
       part_3_components:this.allImgsDom[index++],
       part_3_graph:this.allImgsDom[index++],
       part_3_off_button:this.allImgsDom[index++],
@@ -128,6 +124,11 @@ const src = {
       part_3_table_2:this.allImgsDom[index++],
       part_3_table_3:this.allImgsDom[index++],
       part_3_text:this.allImgsDom[index++],
+      
+      slider_vGs: this.allImgsDom[index++],
+      slider_vIn: this.allImgsDom[index++],
+      slider_R: this.allImgsDom[index++],
+
 
       niddle_vGs: this.allImgsDom[index++],
       niddle_vIn: this.allImgsDom[index++],
