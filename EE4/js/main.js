@@ -1263,7 +1263,7 @@ const Scenes = {
         let btn_record = sliders.btn_record.item
         
         // * StepTutorial
-        // shwo arrwo for R
+        // show arrow for R
         Dom.setBlinkArrowRed(true,254,320,35,null,-90).play()
         setCC("Select R")
         // and other blink arrow is on sliders.js
@@ -1373,7 +1373,7 @@ const Scenes = {
 
     (step3 = function () {
       setIsProcessRunning(true);
-
+      Dom.setBlinkArrowRed()
       Scenes.setStepHeading("", "using oscilloscope",true)
       Scenes.items.btn_next.show();
       // ! Step Connection
@@ -1447,9 +1447,26 @@ const Scenes = {
       }
 
       //! Connection Part
+      // to enable startExp Button
+      let partConnectionsIsComplete = false
       function partConnections(){
         // Connection Logic
         Scenes.items.part_1_2_connections_box.set(442,-78).hide()
+
+        // ! btn_reset onclick
+        Scenes.items.btn_reset.item.onclick = ()=>{
+          let box_buttons_reset = document.querySelectorAll(".part_1_2_connections_box button")
+          let temps = {
+            textShadow: "none",
+            color: "black",
+            backgroundColor: "transparent"
+          }
+          box_buttons_reset.forEach(ele=>{
+            let ele_Dom = new Dom(ele)
+            ele_Dom.styles(temps)
+          })
+          Scenes.steps[4]()
+        }
 
         //! connection box onclick
         Scenes.items.btn_connections.item.onclick = ()=>{
@@ -1516,6 +1533,7 @@ const Scenes = {
 
                 Dom.setBlinkArrowRed(true,778,165-temp,35,null,180).play()
                 setCC("Click on Start Experiment")
+                partConnectionsIsComplete = true
               }
             }
             
@@ -1532,10 +1550,14 @@ const Scenes = {
           }
         }
       }
-      // partConnections()
+      partConnections()
 
       //! Graph Part
       function partCalculation(){
+        // show arrow for R
+        Dom.setBlinkArrowRed(true,254,310,35,null,-90).play()
+        setCC("Select R")
+        
         Scenes.items.part_1_2_calculations.set(3,-70,480,963)
         Scenes.items.btn_procedure.set(790-10,90,37).zIndex(10)
         Scenes.items.btn_nomenclature.set(610-10,90,37,160).zIndex(10)
@@ -1630,15 +1652,16 @@ const Scenes = {
         }
 
       }
-      hideConnectionStepImgs()
-      partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
-        // * Hide preivous
-        hideConnectionStepImgs()
-        // * calculation part
-        partCalculation()
+        // to enable the button
+        if(partConnectionsIsComplete){
+          // * Hide preivous
+          hideConnectionStepImgs()
+          // * calculation part
+          partCalculation()
+        }
       }
 
       return true
@@ -1985,7 +2008,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 4
 
 Scenes.next()
 // Scenes.steps[3]()

@@ -141,6 +141,7 @@ const sliders = {
         // for the slider vgs
         var value_vGs = 0
         this.slider_vGs.item.onclick = ( )=>{
+          Dom.setBlinkArrowRed(-1)
           if (currentDifferenceIndex_vGs < differences_vGs.length) {
             // Get the current difference
             var currentDifference = differences_vGs[currentDifferenceIndex_vGs];
@@ -158,7 +159,12 @@ const sliders = {
               targets: Scenes.items.niddle_vGs.item,
               easing: "linear",
               duration: 1000,
-              rotate: niddle_vGs_deg[currentDifferenceIndex_vGs]
+              rotate: niddle_vGs_deg[currentDifferenceIndex_vGs],
+              complete(){
+                // * show arrow for vIn
+                Dom.setBlinkArrowRed(true,13,-89,35,null,-90).play()
+                setCC("Select V<sub>in</sub>")
+              }
             })
 
             currentDifferenceIndex_vGs++;
@@ -181,6 +187,7 @@ const sliders = {
         // onclick accept range for vgs
         let vGs_accept_range = [5,6,8,10]
         this.slider_vIn.item.onclick = ()=>{
+          Dom.setBlinkArrowRed(-1)
           // vIn
           if(currentDifferenceIndex_vGs > differences_vGs.length){
               return
@@ -212,9 +219,18 @@ const sliders = {
             },
             complete:()=>{
               if(currentDifferenceIndex_vGs < differences_vGs.length){
-                vIn_accept_range = [0,40,80,120,160,200,240]  
-              }else{
+                vIn_accept_range = [0,40,80,120,160,200,240] 
+
+                // * show arrow for vGs
+                Dom.setBlinkArrowRed(true,0,328,35,null,-90).play()
+                setCC("Select V<sub>GS</sub>") 
+              }
+              else{
                 currentDifferenceIndex_vGs++
+                Dom.setBlinkArrowRed(-1)
+                Dom.setBlinkArrow(true, 790, 544).play();
+                setCC("Click 'Next' to go to next step");
+                setIsProcessRunning(false);
               }
             }
           },0)
@@ -229,6 +245,10 @@ const sliders = {
           let value_R = 50
           var left = 304
           this.sliderAnime(this.slider_R,0,value_R,left)
+
+          // * show arrow for vGs
+          Dom.setBlinkArrowRed(true,0,328,35,null,-90).play()
+          setCC("Select V<sub>GS</sub>")
         }
         break
         
