@@ -45,41 +45,41 @@ const sliders = {
 
         
         // ! vGs onclick
-        var differences = [65, 89, 113, 138, 187];
-        var vals = [4,6,8,10,15]
+        var differences_vGs = [65, 89, 113, 138, 187];
+        var vals_vGs = [4,6,8,10,15]
         var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
         var value_vGs = 0
         this.slider_vGs.item.onclick = ( )=>{
-          if (currentDifferenceIndex_vGs < differences.length) {
+          if (currentDifferenceIndex_vGs < differences_vGs.length) {
             // Get the current difference
-            var currentDifference = differences[currentDifferenceIndex_vGs];
+            var currentDifference = differences_vGs[currentDifferenceIndex_vGs];
             
             // setting the value of label
-            value_vGs = vals[currentDifferenceIndex_vGs]
+            value_vGs = vals_vGs[currentDifferenceIndex_vGs]
 
             // Animate the translation on each click
             this.sliderAnime(this.slider_vGs,null,value_vGs,currentDifference)
             currentDifferenceIndex_vGs++;
 
             // !we using temptitle10 as a record btn
-            this.btn_record.item.click()
+            // this.btn_record.item.click()
           }
         }
 
         // ! vIn onclick 
         var defaultLeftPos = 24
-        differences = [53,76,101,126,152,175];
-        vals = [40,80,120,160,200,240]
-        currentDifferenceIndex_vIn = 0;
+        var differences_vIn = [53,76,101,126,152,175];
+        var vals_vIn = [40,80,120,160,200,240]
+        var currentDifferenceIndex_vIn = 0;
         // for slider vIn
         this.slider_vIn.item.onclick = ()=>{
-          if (currentDifferenceIndex_vIn < differences.length) {
+          if (currentDifferenceIndex_vIn < differences_vIn.length) {
             // Get the current difference
-            var currentDifference = differences[currentDifferenceIndex_vIn];
+            var currentDifference = differences_vIn[currentDifferenceIndex_vIn];
             
             // setting the value of label
-            var value = vals[currentDifferenceIndex_vIn]
+            var value = vals_vIn[currentDifferenceIndex_vIn]
 
             // Animate the translation on each click
             this.sliderAnime(this.slider_vIn,null,value,currentDifference)
@@ -87,6 +87,9 @@ const sliders = {
 
             // !we using temptitle10 as a record btn
             this.btn_record.item.click()
+          }else{
+            // reset this value because of behaviour of slide
+            currentDifferenceIndex_vIn = 0 
           }
         }
 
@@ -99,7 +102,91 @@ const sliders = {
         break
 
       case "1_2":
+        var temp2 = -23
+        var temp1 = -80
+        this.slider_vIn.set(34+temp2,33+temp1,23).zIndex(10)
+        this.slider_vIn_label.set(210,-53)
 
+        this.slider_vGs.set(10,374,23).zIndex(10)
+        this.slider_vGs_label.set(161,329)
+        
+        this.slider_R.set(255,357,23).zIndex(10)
+        this.slider_R_label.set(434,352)
+
+        
+        // ! vGs onclick
+        var differences_vGs = [74, 86, 110, 133];
+        var vals_vGs = [5,6,8,10]
+        var niddle_vGs_deg = [50, 61, 82.5, 104]
+        var currentDifferenceIndex_vGs = 0;
+        // for the slider vgs
+        var value_vGs = 0
+        this.slider_vGs.item.onclick = ( )=>{
+          if (currentDifferenceIndex_vGs < differences_vGs.length) {
+            // Get the current difference
+            var currentDifference = differences_vGs[currentDifferenceIndex_vGs];
+            
+            // setting the value of label
+            value_vGs = vals_vGs[currentDifferenceIndex_vGs]
+
+            // Animate the translation on each click
+            this.sliderAnime(this.slider_vGs,null,value_vGs,currentDifference)
+
+            // ! we using temptitle10 as a record btn
+            // this.btn_record.item.click()
+            // * rotate neddle
+            anime({
+              targets: Scenes.items.niddle_vGs.item,
+              easing: "linear",
+              duration: 1000,
+              rotate: niddle_vGs_deg[currentDifferenceIndex_vGs]
+            })
+
+            currentDifferenceIndex_vGs++;
+
+          }
+        }
+
+        // ! vIn onclick 
+        // neddle vIn rotate (-1,126) deg
+        var defaultRotatePos = -1
+        // slider (11, 160)
+        var defaultLeftPos = 11
+        // for slider vIn
+        var leftPixel = 160
+        // 11, 160
+        // label value 0 to 240
+        let currentLabelValue = 0
+        this.slider_vIn.item.onclick = ()=>{
+          // rotate slider with neddle
+          anime.timeline({
+            easing: "linear",
+            duration: 5000,
+          })
+          .add({
+            targets: this.slider_vIn.item,
+            left: [defaultLeftPos, leftPixel,leftPixel, defaultLeftPos],
+            value: [0,240,240, 0],
+            update: ()=>{
+              let labelValue = this.slider_vIn.getValue()
+              labelValue = Math.round(labelValue)
+              this.slider_vIn_label.setContent(
+                `${labelValue}<br>volts`
+              )
+            }
+          },0)
+          .add({
+            targets: Scenes.items.niddle_vIn.item,
+            rotate: [-1,126,126, -1]
+          },0)
+        }
+
+        // ! R onclick 
+        this.slider_R.item.onclick = ()=>{
+          let value_R = 50
+          var left = 304
+          this.sliderAnime(this.slider_R,0,value_R,left)
+        }
         break
         
       case "2":

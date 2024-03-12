@@ -114,7 +114,13 @@ const src = {
       
       part_1_1_calculations:this.allImgsDom[index++],
       part_1_2_calculations:this.allImgsDom[index++],
+      
+      slider_vGs: this.allImgsDom[index++],
+      slider_vIn: this.allImgsDom[index++],
+      slider_R: this.allImgsDom[index++],
 
+      niddle_vGs: this.allImgsDom[index++],
+      niddle_vIn: this.allImgsDom[index++],
 
       // * Question Mark
       domQs1: this.allQsDom[0],

@@ -21,6 +21,12 @@ class Dom {
       this.selector = selector;
       // push
     }
+    getValue(){
+      return this.item.attributes['value'].value
+    }
+    setValue(val){
+      this.item.attributes['value'].value = val;
+    }
     hidden(isHidden) {
       if (isHidden == false) this.item.style.visibility = "visible";
       else this.item.style.visibility = "hidden";
