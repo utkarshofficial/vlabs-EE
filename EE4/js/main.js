@@ -607,8 +607,7 @@ const Scenes = {
 
     // part2 calculation
     part_2_calculation_components : new Dom("part_2_calculation_components"),
-    niddle_vGs: new Dom("niddle_vGs"),
-    niddle_vIn: new Dom("niddle_vIn"),
+ 
 
     //* 29 feb new imgs
     
@@ -623,6 +622,20 @@ const Scenes = {
     part_3_table_2 : new Dom("part_3_table_2"),
     part_3_table_3 : new Dom("part_3_table_3"),
     part_3_text : new Dom("part_3_text"),
+
+    niddle_vGs: new Dom("niddle_vGs"),
+    niddle_vIn: new Dom("niddle_vIn"),
+    
+      // * for PROCEDURE and instruction NOMENCLATURE
+    nomenclature_popup : new Dom("nomenclature_popup"),
+    part_1_1_instruction_popup : new Dom("part_1_1_instruction_popup"),
+    part_1_1_procedure_popup : new Dom("part_1_1_procedure_popup"),
+    part_1_2_instruction_popup : new Dom("part_1_2_instruction_popup"),
+    part_1_2_procedure_popup : new Dom("part_1_2_procedure_popup"),
+    part_2_instruction_popup : new Dom("part_2_instruction_popup"),
+    part_2_procedure_popup : new Dom("part_2_procedure_popup"),
+    part_3_procedure_popup : new Dom("part_3_procedure_popup"),
+
 
 
     domQs1: new Dom("domQs1"),
@@ -844,6 +857,41 @@ const Scenes = {
       Scenes.items.stepTitle.styles(st)
       Scenes.items.stepDescription.styles(st)
     }
+  },
+
+  //*for instruction button onclick
+
+  // start
+  showPopup(step){
+    let instructionBtn = Scenes.items.btn_instructions.item
+    let instructionImg, procedureImg, nomenclatureImg= Scenes.items.nomenclature_popup;
+    switch(step){
+      case 0:
+        instructionImg = Scenes.items.part_1_1_instruction_popup
+        procedureImg = Scenes.items.part_1_1_procedure_popup
+        break;
+      case 1:
+        instructionImg = Scenes.items.part_1_2_instruction_popup
+        procedureImg = Scenes.items.part_1_2_procedure_popup
+        break;
+      case 2:
+        instructionImg = Scenes.items.part_2_instruction_popup
+        procedureImg = Scenes.items.part_2_procedure_popup
+        break;
+      case 3:
+        procedureImg = Scenes.items.part_3_procedure_popup
+        break;
+
+    }
+
+    instructionBtn.onclick = show
+
+    let show = function(){
+      instructionImg.show()
+      procedureImg.show()
+      nomenclatureImg.show()
+    }
+
   },
   // for typing hello text
   intru: null,
@@ -1924,7 +1972,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 4
+Scenes.currentStep = 2
 
 Scenes.next()
 // Scenes.steps[3]()

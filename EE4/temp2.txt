@@ -1,53 +1,60 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_components.png"
+        src="./src/images/nomenclature_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_graph.png"
+        src="./src/images/part_1_1_instruction_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_off_button.png"
+        src="./src/images/part_1_1_procedure_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_table_1.png"
+        src="./src/images/part_1_2_instruction_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_table_2.png"
+        src="./src/images/part_1_2_procedure_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_table_3.png"
+        src="./src/images/part_2_instruction_popup.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_text.png"
+        src="./src/images/part_2_procedure_popup.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_procedure_popup.png"
     />
     
 
-part_3_components:this.allImgsDom[index++],
-part_3_graph:this.allImgsDom[index++],
-part_3_off_button:this.allImgsDom[index++],
-part_3_table_1:this.allImgsDom[index++],
-part_3_table_2:this.allImgsDom[index++],
-part_3_table_3:this.allImgsDom[index++],
-part_3_text:this.allImgsDom[index++],
+nomenclature_popup:this.allImgsDom[index++],
+part_1_1_instruction_popup:this.allImgsDom[index++],
+part_1_1_procedure_popup:this.allImgsDom[index++],
+part_1_2_instruction_popup:this.allImgsDom[index++],
+part_1_2_procedure_popup:this.allImgsDom[index++],
+part_2_instruction_popup:this.allImgsDom[index++],
+part_2_procedure_popup:this.allImgsDom[index++],
+part_3_procedure_popup:this.allImgsDom[index++],
 
 
-part_3_components : new Dom("part_3_components"),
-part_3_graph : new Dom("part_3_graph"),
-part_3_off_button : new Dom("part_3_off_button"),
-part_3_table_1 : new Dom("part_3_table_1"),
-part_3_table_2 : new Dom("part_3_table_2"),
-part_3_table_3 : new Dom("part_3_table_3"),
-part_3_text : new Dom("part_3_text"),
+nomenclature_popup : new Dom("nomenclature_popup"),
+part_1_1_instruction_popup : new Dom("part_1_1_instruction_popup"),
+part_1_1_procedure_popup : new Dom("part_1_1_procedure_popup"),
+part_1_2_instruction_popup : new Dom("part_1_2_instruction_popup"),
+part_1_2_procedure_popup : new Dom("part_1_2_procedure_popup"),
+part_2_instruction_popup : new Dom("part_2_instruction_popup"),
+part_2_procedure_popup : new Dom("part_2_procedure_popup"),
+part_3_procedure_popup : new Dom("part_3_procedure_popup"),
