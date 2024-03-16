@@ -1,250 +1,76 @@
 const Formulas = {  
-    one_minus_D(D){
-        return 1 - D
-    },
-    step2:{
-        v0(values){
-            let ans = values.vIn / Formulas.one_minus_D(values.D)
-            return Number(ans.toFixed(4))
-        },
-        i0(values){
-            let ans = this.v0(values) / values.R
-            return Number(ans.toFixed(4))
-        },
-        iIn(values){
-            let ans = this.i0(values) / Formulas.one_minus_D(values.D)
-            return Number(ans.toFixed(4))
-        }
-    },
-    ideal:{
-        // v0(values){
-        //     let ans = values.vIn / Formulas.one_minus_D(values.D)
-        //     return Number(ans.toFixed(4))
-        // },
-
-        v0(values){
-            let ans = values.D * values.vIn;
-            return Number(ans.toFixed(4))
-        },
-
-        // M(values){
-        //     let ans = 1 / Formulas.one_minus_D(values.D)
-        //     return Number(ans.toFixed(4))
-        // },
-
-        M(values){
-            return (values.D.toFixed(4))
-        },
-        iIn(values){
-            let ans = values.vIn / ( Math.pow(Formulas.one_minus_D(values.D),2) * values.R )
-            return Number(ans.toFixed(4))
-        },
-    
-        // i0(values){
-        //     let ans = values.vIn / (Formulas.one_minus_D(values.D) * values.R)
-        //     return Number(ans.toFixed(4))
-        // },
-    
-        i0(values){
-            let ans = values.vIn * (values.D) / values.R
-            return Number(ans.toFixed(4))
-        },
-    },
-    nonIdeal:{
+    using:{
         
-        M(values){
-            // const rl = 1, rSW = 0.4, vFD = 0.7, rc = 0.45
+        iD(values,colIdx,vDS_idx){
             
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-
-            // let upper = 1 - ((vFD * Formulas.one_minus_D(values.D)) /  values.vIn)
-            // let bottom = Formulas.one_minus_D(values.D) * (1 + (( rl + rSW * values.D) /  (values.R * Math.pow(Formulas.one_minus_D(values.D),2)) ) )
-
-            let upper1 = values.R * values.D 
-            let upper2 = vFD * Formulas.one_minus_D(values.D)
-            let upper3 = vSFD * values.D
-
-            let bottom1 = values.R + rD + rL - (values.D * rD) + (values.D * rS)
+            const 
+            Kn_values = [3,0.64,0.425,0.3188,0.2119],
+            lambda_values = [0.0138,0.25,0.1765,0.0858,0.0259],
+            Mn_values = [3,1.0827,0.7111,0.3607,0.1681],
+            gama_values = [0.0138,0.0087,0.025,0.0592,0.0543]
             
-            let ans1 = upper1 / bottom1 
-            let ans2 = upper2 / values.vIn 
-            let ans3 = upper3 / values.vIn 
-    
-            let ans = ans1 - ans2 - ans3 
-            return Number(ans.toFixed(4))
+            colIdx = colIdx - 1
+            let Kn = Kn_values[colIdx],
+            lambda = lambda_values[colIdx],
+            Mn = Mn_values[colIdx],
+            gama = gama_values[colIdx],
+            vT = 7, //change it
+            vGS = values.vGS,
+            vDS = this.vDS(vDS_idx)
+            
+            let ans = 0
+            if(0 <= vDS && vDS <= (vGS - vT)){
+                let a = Kn * ( 2*(vGS - vT) * vDS - Math.pow(vDS,2))
+                let b = (1 + lambda * vDS)
+                ans = a * b 
+            }else
+            if( vDS >= (vGS - vT)){
+                let a = Mn * Math.pow((vGS - vT),2)
+                let b = (1 + gama * vDS)
+                ans = a * b
+            }
+            return Number(ans.toFixed(2))
         },
-        v0(values){
-
-            // let ans = this.M(values) * values.vIn
-            
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-            let upper1 = values.vIn * values.D * values.R
-            let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
-
-            let ans1 = upper1/ bottom1
-            let ans2 = vFD * Formulas.one_minus_D(values.D)
-            let ans3 = vSFD * values.D
-
-            let ans = ans1 - ans2 - ans3
-
-            return Number(ans.toFixed(4))
+        vDS(vDS_idx){
+            const vDS_values = [0,10,20,30,40,50]
+            return vDS_values[vDS_idx]
         },
-        i0(values){
-                        
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-            let upper1 = values.vIn * values.D
-            let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
-
-            let ans1 = upper1/ bottom1
-            let ans2 = (vFD * Formulas.one_minus_D(values.D)) / values.R
-            let ans3 = (vSFD * values.D) / values.R
-
-            let ans = ans1 - ans2 - ans3
-            
-            return Number(ans.toFixed(4))
-        }
     },
-    efficiencyPlot:{
-
-        //! Requires v0, M, iIn, i0, p0, Losses, efficiency 
-    
-        v0(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-            let upper1 = values.vIn * values.D * values.R
-            let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
-
-            let ans1 = upper1/ bottom1
-            let ans2 = vFD * Formulas.one_minus_D(values.D)
-            let ans3 = vSFD * values.D
-
-            let ans = ans1 - ans2 - ans3
-
-            return Number(ans.toFixed(4))
-        },
-        M(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-            let upper1 = values.R * values.D 
-            let upper2 = vFD * Formulas.one_minus_D(values.D)
-            let upper3 = vSFD * values.D
-
-            let bottom1 = values.R + rD + rL - (values.D * rD) + (values.D * rS)
+    transferCharacteristics:{
+        iD(values,colIdx,vDS_idx){
             
-            let ans1 = upper1 / bottom1 
-            let ans2 = upper2 / values.vIn 
-            let ans3 = upper3 / values.vIn 
-    
-            let ans = ans1 - ans2 - ans3 
-            return Number(ans.toFixed(4))
-        },
-        iIn(values){
-            let ans = (values.D * this.v0(values)) / values.R
-            return Number(ans.toFixed(4))
-        },
-        i0(values){
-            const L=1, C=100, R=48, rD=2, rL=0.2, rS=3, vFD=0.2, vSFD = 0.2;
-
-            let upper1 = values.vIn * values.D
-            let bottom1 =  values.R + rD + rL - (values.D * rD) + (values.D * rS)
-
-            let ans1 = upper1/ bottom1
-            let ans2 = (vFD * Formulas.one_minus_D(values.D)) / values.R
-            let ans3 = (vSFD * values.D) / values.R
-
-            let ans = ans1 - ans2 - ans3
+            let vT = 6, // change its value            
+            vGS = values.vGS,
+            vDS = this.vDS(vDS_idx)
             
-            return Number(ans.toFixed(4))
+            let ans = 0
+            if(0 <= vDS && vDS <= 3){
+                ans = 0
+            }else
+            if(3 <= vDS && vDS <= 4){
+                ans = 0.7 * Math.pow((vGS - vT),2)
+            }else{
+                ans = 3.3 * ( Math.pow((vGS-vT), 2) - 0.79)
+            }   
+            return Number(ans.toFixed(2))
         },
-        pIn(values){
-            let ans = values.vIn * this.iIn(values)
-            return Number(ans.toFixed(4))
+        vDS(vDS_idx){
+            const vDS_values = [0,10,20,30,40,50]
+            return vDS_values[vDS_idx]
         },
-        p0(values){
-            let ans = this.v0(values) * this.i0(values)
-            return Number(ans.toFixed(4))
-        },
-        losses(values){
-            let ans = this.pIn(values ) - this.p0(values)
-            return Number(ans.toFixed(4))
-        },
-        eff(values){
-            let ans = (this.p0(values) * 100) / this.pIn(values)
-            return Number(ans.toFixed(4))
-        }
-    },
-    stress:{
-        v0(values){
-            // let ans = this.M(values) * values.vIn
-            let ans = values.D * values.vIn
-            return Number(ans.toFixed(4))
-        },
-
-        i0(values){
-            // let ans = this.v0(values) / values.R
-            let ans = (values.vIn * values.D) /  values.R
-            return Number(ans.toFixed(4))
-        },
-
-        iL(values){
-            let ans = 0.2 * this.i0(values) 
-            return Number(ans.toFixed(4));
-        },
-
-        iLP(values){
-            let ans = this.i0(values) + (this.iL(values) / 2)
-            return Number(ans.toFixed(4));
-        }, 
-        // M(values){
-        //     const rl = 1, rSW = 0.4, vFD = 0.7, rc = 0.45
-            
-        //     let upper = 1 - ((vFD * Formulas.one_minus_D(values.D)) /  values.vIn)
-        //     let bottom = Formulas.one_minus_D(values.D) * (1 + (( rl + rSW * values.D) /  (values.R * Math.pow(Formulas.one_minus_D(values.D),2)) ) )
-    
-        //     let ans = upper / bottom
-        //     return Number(ans.toFixed(4))
-        // },
-        // i_In(values){
-        //     let ans = this.i0(values) / Formulas.one_minus_D(values.D)
-        //     return Number(ans.toFixed(4))
-        // },
-       
-        // i2(values){
-        //     let L = 2 * Math.pow(10,-3)
-        //     let fs = 50 * Math.pow(10,3)
-
-        //     let upper = values.D * values.vIn
-        //     let lower = 2 * L * fs
-
-        //     let ans = this.i_In(values) + (upper / lower)
-
-        //     return Number(ans.toFixed(4))
-        // },
-        // pSw(values){
-        //     let ans = this.v0(values) * this.i0(values)
-        //     return Number(ans.toFixed(4))
-        // },
-        // pDi(values){
-        //     let ans = this.v0(values) * this.i0(values)
-        //     return Number(ans.toFixed(4))
-        // },
-        
-    },
+    }
 }
 
 let values = {
     vIn:0,
-    D:0,
+    vGS:0,
     R:0,
 }
 
-function updateValues(vIn,D,R){
+function updateValues(vIn,vGS,R){
     values = {
         vIn:vIn,
-        D:D,
+        vGS:vGS,
         R:R,
     }
 }
