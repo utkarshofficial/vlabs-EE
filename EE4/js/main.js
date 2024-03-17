@@ -1322,13 +1322,15 @@ const Scenes = {
           let vIn_value = sliders.slider_vIn.getValue()
           let R_value = sliders.slider_R.getValue()
 
+          updateValues(vIn_value,vGs_value,R_value)
+
           // seting column index for filling the table
           if(vGs_value == first_vGs_value){
-            rows[recordBtnIdx+1].cells[0].innerHTML = "10"
+            // vds value
+            rows[recordBtnIdx+1].cells[0].innerHTML = Formulas.usingMeters.vDS(recordBtnIdx)
           }
-          rows[recordBtnIdx+1].cells[colIdx[vGs_value]].innerHTML = vIn_value
+          rows[recordBtnIdx+1].cells[colIdx[vGs_value]].innerHTML = Formulas.usingMeters.iD(values,colIdx[vGs_value],recordBtnIdx)
           recordBtnIdx++
-          console.log(colIdx[vGs_value])
           // to plot the data
           if(recordBtnIdx == rows.length - 1){
             
@@ -1349,7 +1351,7 @@ const Scenes = {
               function addDataToGraph(){
                 let data = []
                 for(let row of rows){
-                  let x = vGs_value
+                  let x = row.cells[0].innerHTML
                   let y = row.cells[colIdx[vGs_value]].innerHTML
                   data.push({x,y})
                 }
@@ -1453,7 +1455,6 @@ const Scenes = {
         ele.set(l,t,h,w).hide()
       })
 
-
       let cables_color = [
         "#e40d0d",
         "#162848",
@@ -1466,8 +1467,6 @@ const Scenes = {
         "#974f1e",
         "#670202",
       ]
-      
-
 
       function hideConnectionStepImgs(){
         let allImages = [
@@ -1632,14 +1631,18 @@ const Scenes = {
         let recordBtnIdx = 0
         // ! calculation value object
         let calculationValues = {
-          vDs: [],
-          iD: [],
+          vDs: [0,10,20,30,40,50,60],
+          iD: [
+            [],[],[],[]
+          ],
         }
         btn_record.onclick = ()=>{
           let vGs_value = sliders.slider_vGs.getValue()
           let vIn_value = Math.round(sliders.slider_vIn.getValue())
           let R_value = sliders.slider_R.getValue()
           let firstValue = 0
+
+          updateValues(vIn_value,vGs_value,R_value)
 
           let vGs_idx = {
             5:0,
@@ -1651,9 +1654,12 @@ const Scenes = {
           // vIn values
           let vIn_accept_range = [0,40,80,120,160,200,240]  
           let acceptedValueIndex = vIn_accept_range.indexOf(vIn_value)
+          let tamp_iD = []
+
+          console.log(acceptedValueIndex)
           
           // for the first value add data set
-          if(vIn_value==firstValue){
+          if(vIn_value == firstValue){
             // add datasets to graph
             let bgColors = [
               "#ff0000",
@@ -1665,22 +1671,28 @@ const Scenes = {
             let labelForDataSet = `Vgs = ${vGs_value}V`
 
             // add data set
-            Scenes.graphFeatures.addDataset(graphRef,labelForDataSet,bgColor,[])            
+            Scenes.graphFeatures.addDataset(graphRef,labelForDataSet,bgColor,[])
+
+            // * add first value also
+            let x = calculationValues.vDs[acceptedValueIndex]
+            let y = Formulas.using.iD(values,)
+            Scenes.graphFeatures.addData(graphRef,datasetIndex,{vIn_value,})
+
           }
           else{
             // adding data to graph
             let datasetIndex = vGs_idx[vGs_value]
-            let temp_vDs = [10,20,30,40,50,60]
 
             //! add formula value here
-            calculationValues.vDs.push(temp_vDs[acceptedValueIndex-1])
-            calculationValues.iD.push(vIn_value)
+            temp_iD.push(vIn_value)
+
+            console.log(calculationValues)
 
             let x = calculationValues.vDs[acceptedValueIndex-1]
             let y = calculationValues.iD[acceptedValueIndex-1] * vGs_value
             let data = {x,y}
 
-            Scenes.graphFeatures.addData(graphRef,datasetIndex,data)                        
+            Scenes.graphFeatures.addData(graphRef,datasetIndex,data)
           }
         }
 
