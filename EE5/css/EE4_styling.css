@@ -1,0 +1,88 @@
+.connections-box{
+    border: solid 1px black;
+    display: flex;
+    width: 504px;
+    position: absolute;
+    z-index: 100;
+  }
+  .connections-box .btn-box span{
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .connections-box .head{
+    background-color: #ffc000;
+    width: 70px!important;
+  }
+  .connections-box .btn-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 44px;
+    border-radius: none;
+    cursor: pointer;
+  }
+  .connections-box .middle-border{
+    border-bottom: 2px solid;
+    width: 502px;
+    top: 30px;
+    position: absolute;
+  }
+
+  .part_2_connections_box{
+    display: none;
+  }
+
+  .part_1_1_connections_box{
+    display: none;
+    width: auto;
+  }
+  .part_1_1_connections_box .middle-border{
+    width: 422px;
+  }
+
+  .part_1_2_connections_box{
+    display: none;
+  }
+
+
+/* Table style */
+.table{
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.table td, .table th {
+  height: 25px;
+  padding: 0 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.part_2_table th{
+  background-color: #002060;
+  color: white;
+}
+
+/* part3 table */
+.part3_table_two{
+  width: 430px;
+}
+
+.part3_table_two th,
+.part3_table_two td
+{
+  width: 73px!important;
+  font-size: 13px;  
+  padding: 0!important;
+}
+
+.part3_table_two th{
+  font-size: 15px!important;  
+  height: 15px!important;
+}
