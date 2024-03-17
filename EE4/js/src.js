@@ -136,14 +136,17 @@ const src = {
       
       // * for PROCEDURE and instruction NOMENCLATURE
 
-      nomenclature_popup:this.allImgsDom[index++],
-      part_1_1_instruction_popup:this.allImgsDom[index++],
-      part_1_1_procedure_popup:this.allImgsDom[index++],
-      part_1_2_instruction_popup:this.allImgsDom[index++],
-      part_1_2_procedure_popup:this.allImgsDom[index++],
-      part_2_instruction_popup:this.allImgsDom[index++],
-      part_2_procedure_popup:this.allImgsDom[index++],
-      part_3_procedure_popup:this.allImgsDom[index++],
+      part_1_1_instruction:this.allImgsDom[index++],
+      part_1_1_nomenclature:this.allImgsDom[index++],
+      part_1_1_procedure:this.allImgsDom[index++],
+      part_1_2_instruction:this.allImgsDom[index++],
+      part_1_2_nomenclature:this.allImgsDom[index++],
+      part_1_2_procedure:this.allImgsDom[index++],
+      part_2_instruction:this.allImgsDom[index++],
+      part_2_nomenclature:this.allImgsDom[index++],
+      part_2_procedure:this.allImgsDom[index++],
+      part_3_nomenclature:this.allImgsDom[index++],
+      part_3_procedure:this.allImgsDom[index++],
 
 
       // * Question Mark

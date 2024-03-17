@@ -1,60 +1,81 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/nomenclature_popup.png"
+        src="./src/images/part_1_1_instruction.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_1_1_instruction_popup.png"
+        src="./src/images/part_1_1_nomenclature.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_1_1_procedure_popup.png"
+        src="./src/images/part_1_1_procedure.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_1_2_instruction_popup.png"
+        src="./src/images/part_1_2_instruction.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_1_2_procedure_popup.png"
+        src="./src/images/part_1_2_nomenclature.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_2_instruction_popup.png"
+        src="./src/images/part_1_2_procedure.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_2_procedure_popup.png"
+        src="./src/images/part_2_instruction.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/part_3_procedure_popup.png"
+        src="./src/images/part_2_nomenclature.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_2_procedure.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_nomenclature.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/part_3_procedure.png"
     />
     
 
-nomenclature_popup:this.allImgsDom[index++],
-part_1_1_instruction_popup:this.allImgsDom[index++],
-part_1_1_procedure_popup:this.allImgsDom[index++],
-part_1_2_instruction_popup:this.allImgsDom[index++],
-part_1_2_procedure_popup:this.allImgsDom[index++],
-part_2_instruction_popup:this.allImgsDom[index++],
-part_2_procedure_popup:this.allImgsDom[index++],
-part_3_procedure_popup:this.allImgsDom[index++],
+part_1_1_instruction:this.allImgsDom[index++],
+part_1_1_nomenclature:this.allImgsDom[index++],
+part_1_1_procedure:this.allImgsDom[index++],
+part_1_2_instruction:this.allImgsDom[index++],
+part_1_2_nomenclature:this.allImgsDom[index++],
+part_1_2_procedure:this.allImgsDom[index++],
+part_2_instruction:this.allImgsDom[index++],
+part_2_nomenclature:this.allImgsDom[index++],
+part_2_procedure:this.allImgsDom[index++],
+part_3_nomenclature:this.allImgsDom[index++],
+part_3_procedure:this.allImgsDom[index++],
 
 
-nomenclature_popup : new Dom("nomenclature_popup"),
-part_1_1_instruction_popup : new Dom("part_1_1_instruction_popup"),
-part_1_1_procedure_popup : new Dom("part_1_1_procedure_popup"),
-part_1_2_instruction_popup : new Dom("part_1_2_instruction_popup"),
-part_1_2_procedure_popup : new Dom("part_1_2_procedure_popup"),
-part_2_instruction_popup : new Dom("part_2_instruction_popup"),
-part_2_procedure_popup : new Dom("part_2_procedure_popup"),
-part_3_procedure_popup : new Dom("part_3_procedure_popup"),
+part_1_1_instruction : new Dom("part_1_1_instruction"),
+part_1_1_nomenclature : new Dom("part_1_1_nomenclature"),
+part_1_1_procedure : new Dom("part_1_1_procedure"),
+part_1_2_instruction : new Dom("part_1_2_instruction"),
+part_1_2_nomenclature : new Dom("part_1_2_nomenclature"),
+part_1_2_procedure : new Dom("part_1_2_procedure"),
+part_2_instruction : new Dom("part_2_instruction"),
+part_2_nomenclature : new Dom("part_2_nomenclature"),
+part_2_procedure : new Dom("part_2_procedure"),
+part_3_nomenclature : new Dom("part_3_nomenclature"),
+part_3_procedure : new Dom("part_3_procedure"),

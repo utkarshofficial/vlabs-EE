@@ -627,14 +627,19 @@ const Scenes = {
     niddle_vIn: new Dom("niddle_vIn"),
     
       // * for PROCEDURE and instruction NOMENCLATURE
-    nomenclature_popup : new Dom("nomenclature_popup"),
-    part_1_1_instruction_popup : new Dom("part_1_1_instruction_popup"),
-    part_1_1_procedure_popup : new Dom("part_1_1_procedure_popup"),
-    part_1_2_instruction_popup : new Dom("part_1_2_instruction_popup"),
-    part_1_2_procedure_popup : new Dom("part_1_2_procedure_popup"),
-    part_2_instruction_popup : new Dom("part_2_instruction_popup"),
-    part_2_procedure_popup : new Dom("part_2_procedure_popup"),
-    part_3_procedure_popup : new Dom("part_3_procedure_popup"),
+
+      part_1_1_instruction : new Dom("part_1_1_instruction"),
+      part_1_1_nomenclature : new Dom("part_1_1_nomenclature"),
+      part_1_1_procedure : new Dom("part_1_1_procedure"),
+      part_1_2_instruction : new Dom("part_1_2_instruction"),
+      part_1_2_nomenclature : new Dom("part_1_2_nomenclature"),
+      part_1_2_procedure : new Dom("part_1_2_procedure"),
+      part_2_instruction : new Dom("part_2_instruction"),
+      part_2_nomenclature : new Dom("part_2_nomenclature"),
+      part_2_procedure : new Dom("part_2_procedure"),
+      part_3_nomenclature : new Dom("part_3_nomenclature"),
+      part_3_procedure : new Dom("part_3_procedure"),
+      
 
 
 
@@ -859,38 +864,17 @@ const Scenes = {
     }
   },
 
-  //*for instruction button onclick
+  //* for hover on instuction , procedure and nomenclature
 
-  // start
-  showPopup(step){
+  // not done yet
+  showPopup(){
     let instructionBtn = Scenes.items.btn_instructions.item
-    let instructionImg, procedureImg, nomenclatureImg= Scenes.items.nomenclature_popup;
-    switch(step){
-      case 0:
-        instructionImg = Scenes.items.part_1_1_instruction_popup
-        procedureImg = Scenes.items.part_1_1_procedure_popup
-        break;
-      case 1:
-        instructionImg = Scenes.items.part_1_2_instruction_popup
-        procedureImg = Scenes.items.part_1_2_procedure_popup
-        break;
-      case 2:
-        instructionImg = Scenes.items.part_2_instruction_popup
-        procedureImg = Scenes.items.part_2_procedure_popup
-        break;
-      case 3:
-        procedureImg = Scenes.items.part_3_procedure_popup
-        break;
+    let procedureBtn = Scenes.items.btn_procedure.item
+    let nomenclatureBtn = Scenes.items.btn_nomenclature.item
 
-    }
 
-    instructionBtn.onclick = show
 
-    let show = function(){
-      instructionImg.show()
-      procedureImg.show()
-      nomenclatureImg.show()
-    }
+    
 
   },
   // for typing hello text
