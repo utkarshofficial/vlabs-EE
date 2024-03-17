@@ -1211,7 +1211,7 @@ part1_box1 : new Dom(".part1_box1"),
       let check = function(){
         Dom.setBlinkArrowRed(-1)
         console.log(checkCnnctn)
-        if(checkCnnctn == "111111"){
+        if(checkCnnctn == "11111"){
         Scenes.items.part1_crrct_text.set(10,40, null, 790)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play()
@@ -1221,7 +1221,7 @@ part1_box1 : new Dom(".part1_box1"),
         else{
           Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
           wrongNoTimes+="1";
-          if(wrongNoTimes == "11111"){
+          if(wrongNoTimes == "1"){
             Dom.setBlinkArrowRed(true,882,-18,30,30,90).play()
             ee3_btn_hint.classList.remove("btn-deactive")
             frontText.hide()
@@ -1902,6 +1902,15 @@ part1_box1 : new Dom(".part1_box1"),
   // Scenes.items.hea.item.style.display = "none"
   // Scenes.items.slider_box.show("flex").set(-120, -40);
 
+  
+  // * for bigger screen
+  /*
+  let l = 465
+  let t = -75
+  let h = 474
+  let w = 470
+  Scenes.items.part_2_graph_data_upper.set(l,t,h,w).zIndex(2).hide()
+  */
   let l = 530
   let t = -50
   let h = 410
@@ -3990,7 +3999,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 1
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()
