@@ -597,14 +597,19 @@
 /* ! conclusion class */
 .conclusion{
     opacity: 0;
-    width: 600px;
+    /* width: 600px; */
     font-size: 17px;
     background-color: green!important;
     color: white;
     border-radius: 14px;
     border: 4px dashed white!important;
     padding: 11px;
-    top: 100px;
+    /* top: 100px; */
+    height: auto;
+    left: 10px;
+    top:1px;
+    width: 537px;
+
 }
 
 .temp.graph_labels span{

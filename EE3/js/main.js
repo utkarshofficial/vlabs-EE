@@ -2419,10 +2419,12 @@ part1_box1 : new Dom(".part1_box1"),
           }
 
           // ! For front conclusion
-          Anime.fade(
-            Scenes.items.tempTitle1.set(null,100).setContent(conclusionFront).addClass("conclusion").item
-          )
+          // Anime.fade(
+          //   Scenes.items.tempTitle1.set(null,100).setContent(conclusionFront).addClass("conclusion").item
+          // )
 
+            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
+          
           Scenes.items.chart.label1.x = xLabel
           Scenes.items.chart.label1.y = yLabel
 
@@ -2932,10 +2934,11 @@ part1_box1 : new Dom(".part1_box1"),
           }
 
           // ! For front conclusion
-          Anime.fade(
-            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item,1,13
-          )
-
+          // Anime.fade(
+            //   Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item,1,13
+            //   )
+            
+          Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item,1,13
           Scenes.items.chart.label2.x = xLabel
           Scenes.items.chart.label2.y = yLabel
 
@@ -3359,10 +3362,11 @@ part1_box1 : new Dom(".part1_box1"),
           }
 
           // ! For front conclusion
-          Anime.fade(
-            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
-          )
+          // Anime.fade(
+          //   Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
+          // )
           
+          Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
           Scenes.items.chart.label3.x = xLabel
           Scenes.items.chart.label3.y = yLabel
 
@@ -3887,9 +3891,10 @@ part1_box1 : new Dom(".part1_box1"),
           let conclusionFront = "The bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart."
 
           // ! For front conclusion
-          Anime.fade(
-            Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
-          )
+          // Anime.fade(
+          //   Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+          // )
+          Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
           
           setIsProcessRunning(false); 
           Scenes.currentStep = 4
