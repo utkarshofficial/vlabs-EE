@@ -1087,8 +1087,8 @@ part1_box1 : new Dom(".part1_box1"),
 
       Scenes.items.concept_development.set().styles({
         zIndex: "5000",
-        scale: "1.087 0.9",
-        top: "-143px",
+        scale: "1.087 0.903",
+        top: "-144px",
         position: "absolute",
       })
 
@@ -4004,7 +4004,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()
