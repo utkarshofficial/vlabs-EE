@@ -987,8 +987,8 @@ concept_development: new Dom(".concept_development"),
   
         Scenes.items.concept_development.set().styles({
           zIndex: "5000",
-          scale: "1 0.9",
-          top: "-140px",
+          scale: "1 0.915",
+          top: "-144px",
           position: "absolute",
         })
   
