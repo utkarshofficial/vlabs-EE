@@ -68,6 +68,10 @@ class Dom {
     get() {
       return this.item;
     }
+    left(leftPixel){
+      this.item.left = leftPixel + "px"
+      return this
+    }
     set(
       left = null,
       top = null,

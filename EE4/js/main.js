@@ -867,12 +867,87 @@ const Scenes = {
   //* for hover on instuction , procedure and nomenclature
 
   // not done yet
-  showPopup(){
-    let instructionBtn = Scenes.items.btn_instructions.item
-    let procedureBtn = Scenes.items.btn_procedure.item
-    let nomenclatureBtn = Scenes.items.btn_nomenclature.item
+  showPopup(step){
 
+    let instructionBtn = Scenes.items.btn_instructions.zIndex(1000)
+    let procedureBtn = Scenes.items.btn_procedure.zIndex(1000)
+    let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(1000)
+    let instructionImg, procedureImg, nomenclatureImg;
+    
+    let btn = [
+      instructionBtn, 
+      procedureBtn,
+      nomenclatureBtn,
+    ]
 
+    switch(step){
+      case "1_1" : 
+            instructionImg = Scenes.items.part_1_1_instruction;
+            procedureImg = Scenes.items.part_1_1_procedure.set(-150).hide();
+            nomenclatureImg = Scenes.items.part_1_1_nomenclature;
+
+            console.log("case3")
+
+            break;
+
+      case "1_2" :  instructionImg = Scenes.items.part_1_2_instruction;
+                procedureImg = Scenes.items.part_1_2_procedure.set(-80,null,320).hide();
+                nomenclatureImg = Scenes.items.part_1_2_nomenclature.set(-100).hide();
+                console.log("case4")
+            break;
+
+      case "2" :  instructionImg = Scenes.items.part_2_instruction;
+                procedureImg = Scenes.items.part_2_procedure.set(null,-80).hide();
+                nomenclatureImg = Scenes.items.part_2_nomenclature.set(null,-80).hide();  
+
+            break;
+
+      case "3" :  
+      procedureImg = Scenes.items.part_3_procedure;
+      nomenclatureImg = Scenes.items.part_3_nomenclature;  
+      
+            break;
+          }
+
+    let showInstructionImg = function(){
+      instructionImg.show().zIndex(40)
+    }
+
+    let showProcedureImg = function(){
+      procedureImg.show().zIndex(40)
+
+    }
+
+    let showNomenclatureImg = function(){
+      nomenclatureImg.show().zIndex(40)
+
+    }
+    
+    let hideInstructionImg = function(){
+      instructionImg.hide()
+    }
+
+    let hideProcedureImg = function(){
+      procedureImg.hide()
+
+    }
+
+    let hideNomenclatureImg = function(){
+      nomenclatureImg.hide()
+
+    }
+    
+
+    btn[0].item.onmouseover = showInstructionImg
+    btn[0].item.onmouseout = hideInstructionImg
+
+    btn[1].item.onmouseover = showProcedureImg
+    btn[1].item.onmouseout = hideProcedureImg
+
+    btn[2].item.onmouseover = showNomenclatureImg
+    btn[2].item.onmouseout = hideNomenclatureImg
+
+ 
 
     
 
@@ -1104,6 +1179,7 @@ const Scenes = {
           .zIndex(10),
         Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(10)
       ]
+
 
       // required images
       let images = [
@@ -1393,6 +1469,10 @@ const Scenes = {
 
       }
 
+
+      //to show btn popup
+      Scenes.showPopup("1_1")
+
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -1401,6 +1481,8 @@ const Scenes = {
           hideConnectionStepImgs()
           // * calculation part
           partCalculation()
+          //to show btn popup
+          Scenes.showPopup("1_1")
         }
       }
 
@@ -1696,6 +1778,9 @@ const Scenes = {
 
       }
 
+      //to show btn popup
+      Scenes.showPopup("1_2")
+
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -1704,6 +1789,9 @@ const Scenes = {
           hideConnectionStepImgs()
           // * calculation part
           partCalculation()
+
+          //to show btn popup
+          Scenes.showPopup("1_2")
         }
       }
 
@@ -1962,6 +2050,9 @@ const Scenes = {
 
       }
 
+      //to show btn popup
+      Scenes.showPopup("2")
+
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -1970,6 +2061,8 @@ const Scenes = {
           hideConnectionStepImgs()
           // * calculation part
           partCalculation()
+          //to show btn popup
+          Scenes.showPopup("2")
         }
       }
 
@@ -2010,6 +2103,9 @@ const Scenes = {
 
         
       }
+
+      //to show btn popup
+      Scenes.showPopup("3")
 
       return true;
     }),
