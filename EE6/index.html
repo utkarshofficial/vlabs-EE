@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/progressBar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/imgs.css" />
+    <link rel="stylesheet" href="css/scenes.css" />
+    <!-- <link rel="stylesheet" href=".css/table.css" /> -->
+    <link rel="stylesheet" href="css/quiz.css" />
+    <link rel="stylesheet" href="css/certificate.css" />
+    <link rel="stylesheet" href="css/chart.css" />
+    <link rel="stylesheet" href="css/component_styling.css" />
+    <link rel="stylesheet" href="css/sliders.css" />
+    <link rel="stylesheet" href="css/EE4_styling.css" />
+    <script src="./js/typed.js"></script>
+  </head>
+  <img src="" alt="" />
+  <body>
+    <!-- <body  onmousemove="getCursor(event)"> -->
+    <!-- Mouse Position -->
+    <!-- <div id="demo" style="position: absolute">
+      <div id="info"></div>
+    </div> -->
+    <div class="main-container">
+      <!-- * Drawer Side Navbar -->
+      <nav id="drawer">
+        <div class="codelab-time-container" style="display: none"></div>
+        <div class="steps">
+          <ol>
+            <!-- <li class=""> 
+              <a>
+                <span class="step">
+                  <span>Introduction</span>
+                </span>
+              </a>
+            </li>
+            <li class="">
+              <a>
+                <span class="step">
+                  <span>Objective</span>
+                </span>
+              </a>
+            </li> -->
+            <li>
+              <a>
+                <span class="step">
+                  <span>Concept Development</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="step">
+                  <span>
+                    To Plot Different Characteristics.
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="step">
+                  <span>Output Characteristics Using Meters.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="step">
+                  <span>
+                    Output Characteristics Using Probes and Oscilloscope.
+                  </span>
+                </span>
+              </a>
+            </li>
+            <!-- <li>
+              <a>
+                <span class="step">
+                  <span>
+                    Transfer Characteristics.
+                  </span>
+                </span>
+              </a>
+            </li> -->
+            <!-- <li>
+              <a>
+                <span class="step">
+                  <span>
+                    Switching Characteristics.
+                  </span>
+                </span>
+              </a>
+            </li> -->
+            <!-- <li>
+              <a>
+                <span class="step">
+                  <span>Placing sheathing on the top of timber beam.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="step">
+                  <span
+                    >Placing inner and outer beam with the help of beam forming support (BFS) with extension.</span
+                  >
+                </span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="step">
+                  <span>Making Slab using short prop, aluminum beam and timber beam.</span>
+                </span>
+              </a>
+            </li> -->
+            <!-- <li>
+              <a>
+                <span class="step">
+                  <span
+                    >Attaching CT prop with steel waler using Head adapter and
+                    foot adapter</span
+                  >
+                </span>
+              </a>
+            </li> -->
+            <!-- <li> 
+              <a>
+                <span class="step">
+                  <span
+                    >Repeat step 2 to step 7 for building remaining sides</span
+                  >
+                </span>
+              </a>
+            </li> -->
+            <!-- <li>
+              <a>
+                <span class="step">
+                  <span>Completed</span>
+                </span>
+              </a>
+            </li> -->
+          </ol>
+        </div>
+      </nav>
+      <div class="right-container">
+        <div class="right-box">
+          <!-- * Progress bar -->
+          <section class="progress-bar">
+            <div class="progressbar">
+              <div class="progress" id="progress"></div>
+              <div
+                class="progress-step progress-step-active"
+                data-title=""
+              ></div>
+              <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div>
+              <!-- <div class="progress-step" data-title=""></div> -->
+              <!-- <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div> -->
+              <!-- <div class="progress-step" data-title=""></div> -->
+              <!-- <div class="progress-step" data-title=""></div> -->
+              <!-- <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div>
+              <div class="progress-step" data-title=""></div> -->
+            </div>
+          </section>
+
+          <main class="main-window">
+            <!-- transparent layer for question -->
+            <div class="transparent-box"></div>
+            <section class="anime-header">
+              <p style="text-transform: uppercase;position: relative;left: -80px;">Characteristics of IGBT</p>
+              
+              <!-- <div class="btn-popup-box">
+                <p class="btn-popup">FORMULAE</p>
+                <p class="btn-popup">PROCEDURE</p>
+                <p class="btn-popup">NOMENCLATURE</p>
+                <img class="btn-popup-window" src="" alt="" >
+                <div class="btn-popup-window blur">
+                </div>
+              </div> -->
+
+              <img
+                class="btn btn-mute"
+                style="height: 40px; z-index: 5; position: absolute; right: 5px"
+                src="./src/images/template_imgs/speech_off_btn.png"
+                title="Click To Mute"
+              />
+            </section>
+
+
+
+            <!-- * Project Intro Goes Here -->
+            <div class="project-intro">
+              <span class="heading">Objective:</span>
+              <p class="description">To Set the Beam and Slab using Flex System.</p>
+              <span class="heading">Apparatus Materials:</span>
+              <p class="description">
+                Tripod Stand, CT prop, fourway head, Aluminium Beam, Timber Beam, Plywood Sheathing, Beam Forming support. 
+              </p>
+            </div>
+
+            <!-- * Steps Heading Template -->
+            <div class="step-heading">
+              <p class="step-title">Step 1</p>
+              <p class="step-description">
+                Calculation of cross-sectional area:
+              </p>
+            
+            </div>
+            
+            <!-- * Content Adder Box -->
+            <ul class="content-adder-box">
+              <!-- <li class="btn content-adder">Footing</li> -->
+            </ul>
+
+            <!-- * Blink Arrow -->
+            <img
+                class="blinkArrow"
+                src="./src/images/template_imgs/blinkArrow.webp"
+              />
+            
+            <section class="anime-main">
+            <!-- <section class="anime-main" onmousemove="getCursor(event)"> -->
+              <!-- * Welcome note About Experiment-->
+              <div class="welcome-box">
+                <img
+                  class="iit-logo"
+                  src="./src/images/iit-delhi-logo.png"
+                  alt=""
+                />
+                <div class="title">
+                  <span>Welcome to</span>
+                  <span>Foundation in Beam Formwork Experiment</span>
+                  <span
+                    >of Formwork Technology in Civil Engineering Virtual
+                    Lab</span
+                  >
+                  <span
+                    >developed by Prof. K. N. Jha, Department of Civil
+                    Engineering, IIT Delhi.</span
+                  >
+                </div>
+                <div class="prof-description">
+                  <img
+                    class="prof-img"
+                    src="./src/images/prof_image_kn_jha.jpeg"
+                    alt="Prof. K. N. Jha Image"
+                  />
+                  <span>Prof. K. N. Jha</span>
+                  <span>IIT Delhi</span>
+                </div>
+              </div>
+
+              <!-- * Student Name section -->
+              <form onsubmit="return false" class="user-input">
+                <p>Enter your name:</p>
+                <input type="text" name="" id="stuName" />
+                <p class="error">Please enter your name before start</p>
+                <input class="btn" id="nameSubmitBtn" type="submit" value="Start"/>
+              </form>
+
+              <!-- * Calculations Table -->
+              <table class="measurements">
+                <tbody>
+                  <tr>
+                    <th class="cell" colspan="2">Calculations:</th>
+                  </tr>
+                  <tr>
+                    <th class="cell" scope="col">Total Length(m)</th>
+                    <td class="cell"></td>
+                  </tr>
+                  <tr>
+                    <th class="cell" scope="col">Weight(kg)</th>
+                    <td class="cell"></td>
+                  </tr>
+                  <tr>
+                    <th class="cell" scope="col">
+                      Cross-sectional area (mm<sup>2</sup>)
+                    </th>
+                    <td class="cell"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- * Graphs -->
+              <div class="graph_box graph_box1">
+                <canvas class="graph graph1"></canvas>
+              </div>
+              <div class="graph_box graph_box2" >
+                <canvas class="graph graph2"></canvas>
+              </div>
+              <div class="graph_box graph_box3" >
+                <canvas class="graph graph3"></canvas>
+              </div>
+              <div class="graph_box graph_box4" >
+                <canvas class="graph graph4"></canvas>
+              </div>
+              <div class="graph_box graph_box5" >
+                <canvas class="graph graph5"></canvas>
+              </div>
+              <!-- Label for graph -->
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp xLabel"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp yLabel"
+              ></span>
+              
+              <!-- ! for cicuit formulation -->
+              <!-- Connection Points -->
+              <!-- <div class="vertex-box">
+                <p class="vertex" id="vertex1">1</p>
+                <p class="vertex" id="vertex2">2</p>
+                <p class="vertex" id="vertex3">3</p>
+                <p class="vertex" id="vertex4">4</p>
+                <p class="vertex" id="vertex5">5</p>
+                <p class="vertex" id="vertex6">6</p>
+                <p class="vertex" id="vertex7">7</p>
+                <p class="vertex" id="vertex8">8</p>
+                <p class="vertex" id="vertex9">9</p>
+                <p class="vertex" id="vertex10">10</p>
+              </div> -->
+
+          <!-- ! Conecpt Development -->
+          <iframe class="concept_development" src="./iframes/index.html" width="1200" height="700"  frameborder="0"></iframe>
+
+          <!-- part 3 first table in EE3 -->
+              <table class="table part3_table_one">
+                <thead>
+                  <tr>
+                    <th>S.No.</th>
+                    <th>V<sub>in</sub>(V)</th>
+                    <th>R(Ω)</th>
+                    <th>D</th>
+                    <th>V<sub>0</sub>(V)</th>
+                    <th>M</th>
+                    <th>I<sub>in</sub>(A)</th>
+                    <th>I<sub>0</sub>(A)</th>
+                    <th>P<sub>0</sub>(W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td> 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td>
+                    <td></td> -->
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="table part3_table_two">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>V<sub>GS</sub> = 4V</th>
+                    <th>V<sub>GS</sub> = 6V</th>
+                    <th>V<sub>GS</sub> = 8V</th>
+                    <th>V<sub>GS</sub> = 10V</th>
+                    <th>V<sub>GS</sub> = 15V</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>V<sub>DS</sub>(V)</td>
+                    <td>I<sub>D</sub>(A)</td>
+                    <td>I<sub>D</sub>(A)</td>
+                    <td>I<sub>D</sub>(A)</td>
+                    <td>I<sub>D</sub>(A)</td>
+                    <td>I<sub>D</sub>(A)</td>
+                  </tr>
+          
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+               
+                </tbody>
+              </table>
+
+              <table class="table part_2_table">
+                <thead>
+                  <tr>
+                    <th colspan="2">V<sub>DS</sub> = 50 V</th>
+                  </tr>
+                  <tr>
+                    <th>V<sub>GS</sub>(V)</th>
+                    <th>I<sub>D</sub>(A)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- ! EE4  tables -->
+              <table class="exp-4 part_1_table_1">
+                <tbody>
+                  <tr>
+                    <th>From</th>
+                    <td class="part_1_table_1_col_1 ee4_imgs">P1</td>
+                    <td class="part_1_table_1_col_2 ee4_imgs">S</td>
+                    <td class="part_1_table_1_col_3 ee4_imgs">A2</td>
+                    <td class="part_1_table_1_col_4 ee4_imgs">R2</td>
+                    <td class="part_1_table_1_col_5 ee4_imgs">P2</td>
+                    <td class="part_1_table_1_col_6 ee4_imgs">N2</td>
+                    <td class="part_1_table_1_col_7 ee4_imgs">V1</td>
+                    <td class="part_1_table_1_col_8 ee4_imgs">V2</td>
+                  </tr>
+                  <tr>
+                    <th>To</th>
+                    <td class="part_1_table_1_col_1">D</td>
+                    <td class="part_1_table_1_col_2">A1</td>
+                    <td class="part_1_table_1_col_3">R1</td>
+                    <td class="part_1_table_1_col_4">N1</td>
+                    <td class="part_1_table_1_col_5">G</td>
+                    <td class="part_1_table_1_col_6">S</td>
+                    <td class="part_1_table_1_col_7">D</td>
+                    <td class="part_1_table_1_col_8">S</td>
+                  </tr> 
+                </tbody>
+              </table>
+
+              <table class="exp-4 part_1_table_2">
+                <tbody>
+                  <tr>
+                    <th>From</th>
+                    <td class="part_1_table_2_col_1">P1</td>
+                    <td class="part_1_table_2_col_2">S</td>
+                    <td class="part_1_table_2_col_3">R1</td>
+                    <td class="part_1_table_2_col_4">P2</td>
+                    <td class="part_1_table_2_col_5">N2</td>
+                    <td class="part_1_table_2_col_6">DVP</td>
+                    <td class="part_1_table_2_col_7">CP</td>
+                    <td class="part_1_table_2_col_8">A1</td>
+                    <td class="part_1_table_2_col_9">V1</td>
+                    <td class="part_1_table_2_col_10">v2</td>
+                  </tr>
+                  <tr>
+                    <th>To</th>
+                    <td class="part_1_table_2_col_1">D</td>
+                    <td class="part_1_table_2_col_2">R2</td>
+                    <td class="part_1_table_2_col_3">N1</td>
+                    <td class="part_1_table_2_col_4">G</td>
+                    <td class="part_1_table_2_col_5">S</td>
+                    <td class="part_1_table_2_col_6">CH1</td>
+                    <td class="part_1_table_2_col_7">CH2</td>
+                    <td class="part_1_table_2_col_8">Wire</td>
+                    <td class="part_1_table_2_col_9">D</td>
+                    <td class="part_1_table_2_col_10">S</td>
+                  </tr>
+                </tbody>
+               
+              </table>
+
+              <!-- ! EE6 Connections Box -->
+
+              <!-- ! part1 1st portion -->
+
+              <div class="part_1_1_connections_box connections-box">
+                <span class="middle-border"></span>
+                <div class="btn-box head">
+                  <span>From</span>
+                  <span>To</span>
+                </div>
+                <button class="btn-box">
+                  <span>P1</span>
+                  <span>A</span>
+                </button>
+                <button class="btn-box">
+                  <span>K</span>
+                  <span>A1</span>
+                </button>
+                <button class="btn-box">
+                  <span>A2</span>
+                  <span>R1</span>
+                </button>
+                <button class="btn-box">
+                  <span>R2</span>
+                  <span>N1</span>
+                </button>
+                <button class="btn-box">
+                  <span>P</span>
+                  <span>R<sub>g1</sub></span>
+                </button>
+                <button class="btn-box">
+                  <span>R<sub>g2</sub></span>
+                  <span>A1</span>
+                </button>
+                <button class="btn-box">
+                  <span>A2</span>
+                  <span>G</span>
+                </button>
+                <button class="btn-box">
+                  <span>K</span>
+                  <span>N</span>
+                </button>
+                <button class="btn-box">
+                  <span>V1</span>
+                  <span>K</span>
+                </button>
+                <button class="btn-box">
+                  <span>V2</span>
+                  <span>A</span>
+                </button>
+              </div>
+
+              <!-- ! part1 2nd portion -->
+              <div class="part_1_2_connections_box connections-box">
+                <span class="middle-border"></span>
+                <div class="btn-box head">
+                  <span>From</span>
+                  <span>To</span>
+                </div>
+                <button class="btn-box">
+                  <span>P1</span>
+                  <span>A</span>
+                </button>
+                <button class="btn-box">
+                  <span>K</span>
+                  <span>R1</span>
+                </button>
+                <button class="btn-box">
+                  <span>R2</span>
+                  <span>N1</span>
+                </button>
+                <button class="btn-box">
+                  <span>P</span>
+                  <span>R<sub>g1</sub></span>
+                </button>
+                <button class="btn-box">
+                  <span>R<sub>g2</sub></span>
+                  <span>A1</span>
+                </button>
+                <button class="btn-box">
+                  <span>A<sub>2</sub></span>
+                  <span>G</span>
+                </button>
+                <button class="btn-box">
+                  <span>K</span>
+                  <span>N</span>
+                </button>
+                <button class="btn-box">
+                  <span>CP</span>
+                  <span>CH2</span>
+                </button>
+                <button class="btn-box">
+                  <span>DVP</span>
+                  <span>CH1</span>
+                </button>
+                <button class="btn-box">
+                  <span>V1</span>
+                  <span>A</span>
+                </button>
+                <button class="btn-box">
+                  <span>V2</span>
+                  <span>K</span>
+                </button>
+              </div>
+
+              <!-- ! part 2  -->
+              <div class="part_2_connections_box connections-box">
+                <span class="middle-border"></span>
+                <div class="btn-box head">
+                  <span>From</span>
+                  <span>To</span>
+                </div>
+                <button class="btn-box">
+                  <span>P1</span>
+                  <span>D</span>
+                </button>
+                <button class="btn-box">
+                  <span>S</span>
+                  <span>A1</span>
+                </button>
+                <button class="btn-box">
+                  <span>A2</span>
+                  <span>R1</span>
+                </button>
+                <button class="btn-box">
+                  <span>R2</span>
+                  <span>N1</span>
+                </button>
+                <button class="btn-box">
+                  <span>P2</span>
+                  <span>G</span>
+                </button>
+                <button class="btn-box">
+                  <span>N2</span>
+                  <span>S</span>
+                </button>
+                <button class="btn-box">
+                  <span>V1</span>
+                  <span>D</span>
+                </button>
+                <button class="btn-box">
+                  <span>V2</span>
+                  <span>S</span>
+                </button>
+                <button class="btn-box">
+                  <span>V<sub>G1</sub></span>
+                  <span>G</span>
+                </button>
+                <button class="btn-box">
+                  <span>V<sub>G2</sub></span>
+                  <span>S</span>
+                </button>
+              </div>
+
+               <!-- part 3 four table -->
+               <!-- <table class="part3_table_four">
+                <thead>
+                  <tr>
+                    <th>v<sub>g</sub>(V)</th>
+                    <th>D</th>
+                    <th>R</th>
+                    <th>v<sub>0</sub>(V)</th>
+                    <th>M</th>
+                    <th>I<sub>2</sub>(A)</th>
+                    <th>I<sub>0</sub>(A)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                  </tr>
+                  
+                </tbody>
+              </table>
+
+              <table class="part3_table_four_2">
+                <thead>
+                  <tr>
+                    <th>Component</th>
+                    <th>Voltage Rating (V)</th>
+                    <th>Current Rating (A)</th>
+                    <th>Power (W)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Switch(v<sub>Sw</sub>, i<sub>Sw</sub>)</td>
+                    <td>> v<sub>0</sub> (value)</td>
+                    <td>> i<sub>2</sub> (value)</td>
+                    <td>> P<sub>Sw</sub> (value)</td>
+
+                  </tr>
+                  <tr>
+                    <td>Diode(v<sub>Di</sub>, i<sub>Di</sub>)</td>
+                    <td>> v<sub>0</sub> (value)</td>
+                    <td>> i<sub>2</sub> (value)</td>
+                    <td>> P<sub>Di</sub> (value)</td>
+                  </tr> 
+                  <tr>
+                    <td>Capacitor(v<sub>C</sub>, i<sub>C</sub>)</td>
+                    <td>> v<sub>0</sub> (value)</td>
+                    <td>> (i<sub>2</sub>-i<sub>0</sub>) (value)</td>
+                  </tr>
+                </tbody>
+              </table> -->
+
+              <!-- * Result table -->
+              <!-- removed -->
+
+              <!-- * chart Js Canvas-->
+              <div class="chart">
+                <canvas id="myChart"></canvas>
+              </div>
+                          
+              <!-- * Input box format for in anime questions -->
+              <form onsubmit="return false" class="temp-input">
+                <span class="text1"></span
+                ><input class="input" type="text" name="" id="ipnum" /><span
+                  class="text2"
+                ></span>
+                <p class="error"></p>
+                <input class="submit-btn btn" type="submit" value="Submit" />
+              </form>
+
+              <!-- * Template element -->
+              <div class="utm-button"></div>
+
+              <!-- * Quiz container -->
+              <div class="quiz-container" id="quiz">
+                <div class="quiz-header">
+                  <div class="title">
+                    <h2 id="question">Question text</h2>
+                    <!-- <span id="closeQuiz">X</span> -->
+                  </div>
+                  <ul>
+                    <li>
+                      <input type="radio" id="a" name="answer" class="answer" />
+                      <label id="a_text" for="a">Question</label>
+                    </li>
+                    <li>
+                      <input type="radio" id="b" name="answer" class="answer" />
+                      <label id="b_text" for="b">Question</label>
+                    </li>
+                    <li>
+                      <input type="radio" id="c" name="answer" class="answer" />
+                      <label id="c_text" for="c">Question</label>
+                    </li>
+                    <li>
+                      <input type="radio" id="d" name="answer" class="answer" />
+                      <label id="d_text" for="d">Question</label>
+                    </li>
+                    <li>
+                      <p id="quizAns" style="color: green">India</p>
+                    </li>
+                  </ul>
+                </div>
+                <button id="quizSubmit">Submit</button>
+              </div>
+
+              <!-- * End Certificate Template -->
+              <div class="certificate">
+                <div class="header">
+                  <img src="./src/images/logo.png" alt="" class="logo" />
+                  <span class="title cursive">Certificate of Completion</span>
+                </div>
+                <div class="student-detail">
+                  <div class="row">
+                    <span
+                      style="text-transform: capitalize"
+                      class="bold red"
+                      id="certificateStuName"
+                      >Utkarsh Sharma</span
+                    >
+                  </div>
+                  <div class="row">
+                    <span class="cursive" style="text-align: center"
+                      >has succesfully performed Virtaul Lab Experiment on
+                    </span>
+                    <span
+                      style="font-size: 1.5rem; text-transform: capitalize"
+                      class="bold sans red"
+                      >Foundation in foamwork</span
+                    >
+                  </div>
+                  <div class="">
+                    <!-- <span class="cursive">and secured</span>
+                    <span class="bold sans" id="quizScore">0</span>
+                    <span class="bold sans">/5 Marks</span>
+                    <span class="cursive">at</span> -->
+                    <span class="bold sans" id="certificateDate"
+                      >Date 10-10-2023</span
+                    >
+                  </div>
+                  <div class="row">
+                    <span class="cursive"
+                      >which is developed by
+                      <span class="bold sans">VIRTUAL LABS - IIT Delhi</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- * Slider Box -->
+              <!-- <div class="slider-box" style="z-index: 1000"> -->
+                <!-- <div class="universal-slider" style="z-index: 1000">
+                  <img class="slider-circuit" src="./src/images/sliders/slider_circuit.png" alt="">
+                  <div class="slider">
+                    <img type="range" class="slider_V">
+                    <div class="v">
+                      <img src="./src/images/sliders/slider_V_back.png" alt="" class="meter">
+                      <img src="./src/images/sliders/slider_V_arrow.png" class="slider-V-arrow slider-v-r1">
+                      <div class="value-box">
+                        <input type="text" value="24" min="24" max="72" readonly>
+                        <span>V</span>
+                      </div>
+                    </div>
+                    <div class="d">
+                      <input type="range" class="slider_D range-slider" step="0.01" min="0.1" max="0.95" value="0.1">
+                      <img src="./src/images/sliders/slider_D_blank.png" class="slider-D-arrow">
+                      <div class="value-box">
+                        <span>0</span> -->
+                        <!-- <input type="text" value="0.1" min="0.1" max="0.95" onfocusout="">
+                      </div>
+                    </div>
+                    <div class="r">
+                      <input type="range" class="slider_R" step="1" min="50" max="500" value="50">
+                      <img src="./src/images/sliders/slider_R_arrow.png" class="slider-R-arrow">
+                      <div class="value-box">
+                        <input type="text" value="50" min="50" max="500" onfocusout="">
+                        <span>𝜴</span>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              <!-- </div> -->
+
+              <!-- !EE3 slider box  -->
+              <!-- <div class="slider-box">
+                <div class="row1">
+                    <div class="slider-box-container-3 select-container">
+                        <div class=" header header_c">Characteristics</div>
+                        <select class="slider slider_C" name="" value="D-vs-M" id="">
+                            <option value="D-vs-M">D-vs-M</option>
+                            <option value="D-vs-I">D-vs-I<sub>0</sub></option>
+                            <option value="D-vs-V">D-vs-V<sub>0</sub></option>
+                        </select>
+                    </div>
+                    <div class="slider-box-container-1 select-container">
+                        <div class="header header_v">V<sub>in</sub> (V)</div>
+                        <select class="slider slider_vIn" name="" value="24" id="">
+                            <option value="24">24</option>
+                            <option value="36">36</option>
+                            <option value="48">48</option>
+                        </select>
+                    </div>
+                    <div class="slider-box-container-2 select-container">
+                        <div class=" header header_r">R (Ω)</div>
+                        <select class="slider slider_R" name="" value="12" id="">
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                            <option value="36">36</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="row2">
+                    <div class="slider-box-container-4 select-container">
+                        <div class="header header_d">D</div>
+                        <input class="slider_D" type="range"
+                        value="0.1"
+                        min="0.1"
+                        max="0.9"
+                        step="0.01">
+                        <input class="slider_D_input" value="0.1" type="text">
+                    </div>
+                </div>
+            </div> -->
+
+              <!-- ! Delte Reset Buttons -->
+              <!-- * Button template -->
+              <div class="btn btn-record">
+                Record                
+              </div>
+              <div class="btn btn-reset">
+                Reset                
+              </div>
+              <div class="btn btn-delete">
+                Delete
+              </div>
+              <div class="btn btn-check-connections">
+                Check Connections
+              </div>
+              <div class="btn btn-circuit-diagram">
+                Circuit Diagram
+              </div>
+                <!--! check reset hint button for exp3 -->
+              <div class="btn ee3-btn-check">
+                Check                
+              </div>
+              <div class="btn ee3-btn-reset">
+                Reset                
+              </div>
+              <div class="btn ee3-btn-hint">
+                Hint               
+              </div>
+
+              <!-- <div class="part1_box1">
+
+              </div> -->
+              <!--! transparent html element  -->
+
+              <button id="overPlayerNextBtn" class="btn-transparent btn btn-disabled" disabled>
+                Next
+              </button>
+
+              <!-- * Images that is used in all steps -->
+              <!-- * class main-window-imgs -->
+              <!-- ! Example -->
+                  <!-- ! Red blink arrow -->
+              <img
+                class="blinkArrowRed"
+                src="./src/images/template_imgs/blinkArrowRed.png"
+              />
+              
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/arrow.png"
+                title="arrow"
+                alt="arrow"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/blinkArrow.webp"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/laerrow.png"
+                title="laerrow"
+                alt="laerrow"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/laerrow2.png"
+                title="laerrow2"
+                alt="laerrow2"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/logo.png"
+                title="logo"
+                alt="logo"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/man.png"
+                title="man"
+                alt="man"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/measurearrow.png"
+                title="measurearrow"
+                alt="measurearrow"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/measurearrow2.png"
+                title="measurearrow2"
+                alt="measurearrow2"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/redsize.png"
+                title="redsize"
+                alt="redsize"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/speech_off_btn.png"
+                title="speech_off_btn"
+                alt="speech_off_btn"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/speech_on_btn.png"
+                title="speech_on_btn"
+                alt="speech_on_btn"
+              />
+
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/talk_cloud.png"
+                title="talk_cloud"
+                alt="talk_cloud"
+              />
+              <img
+                class="main-window-imgs"
+                src="./src/images/template_imgs/iit-delhi-logo.png"
+                title="iit-delhi-logo"
+                alt="iit-delhi-logo"
+              />
+              
+            
+    <!-- <img
+    class="main-window-imgs"
+    src="./src/images/aluminium_beam1.png"
+    title="aluminium_beam1.png"
+    alt="aluminium_beam1.png"
+/> -->
+
+<!-- !EE4 images added -->
+
+
+
+
+<!-- part 2 cable added -->
+
+
+
+<!-- * new imgs added  -->
+
+
+
+
+<!-- part2 calculation -->
+
+
+<!-- * 29 feb new imgs -->
+
+
+<!-- * part3 images added -->
+
+
+
+<!--* useful images from previous Experiment -->
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_connections.png"
+alt="btn_connections.png"
+/>
+
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_connectons_completed.png"
+alt="btn_connectons_completed.png"
+/>
+
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_instructions.png"
+alt="btn_instructions.png"
+/>
+
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_nomenclature.png"
+alt="btn_nomenclature.png"
+/>
+<!-- because new plot button added -->
+
+<!-- <img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_plot.png"
+alt="btn_plot.png"
+/> -->
+
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_procedure.png"
+alt="btn_procedure.png"
+/>
+
+<img
+class="main-window-imgs ee4_imgs btn-img"
+src="./src/images/btn_reset.png"
+alt="btn_reset.png"
+/>
+
+<img
+class="main-window-imgs ee4_imgs btn-img btn-img-disabled"
+src="./src/images/btn_start_experiment.png"
+alt="btn_start_experiment.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_1_off.png"
+alt="part_1_slide_3_compo_1_off.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_1_on.png"
+alt="part_1_slide_3_compo_1_on.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_1_text.png"
+alt="part_1_slide_3_compo_1_text.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_2_off.png"
+alt="part_1_slide_3_compo_2_off.png"
+/>
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_2_on.png"
+alt="part_1_slide_3_compo_2_on.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/part_1_slide_3_compo_2_text.png"
+alt="part_1_slide_3_compo_2_text.png"
+/>
+<img
+class="main-window-imgs"
+src="./src/images/part_1_incomplete_connection.png"
+alt="part_1_incomplete_connection.png"
+/>
+<img
+class="main-window-imgs pointer"
+src="./src/images/part_2_conncection_supply_1_red_button.png"
+/>
+
+<img
+class="main-window-imgs pointer"
+src="./src/images/part_2_conncection_supply_2_red_button.png"
+/>
+<!-- ! Slider Thumbs -->
+<!-- tempTitle 5,6,7 is used for labeling -->
+<!-- we using temptitle10 as a record btn -->
+<img
+class="main-window-imgs slider_vIn pointer"
+value="0"
+src="./src/images/slider_thumb.png"
+/>
+<img
+class="main-window-imgs slider_vGs pointer"
+src="./src/images/slider_thumb.png"
+value="0"
+/>
+<img
+class="main-window-imgs slider_R pointer"
+src="./src/images/slider_thumb.png"
+value="0"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/niddle.png"
+/>
+<img
+class="main-window-imgs"
+src="./src/images/niddle.png"
+/>
+
+<!-- *for PROCEDURE and instruction NOMENCLATURE -->
+
+
+
+
+<!-- *EE6 images added -->
+
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_begin_experiment.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_conclusion.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_connection_completed.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_make_connection.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_plot.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/btn_procedure.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/component_1_on_text.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/component_2_on_text.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_a2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_e.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_n2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_p1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_p2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_r2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_v1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_cable_v2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_calculations.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_components.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_conclusion_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_instruction_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_nomenclature_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_1_procedure_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_a1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_cp.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_dvp.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_e.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_n2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_p1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_p2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_r2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_v1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_cable_v2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_calculations.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_components.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_conclusion_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_instruction_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_nomenclature_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_1_2_procedure_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_a2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_e.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_n2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_p1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_p2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_r2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_v1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_v2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_vg1.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_cable_vg2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_calculations.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_components.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_conclusion_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_nomenclature_box.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/part_2_procedure_box.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/select_option_1_1.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/select_option_1_2.png"
+/>
+
+<img
+class="main-window-imgs  pointer btn-img"
+src="./src/images/EE6/select_option_2.png"
+/>
+
+<img
+class="main-window-imgs"
+src="./src/images/EE6/select_option_full.png"
+/>
+
+<img
+class="main-window-imgs pointer "
+src="./src/images/EE6/slider_thumb.png"
+/>
+
+<img
+class="main-window-imgs pointer "
+src="./src/images/EE6/part_2_instruction_box.png"
+/>
+<!-- ! Images End Here -->
+
+
+
+              <!-- * Videos -->
+              <!-- <video muted class="main-window-videos" src="./src/videos/yoke_front_to_back.mp4"></video> -->
+              <video muted class="main-window-videos" src="./src/videos/bfs_installation.mp4"></video>
+
+              <!-- * Video Box -->
+              <div class="video-box">
+                <video muted class="video" src="" autoplay></video>
+                <div class="controls" title="Click to Restart">
+                  <span class="title">Title</span>
+                  <button class="btn restart">
+                    <img src="./src/images/template_imgs/restart_btn.png" alt="" />
+                  </button>
+                </div>
+              </div>
+
+              <!-- * Question mark box -->
+              <div class="qs qs1">?</div>
+              <div class="qs qs2">?</div>
+              <div class="qs qs3">?</div>
+              <div class="qs qs4">?</div>
+              <div class="qs qs5">?</div>
+              <div class="qs qs6">?</div>
+
+              <!-- * Image Box -->
+              <div class="image-box">
+                <img class="image" src="" alt="">
+                <p class="title">Image Box</p>
+              </div>
+
+             <!-- * Temp texts for showing some text in anime -->
+              <span
+                style="background-color:white; height: fit-content; font-size: large; border-radius: 5px; width: 120px; font-weight: bolder"
+                class="temp-text"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-text2"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title1"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title2"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title3"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title4"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title5"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title6"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title7"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title8"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title9"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title10"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title11"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title12"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title13"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title14"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title15"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title16"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title17"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title18"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title19"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title20"
+              ></span>
+              <span
+                style="background-color: transparent; font-weight: bold"
+                class="temp temp-title21"
+              ></span>
+              <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title22"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title23"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title24"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title25"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title26"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title27"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title28"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title29"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title30"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title31"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title32"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title33"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title34"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title35"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title36"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title37"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title38"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title39"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title40"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title41"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title42"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title43"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title44"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title45"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title46"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title47"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title48"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title49"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title50"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title51"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title52"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title53"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title54"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title55"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title56"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title57"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title58"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title59"
+            ></span>
+            <span
+              style="background-color: transparent; font-weight: bold"
+              class="temp temp-title60"
+            ></span>
+            </section>
+
+            <!-- * Anime Footer -->
+            <section class="anime-footer">
+              <btn style="display: none;" class="btn btn-back">Back</btn>
+              <!-- * Bottom Subtitles Div -->
+              <div style="margin-left: 40px;" class="steps-subtitle">
+                <!-- <p class="user-name">Hey👋 Sneha</p> -->
+                <p style="text-align: center; font-size: 1.3em; " class="subtitle" id="subtitle"></p>
+              </div>
+              <btn class="btn btn-next" >Next</btn>
+              <btn
+                class="btn btn-save"
+                style="position: absolute; right: 90px; bottom: 5px"
+                >Download</btn
+              >
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/Anime.js"></script>
+    <script src="./js/Dom.js"></script>
+    <script src="js/src.js"></script>
+    <script src="js/progressBar.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/formulas.js"></script>
+    <script src="js/sliders.js"></script>
+    <script src="js/jsplumb.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
