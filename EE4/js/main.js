@@ -970,7 +970,7 @@ const Scenes = {
       Dom.hideAll();
 
       // require
-      let btn_transparent = Scenes.items.btn_transparent.set().item;
+      let btn_transparent = Scenes.items.btn_transparent.set().zIndex(6000).item;
 
       Scenes.items.concept_development.set().styles({
         zIndex: "5000",
@@ -1600,7 +1600,6 @@ const Scenes = {
         // neddle vIn rotate (-1,126) deg
         Scenes.items.niddle_vIn.set(755,29,74).rotate(-1).zIndex(10)
 
-
         // * Calling slider
         sliders.showSliderFor("1_2")
 
@@ -1633,7 +1632,7 @@ const Scenes = {
         let calculationValues = {
           vDs: [0,10,20,30,40,50,60],
           iD: [
-            [],[],[],[]
+            [],[],[],[],[]
           ],
         }
         btn_record.onclick = ()=>{
@@ -1645,27 +1644,30 @@ const Scenes = {
           updateValues(vIn_value,vGs_value,R_value)
 
           let vGs_idx = {
-            5:0,
-            6:1,
-            8:2,
-            10:3,
+            4:1,
+            6:2,
+            8:3,
+            10:4,
+            15:5,
           }
+          let first_vGs_value = 4
+          let last_vGs_value = 15
 
           // vIn values
           let vIn_accept_range = [0,40,80,120,160,200,240]  
           let acceptedValueIndex = vIn_accept_range.indexOf(vIn_value)
-          let tamp_iD = []
+          let datasetIndex = vGs_idx[vGs_value] - 1 // which value perform for vgs
 
-          console.log(acceptedValueIndex)
-          
           // for the first value add data set
           if(vIn_value == firstValue){
             // add datasets to graph
             let bgColors = [
-              "#ff0000",
-              "#375623",
-              "#7030a0",
-              "#ffc000",
+              "_",
+              "#da120f",
+              "#0607c2",
+              "#e413e6",
+              "#25de22",
+              "#000000"
             ]
             let bgColor = bgColors[vGs_idx[vGs_value]]
             let labelForDataSet = `Vgs = ${vGs_value}V`
@@ -1674,23 +1676,19 @@ const Scenes = {
             Scenes.graphFeatures.addDataset(graphRef,labelForDataSet,bgColor,[])
 
             // * add first value also
-            let x = calculationValues.vDs[acceptedValueIndex]
-            let y = Formulas.using.iD(values,)
-            Scenes.graphFeatures.addData(graphRef,datasetIndex,{vIn_value,})
-
+            let x = Formulas.usingOscilloscope.vDS(acceptedValueIndex)
+            let y = Formulas.usingOscilloscope.iD(values,vGs_idx[vGs_value],x)
+            Scenes.graphFeatures.addData(graphRef,datasetIndex,{x,y})
           }
           else{
             // adding data to graph
-            let datasetIndex = vGs_idx[vGs_value]
+            // datasetIndex = vGs_idx[vGs_value] - 1
 
             //! add formula value here
-            temp_iD.push(vIn_value)
-
-            console.log(calculationValues)
-
-            let x = calculationValues.vDs[acceptedValueIndex-1]
-            let y = calculationValues.iD[acceptedValueIndex-1] * vGs_value
+            let x = Formulas.usingOscilloscope.vDS(acceptedValueIndex)
+            let y = Formulas.usingOscilloscope.iD(values,vGs_idx[vGs_value],acceptedValueIndex)
             let data = {x,y}
+            console.log("S: ",vGs_value,vGs_idx[vGs_value])
 
             Scenes.graphFeatures.addData(graphRef,datasetIndex,data)
           }
@@ -1929,9 +1927,14 @@ const Scenes = {
             return
           }
 
+          let vGs_value = sliders.slider_vGs.getValue()
+          let vIn_value = Math.round(sliders.slider_vIn.getValue())
+          let R_value = sliders.slider_R.getValue()
+          updateValues(vIn_value,vGs_value,R_value)
+
           // * Filling Table
-          rows[recordBtnIdx].cells[0].innerHTML = "10"
-          rows[recordBtnIdx].cells[1].innerHTML = "12"
+          rows[recordBtnIdx].cells[0].innerHTML = vGs_value
+          rows[recordBtnIdx].cells[1].innerHTML = Formulas.transferCharacteristics.iD(values,recordBtnIdx)
           recordBtnIdx++
 
           // to plot the data
@@ -2078,7 +2081,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 2
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()

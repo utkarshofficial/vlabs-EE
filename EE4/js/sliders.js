@@ -134,9 +134,9 @@ const sliders = {
 
         
         // ! vGs onclick
-        var differences_vGs = [74, 86, 110, 133];
-        var vals_vGs = [5,6,8,10]
-        var niddle_vGs_deg = [50, 61, 82.5, 104]
+        var differences_vGs = [63, 86, 110, 133, 180];
+        var vals_vGs = [4,6,8,10,15]
+        var niddle_vGs_deg = [40, 61, 82.5, 104,125]
         var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
         var value_vGs = 0
@@ -185,7 +185,7 @@ const sliders = {
         // vIn values
         let vIn_accept_range = [0,40,80,120,160,200,240]  
         // onclick accept range for vgs
-        let vGs_accept_range = [5,6,8,10]
+        let vGs_accept_range = vals_vGs
         this.slider_vIn.item.onclick = ()=>{
           Dom.setBlinkArrowRed(-1)
           // vIn
@@ -266,7 +266,8 @@ const sliders = {
 
         
         // ! vGs onclick
-        var differences = [69, 27, 26, 28, 25, 25, 19];
+        var differences = [4,20,73,127,179,222];
+        var vals_vGs = [0,2,4,6,8,10]
         var currentDifferenceIndex = 0;
         // for the slider vgs
         var value_vGs = 0
@@ -274,13 +275,11 @@ const sliders = {
           if (currentDifferenceIndex < differences.length) {
             // Get the current difference
             var currentDifference = differences[currentDifferenceIndex];
-            if(currentDifferenceIndex==0)
-              value_vGs = 4
-            else
-              value_vGs++
+            // vals
+            value_vGs = vals_vGs[currentDifferenceIndex]
     
             // Animate the translation on each click
-            this.sliderAnime(this.slider_vGs,currentDifference,value_vGs)
+            this.sliderAnime(this.slider_vGs,null,value_vGs, currentDifference)
 
             if(currentDifferenceIndex==0){
               // * show arrow for vIn
