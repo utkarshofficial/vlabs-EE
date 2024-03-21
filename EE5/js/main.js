@@ -501,49 +501,12 @@ const Scenes = {
 
     // !EE4 images added
 
-    btn_connections: new Dom("btn_connections"),
-    btn_connectons_completed: new Dom("btn_connectons_completed"),
-    btn_instructions: new Dom("btn_instructions"),
-    btn_nomenclature: new Dom("btn_nomenclature"),
-    btn_plot: new Dom("btn_plot"),
-    btn_procedure: new Dom("btn_procedure"),
-    btn_reset: new Dom("btn_reset"),
-    btn_start_experiment: new Dom("btn_start_experiment"),
-    method_1_cable_black_bottom: new Dom("method_1_cable_black_bottom"),
-    method_1_cable_black_top: new Dom("method_1_cable_black_top"),
-    method_1_cable_blue: new Dom("method_1_cable_blue"),
-    method_1_cable_green: new Dom("method_1_cable_green"),
-    method_1_cable_pink: new Dom("method_1_cable_pink"),
-    method_1_cable_purple: new Dom("method_1_cable_purple"),
-    method_1_cable_red: new Dom("method_1_cable_red"),
-    method_1_cable_yellow: new Dom("method_1_cable_yellow"),
-    method_2_cable_green: new Dom("method_2_cable_green"),
-    method_2_cable_red: new Dom("method_2_cable_red"),
-    method_2_cable_yellow: new Dom("method_2_cable_yellow"),
-    part_1_instructions_box: new Dom("part_1_instructions_box"),
-    part_1_procedure_box: new Dom("part_1_procedure_box"),
-    part_1_select_option_1_1: new Dom("part_1_select_option_1_1"),
-    part_1_select_option_1_2: new Dom("part_1_select_option_1_2"),
-    part_1_select_option_2: new Dom("part_1_select_option_2"),
-    part_1_select_option_3: new Dom("part_1_select_option_3"),
-    part_1_select_option_full: new Dom("part_1_select_option_full"),
-    part_1_slide_1: new Dom("part_1_slide_1"),
-    part_1_slide_2: new Dom("part_1_slide_2"),
-    part_1_slide_3: new Dom("part_1_slide_3"),
-    part_1_slide_3_compo_1_off: new Dom("part_1_slide_3_compo_1_off"),
-    part_1_slide_3_compo_1_on: new Dom("part_1_slide_3_compo_1_on"),
-    part_1_slide_3_compo_1_text: new Dom("part_1_slide_3_compo_1_text"),
-    part_1_slide_3_compo_2_off: new Dom("part_1_slide_3_compo_2_off"),
-    part_1_slide_3_compo_2_on: new Dom("part_1_slide_3_compo_2_on"),
-    part_1_slide_3_compo_2_text: new Dom("part_1_slide_3_compo_2_text"),
-    part_1_procedure_box_2: new Dom("part_1_procedure_box_2"),
-    part_1_slide_4: new Dom("part_1_slide_4"),
-    part_1_incomplete_connection: new Dom("part_1_incomplete_connection"),
 
+ 
     //! EE4 tables added
     part_1_table_1: new Dom(".part_1_table_1"),
     part_1_table_2: new Dom(".part_1_table_2"),
-
+    
     part_1_table_1_col_1: new Dom(".part_1_table_1_col_1"),
     part_1_table_1_col_2: new Dom(".part_1_table_1_col_2"),
     part_1_table_1_col_3: new Dom(".part_1_table_1_col_3"),
@@ -552,7 +515,7 @@ const Scenes = {
     part_1_table_1_col_6: new Dom(".part_1_table_1_col_6"),
     part_1_table_1_col_7: new Dom(".part_1_table_1_col_7"),
     part_1_table_1_col_8: new Dom(".part_1_table_1_col_8"),
-
+    
     part_1_table_2_col_1: new Dom(".part_1_table_2_col_1"),
     part_1_table_2_col_2: new Dom(".part_1_table_2_col_2"),
     part_1_table_2_col_3: new Dom(".part_1_table_2_col_3"),
@@ -563,83 +526,98 @@ const Scenes = {
     part_1_table_2_col_9: new Dom(".part_1_table_2_col_9"),
     part_1_table_2_col_10: new Dom(".part_1_table_2_col_10"),
     // ! new items dom
-
-    // part2
-    part_2_conncection_cable_a2 : new Dom("part_2_conncection_cable_a2"),
-    part_2_conncection_cable_n2 : new Dom("part_2_conncection_cable_n2"),
-    part_2_conncection_cable_p1 : new Dom("part_2_conncection_cable_p1"),
-    part_2_conncection_cable_p2 : new Dom("part_2_conncection_cable_p2"),
-    part_2_conncection_cable_r2 : new Dom("part_2_conncection_cable_r2"),
-    part_2_conncection_cable_s : new Dom("part_2_conncection_cable_s"),
-    part_2_conncection_cable_v1 : new Dom("part_2_conncection_cable_v1"),
-    part_2_conncection_cable_v2 : new Dom("part_2_conncection_cable_v2"),
-    part_2_conncection_cable_vg1 : new Dom("part_2_conncection_cable_vg1"),
-    part_2_conncection_cable_vg2 : new Dom("part_2_conncection_cable_vg2"),
-    part_2_conncection_supply_1_red_button : new Dom("part_2_conncection_supply_1_red_button"),
-    part_2_conncection_supply_2_red_button : new Dom("part_2_conncection_supply_2_red_button"),
-    part_2_connections_components : new Dom("part_2_connections_components"),
-    // connection box
+    
+    //part 2 cable added
+    
+    
+    
+    //* connection box table
     part_2_connections_box: new Dom(".part_2_connections_box"),
     part_1_1_connections_box: new Dom(".part_1_1_connections_box"),
     part_1_2_connections_box: new Dom(".part_1_2_connections_box"),
-
+    
     //new images added for part1 
-    part_1_1_cable_a2 : new Dom("part_1_1_cable_a2"),
-    part_1_1_cable_n2 : new Dom("part_1_1_cable_n2"),
-    part_1_1_cable_p1 : new Dom("part_1_1_cable_p1"),
-    part_1_1_cable_p2 : new Dom("part_1_1_cable_p2"),
-    part_1_1_cable_r2 : new Dom("part_1_1_cable_r2"),
-    part_1_1_cable_s : new Dom("part_1_1_cable_s"),
-    part_1_1_cable_v1 : new Dom("part_1_1_cable_v1"),
-    part_1_1_cable_v2 : new Dom("part_1_1_cable_v2"),
-    part_1_2_cable_a1 : new Dom("part_1_2_cable_a1"),
-    part_1_2_cable_cp : new Dom("part_1_2_cable_cp"),
-    part_1_2_cable_dvp : new Dom("part_1_2_cable_dvp"),
-    part_1_2_cable_n2 : new Dom("part_1_2_cable_n2"),
-    part_1_2_cable_p1 : new Dom("part_1_2_cable_p1"),
-    part_1_2_cable_p2 : new Dom("part_1_2_cable_p2"),
-    part_1_2_cable_r1 : new Dom("part_1_2_cable_r1"),
-    part_1_2_cable_s : new Dom("part_1_2_cable_s"),
-    part_1_2_cable_v1 : new Dom("part_1_2_cable_v1"),
-    part_1_2_cable_v2 : new Dom("part_1_2_cable_v2"),
-    part_1_components_1 : new Dom("part_1_components_1"),
-    part_1_components_2 : new Dom("part_1_components_2"),
-
+    
+    
     // part2 calculation
-    part_2_calculation_components : new Dom("part_2_calculation_components"),
- 
-
+    
+    
+    
     //* 29 feb new imgs
     
-    part_1_1_calculations : new Dom("part_1_1_calculations"),
-    part_1_2_calculations : new Dom("part_1_2_calculations"),
-
+    
     //* part3 images added
-    part_3_components : new Dom("part_3_components"),
-    part_3_graph : new Dom("part_3_graph"),
-    part_3_off_button : new Dom("part_3_off_button"),
-    part_3_table_1 : new Dom("part_3_table_1"),
-    part_3_table_2 : new Dom("part_3_table_2"),
-    part_3_table_3 : new Dom("part_3_table_3"),
-    part_3_text : new Dom("part_3_text"),
+    
+    
+    
+    // * useful images from previous Experiment 
+    
+    btn_connections: new Dom("btn_connections"),
+    btn_connectons_completed: new Dom("btn_connectons_completed"),
+    btn_instructions: new Dom("btn_instructions"),
+    btn_nomenclature: new Dom("btn_nomenclature"),
+    // btn_plot: new Dom("btn_plot"),
+    btn_procedure: new Dom("btn_procedure"),
+    btn_reset: new Dom("btn_reset"),
+    btn_start_experiment: new Dom("btn_start_experiment"),
 
+    part_1_slide_3_compo_1_off: new Dom("part_1_slide_3_compo_1_off"),
+    part_1_slide_3_compo_1_on: new Dom("part_1_slide_3_compo_1_on"),
+    part_1_slide_3_compo_1_text: new Dom("part_1_slide_3_compo_1_text"),
+    part_1_slide_3_compo_2_off: new Dom("part_1_slide_3_compo_2_off"),
+    part_1_slide_3_compo_2_on: new Dom("part_1_slide_3_compo_2_on"),
+    part_1_slide_3_compo_2_text: new Dom("part_1_slide_3_compo_2_text"),
+    part_1_incomplete_connection: new Dom("part_1_incomplete_connection"),
+    part_2_conncection_supply_1_red_button : new Dom("part_2_conncection_supply_1_red_button"),
+    part_2_conncection_supply_2_red_button : new Dom("part_2_conncection_supply_2_red_button"),
     niddle_vGs: new Dom("niddle_vGs"),
     niddle_vIn: new Dom("niddle_vIn"),
+
     
       // * for PROCEDURE and instruction NOMENCLATURE
 
-      part_1_1_instruction : new Dom("part_1_1_instruction"),
-      part_1_1_nomenclature : new Dom("part_1_1_nomenclature"),
-      part_1_1_procedure : new Dom("part_1_1_procedure"),
-      part_1_2_instruction : new Dom("part_1_2_instruction"),
-      part_1_2_nomenclature : new Dom("part_1_2_nomenclature"),
-      part_1_2_procedure : new Dom("part_1_2_procedure"),
-      part_2_instruction : new Dom("part_2_instruction"),
-      part_2_nomenclature : new Dom("part_2_nomenclature"),
-      part_2_procedure : new Dom("part_2_procedure"),
-      part_3_nomenclature : new Dom("part_3_nomenclature"),
-      part_3_procedure : new Dom("part_3_procedure"),
-      
+
+
+        //*EE5 images added
+
+        arrow_black : new Dom("arrow_black"),
+        btn_plot : new Dom("btn_plot"),
+        btn_zoomed_in_plot : new Dom("btn_zoomed_in_plot"),
+        part_1_cable_a2 : new Dom("part_1_cable_a2"),
+        part_1_cable_ac2 : new Dom("part_1_cable_ac2"),
+        part_1_cable_k : new Dom("part_1_cable_k"),
+        part_1_cable_k_ac1 : new Dom("part_1_cable_k_ac1"),
+        part_1_cable_p : new Dom("part_1_cable_p"),
+        part_1_cable_p1 : new Dom("part_1_cable_p1"),
+        part_1_cable_r2 : new Dom("part_1_cable_r2"),
+        part_1_cable_rg2 : new Dom("part_1_cable_rg2"),
+        part_1_cable_v1 : new Dom("part_1_cable_v1"),
+        part_1_cable_v2 : new Dom("part_1_cable_v2"),
+        part_1_calculations : new Dom("part_1_calculations"),
+        part_1_components : new Dom("part_1_components"),
+        part_1_instruction_box : new Dom("part_1_instruction_box"),
+        part_1_nomenclature_box : new Dom("part_1_nomenclature_box"),
+        part_1_procedure_box : new Dom("part_1_procedure_box"),
+        part_2_cable_a2 : new Dom("part_2_cable_a2"),
+        part_2_cable_ac1 : new Dom("part_2_cable_ac1"),
+        part_2_cable_cp : new Dom("part_2_cable_cp"),
+        part_2_cable_dvp : new Dom("part_2_cable_dvp"),
+        part_2_cable_k : new Dom("part_2_cable_k"),
+        part_2_cable_k_n : new Dom("part_2_cable_k_n"),
+        part_2_cable_p : new Dom("part_2_cable_p"),
+        part_2_cable_p1 : new Dom("part_2_cable_p1"),
+        part_2_cable_r2 : new Dom("part_2_cable_r2"),
+        part_2_cable_rg2 : new Dom("part_2_cable_rg2"),
+        part_2_cable_v1 : new Dom("part_2_cable_v1"),
+        part_2_cable_v2 : new Dom("part_2_cable_v2"),
+        part_2_calculation : new Dom("part_2_calculation"),
+        part_2_components : new Dom("part_2_components"),
+        part_2_instruction_box : new Dom("part_2_instruction_box"),
+        part_2_procedure_box : new Dom("part_2_procedure_box"),
+        select_option_1 : new Dom("select_option_1"),
+        select_option_2 : new Dom("select_option_2"),
+        select_option_full : new Dom("select_option_full"),
+
 
 
 
@@ -999,7 +977,7 @@ const Scenes = {
 
       return true;
     }),
-    //! EE4 step 1
+    //! EE5 step 1
     (step1 = function () {
       setIsProcessRunning(true);
       Scenes.items.btn_next.show();
@@ -1015,18 +993,15 @@ const Scenes = {
 
       //! * Required Elements
 
-      Scenes.items.part_1_select_option_full.set(0, 0, 404);
-      Scenes.items.part_1_select_option_1_1.set(600, 8, 60, 270).zIndex(1);
-      Scenes.items.part_1_select_option_1_2.set(600, 85, 60, 270).zIndex(1);
-      Scenes.items.part_1_select_option_2.set(170, 153, 100, 416).zIndex(1);
-      Scenes.items.part_1_select_option_3.set(150, 275, 100, 462).zIndex(1);
+      Scenes.items.select_option_full.set(30,50, 250, 880).zIndex(1)
+      Scenes.items.select_option_1.set(605,60, 110, 300).zIndex(2)
+      Scenes.items.select_option_2.set(605,180, 110, 300).zIndex(2)
+    
 
       // ! onclicks for all options
       let options = [
-        Scenes.items.part_1_select_option_1_1,
-        Scenes.items.part_1_select_option_1_2,
-        Scenes.items.part_1_select_option_2,
-        Scenes.items.part_1_select_option_3,
+        Scenes.items.select_option_1,
+        Scenes.items.select_option_2,
       ];
 
       // ! Destroy Graphs
@@ -1051,20 +1026,10 @@ const Scenes = {
         Scenes.forMathematicalExpressionBtn = 2;
         Scenes.steps[1 + 3]();
       };
-      const opThree = () => {
-        Scenes.optionsDone[2] = 1;
-        Scenes.forMathematicalExpressionBtn = 3;
-        Scenes.steps[2 + 3]();
-      };
-      const opFour = () => {
-        Scenes.optionsDone[3] = 1;
-        Scenes.forMathematicalExpressionBtn = 4;
-        Scenes.steps[3 + 3]();
-      };
+   
       options[0].item.onclick = opOne;
       options[1].item.onclick = opTwo;
-      options[2].item.onclick = opThree;
-      options[3].item.onclick = opFour;
+
 
       // ! if all options done then exit
       let exit = true;
@@ -1094,52 +1059,55 @@ const Scenes = {
 
       // required elements 
       let btns = [
-        Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(10),
-        Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(10),
+        Scenes.items.btn_instructions.set(770 + 40, 145, 50).zIndex(10),
+        Scenes.items.btn_reset.set(850, 200 , 40).zIndex(10),
+        Scenes.items.btn_connections.set(770 + 40, 190 + 55, 50).zIndex(10),
         Scenes.items.btn_connectons_completed
-          .set(750 + 40, 190 + 110, 50, 147)
+          .set(770 + 40, 190 + 110, 50, 147)
           .zIndex(10),
         Scenes.items.btn_start_experiment
-          .set(750 + 40, 190 + 165, 50, 147)
+          .set(770 + 40, 190 + 165, 50, 147)
           .zIndex(10),
-        Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(10)
       ]
 
       // required images
       let images = [
-        Scenes.items.part_1_components_1.set(0,-70,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(171,76,28,25).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(178,312,29,25).zIndex(10),
+        Scenes.items.part_1_components.set(0,-70,495,975).zIndex(1),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(178,72,28,25).zIndex(10),
         Scenes.items.part_1_1_connections_box,
       ]
 
       let cables = [
-        Scenes.items.part_1_1_cable_p1.set(0,0).zIndex(2).hide(),
-        Scenes.items.part_1_1_cable_s.set(0,0).zIndex(3).hide(),
-        Scenes.items.part_1_1_cable_a2.set(0,0).zIndex(4).hide(),
-        Scenes.items.part_1_1_cable_r2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_1_1_cable_p2.set(0,0).zIndex(6).hide(),
-        Scenes.items.part_1_1_cable_n2.set(0,0).zIndex(7).hide(),
-        Scenes.items.part_1_1_cable_v1.set(0,0).zIndex(8).hide(),
-        Scenes.items.part_1_1_cable_v2.set(0,0).zIndex(9).hide(),
+        Scenes.items.part_1_cable_p1.set(0,0).zIndex(2).hide(),
+        Scenes.items.part_1_cable_k_ac1.set(0,0).zIndex(3).hide(),
+        Scenes.items.part_1_cable_a2.set(0,0).zIndex(4).hide(),
+        Scenes.items.part_1_cable_r2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_1_cable_p.set(0,0).zIndex(6).hide(),
+        Scenes.items.part_1_cable_rg2.set(0,0).zIndex(7).hide(),
+        Scenes.items.part_1_cable_a2.set(0,0).zIndex(8).hide(),
+        Scenes.items.part_1_cable_k.set(0,0).zIndex(9).hide(),
+        Scenes.items.part_1_cable_v1.set(0,0).zIndex(10).hide(),
+        Scenes.items.part_1_cable_v2.set(0,0).zIndex(11).hide(),
       ]
 
       // ! for increasing the size
       let l = 0,t = -70, h = 495, w = 975 
-      Scenes.items.part_1_components_1.set(l,t,h,w).zIndex(1)
+      Scenes.items.part_1_components.set(l,t,h,w).zIndex(1)
       cables.forEach(ele=>{
         ele.set(l,t,h,w).hide()
       })
 
       let cables_color = [
-          "#970101",
-          "#1a2f55",
-          "#186a3b",
-          "#181818",
-          "#ffd90e",
-          "#181818",
-          "#cf426d",
-          "#560056",
+        "#c20000",
+        "#223964",
+        "#ffca00",
+        "#010101",
+        "#008000",
+        "#5a5656",
+        "#cb5c10",
+        "#070707",
+        "#ff46ff",
+        "#68064c",
         ]
 
 
@@ -1159,7 +1127,7 @@ const Scenes = {
       let partConnectionsIsComplete = false
       function partConnections(){
          // Connection Logic
-        Scenes.items.part_1_1_connections_box.set(514,-70).hide()
+        Scenes.items.part_1_1_connections_box.set(414,-70).hide()
 
         // ! btn_reset onclick
         Scenes.items.btn_reset.item.onclick = ()=>{
@@ -1180,14 +1148,14 @@ const Scenes = {
         Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_1_1_connections_box.show("flex")
           // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,580,5,35,null,90).play()
+          Dom.setBlinkArrowRed(true,483,5,35,null,90).play()
           setCC("")
         }
         let box_buttons = document.querySelectorAll(".part_1_1_connections_box button")
 
         //! connection box onclick
         let btnClickedCount = 0
-        let connectionBtnArrow = 580
+        let connectionBtnArrow = 483
         let arrowLeftGap = 46
         box_buttons.forEach((ele,i)=>{
           ele.onclick = ()=>{
@@ -1229,20 +1197,21 @@ const Scenes = {
               
               Scenes.items.part_2_conncection_supply_1_red_button.hide()
               Scenes.items.part_1_slide_3_compo_1_text.hide()
+
+              Dom.setBlinkArrowRed(true,748,360,35,null,180).play()
+              setCC("Click on Start Experiment")
+              partConnectionsIsComplete = true
+
+
               //! Second red button click
-              
-              Scenes.items.part_1_slide_3_compo_2_text.set(212,348,56).zIndex(10)
-              Dom.setBlinkArrowRed(true,206,308).play()
-              setCC("Switch on Gate Supply")
 
-              Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
-                Scenes.items.part_2_conncection_supply_2_red_button.hide()
-                Scenes.items.part_1_slide_3_compo_2_text.hide()
+              // Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
+              //   Scenes.items.part_2_conncection_supply_2_red_button.hide()
+              //   Scenes.items.part_1_slide_3_compo_2_text.hide()
 
-                Dom.setBlinkArrowRed(true,748,360,35,null,180).play()
-                setCC("Click on Start Experiment")
-                partConnectionsIsComplete = true
-              }
+              //   Dom.setBlinkArrowRed(true,748,360,35,null,180).play()
+              //   setCC("Click on Start Experiment")
+              // }
             }
             
           }
@@ -1264,7 +1233,7 @@ const Scenes = {
     function partCalculation(){
         // for recrod btn
         let recordBtnIdx = 0
-        Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
+        Scenes.items.part_1_calculations.set(-15,-70,480,983)
         Scenes.items.btn_procedure.set(790,132,37).zIndex(10)
         Scenes.items.btn_nomenclature.set(610,132,37,160).zIndex(10)
         Scenes.items.btn_plot.set(512,129,43,80).zIndex(10)
@@ -1429,28 +1398,29 @@ const Scenes = {
 
       // required images
       let images = [
-        Scenes.items.part_1_components_2.set(0,0).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(144,68,24,22).zIndex(20),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(140,306,27,23).zIndex(20),
+        Scenes.items.part_2_components.set(0,-80,495,975).zIndex(1),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(150,70,28,25).zIndex(20),
         Scenes.items.part_1_2_connections_box,
       ]
 
       let cables = [
-        Scenes.items.part_1_2_cable_p1.set(0,0).zIndex(10).hide(),
-        Scenes.items.part_1_2_cable_s.set(0,0).zIndex(11).hide(),
-        Scenes.items.part_1_2_cable_r1.set(0,0).zIndex(12).hide(),
-        Scenes.items.part_1_2_cable_p2.set(0,0).zIndex(13).hide(),
-        Scenes.items.part_1_2_cable_n2.set(0,0).zIndex(14).hide(),
-        Scenes.items.part_1_2_cable_dvp.set(0,0).zIndex(15).hide(),
-        Scenes.items.part_1_2_cable_cp.set(0,0).zIndex(16).hide(),
-        Scenes.items.part_1_2_cable_a1.set(0,0).zIndex(17).hide(),
-        Scenes.items.part_1_2_cable_v1.set(0,0).zIndex(18).hide(),
-        Scenes.items.part_1_2_cable_v2.set(0,0).zIndex(19).hide(),
+        Scenes.items.part_2_cable_p1.set(0,0).zIndex(10).hide(),
+        Scenes.items.part_2_cable_k.set(0,0).zIndex(11).hide(),
+        Scenes.items.part_2_cable_r2.set(0,0).zIndex(12).hide(),
+        Scenes.items.part_2_cable_p.set(0,0).zIndex(13).hide(),
+        Scenes.items.part_2_cable_rg2.set(0,0).zIndex(14).hide(),
+        Scenes.items.part_2_cable_a2.set(0,0).zIndex(15).hide(),
+        Scenes.items.part_2_cable_k_n.set(0,0).zIndex(16).hide(),
+        Scenes.items.part_2_cable_ac1.set(0,0).zIndex(17).hide(),
+        Scenes.items.part_2_cable_cp.set(0,0).zIndex(18).hide(),
+        Scenes.items.part_2_cable_dvp.set(0,0).zIndex(19).hide(),
+        Scenes.items.part_2_cable_v1.set(0,0).zIndex(20).hide(),
+        Scenes.items.part_2_cable_v2.set(0,0).zIndex(21).hide(),
       ]
 
       // ! for increasing the size
       let l = 0,t = -70, h = 485, w = 945 
-      Scenes.items.part_1_components_2.set(l,t,h,w).zIndex(1)
+      Scenes.items.part_2_components.set(l,t,h,w).zIndex(1)
       cables.forEach(ele=>{
         ele.set(l,t,h,w).hide()
       })
@@ -1483,7 +1453,7 @@ const Scenes = {
       let partConnectionsIsComplete = false
       function partConnections(){
         // Connection Logic
-        Scenes.items.part_1_2_connections_box.set(442,-78).hide()
+        Scenes.items.part_1_2_connections_box.set(410,-78).hide()
 
         // ! btn_reset onclick
         Scenes.items.btn_reset.item.onclick = ()=>{
@@ -1504,14 +1474,14 @@ const Scenes = {
         Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_1_2_connections_box.show("flex")
           // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,513,-4,35,null,90).play()
+          Dom.setBlinkArrowRed(true,470,-4,35,null,90).play()
           setCC("")
         }
         let box_buttons = document.querySelectorAll(".part_1_2_connections_box button")
 
         //! connection box onclick
         let btnClickedCount = 0
-        let connectionBtnArrow = 513
+        let connectionBtnArrow = 470
         let arrowLeftGap = 43
         box_buttons.forEach((ele,i)=>{
           ele.onclick = ()=>{
@@ -1553,20 +1523,24 @@ const Scenes = {
               
               Scenes.items.part_2_conncection_supply_1_red_button.hide()
               Scenes.items.part_1_slide_3_compo_1_text.hide()
-              //! Second red button click
-              
-              Scenes.items.part_1_slide_3_compo_2_text.set(168,338,56).zIndex(20)
-              Dom.setBlinkArrowRed(true,166,306).play()
-              setCC("Switch on Gate Supply")
 
-              Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
-                Scenes.items.part_2_conncection_supply_2_red_button.hide()
-                Scenes.items.part_1_slide_3_compo_2_text.hide()
-
-                Dom.setBlinkArrowRed(true,778,165-temp,35,null,180).play()
+               Dom.setBlinkArrowRed(true,778,165-temp,35,null,180).play()
                 setCC("Click on Start Experiment")
                 partConnectionsIsComplete = true
-              }
+              //! Second red button click
+              
+              // Scenes.items.part_1_slide_3_compo_2_text.set(168,338,56).zIndex(20)
+              // Dom.setBlinkArrowRed(true,166,306).play()
+              // setCC("Switch on Gate Supply")
+
+              // Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
+              //   Scenes.items.part_2_conncection_supply_2_red_button.hide()
+              //   Scenes.items.part_1_slide_3_compo_2_text.hide()
+
+              //   // Dom.setBlinkArrowRed(true,778,165-temp,35,null,180).play()
+              //   // setCC("Click on Start Experiment")
+              //   // partConnectionsIsComplete = true
+              // }
             }
             
           }
@@ -1590,7 +1564,7 @@ const Scenes = {
         Dom.setBlinkArrowRed(true,254,310,35,null,-90).play()
         setCC("Select R")
         
-        Scenes.items.part_1_2_calculations.set(3,-70,480,963)
+        Scenes.items.part_2_calculation.set(3,-70,480,963)
         Scenes.items.btn_procedure.set(790-10,90,37).zIndex(10)
         Scenes.items.btn_nomenclature.set(610-10,90,37,160).zIndex(10)
         // Scenes.items.btn_plot.set(512-10,88,43,80).zIndex(10)
