@@ -872,22 +872,19 @@ const Scenes = {
     let instructionBtn = Scenes.items.btn_instructions.zIndex(1000)
     let procedureBtn = Scenes.items.btn_procedure.zIndex(1000)
     let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(1000)
-    let conclusionBtn = Scenes.items.btn_conclusion.zIndex(1000)
-    let instructionImg, procedureImg, nomenclatureImg, conclusionImg;
+    let instructionImg, procedureImg, nomenclatureImg;
     
     let btn = [
       instructionBtn, 
       procedureBtn,
       nomenclatureBtn,
-      conclusionBtn,
     ]
 
     switch(step){
       case "1_1" : 
-            instructionImg = Scenes.items.part_1_1_instruction_box.set(0,0).hide();
+            instructionImg = Scenes.items.part_1_1_instruction_box.set(404, 950).hide();
             procedureImg = Scenes.items.part_1_1_procedure_box.set(-150).hide();
             nomenclatureImg = Scenes.items.part_1_1_nomenclature_box;
-            conclusionImg = Scenes.items.part_1_1_conclusion_box;
 
             console.log("case3")
 
@@ -896,15 +893,13 @@ const Scenes = {
       case "1_2" :  instructionImg = Scenes.items.part_1_2_instruction_box;
                 procedureImg = Scenes.items.part_1_2_procedure_box.set(-80,null,320).hide();
                 nomenclatureImg = Scenes.items.part_1_2_nomenclature_box.set(-100).hide();
-                conclusionImg = Scenes.items.part_1_1_conclusion_box;
-
                 console.log("case4")
             break;
 
       case "2" :  instructionImg = Scenes.items.part_2_instruction_box;
                 procedureImg = Scenes.items.part_2_procedure_box.set(null,-80).hide();
                 nomenclatureImg = Scenes.items.part_2_nomenclature_box.set(null,-80).hide();  
-                conclusionImg = Scenes.items.part_1_1_conclusion_box;
+
             break;
           }
 
@@ -921,10 +916,6 @@ const Scenes = {
       nomenclatureImg.show().zIndex(40)
 
     }
-    let showConclusionImg = function(){
-      conclusionImg.show().zIndex(40)
-
-    }
     
     let hideInstructionImg = function(){
       instructionImg.hide()
@@ -939,10 +930,6 @@ const Scenes = {
       nomenclatureImg.hide()
 
     }
-    let hideConclusionImg = function(){
-      conclusionImg.hide()
-
-    }
     
 
     btn[0].item.onmouseover = showInstructionImg
@@ -953,9 +940,7 @@ const Scenes = {
 
     btn[2].item.onmouseover = showNomenclatureImg
     btn[2].item.onmouseout = hideNomenclatureImg
-    
-    btn[3].item.onmouseover = showConclusionImg
-    btn[3].item.onmouseout = hideConclusionImg
+
   },
   // for typing hello text
   intru: null,
@@ -1173,7 +1158,7 @@ const Scenes = {
 
       // required elements 
       let btns = [
-        Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(10),
+        Scenes.items.btn_procedure.set(750 + 40, 190, 50).zIndex(10),
         Scenes.items.btn_make_connection.set(750 + 40, 190 + 55, 50).zIndex(10),
         Scenes.items.btn_connectons_completed
           .set(750 + 40, 190 + 110, 50, 147)
@@ -1188,8 +1173,8 @@ const Scenes = {
       // required images
       let images = [
         Scenes.items.part_1_1_components.set(0,-70,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(171,79,28,25).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(178,315,29,25).zIndex(10),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(171,76,28,25).zIndex(10),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(178,312,29,25).zIndex(10),
         Scenes.items.part_1_1_connections_box,
       ]
 
@@ -1257,7 +1242,7 @@ const Scenes = {
         }
 
         //! connection box onclick
-        Scenes.items.btn_make_connection.item.onclick = ()=>{
+        Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_1_1_connections_box.show("flex")
           // ! connection table arrow move
           Dom.setBlinkArrowRed(true,580,5,35,null,90).play()
@@ -1345,10 +1330,9 @@ const Scenes = {
         // for recrod btn
         let recordBtnIdx = 0
         Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
-        Scenes.items.btn_plot.set(490, 376, 36, 64).zIndex(10)
-        Scenes.items.btn_procedure.set(494, 130, 39).zIndex(10)
-        Scenes.items.btn_nomenclature.set(620, 132, 37, 160).zIndex(10)
-        Scenes.items.btn_conclusion.set(787, 132, 37).zIndex(10)
+        Scenes.items.btn_procedure.set(790,132,37).zIndex(10)
+        Scenes.items.btn_nomenclature.set(610,132,37,160).zIndex(10)
+        Scenes.items.btn_plot.set(512,129,43,80).zIndex(10)
         // * Calling slider
         sliders.showSliderFor("1_1")
 
@@ -1479,7 +1463,7 @@ const Scenes = {
       Scenes.showPopup("1_1")
 
       //! onclick start btn
-      Scenes.items.btn_begin_experiment.item.onclick = ()=>{
+      Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
         if(partConnectionsIsComplete){
           // * Hide preivous
@@ -1503,29 +1487,29 @@ const Scenes = {
       // required elements 
       let temp = 16
       let btns = [
-        Scenes.items.btn_instructions.set(750 + 75,210+ 10-temp, 40).zIndex(20),
-        Scenes.items.btn_connections.set(750 + 75,210+ 55-temp, 40).zIndex(20),
+        Scenes.items.btn_instructions.set(750 + 75, 10-temp, 40).zIndex(20),
+        Scenes.items.btn_connections.set(750 + 75, 55-temp, 40).zIndex(20),
         Scenes.items.btn_connectons_completed
-          .set(750 + 75,210+ 100-temp, 50, 120)
+          .set(750 + 75, 100-temp, 50, 120)
           .zIndex(20),
         Scenes.items.btn_start_experiment
-          .set(750 + 75,210+ 153-temp, 50, 120)
+          .set(750 + 75, 153-temp, 50, 120)
           .zIndex(20),
-        Scenes.items.btn_reset.set(755, 207+175-temp, 30).zIndex(20),
+        Scenes.items.btn_reset.set(730, 175-temp, 30).zIndex(20),
       ]
 
       // required images
       let images = [
-        Scenes.items.part_1_2_components.set(-0,-70,480,983).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(145, 68, 29, 27).zIndex(20),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(148, 321, 27, 23).zIndex(20),
+        Scenes.items.part_1_components_2.set(0,0).zIndex(1),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(144,68,24,22).zIndex(20),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(140,306,27,23).zIndex(20),
         Scenes.items.part_1_2_connections_box,
       ]
 
       let cables = [
         Scenes.items.part_1_2_cable_p1.set(0,0).zIndex(10).hide(),
-        Scenes.items.part_1_2_cable_e.set(0,0).zIndex(11).hide(),
-        Scenes.items.part_1_2_cable_r2.set(0,0).zIndex(12).hide(),
+        Scenes.items.part_1_2_cable_s.set(0,0).zIndex(11).hide(),
+        Scenes.items.part_1_2_cable_r1.set(0,0).zIndex(12).hide(),
         Scenes.items.part_1_2_cable_p2.set(0,0).zIndex(13).hide(),
         Scenes.items.part_1_2_cable_n2.set(0,0).zIndex(14).hide(),
         Scenes.items.part_1_2_cable_dvp.set(0,0).zIndex(15).hide(),
@@ -1537,7 +1521,7 @@ const Scenes = {
 
       // ! for increasing the size
       let l = 0,t = -70, h = 485, w = 945 
-      Scenes.items.part_1_2_components.set(l,t,h,w).zIndex(1)
+      Scenes.items.part_1_components_2.set(l,t,h,w).zIndex(1)
       cables.forEach(ele=>{
         ele.set(l,t,h,w).hide()
       })
@@ -1570,7 +1554,7 @@ const Scenes = {
       let partConnectionsIsComplete = false
       function partConnections(){
         // Connection Logic
-        Scenes.items.part_1_2_connections_box.set(410,-78).hide()
+        Scenes.items.part_1_2_connections_box.set(442,-78).hide()
 
         // ! btn_reset onclick
         Scenes.items.btn_reset.item.onclick = ()=>{
@@ -1591,14 +1575,14 @@ const Scenes = {
         Scenes.items.btn_connections.item.onclick = ()=>{
           Scenes.items.part_1_2_connections_box.show("flex")
           // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,469,-4,35,null,90).play()
+          Dom.setBlinkArrowRed(true,513,-4,35,null,90).play()
           setCC("")
         }
         let box_buttons = document.querySelectorAll(".part_1_2_connections_box button")
 
         //! connection box onclick
         let btnClickedCount = 0
-        let connectionBtnArrow = 469
+        let connectionBtnArrow = 513
         let arrowLeftGap = 43
         box_buttons.forEach((ele,i)=>{
           ele.onclick = ()=>{
@@ -1610,7 +1594,7 @@ const Scenes = {
               Dom.setBlinkArrowRed(true,connectionBtnArrow,-4,35,null,90).play()
               
               if(btnClickedCount==10){
-                Dom.setBlinkArrowRed(true,776,305,35,null,180).play()
+                Dom.setBlinkArrowRed(true,778,105-temp,35,null,180).play()
                 setCC("Click on Connections Completed")
 
                 Scenes.items.btn_connections.item.onclick = ()=>{}
@@ -1624,7 +1608,7 @@ const Scenes = {
           }
         })
 
-        Dom.setBlinkArrowRed(true,776,250,35,null,180).play()
+        Dom.setBlinkArrowRed(true,778,55-temp,35,null,180).play()
         setCC("Click on Connections")
 
         //! Onclick for check connections
@@ -1633,24 +1617,24 @@ const Scenes = {
           if(btnClickedCount==10){
             
             //! First red button click 
-            Scenes.items.component_1_on_text.set(178,96,50).zIndex(20)
+            Scenes.items.part_1_slide_3_compo_1_text.set(178,96,50).zIndex(20)
             Dom.setBlinkArrowRed(true,170,65).play()
             setCC("Switch on Main Supply")
             Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
               
               Scenes.items.part_2_conncection_supply_1_red_button.hide()
-              Scenes.items.component_1_on_text.hide()
+              Scenes.items.part_1_slide_3_compo_1_text.hide()
               //! Second red button click
               
-              Scenes.items.component_2_on_text.set(168,338,56).zIndex(20)
+              Scenes.items.part_1_slide_3_compo_2_text.set(168,338,56).zIndex(20)
               Dom.setBlinkArrowRed(true,166,306).play()
               setCC("Switch on Gate Supply")
 
               Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
                 Scenes.items.part_2_conncection_supply_2_red_button.hide()
-                Scenes.items.component_2_on_text.hide()
+                Scenes.items.part_1_slide_3_compo_2_text.hide()
 
-                Dom.setBlinkArrowRed(true,776,360,35,null,180).play()
+                Dom.setBlinkArrowRed(true,778,165-temp,35,null,180).play()
                 setCC("Click on Start Experiment")
                 partConnectionsIsComplete = true
               }
@@ -1825,28 +1809,28 @@ const Scenes = {
 
       // required images
       let images = [
-        Scenes.items.part_2_components.set(0,-80,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(169,65,28,23).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(177,300,28,23).zIndex(10),
+        Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(153,60,24,23).zIndex(10),
+        Scenes.items.part_2_conncection_supply_2_red_button.set(158,296,27,23).zIndex(10),
         Scenes.items.part_2_connections_box,
       ]
 
       let cables = [
-        Scenes.items.part_2_cable_p1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_e.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_a2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_r2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_p2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_n2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_v1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_v2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_vg1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_cable_vg2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_p1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_s.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_a2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_r2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_p2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_n2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_v1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_v2.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_vg1.set(0,0).zIndex(5).hide(),
+        Scenes.items.part_2_conncection_cable_vg2.set(0,0).zIndex(5).hide(),
       ]
 
       // ! for increasing the size
       let l = 0,t = -85, h = 495, w = 965 
-      Scenes.items.part_2_components.set(l,t,h,w).zIndex(1)
+      Scenes.items.part_2_connections_components.set(l,t,h,w).zIndex(1)
       cables.forEach(ele=>{
         ele.set(l,t,h,w).hide()
       })
@@ -1941,22 +1925,22 @@ const Scenes = {
           if(btnClickedCount==10){
             
             //! First red button click 
-            Scenes.items.component_1_on_text.set(200, 106, 50).zIndex(10)
-            Dom.setBlinkArrowRed(true,196, 62).play()
+            Scenes.items.part_1_slide_3_compo_1_text.set(178,144-55,50).zIndex(10)
+            Dom.setBlinkArrowRed(true,186,113-55).play()
             setCC("Switch on Main Supply")
             Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
               
               Scenes.items.part_2_conncection_supply_1_red_button.hide()
-              Scenes.items.component_1_on_text.hide()
+              Scenes.items.part_1_slide_3_compo_1_text.hide()
               //! Second red button click
               
-              Scenes.items.component_2_on_text.set(204, 343, 56).zIndex(10)
-              Dom.setBlinkArrowRed(true,205, 298).play()
+              Scenes.items.part_1_slide_3_compo_2_text.set(178,338-13,56).zIndex(10)
+              Dom.setBlinkArrowRed(true,186,306-13).play()
               setCC("Switch on Gate Supply")
 
               Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
                 Scenes.items.part_2_conncection_supply_2_red_button.hide()
-                Scenes.items.component_2_on_text.hide()
+                Scenes.items.part_1_slide_3_compo_2_text.hide()
 
                 Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
                 setCC("Click on Start Experiment")
@@ -1985,7 +1969,7 @@ const Scenes = {
         Dom.setBlinkArrowRed(true,317,302,35,null,-90).play()
         setCC("Select R")
 
-        Scenes.items.part_2_calculations.set(0,-85,475,950)
+        Scenes.items.part_2_calculation_components.set(0,-85,475,950)
         Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
         Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
         Scenes.items.btn_plot.set(785,70,50).zIndex(10)
@@ -2182,7 +2166,8 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 4
+Scenes.currentStep = 3
+
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()
