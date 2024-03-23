@@ -124,6 +124,16 @@ select_option_1:this.allImgsDom[index++],
 select_option_2:this.allImgsDom[index++],
 select_option_full:this.allImgsDom[index++],
 
+// <!-- * image added for final src -->
+
+new_select_option_1:this.allImgsDom[index++],
+new_select_option_2:this.allImgsDom[index++],
+new_select_option_3:this.allImgsDom[index++],
+new_select_option_full:this.allImgsDom[index++],
+
+
+
+
 
       // * Question Mark
       domQs1: this.allQsDom[0],
