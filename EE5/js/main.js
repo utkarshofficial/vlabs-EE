@@ -618,6 +618,15 @@ const Scenes = {
         select_option_2 : new Dom("select_option_2"),
         select_option_full : new Dom("select_option_full"),
 
+// <!-- * image added for final src -->
+
+        new_select_option_1 : new Dom("new_select_option_1"),
+        new_select_option_2 : new Dom("new_select_option_2"),
+        new_select_option_3 : new Dom("new_select_option_3"),
+        new_select_option_full : new Dom("new_select_option_full"),
+
+
+
 
 
 
@@ -841,16 +850,90 @@ const Scenes = {
       Scenes.items.stepDescription.styles(st)
     }
   },
-
   //* for hover on instuction , procedure and nomenclature
 
   // not done yet
-  showPopup(){
-    let instructionBtn = Scenes.items.btn_instructions.item
-    let procedureBtn = Scenes.items.btn_procedure.item
-    let nomenclatureBtn = Scenes.items.btn_nomenclature.item
+  showPopup(step){
 
+    let instructionBtn = Scenes.items.btn_instructions.zIndex(1000)
+    let procedureBtn = Scenes.items.btn_procedure.zIndex(1000)
+    let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(1000)
+    let instructionImg, procedureImg, nomenclatureImg;
+    
+    let btn = [
+      instructionBtn, 
+      procedureBtn,
+      nomenclatureBtn,
+    ]
 
+    switch(step){
+
+      //scr using meters
+      case "4_1" : 
+            instructionImg = Scenes.items.part_1_instruction_box.set(70,100, 404, 800).hide();
+            procedureImg = Scenes.items.part_1_procedure_box.set(-60, 140,504, 900 ).hide();
+            nomenclatureImg = Scenes.items.part_1_nomenclature_box.set(-80, 100, 504, 950).hide();
+
+            break;
+
+      //scr using using oscilloscope
+      case "4_2" :  instructionImg = Scenes.items.part_2_instruction_box.set(70,-60, 404, 800).hide();
+                procedureImg = Scenes.items.part_2_procedure_box.set(-180, 90,504, 1000 ).hide();
+                nomenclatureImg = Scenes.items.part_1_nomenclature_box .set(-80, 20, 504, 1050).hide();
+            break;
+
+      // case "2" :  instructionImg = Scenes.items.part_2_instruction;
+      //           procedureImg = Scenes.items.part_2_procedure.set(null,-80).hide();
+      //           nomenclatureImg = Scenes.items.part_2_nomenclature.set(null,-80).hide();  
+
+      //       break;
+
+      // case "3" :  
+      // procedureImg = Scenes.items.part_3_procedure;
+      // nomenclatureImg = Scenes.items.part_3_nomenclature;  
+      
+      //       break;
+          }
+
+    let showInstructionImg = function(){
+      instructionImg.show().zIndex(40)
+    }
+
+    let showProcedureImg = function(){
+      procedureImg.show().zIndex(40)
+
+    }
+
+    let showNomenclatureImg = function(){
+      nomenclatureImg.show().zIndex(40)
+
+    }
+    
+    let hideInstructionImg = function(){
+      instructionImg.hide()
+    }
+
+    let hideProcedureImg = function(){
+      procedureImg.hide()
+
+    }
+
+    let hideNomenclatureImg = function(){
+      nomenclatureImg.hide()
+
+    }
+    
+
+    btn[0].item.onmouseover = showInstructionImg
+    btn[0].item.onmouseout = hideInstructionImg
+
+    btn[1].item.onmouseover = showProcedureImg
+    btn[1].item.onmouseout = hideProcedureImg
+
+    btn[2].item.onmouseover = showNomenclatureImg
+    btn[2].item.onmouseout = hideNomenclatureImg
+
+ 
 
     
 
@@ -978,7 +1061,100 @@ const Scenes = {
       return true;
     }),
     //! EE5 step 1
+
+    //EE5 step1, --> step2 (MOSFET), step3 (IGBT), step4 (SRC)
     (step1 = function () {
+      setIsProcessRunning(true);
+      Scenes.items.btn_next.show();
+
+      // todo all previous elements hide
+      Dom.hideAll();
+      Scenes.items.contentAdderBox.item.innerHTML = "";
+
+      Scenes.setStepHeading("Step-1", "To Plot Different Characteristics.");
+      // setCC("Click on the 'ICON' to plot the performance characteristics.")
+
+      // * remove all previous restrictions
+
+      //! * Required Elements
+
+      Scenes.items.new_select_option_full.set(30,0, 404, 900).zIndex(1)
+      Scenes.items.new_select_option_1.set(310,36, 98, 550).zIndex(2)
+      Scenes.items.new_select_option_2.set(330,152, 100, 600).zIndex(2)
+      Scenes.items.new_select_option_3.set(330,272, 102, 570).zIndex(2)
+    
+
+      // ! onclicks for all options
+      let options = [
+        Scenes.items.new_select_option_1,
+        Scenes.items.new_select_option_2,
+        Scenes.items.new_select_option_3,
+      ];
+
+      // ! Destroy Graphs
+      function destroyGraphs() {
+        for (let i = 0; i < 7; i++) {
+          if (Scenes.items.chart[i] != null) {
+            Scenes.items.chart[i].destroy();
+          }
+        }
+      }
+      // destroyGraphs()
+
+      Scenes.forMathematicalExpressionBtn = 0;
+
+      const opOne = () => {
+        Scenes.optionsDone[0] = 1;
+        Scenes.forMathematicalExpressionBtn = 1;
+        Scenes.steps[0 + 3]();
+      };
+      const opTwo = () => {
+        Scenes.optionsDone[1] = 1;
+        Scenes.forMathematicalExpressionBtn = 2;
+        Scenes.steps[1 + 3]();
+      };
+      const opThree = () => {
+        Scenes.optionsDone[1] = 1;
+        Scenes.forMathematicalExpressionBtn = 2;
+        Scenes.steps[2 + 3]();
+      };
+   
+      options[0].item.onclick = opThree;
+      options[1].item.onclick = opTwo;
+      options[2].item.onclick = opOne;
+
+
+      // ! if all options done then exit
+      let exit = true;
+      for (let i of Scenes.optionsDone) {
+        if (i == 0) {
+          exit = false;
+          break;
+        }
+      }
+
+      if (exit) {
+        // after complete
+        // Dom.setBlinkArrow(true, 790, 408).play();
+        setCC("Simulation Done");
+        setIsProcessRunning(false);
+      }
+
+      return true;
+    }),
+
+    //* MOSFET
+    (step2 = function(){
+
+    }),
+
+    //* IGBT
+    (step3 = function(){
+
+    }),
+
+    //*scr option step
+    (step4 = function () {
       setIsProcessRunning(true);
       Scenes.items.btn_next.show();
 
@@ -1019,12 +1195,12 @@ const Scenes = {
       const opOne = () => {
         Scenes.optionsDone[0] = 1;
         Scenes.forMathematicalExpressionBtn = 1;
-        Scenes.steps[0 + 3]();
+        Scenes.steps[0 + 6]();
       };
       const opTwo = () => {
         Scenes.optionsDone[1] = 1;
         Scenes.forMathematicalExpressionBtn = 2;
-        Scenes.steps[1 + 3]();
+        Scenes.steps[1 + 6]();
       };
    
       options[0].item.onclick = opOne;
@@ -1050,7 +1226,8 @@ const Scenes = {
       return true;
     }),
   
-    (step2 = function () {
+    //*scr part_1
+    (step5 = function () {
       setIsProcessRunning(true);
 
       Scenes.setStepHeading("", "using meteres",true);
@@ -1059,28 +1236,28 @@ const Scenes = {
 
       // required elements 
       let btns = [
-        Scenes.items.btn_instructions.set(770 + 40, 145, 50).zIndex(10),
-        Scenes.items.btn_reset.set(850, 200 , 40).zIndex(10),
-        Scenes.items.btn_connections.set(770 + 40, 190 + 55, 50).zIndex(10),
+        Scenes.items.btn_instructions.set(770 + 40, 145, 50).zIndex(13),
+        Scenes.items.btn_reset.set(850, 200 , 40).zIndex(13),
+        Scenes.items.btn_connections.set(770 + 40, 190 + 55, 50).zIndex(13),
         Scenes.items.btn_connectons_completed
           .set(770 + 40, 190 + 110, 50, 147)
-          .zIndex(10),
+          .zIndex(13),
         Scenes.items.btn_start_experiment
           .set(770 + 40, 190 + 165, 50, 147)
-          .zIndex(10),
+          .zIndex(13),
       ]
 
       // required images
       let images = [
         Scenes.items.part_1_components.set(0,-70,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(178,72,28,25).zIndex(10),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(178,72,28,25).zIndex(13),
         Scenes.items.part_1_1_connections_box,
       ]
 
       let cables = [
         Scenes.items.part_1_cable_p1.set(0,0).zIndex(2).hide(),
         Scenes.items.part_1_cable_k_ac1.set(0,0).zIndex(3).hide(),
-        Scenes.items.part_1_cable_a2.set(0,0).zIndex(4).hide(),
+        Scenes.items.part_1_cable_ac2.set(0,0).zIndex(4).hide(),
         Scenes.items.part_1_cable_r2.set(0,0).zIndex(5).hide(),
         Scenes.items.part_1_cable_p.set(0,0).zIndex(6).hide(),
         Scenes.items.part_1_cable_rg2.set(0,0).zIndex(7).hide(),
@@ -1166,7 +1343,7 @@ const Scenes = {
               connectionBtnArrow += arrowLeftGap
               Dom.setBlinkArrowRed(true,connectionBtnArrow,5,35,null,90).play()
               
-              if(btnClickedCount==8){
+              if(btnClickedCount==10){
                 Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
                 setCC("Click on Connections Completed")
 
@@ -1187,7 +1364,7 @@ const Scenes = {
         //! Onclick for check connections
         Scenes.items.btn_connectons_completed.item.onclick = ()=>{
           
-          if(btnClickedCount==8){
+          if(btnClickedCount==10){
             
             //! First red button click 
             Scenes.items.part_1_slide_3_compo_1_text.set(208,114,50).zIndex(10)
@@ -1362,6 +1539,13 @@ const Scenes = {
 
       }
 
+      // hideConnectionStepImgs()
+      // partCalculation()
+
+
+         //to show btn popup
+         Scenes.showPopup("4_1")
+
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -1370,13 +1554,15 @@ const Scenes = {
           hideConnectionStepImgs()
           // * calculation part
           partCalculation()
+          Scenes.showPopup("4_1")
         }
       }
 
       return true
     }),
 
-    (step3 = function () {
+    //*scr part_2
+    (step6 = function () {
       setIsProcessRunning(true);
       Scenes.setStepHeading("", "using oscilloscope",true)
       Scenes.items.btn_next.show();
@@ -1385,21 +1571,21 @@ const Scenes = {
       // required elements 
       let temp = 16
       let btns = [
-        Scenes.items.btn_instructions.set(750 + 75, 10-temp, 40).zIndex(20),
-        Scenes.items.btn_connections.set(750 + 75, 55-temp, 40).zIndex(20),
+        Scenes.items.btn_instructions.set(750 + 75, 10-temp, 40).zIndex(23),
+        Scenes.items.btn_connections.set(750 + 75, 55-temp, 40).zIndex(23),
         Scenes.items.btn_connectons_completed
           .set(750 + 75, 100-temp, 50, 120)
-          .zIndex(20),
+          .zIndex(23),
         Scenes.items.btn_start_experiment
           .set(750 + 75, 153-temp, 50, 120)
-          .zIndex(20),
-        Scenes.items.btn_reset.set(730, 175-temp, 30).zIndex(20),
+          .zIndex(23),
+        Scenes.items.btn_reset.set(730, 175-temp, 30).zIndex(23),
       ]
 
       // required images
       let images = [
         Scenes.items.part_2_components.set(0,-80,495,975).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(150,70,28,25).zIndex(20),
+        Scenes.items.part_2_conncection_supply_1_red_button.set(150,70,28,25).zIndex(23),
         Scenes.items.part_1_2_connections_box,
       ]
 
@@ -1411,7 +1597,6 @@ const Scenes = {
         Scenes.items.part_2_cable_rg2.set(0,0).zIndex(14).hide(),
         Scenes.items.part_2_cable_a2.set(0,0).zIndex(15).hide(),
         Scenes.items.part_2_cable_k_n.set(0,0).zIndex(16).hide(),
-        Scenes.items.part_2_cable_ac1.set(0,0).zIndex(17).hide(),
         Scenes.items.part_2_cable_cp.set(0,0).zIndex(18).hide(),
         Scenes.items.part_2_cable_dvp.set(0,0).zIndex(19).hide(),
         Scenes.items.part_2_cable_v1.set(0,0).zIndex(20).hide(),
@@ -1428,14 +1613,15 @@ const Scenes = {
       let cables_color = [
         "#e40d0d",
         "#162848",
-        "#037c3a",
-        "#020202",
-        "#ffe714",
-        "#555252",
-        "#9d9d9d",
-        "#0f1f3b",
-        "#974f1e",
-        "#670202",
+        "#010101",
+        "#038403",
+        "#3e3e3e",
+        "#82461d",
+        "#080808",
+        "#760e58",
+        "#878787",
+        "#04aae6",
+        "#01ff01",
       ]
 
       function hideConnectionStepImgs(){
@@ -1492,7 +1678,7 @@ const Scenes = {
               connectionBtnArrow += arrowLeftGap
               Dom.setBlinkArrowRed(true,connectionBtnArrow,-4,35,null,90).play()
               
-              if(btnClickedCount==10){
+              if(btnClickedCount==cables.length){
                 Dom.setBlinkArrowRed(true,778,105-temp,35,null,180).play()
                 setCC("Click on Connections Completed")
 
@@ -1513,7 +1699,7 @@ const Scenes = {
         //! Onclick for check connections
         Scenes.items.btn_connectons_completed.item.onclick = ()=>{
           
-          if(btnClickedCount==10){
+          if(btnClickedCount==11){
             
             //! First red button click 
             Scenes.items.part_1_slide_3_compo_1_text.set(178,96,50).zIndex(20)
@@ -1672,6 +1858,11 @@ const Scenes = {
 
       }
 
+      hideConnectionStepImgs()
+      partCalculation()
+
+            //to show btn popup
+            Scenes.showPopup("4_2")
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -1680,310 +1871,17 @@ const Scenes = {
           hideConnectionStepImgs()
           // * calculation part
           partCalculation()
+
+            //to show btn popup
+            Scenes.showPopup("4_2")
         }
       }
+
+
 
       return true
     }),
 
-    (step4 = function () {
-      setIsProcessRunning(true);
-
-      Scenes.setStepHeading("Step-2", "Transfer Characteristics.",true);
-      Scenes.items.btn_next.show();
-      // ! Step Connection
-
-      // required elements 
-      let btns = [
-        Scenes.items.btn_instructions.set(750 + 40, 190, 50).zIndex(10),
-        Scenes.items.btn_connections.set(750 + 40, 190 + 55, 50).zIndex(10),
-        Scenes.items.btn_connectons_completed
-          .set(750 + 40, 190 + 110, 50, 147)
-          .zIndex(10),
-        Scenes.items.btn_start_experiment
-          .set(750 + 40, 190 + 165, 50, 147)
-          .zIndex(10),
-        Scenes.items.btn_reset.set(660, 190 + 165, 40).zIndex(10)
-      ]
-
-      // required images
-      let images = [
-        Scenes.items.part_2_connections_components.set(0,0).zIndex(1),
-        Scenes.items.part_2_conncection_supply_1_red_button.set(153,60,24,23).zIndex(10),
-        Scenes.items.part_2_conncection_supply_2_red_button.set(158,296,27,23).zIndex(10),
-        Scenes.items.part_2_connections_box,
-      ]
-
-      let cables = [
-        Scenes.items.part_2_conncection_cable_p1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_s.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_a2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_r2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_p2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_n2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_v1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_v2.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_vg1.set(0,0).zIndex(5).hide(),
-        Scenes.items.part_2_conncection_cable_vg2.set(0,0).zIndex(5).hide(),
-      ]
-
-      // ! for increasing the size
-      let l = 0,t = -85, h = 495, w = 965 
-      Scenes.items.part_2_connections_components.set(l,t,h,w).zIndex(1)
-      cables.forEach(ele=>{
-        ele.set(l,t,h,w).hide()
-      })
-
-      let cables_color = [
-        "#e40000",
-        "#4f699a",
-        "#008039",
-        "#0d0d0d",
-        "#f9c101",
-        "#7f3a0b",
-        "#b6355d",
-        "#851b85",
-        "#073007",
-        "#7c5565",
-      ]
-      
-      function hideConnectionStepImgs(){
-        let allImages = [
-          ...btns,...images,...cables
-        ]
-        allImages.forEach(ele=>{
-          ele.hide()
-        })
-        Dom.setBlinkArrowRed(-1)
-      }
-      //! Connection Part
-      // to enable startExp Button
-      let partConnectionsIsComplete = false
-      function partConnections(){
-         // Connection Logic
-        Scenes.items.part_2_connections_box.set(442,-84).hide()
-
-        // ! btn_reset onclick
-        Scenes.items.btn_reset.item.onclick = ()=>{
-          let box_buttons_reset = document.querySelectorAll(".part_2_connections_box button")
-          let temps = {
-            textShadow: "none",
-            color: "black",
-            backgroundColor: "transparent"
-          }
-          box_buttons_reset.forEach(ele=>{
-            let ele_Dom = new Dom(ele)
-            ele_Dom.styles(temps)
-          })
-          Scenes.steps[5]()
-        }
-
-        //! connection box onclick
-        Scenes.items.btn_connections.item.onclick = ()=>{
-          Scenes.items.part_2_connections_box.show("flex")
-          // ! connection table arrow move
-          Dom.setBlinkArrowRed(true,510,-7,35,null,90).play()
-          setCC("")
-        }
-        let box_buttons = document.querySelectorAll(".part_2_connections_box button")
-
-        //! connection box onclick
-        let btnClickedCount = 0
-        let connectionBtnArrow = 510
-        let arrowLeftGap = 43
-        box_buttons.forEach((ele,i)=>{
-          ele.onclick = ()=>{
-            // increasing count of complete connection
-            if(ele.style.color!="white"){
-              btnClickedCount++
-              //! move arrow 
-              connectionBtnArrow += arrowLeftGap
-              Dom.setBlinkArrowRed(true,connectionBtnArrow,-7,35,null,90).play()
-              
-              if(btnClickedCount==10){
-                Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
-                setCC("Click on Connections Completed")
-
-                Scenes.items.btn_connections.item.onclick = ()=>{}
-              }
-            }
-            
-            cables[i].show()
-            ele.style.backgroundColor = cables_color[i]
-            ele.style.color = "white"
-            ele.style.textShadow = "1px 1px black"
-          }
-        })
-
-        Dom.setBlinkArrowRed(true,745,250,35,null,180).play()
-        setCC("Click on Connections")
-
-        //! Onclick for check connections
-        Scenes.items.btn_connectons_completed.item.onclick = ()=>{
-          
-          if(btnClickedCount==10){
-            
-            //! First red button click 
-            Scenes.items.part_1_slide_3_compo_1_text.set(178,144-55,50).zIndex(10)
-            Dom.setBlinkArrowRed(true,186,113-55).play()
-            setCC("Switch on Main Supply")
-            Scenes.items.part_2_conncection_supply_1_red_button.item.onclick = ()=>{
-              
-              Scenes.items.part_2_conncection_supply_1_red_button.hide()
-              Scenes.items.part_1_slide_3_compo_1_text.hide()
-              //! Second red button click
-              
-              Scenes.items.part_1_slide_3_compo_2_text.set(178,338-13,56).zIndex(10)
-              Dom.setBlinkArrowRed(true,186,306-13).play()
-              setCC("Switch on Gate Supply")
-
-              Scenes.items.part_2_conncection_supply_2_red_button.item.onclick = ()=>{
-                Scenes.items.part_2_conncection_supply_2_red_button.hide()
-                Scenes.items.part_1_slide_3_compo_2_text.hide()
-
-                Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
-                setCC("Click on Start Experiment")
-                partConnectionsIsComplete = true
-              }
-            }
-            
-          }
-          else{
-            Scenes.items.part_1_incomplete_connection.set(570,300,50).zIndex(10)
-            anime({
-              targets: Scenes.items.part_1_incomplete_connection.item,
-              delay: 2000,
-              complete(){
-                Scenes.items.part_1_incomplete_connection.hide()
-              }
-            })
-          }
-        }
-      }
-      partConnections()
-
-      //! Graph Part
-      function partCalculation(){
-        // show arrow for R
-        Dom.setBlinkArrowRed(true,317,302,35,null,-90).play()
-        setCC("Select R")
-
-        Scenes.items.part_2_calculation_components.set(0,-85,475,950)
-        Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
-        Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
-        Scenes.items.btn_plot.set(785,70,50).zIndex(10)
-        // * Calling slider
-        sliders.showSliderFor("2")
-
-        // * Graph section
-        Scenes.items.graph_box_3.set(580,162,242,365).zIndex(10)
-        let ctx = Scenes.items.graph3.item
-        let graphIdx = 2
-        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
-        let yLabel = "Drain Current (I<sub>D</sub>)"
-        let dataLabel = "vDS = 50"
-        // ploting empty graph
-        let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
-        // for setting xy label of graph in position
-        function setXYLabel(){
-          Scenes.items.xLabel.set(664, 375)
-          Scenes.items.yLabel.set(507, 263)
-        }
-        setXYLabel()
-
-        let table = new Dom(".part_2_table").set(600,-76).item
-        // * assume tempTitle10 as a btn record
-        let btn_record = sliders.btn_record.item
-
-        // ! btn_record onclick
-        let recordBtnIdx = 0
-        btn_record.onclick = ()=>{
-          let rows = table.tBodies[0].rows
-          if(recordBtnIdx >= rows.length){
-            return
-          }
-
-          // * Filling Table
-          rows[recordBtnIdx].cells[0].innerHTML = "10"
-          rows[recordBtnIdx].cells[1].innerHTML = "12"
-          recordBtnIdx++
-
-          // to plot the data
-          if(recordBtnIdx == rows.length){
-            // ! btn Plot onclick
-            Scenes.items.btn_plot.item.onclick = ()=>{
-              let data = []
-              for(let row of rows){
-                let x = row.cells[0].innerHTML
-                let y = row.cells[1].innerHTML
-                data.push({x,y})
-              }
-
-              Scenes.graphFeatures.addData(graphRef,0,data)
-
-              Dom.setBlinkArrowRed(-1)
-              Dom.setBlinkArrow(true, 790, 544).play();
-              setCC("Click 'Next' to go to next step");
-              setIsProcessRunning(false);
-              // for going to the second step
-              Scenes.currentStep = 2
-            }
-          }
-        }
-
-      }
-
-      //! onclick start btn
-      Scenes.items.btn_start_experiment.item.onclick = ()=>{
-        // to enable the button
-        if(partConnectionsIsComplete){
-          // * Hide preivous
-          hideConnectionStepImgs()
-          // * calculation part
-          partCalculation()
-        }
-      }
-
-      return true
-    }),
-
-    (step5 = function () {
-      setIsProcessRunning(true);
-      Dom.hideAll();
-      Scenes.setStepHeading("Step-3", "Switching Characteristics.");
-      // setCC("Record 7 reading for 3 different load resistances.")
-      // ! show the slider
-      // Scenes.items.slider_box.set(25, 15).scale(0.95);
-      Scenes.items.btn_next.show();
-
-      //! Required Items
-      Scenes.items.part_3_components.set(0,-55,null, 950 )
-      Scenes.items.part_3_off_button.set(100, 65, 42, 65)
-      Scenes.items.part_3_text.set(90, 175, 80, 100)
-      Scenes.items.btn_procedure.set(20,298, 38, 170)
-      Scenes.items.btn_nomenclature.set(20,340, 38, 190)
-      Dom.setBlinkArrowRed(true,112,115,35,null,90).play()
-      
-      
-      
-      
-      let offBtn = Scenes.items.part_3_off_button.item
-      
-      offBtn.onclick = ()=>{
-        Dom.setBlinkArrowRed(-1)   
-        Scenes.items.part_3_graph.set( -10, -56, 404, 965)
-        Scenes.items.part_3_off_button.hide()
-        Scenes.items.part_3_text.hide()
-        Scenes.items.part_3_table_1.set(220,270, 135, 300)
-        Scenes.items.part_3_table_2.set(590,330, 50)
-        Scenes.items.part_3_table_3.set(742,330, 50)
-
-
-        
-      }
-
-      return true;
-    }),
     
   ],
   back() {

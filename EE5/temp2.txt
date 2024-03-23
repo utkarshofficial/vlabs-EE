@@ -1,263 +1,32 @@
 
      <img
         class="main-window-imgs"
-        src="./src/images/EE5/arrow_black.png"
+        src="./src/images/final_src/new_select_option_1.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/EE5/btn_plot.png"
+        src="./src/images/final_src/new_select_option_2.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/EE5/btn_zoomed_in_plot.png"
+        src="./src/images/final_src/new_select_option_3.png"
     />
     
      <img
         class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_a2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_ac2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_k.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_k_ac1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_p.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_p1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_r2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_rg2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_v1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_cable_v2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_calculations.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_components.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_instruction_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_nomenclature_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_1_procedure_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_a2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_ac1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_cp.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_dvp.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_k.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_k_n.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_p.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_p1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_r2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_rg2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_v1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_cable_v2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_calculation.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_components.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_instruction_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/part_2_procedure_box.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/select_option_1.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/select_option_2.png"
-    />
-    
-     <img
-        class="main-window-imgs"
-        src="./src/images/EE5/select_option_full.png"
+        src="./src/images/final_src/new_select_option_full.png"
     />
     
 
-arrow_black:this.allImgsDom[index++],
-btn_plot:this.allImgsDom[index++],
-btn_zoomed_in_plot:this.allImgsDom[index++],
-part_1_cable_a2:this.allImgsDom[index++],
-part_1_cable_ac2:this.allImgsDom[index++],
-part_1_cable_k:this.allImgsDom[index++],
-part_1_cable_k_ac1:this.allImgsDom[index++],
-part_1_cable_p:this.allImgsDom[index++],
-part_1_cable_p1:this.allImgsDom[index++],
-part_1_cable_r2:this.allImgsDom[index++],
-part_1_cable_rg2:this.allImgsDom[index++],
-part_1_cable_v1:this.allImgsDom[index++],
-part_1_cable_v2:this.allImgsDom[index++],
-part_1_calculations:this.allImgsDom[index++],
-part_1_components:this.allImgsDom[index++],
-part_1_instruction_box:this.allImgsDom[index++],
-part_1_nomenclature_box:this.allImgsDom[index++],
-part_1_procedure_box:this.allImgsDom[index++],
-part_2_cable_a2:this.allImgsDom[index++],
-part_2_cable_ac1:this.allImgsDom[index++],
-part_2_cable_cp:this.allImgsDom[index++],
-part_2_cable_dvp:this.allImgsDom[index++],
-part_2_cable_k:this.allImgsDom[index++],
-part_2_cable_k_n:this.allImgsDom[index++],
-part_2_cable_p:this.allImgsDom[index++],
-part_2_cable_p1:this.allImgsDom[index++],
-part_2_cable_r2:this.allImgsDom[index++],
-part_2_cable_rg2:this.allImgsDom[index++],
-part_2_cable_v1:this.allImgsDom[index++],
-part_2_cable_v2:this.allImgsDom[index++],
-part_2_calculation:this.allImgsDom[index++],
-part_2_components:this.allImgsDom[index++],
-part_2_instruction_box:this.allImgsDom[index++],
-part_2_procedure_box:this.allImgsDom[index++],
-select_option_1:this.allImgsDom[index++],
-select_option_2:this.allImgsDom[index++],
-select_option_full:this.allImgsDom[index++],
+new_select_option_1:this.allImgsDom[index++],
+new_select_option_2:this.allImgsDom[index++],
+new_select_option_3:this.allImgsDom[index++],
+new_select_option_full:this.allImgsDom[index++],
 
 
-arrow_black : new Dom("arrow_black"),
-btn_plot : new Dom("btn_plot"),
-btn_zoomed_in_plot : new Dom("btn_zoomed_in_plot"),
-part_1_cable_a2 : new Dom("part_1_cable_a2"),
-part_1_cable_ac2 : new Dom("part_1_cable_ac2"),
-part_1_cable_k : new Dom("part_1_cable_k"),
-part_1_cable_k_ac1 : new Dom("part_1_cable_k_ac1"),
-part_1_cable_p : new Dom("part_1_cable_p"),
-part_1_cable_p1 : new Dom("part_1_cable_p1"),
-part_1_cable_r2 : new Dom("part_1_cable_r2"),
-part_1_cable_rg2 : new Dom("part_1_cable_rg2"),
-part_1_cable_v1 : new Dom("part_1_cable_v1"),
-part_1_cable_v2 : new Dom("part_1_cable_v2"),
-part_1_calculations : new Dom("part_1_calculations"),
-part_1_components : new Dom("part_1_components"),
-part_1_instruction_box : new Dom("part_1_instruction_box"),
-part_1_nomenclature_box : new Dom("part_1_nomenclature_box"),
-part_1_procedure_box : new Dom("part_1_procedure_box"),
-part_2_cable_a2 : new Dom("part_2_cable_a2"),
-part_2_cable_ac1 : new Dom("part_2_cable_ac1"),
-part_2_cable_cp : new Dom("part_2_cable_cp"),
-part_2_cable_dvp : new Dom("part_2_cable_dvp"),
-part_2_cable_k : new Dom("part_2_cable_k"),
-part_2_cable_k_n : new Dom("part_2_cable_k_n"),
-part_2_cable_p : new Dom("part_2_cable_p"),
-part_2_cable_p1 : new Dom("part_2_cable_p1"),
-part_2_cable_r2 : new Dom("part_2_cable_r2"),
-part_2_cable_rg2 : new Dom("part_2_cable_rg2"),
-part_2_cable_v1 : new Dom("part_2_cable_v1"),
-part_2_cable_v2 : new Dom("part_2_cable_v2"),
-part_2_calculation : new Dom("part_2_calculation"),
-part_2_components : new Dom("part_2_components"),
-part_2_instruction_box : new Dom("part_2_instruction_box"),
-part_2_procedure_box : new Dom("part_2_procedure_box"),
-select_option_1 : new Dom("select_option_1"),
-select_option_2 : new Dom("select_option_2"),
-select_option_full : new Dom("select_option_full"),
+new_select_option_1 : new Dom("new_select_option_1"),
+new_select_option_2 : new Dom("new_select_option_2"),
+new_select_option_3 : new Dom("new_select_option_3"),
+new_select_option_full : new Dom("new_select_option_full"),
