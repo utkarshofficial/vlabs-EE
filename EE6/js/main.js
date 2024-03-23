@@ -869,11 +869,18 @@ const Scenes = {
   // not done yet
   showPopup(step){
 
-    let instructionBtn = Scenes.items.btn_instructions.zIndex(1000)
-    let procedureBtn = Scenes.items.btn_procedure.zIndex(1000)
-    let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(1000)
-    let conclusionBtn = Scenes.items.btn_conclusion.zIndex(1000)
+    let instructionBtn = Scenes.items.btn_instructions.zIndex(100)
+    let procedureBtn = Scenes.items.btn_procedure.zIndex(100)
+    let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(100)
+    let conclusionBtn = Scenes.items.btn_conclusion.zIndex(100)
     let instructionImg, procedureImg, nomenclatureImg, conclusionImg;
+
+    let imgs = [
+      instructionImg,
+      procedureImg,
+      nomenclatureImg,
+      conclusionImg
+    ]
     
     let btn = [
       instructionBtn, 
@@ -884,29 +891,28 @@ const Scenes = {
 
     switch(step){
       case "1_1" : 
-            instructionImg = Scenes.items.part_1_1_instruction_box.set(0,0).hide();
-            procedureImg = Scenes.items.part_1_1_procedure_box.set(-150).hide();
-            nomenclatureImg = Scenes.items.part_1_1_nomenclature_box;
-            conclusionImg = Scenes.items.part_1_1_conclusion_box;
+        instructionImg = Scenes.items.part_1_1_instruction_box.set(0,0).zIndex(50).hide()
+        procedureImg = Scenes.items.part_1_1_procedure_box.set(-150,-540).zIndex(50).hide()
+        nomenclatureImg = Scenes.items.part_1_1_nomenclature_box.set(-374,null,800).zIndex(50).hide()
+        conclusionImg = Scenes.items.part_1_1_conclusion_box.set(null,-140,600).zIndex(50).hide()
+        break;
 
-            console.log("case3")
+      case "1_2" :  
+        instructionImg = Scenes.items.part_1_2_instruction_box.set(-100,80,500).hide().zIndex(50)
+        procedureImg = Scenes.items.part_1_2_procedure_box.set(-100,80,500).hide().zIndex(50)
+        nomenclatureImg = Scenes.items.part_1_2_nomenclature_box.set(-100,0,400).hide().zIndex(50)
+        conclusionImg = Scenes.items.part_1_1_conclusion_box.set(10,5,700).hide().zIndex(50)
+        break;
 
-            break;
+      case "2" :  
+        instructionImg = Scenes.items.part_2_instruction_box.set(-100,80,500).hide().zIndex(50)
+        procedureImg = Scenes.items.part_2_procedure_box.set(-80,-100,500).hide().zIndex(50)
+        nomenclatureImg = Scenes.items.part_2_nomenclature_box.set(-100,0,500).hide().zIndex(50)
+        conclusionImg = Scenes.items.part_1_1_conclusion_box.set(10,-10,700).hide().zIndex(50)
+        break;
+    }
 
-      case "1_2" :  instructionImg = Scenes.items.part_1_2_instruction_box;
-                procedureImg = Scenes.items.part_1_2_procedure_box.set(-80,null,320).hide();
-                nomenclatureImg = Scenes.items.part_1_2_nomenclature_box.set(-100).hide();
-                conclusionImg = Scenes.items.part_1_1_conclusion_box;
-
-                console.log("case4")
-            break;
-
-      case "2" :  instructionImg = Scenes.items.part_2_instruction_box;
-                procedureImg = Scenes.items.part_2_procedure_box.set(null,-80).hide();
-                nomenclatureImg = Scenes.items.part_2_nomenclature_box.set(null,-80).hide();  
-                conclusionImg = Scenes.items.part_1_1_conclusion_box;
-            break;
-          }
+    
 
     let showInstructionImg = function(){
       instructionImg.show().zIndex(40)
@@ -1345,15 +1351,15 @@ const Scenes = {
         // for recrod btn
         let recordBtnIdx = 0
         Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
-        Scenes.items.btn_plot.set(490, 376, 36, 64).zIndex(10)
-        Scenes.items.btn_procedure.set(494, 130, 39).zIndex(10)
-        Scenes.items.btn_nomenclature.set(620, 132, 37, 160).zIndex(10)
-        Scenes.items.btn_conclusion.set(787, 132, 37).zIndex(10)
+        Scenes.items.btn_plot.set(517, 381, 34, 70).zIndex(10)
+        Scenes.items.btn_procedure.set(494, 130, 39)
+        Scenes.items.btn_nomenclature.set(620, 132, 37, 160)
+        Scenes.items.btn_conclusion.set(787, 132, 37)
         // * Calling slider
         sliders.showSliderFor("1_1")
 
         // * Graph section
-        Scenes.items.graph_box_1.set(514,174,null,428).zIndex(10)
+        Scenes.items.graph_box_1.set(493,173,null,451).zIndex(10)
         let ctx = Scenes.items.graph1.item
         let graphIdx = 0
         let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
@@ -1361,8 +1367,8 @@ const Scenes = {
         let dataLabel = ""
         // for setting xy label of graph in position
         function setXYLabel(){
-          Scenes.items.xLabel.set(633,387)
-          Scenes.items.yLabel.set(443,277)
+          Scenes.items.xLabel.set(619,387)
+          Scenes.items.yLabel.set(421,277)
         }
         // ploting empty graph
         let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true,true)
@@ -1370,7 +1376,7 @@ const Scenes = {
         
         // let table = new Dom(".part_2_table").set(600,-76).item
 
-        let table = new Dom(".part3_table_two").set(513,-76).zIndex(10).item
+        let table = new Dom(".part3_table_two").set(493,-76).zIndex(10).item
 
         // * assume tempTitle10 as a btn record
         let btn_record = sliders.btn_record.item
@@ -1391,11 +1397,11 @@ const Scenes = {
 
           // * Filling Table
           let colIdx = {
-            4:1,
-            6:2,
+            6:1,
+            7:2,
             8:3,
-            10:4,
-            15:5,
+            9:4,
+            10:5,
           }
           let first_vGs_value = 4
           let last_vGs_value = 15
@@ -1425,7 +1431,7 @@ const Scenes = {
               // goto default position for vIn value and recordBtnIdx = 0
               function resetFun(){
                 recordBtnIdx=0
-                let defaultLeftPos = 24
+                let defaultLeftPos = 10
                 Anime.moveLeft(sliders.slider_vIn.item,defaultLeftPos)
               }
               // for adding data to graph
@@ -1477,6 +1483,10 @@ const Scenes = {
 
       //to show btn popup
       Scenes.showPopup("1_1")
+
+      // todo remove
+      hideConnectionStepImgs()
+      partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_begin_experiment.item.onclick = ()=>{
@@ -1678,20 +1688,20 @@ const Scenes = {
         setCC("Select R")
         
         Scenes.items.part_1_2_calculations.set(3,-70,480,963)
-        Scenes.items.btn_procedure.set(790-10,90,37).zIndex(10)
-        Scenes.items.btn_nomenclature.set(610-10,90,37,160).zIndex(10)
-        // Scenes.items.btn_plot.set(512-10,88,43,80).zIndex(10)
+        Scenes.items.btn_procedure.set(511,87,37).zIndex(10)
+        Scenes.items.btn_nomenclature.set(624,87,37,160).zIndex(10)
+        Scenes.items.btn_conclusion.set(787, 87, 37).zIndex(10)
 
         // neddle vGs rotate (-1,multipoint) deg
-        Scenes.items.niddle_vGs.set(536,29,74).rotate(-1).zIndex(10)
+        Scenes.items.niddle_vGs.set(547,32,74).rotate(-1).zIndex(10)
         // neddle vIn rotate (-1,126) deg
-        Scenes.items.niddle_vIn.set(755,29,74).rotate(-1).zIndex(10)
+        Scenes.items.niddle_vIn.set(765,31,74).rotate(-1).zIndex(10)
 
         // * Calling slider
         sliders.showSliderFor("1_2")
 
         // * Graph section
-        Scenes.items.graph_box_2.set(499,138,270,440).zIndex(10)
+        Scenes.items.graph_box_2.set(511,131,282,432).zIndex(10)
         let ctx = Scenes.items.graph2.item
         let graphIdx = 1
         let xLabel = "Dra to source voltage (V<sub>DS</sub>)"
@@ -1699,8 +1709,8 @@ const Scenes = {
         let dataLabel = ""
         // for setting xy label of graph in position
         function setXYLabel(){
-          Scenes.items.xLabel.set(615,377)
-          Scenes.items.yLabel.set(428,257)
+          Scenes.items.xLabel.set(616,383)
+          Scenes.items.yLabel.set(442,262)
         }
         // ploting empty graph
         let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true,true)
@@ -1782,6 +1792,10 @@ const Scenes = {
         }
 
       }
+
+      // todo remove
+      hideConnectionStepImgs()
+      partCalculation()
 
       //to show btn popup
       Scenes.showPopup("1_2")
@@ -1986,14 +2000,15 @@ const Scenes = {
         setCC("Select R")
 
         Scenes.items.part_2_calculations.set(0,-85,475,950)
-        Scenes.items.btn_nomenclature.set(785,-75,30).zIndex(10)
-        Scenes.items.btn_procedure.set(785,-10,33).zIndex(10)
+        Scenes.items.btn_procedure.set(785,-80,33)
+        Scenes.items.btn_nomenclature.set(785,-38,30)
+        Scenes.items.btn_conclusion.set(785, 2, 37)
         Scenes.items.btn_plot.set(785,70,50).zIndex(10)
         // * Calling slider
         sliders.showSliderFor("2")
 
         // * Graph section
-        Scenes.items.graph_box_3.set(580,162,242,365).zIndex(10)
+        Scenes.items.graph_box_3.set(557,167,242,385).zIndex(10)
         let ctx = Scenes.items.graph3.item
         let graphIdx = 2
         let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
@@ -2003,12 +2018,12 @@ const Scenes = {
         let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
         // for setting xy label of graph in position
         function setXYLabel(){
-          Scenes.items.xLabel.set(664, 375)
-          Scenes.items.yLabel.set(507, 263)
+          Scenes.items.xLabel.set(644, 375)
+          Scenes.items.yLabel.set(484, 269)
         }
         setXYLabel()
 
-        let table = new Dom(".part_2_table").set(600,-76).item
+        let table = new Dom(".part_2_table").set(581,-86).item
         // * assume tempTitle10 as a btn record
         let btn_record = sliders.btn_record.item
 
@@ -2058,6 +2073,10 @@ const Scenes = {
       //to show btn popup
       Scenes.showPopup("2")
 
+      // todo remove
+      hideConnectionStepImgs()
+      partCalculation()
+
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
         // to enable the button
@@ -2104,9 +2123,6 @@ const Scenes = {
         Scenes.items.part_3_table_1.set(220,270, 135, 300)
         Scenes.items.part_3_table_2.set(590,330, 50)
         Scenes.items.part_3_table_3.set(742,330, 50)
-
-
-        
       }
 
       //to show btn popup
@@ -2182,7 +2198,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 4
+Scenes.currentStep = 3
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()

@@ -68,16 +68,20 @@
   background-color: #002060;
   color: white;
 }
+.part_2_table th,
+.part_2_table td{
+  height: 23.5px!important;
+}
 
 /* part3 table */
 .part3_table_two{
-  width: 430px;
+  width: 447px;
 }
 
 .part3_table_two th,
 .part3_table_two td
 {
-  width: 73px!important;
+  width: 74px!important;
   font-size: 13px;  
   padding: 0!important;
 }

@@ -11,7 +11,6 @@ const sliders = {
   // show we can update the table according to the button click
   btn_record: new Dom(".temp-title10"),
 
-
   init(){
     this.updateLabels()
     let styles = {
@@ -34,19 +33,19 @@ const sliders = {
       case "1_1":
         var temp2 = -10
         var temp1 = -62
-        this.slider_vIn.set(34+temp2,33+temp1,23).zIndex(10)
-        this.slider_vIn_label.set(185+temp2,65+temp1)
+        this.slider_vIn.set(10,31+temp1,23).zIndex(10)
+        this.slider_vIn_label.set(180+temp2,65+temp1)
 
-        this.slider_vGs.set(10,369,23).zIndex(10)
-        this.slider_vGs_label.set(168,325)
+        this.slider_vGs.set(2,370,23).zIndex(10)
+        this.slider_vGs_label.set(157,327)
         
-        this.slider_R.set(266,365,23).zIndex(10)
-        this.slider_R_label.set(446,360)
+        this.slider_R.set(253,365,23).zIndex(10)
+        this.slider_R_label.set(433,360)
 
         
         // ! vGs onclick
-        var differences_vGs = [65, 89, 113, 138, 187];
-        var vals_vGs = [4,6,8,10,15]
+        var differences_vGs = [80, 103, 128, 131, 175];
+        var vals_vGs = [6,7,8,9,10]
         var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
         var value_vGs = 0
@@ -72,8 +71,8 @@ const sliders = {
         }
 
         // ! vIn onclick 
-        var defaultLeftPos = 24
-        var differences_vIn = [53,76,101,126,152,175];
+        var defaultLeftPos = 10
+        var differences_vIn = [44,67,92,116,141,165];
         var vals_vIn = [40,80,120,160,200,240]
         var currentDifferenceIndex_vIn = 0;
         // for slider vIn
@@ -98,7 +97,7 @@ const sliders = {
 
             if(currentDifferenceIndex_vIn == differences_vIn.length){
               // * show arrow for plot
-              Dom.setBlinkArrowRed(true,529,87,35,null,-90).play()
+              Dom.setBlinkArrowRed(true,529,343,35,null,-90).play()
               setCC("Click on 'Plot'")
             }
           }else{
@@ -110,7 +109,7 @@ const sliders = {
         // ! R onclick 
         this.slider_R.item.onclick = ()=>{
           let value_R = 50
-          var left = 317
+          var left = 304
           this.sliderAnime(this.slider_R,0,value_R,left)
 
           // * show arrow for vGs
@@ -123,20 +122,20 @@ const sliders = {
       case "1_2":
         var temp2 = -23
         var temp1 = -80
-        this.slider_vIn.set(34+temp2,33+temp1,23).zIndex(10)
-        this.slider_vIn_label.set(210,-53)
+        this.slider_vIn.set(62,-50,23).zIndex(10)
+        this.slider_vIn_label.set(252,-56)
 
-        this.slider_vGs.set(10,374,23).zIndex(10)
-        this.slider_vGs_label.set(161,329)
+        this.slider_vGs.set(8,369,23).zIndex(10)
+        this.slider_vGs_label.set(176,326)
         
-        this.slider_R.set(255,357,23).zIndex(10)
-        this.slider_R_label.set(434,352)
+        this.slider_R.set(275,354,23).zIndex(10)
+        this.slider_R_label.set(453,348)
 
         
         // ! vGs onclick
-        var differences_vGs = [63, 86, 110, 133, 180];
-        var vals_vGs = [4,6,8,10,15]
-        var niddle_vGs_deg = [40, 61, 82.5, 104,125]
+        var differences_vGs = [82,104,128,151,173];
+        var vals_vGs = [6,7,8,9,10]
+        var niddle_vGs_deg = [63,74,84.5,96,106]
         var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
         var value_vGs = 0
@@ -176,9 +175,9 @@ const sliders = {
         // neddle vIn rotate (-1,126) deg
         var defaultRotatePos = -1
         // slider (11, 160)
-        var defaultLeftPos = 11
+        var defaultLeftPos = 62
         // for slider vIn
-        var leftPixel = 160
+        var leftEndPixel = 212
         // 11, 160
         // label value 0 to 240
         let currentLabelValue = 0
@@ -199,7 +198,7 @@ const sliders = {
           })
           .add({
             targets: this.slider_vIn.item,
-            left: [defaultLeftPos, leftPixel,leftPixel, defaultLeftPos],
+            left: [defaultLeftPos, leftEndPixel,leftEndPixel, defaultLeftPos],
             value: [0,240,240, 0],
             update: ()=>{
               let labelValue = this.slider_vIn.getValue()
@@ -219,7 +218,7 @@ const sliders = {
             },
             complete:()=>{
               if(currentDifferenceIndex_vGs < differences_vGs.length){
-                vIn_accept_range = [0,40,80,120,160,200,240] 
+                vIn_accept_range = [0,40,80,120,160,200,leftEndPixel] 
 
                 // * show arrow for vGs
                 Dom.setBlinkArrowRed(true,0,328,35,null,-90).play()
@@ -258,16 +257,16 @@ const sliders = {
         this.slider_vIn.set(34,-44,23).zIndex(10)
         this.slider_vIn_label.set(185,-10)
 
-        this.slider_vGs.set(4,364-18,23).zIndex(10)
-        this.slider_vGs_label.set(242,364-18)
+        this.slider_vGs.set(15,347,23).zIndex(10)
+        this.slider_vGs_label.set(248,343)
         
         this.slider_R.set(329,362-18,23).zIndex(10)
-        this.slider_R_label.set(502,364-18)
+        this.slider_R_label.set(502,347)
 
         
         // ! vGs onclick
-        var differences = [4,20,73,127,179,222];
-        var vals_vGs = [0,2,4,6,8,10]
+        var differences = [43,70,96,123,150,176,202,222];
+        var vals_vGs = [2,4,6,8,10,12,14,16]
         var currentDifferenceIndex = 0;
         // for the slider vgs
         var value_vGs = 0
@@ -307,7 +306,8 @@ const sliders = {
         // ! vIn onclick 
         this.slider_vIn.item.onclick = ()=>{
           let value_vIn = 200
-          this.sliderAnime(this.slider_vIn,0,value_vIn,159)
+          let leftEndPixel = 162
+          this.sliderAnime(this.slider_vIn,0,value_vIn,leftEndPixel)
 
           // * show arrow for vGs
           Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
