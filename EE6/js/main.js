@@ -1362,8 +1362,9 @@ const Scenes = {
         Scenes.items.graph_box_1.set(493,173,null,451).zIndex(10)
         let ctx = Scenes.items.graph1.item
         let graphIdx = 0
-        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
-        let yLabel = "Drain Current (I<sub>D</sub>)"
+        let yLabel = "Collector Current (I<subC</sub>)"
+        let xLabel = "Collector-to-Emitter Voltage(V<sub>CE</sub>)"
+
         let dataLabel = ""
         // for setting xy label of graph in position
         function setXYLabel(){
@@ -1704,8 +1705,9 @@ const Scenes = {
         Scenes.items.graph_box_2.set(511,131,282,432).zIndex(10)
         let ctx = Scenes.items.graph2.item
         let graphIdx = 1
-        let xLabel = "Dra to source voltage (V<sub>DS</sub>)"
-        let yLabel = "Drain Current (I<sub>D</sub>)"
+        let xLabel = "Collector-to-Emitter Voltage(V<sub>CE</sub>)"
+        let yLabel = "Collector Current (I<subC</sub>)"
+
         let dataLabel = ""
         // for setting xy label of graph in position
         function setXYLabel(){
@@ -2011,8 +2013,8 @@ const Scenes = {
         Scenes.items.graph_box_3.set(557,167,242,385).zIndex(10)
         let ctx = Scenes.items.graph3.item
         let graphIdx = 2
-        let xLabel = "Gate to source voltage (V<sub>GS</sub>)"
-        let yLabel = "Drain Current (I<sub>D</sub>)"
+        let xLabel = "Gate-to-Emitter Voltage(V<sub>GE</sub>)"
+        let yLabel = "Collector Current (I<subC</sub>)"
         let dataLabel = "vDS = 50"
         // ploting empty graph
         let graphRef = Scenes.plotGraph(ctx,graphIdx,[],dataLabel,xLabel,yLabel,true)
@@ -2198,7 +2200,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 5
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()
