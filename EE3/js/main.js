@@ -1157,9 +1157,11 @@ part1_box1 : new Dom(".part1_box1"),
           setCC(textSelectBox)
         }
       }
+      let checkCnnctn = "";
+      let wrongNoTimes = "";
 
       let reset = function(){
-
+            Dom.setBlinkArrowRed(-1)
             frontText.show()
             showFrontText(false)
             
@@ -1205,13 +1207,10 @@ part1_box1 : new Dom(".part1_box1"),
         // Scenes.steps[2]()  
       }
 
-      let checkCnnctn = "";
-      let wrongNoTimes = "";
-
       let check = function(){
         Dom.setBlinkArrowRed(-1)
         console.log(checkCnnctn)
-        if(checkCnnctn == "11111"){
+        if(checkCnnctn == "111111"){
         Scenes.items.part1_crrct_text.set(10,40, null, 790)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play()
@@ -1490,9 +1489,9 @@ part1_box1 : new Dom(".part1_box1"),
 
     //! function to set the element
     let toSet = function(){
-      
       resetActive += "1";
-      console.log("reset active", resetActive)
+      
+      console.log(resetActive)
 
       if(resetActive == "111111"){
         Dom.setBlinkArrowRed(true,690,-18,30,30,90).play()
@@ -1501,6 +1500,7 @@ part1_box1 : new Dom(".part1_box1"),
           animeObj.pause()
         })
       }
+    
       
       let boxName = compo.box
       let itemName = compo.item
