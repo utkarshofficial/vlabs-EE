@@ -161,7 +161,7 @@ const sliders = {
               rotate: niddle_vGs_deg[currentDifferenceIndex_vGs],
               complete(){
                 // * show arrow for vIn
-                Dom.setBlinkArrowRed(true,13,-89,35,null,-90).play()
+                Dom.setBlinkArrowRed(true,53,-89,35,null,-90).play()
                 setCC("Select V<sub>in</sub>")
               }
             })
@@ -244,7 +244,7 @@ const sliders = {
         // ! R onclick 
         this.slider_R.item.onclick = ()=>{
           let value_R = 50
-          var left = 304
+          var left = 323
           this.sliderAnime(this.slider_R,0,value_R,left)
 
           // * show arrow for vGs

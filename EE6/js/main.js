@@ -892,7 +892,7 @@ const Scenes = {
     switch(step){
       case "1_1" : 
         instructionImg = Scenes.items.part_1_1_instruction_box.set(0,0).zIndex(50).hide()
-        procedureImg = Scenes.items.part_1_1_procedure_box.set(-150,-540).zIndex(50).hide()
+        procedureImg = Scenes.items.part_1_1_procedure_box.set(-150,-500).zIndex(50).hide()
         nomenclatureImg = Scenes.items.part_1_1_nomenclature_box.set(-374,null,800).zIndex(50).hide()
         conclusionImg = Scenes.items.part_1_1_conclusion_box.set(null,-140,600).zIndex(50).hide()
         break;
@@ -1226,7 +1226,7 @@ const Scenes = {
           "#181818",
           "#cf426d",
           "#560056",
-        ]
+      ]
 
 
       function hideConnectionStepImgs(){
@@ -1347,14 +1347,14 @@ const Scenes = {
       partConnections()
 
       //! Graph Part
-    function partCalculation(){
+      function partCalculation(){
         // for recrod btn
         let recordBtnIdx = 0
         Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
         Scenes.items.btn_plot.set(517, 381, 34, 70).zIndex(10)
-        Scenes.items.btn_procedure.set(494, 130, 39)
-        Scenes.items.btn_nomenclature.set(620, 132, 37, 160)
-        Scenes.items.btn_conclusion.set(787, 132, 37)
+        Scenes.items.btn_procedure.set(494, -75, 39)
+        Scenes.items.btn_nomenclature.set(620, -75, 37, 160)
+        Scenes.items.btn_conclusion.set(787, -75, 37)
         // * Calling slider
         sliders.showSliderFor("1_1")
 
@@ -1377,7 +1377,7 @@ const Scenes = {
         
         // let table = new Dom(".part_2_table").set(600,-76).item
 
-        let table = new Dom(".part3_table_two").set(493,-76).zIndex(10).item
+        let table = new Dom(".part3_table_two").set(493,-35).zIndex(10).item
 
         // * assume tempTitle10 as a btn record
         let btn_record = sliders.btn_record.item
@@ -1404,8 +1404,9 @@ const Scenes = {
             9:4,
             10:5,
           }
-          let first_vGs_value = 4
-          let last_vGs_value = 15
+
+          let first_vGs_value = 6
+          let last_vGs_value = 10
           let vGs_value = sliders.slider_vGs.getValue()
           let vIn_value = sliders.slider_vIn.getValue()
           let R_value = sliders.slider_R.getValue()
@@ -1689,14 +1690,14 @@ const Scenes = {
         setCC("Select R")
         
         Scenes.items.part_1_2_calculations.set(3,-70,480,963)
-        Scenes.items.btn_procedure.set(511,87,37).zIndex(10)
-        Scenes.items.btn_nomenclature.set(624,87,37,160).zIndex(10)
-        Scenes.items.btn_conclusion.set(787, 87, 37).zIndex(10)
+        Scenes.items.btn_procedure.set(511,-57,37).zIndex(10)
+        Scenes.items.btn_nomenclature.set(624,-57,37,160).zIndex(10)
+        Scenes.items.btn_conclusion.set(787, -57, 37).zIndex(10)
 
         // neddle vGs rotate (-1,multipoint) deg
-        Scenes.items.niddle_vGs.set(547,32,74).rotate(-1).zIndex(10)
+        Scenes.items.niddle_vGs.set(547,71,74).rotate(-1).zIndex(10)
         // neddle vIn rotate (-1,126) deg
-        Scenes.items.niddle_vIn.set(765,31,74).rotate(-1).zIndex(10)
+        Scenes.items.niddle_vIn.set(765,71,74).rotate(-1).zIndex(10)
 
         // * Calling slider
         sliders.showSliderFor("1_2")
@@ -1743,11 +1744,11 @@ const Scenes = {
           updateValues(vIn_value,vGs_value,R_value)
 
           let vGs_idx = {
-            4:1,
-            6:2,
+            6:1,
+            7:2,
             8:3,
-            10:4,
-            15:5,
+            9:4,
+            10:5,
           }
           let first_vGs_value = 4
           let last_vGs_value = 15
@@ -2200,7 +2201,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 5
+Scenes.currentStep = 3
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()
