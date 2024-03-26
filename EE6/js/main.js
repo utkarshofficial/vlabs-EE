@@ -320,23 +320,26 @@ const textToSpeach = (text) => {
 let ccQueue = [];
 // for subtitile
 let ccObj = null;
-function setCC(text = null, speed = 25) {
+function setCC(text = null, speed = 25,typeText = true) {
   if (ccObj != null) {
     ccObj.destroy();
   }
 
   let ccDom = get(".steps-subtitle .subtitle");
-  ccQueue.push(text);
-  ccObj = new Typed(ccDom, {
-    strings: ["", ...ccQueue],
-    typeSpeed: speed,
-    onStringTyped() {
-      ccQueue.shift();
-      // if(ccQueue.length != 0){
-      //   setCC(ccQueue.shift())
-      // }
-    },
-  });
+  if(typeText){
+    ccQueue.push(text);
+    ccObj = new Typed(ccDom, {
+      strings: ["", ...ccQueue],
+      typeSpeed: speed,
+      onStringTyped() {
+        ccQueue.shift();
+        // if(ccQueue.length != 0){
+        //   setCC(ccQueue.shift())
+        // }
+      },
+    });
+  }
+  
   if (!isMute) textToSpeach(text);
   return ccDom;
 }
@@ -640,6 +643,7 @@ const Scenes = {
         select_option_full : new Dom("select_option_full"),
         slider_thumb : new Dom("slider_thumb"),
         part_2_instruction_box : new Dom("part_2_instruction_box"),
+        btn_procedure_calculations : new Dom("btn_procedure_calculations"),
     
 
 
@@ -867,10 +871,11 @@ const Scenes = {
   //* for hover on instuction , procedure and nomenclature
 
   // not done yet
+  popupImgHoverdConclusion:[false,false,false],
   showPopup(step){
 
     let instructionBtn = Scenes.items.btn_instructions.zIndex(100)
-    let procedureBtn = Scenes.items.btn_procedure.zIndex(100)
+    let procedureBtn = Scenes.items.btn_procedure_calculations.zIndex(100)
     let nomenclatureBtn = Scenes.items.btn_nomenclature.zIndex(100)
     let conclusionBtn = Scenes.items.btn_conclusion.zIndex(100)
     let instructionImg, procedureImg, nomenclatureImg, conclusionImg;
@@ -889,12 +894,19 @@ const Scenes = {
       conclusionBtn,
     ]
 
+    let speakConclusion = null
+    let calledFor = -1 // index of conclusion btn
+
     switch(step){
       case "1_1" : 
         instructionImg = Scenes.items.part_1_1_instruction_box.set(0,0).zIndex(50).hide()
         procedureImg = Scenes.items.part_1_1_procedure_box.set(-150,-500).zIndex(50).hide()
         nomenclatureImg = Scenes.items.part_1_1_nomenclature_box.set(-374,null,800).zIndex(50).hide()
         conclusionImg = Scenes.items.part_1_1_conclusion_box.set(null,-140,600).zIndex(50).hide()
+        speakConclusion = ()=>{
+          setCC("From these experiments and the plots it is clear that, Since IGBT is a voltage controlled device, by changing the gate-to-emitter voltage, the output characteristics were generated. These characteristics clearly display three operating regions of IGBT which are cutoff, linear and saturation.",25,false)
+        }
+        calledFor = 0
         break;
 
       case "1_2" :  
@@ -902,6 +914,10 @@ const Scenes = {
         procedureImg = Scenes.items.part_1_2_procedure_box.set(-100,80,500).hide().zIndex(50)
         nomenclatureImg = Scenes.items.part_1_2_nomenclature_box.set(-100,0,400).hide().zIndex(50)
         conclusionImg = Scenes.items.part_1_1_conclusion_box.set(10,5,700).hide().zIndex(50)
+        speakConclusion = ()=>{
+          setCC("From these experiments and the plots it is clear that, Since IGBT is a voltage controlled device, by changing the gate-to-emitter voltage, the output characteristics were generated. These characteristics clearly display three operating regions of IGBT which are cutoff, linear and saturation.",25,false)
+        }
+        calledFor = 1
         break;
 
       case "2" :  
@@ -909,6 +925,10 @@ const Scenes = {
         procedureImg = Scenes.items.part_2_procedure_box.set(-80,-100,500).hide().zIndex(50)
         nomenclatureImg = Scenes.items.part_2_nomenclature_box.set(-100,0,500).hide().zIndex(50)
         conclusionImg = Scenes.items.part_1_1_conclusion_box.set(10,-10,700).hide().zIndex(50)
+        speakConclusion = ()=>{
+          setCC("From these experiments and the plots it is clear that, In IGBT, the collector current increases with increasing gate-to-emitter voltage.")
+        }
+        calledFor = 2
         break;
     }
 
@@ -920,16 +940,17 @@ const Scenes = {
 
     let showProcedureImg = function(){
       procedureImg.show().zIndex(40)
-
     }
 
     let showNomenclatureImg = function(){
       nomenclatureImg.show().zIndex(40)
-
     }
     let showConclusionImg = function(){
       conclusionImg.show().zIndex(40)
-
+      if(!Scenes.popupImgHoverdConclusion[calledFor]){
+        speakConclusion()
+        Scenes.popupImgHoverdConclusion[calledFor] = true
+      }
     }
     
     let hideInstructionImg = function(){
@@ -938,7 +959,6 @@ const Scenes = {
 
     let hideProcedureImg = function(){
       procedureImg.hide()
-
     }
 
     let hideNomenclatureImg = function(){
@@ -1087,7 +1107,6 @@ const Scenes = {
     }),
     //! EE6 step 1
     (step1 = function () {
-      setIsProcessRunning(true);
       Scenes.items.btn_next.show();
 
       // todo all previous elements hide
@@ -1095,7 +1114,7 @@ const Scenes = {
       Scenes.items.contentAdderBox.item.innerHTML = "";
 
       Scenes.setStepHeading("Step-1", "To Plot Different Characteristics.");
-      // setCC("Click on the 'ICON' to plot the performance characteristics.")
+      setCC("Click on the 'ICON' to plot the characteristics.")
 
       // * remove all previous restrictions
 
@@ -1129,30 +1148,33 @@ const Scenes = {
       const opOne = () => {
         Scenes.optionsDone[0] = 1;
         Scenes.forMathematicalExpressionBtn = 1;
-        Scenes.steps[0 + 3]();
-      };
+        Scenes.currentStep = 3
+        Scenes.next()
+      }
       const opTwo = () => {
         Scenes.optionsDone[1] = 1;
         Scenes.forMathematicalExpressionBtn = 2;
-        Scenes.steps[1 + 3]();
-      };
+        Scenes.currentStep = 4
+        Scenes.next()
+      }
       const opThree = () => {
         Scenes.optionsDone[2] = 1;
         Scenes.forMathematicalExpressionBtn = 3;
-        Scenes.steps[2 + 3]();
-      };
+        Scenes.currentStep = 5
+        Scenes.next()
+      }
       const opFour = () => {
         Scenes.optionsDone[3] = 1;
         Scenes.forMathematicalExpressionBtn = 4;
         Scenes.steps[3 + 3]();
-      };
+      }
       options[0].item.onclick = opOne;
       options[1].item.onclick = opTwo;
       options[2].item.onclick = opThree;
       options[3].item.onclick = opFour;
 
       // ! if all options done then exit
-      let exit = true;
+      let exit = true
       for (let i of Scenes.optionsDone) {
         if (i == 0) {
           exit = false;
@@ -1286,7 +1308,7 @@ const Scenes = {
               
               if(btnClickedCount==8){
                 Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
-                setCC("Click on Connections Completed")
+                setCC("Click on 'Connections Completed'")
 
                 Scenes.items.btn_connections.item.onclick = ()=>{}
               }
@@ -1300,7 +1322,7 @@ const Scenes = {
         })
 
         Dom.setBlinkArrowRed(true,745,250,35,null,180).play()
-        setCC("Click on Connections")
+        setCC("Click on 'Make Connections'")
 
         //! Onclick for check connections
         Scenes.items.btn_connectons_completed.item.onclick = ()=>{
@@ -1326,7 +1348,7 @@ const Scenes = {
                 Scenes.items.part_1_slide_3_compo_2_text.hide()
 
                 Dom.setBlinkArrowRed(true,748,360,35,null,180).play()
-                setCC("Click on Start Experiment")
+                setCC("Click on 'Begin Experiment'")
                 partConnectionsIsComplete = true
               }
             }
@@ -1348,11 +1370,14 @@ const Scenes = {
 
       //! Graph Part
       function partCalculation(){
+        // show arrow for R
+        Dom.setBlinkArrowRed(true,254,310,35,null,-90).play()
+        setCC("Select R")
         // for recrod btn
         let recordBtnIdx = 0
         Scenes.items.part_1_1_calculations.set(-15,-70,480,983)
         Scenes.items.btn_plot.set(517, 381, 34, 70).zIndex(10)
-        Scenes.items.btn_procedure.set(494, -75, 39)
+        Scenes.items.btn_procedure_calculations.set(494, -75, 35,123)
         Scenes.items.btn_nomenclature.set(620, -75, 37, 160)
         Scenes.items.btn_conclusion.set(787, -75, 37)
         // * Calling slider
@@ -1384,8 +1409,6 @@ const Scenes = {
         
         // * StepTutorial
         // show arrow for R
-        Dom.setBlinkArrowRed(true,254,320,35,null,-90).play()
-        setCC("Select R")
         // and other blink arrow is on sliders.js
         
         // ! btn_record onclick
@@ -1428,7 +1451,7 @@ const Scenes = {
             Scenes.items.btn_plot.item.onclick = ()=>{
               // shwo arrwo for vGs
               Dom.setBlinkArrowRed(true,0,320,35,null,-90).play()
-              setCC("Select V<sub>GS</sub>")
+              setCC("Select V<sub>GE</sub>")
 
               // goto default position for vIn value and recordBtnIdx = 0
               function resetFun(){
@@ -1470,9 +1493,13 @@ const Scenes = {
               // end the slide
               if(vGs_value==last_vGs_value){
                 Dom.setBlinkArrowRed(-1)
-                Dom.setBlinkArrow(true, 790, 544).play();
-                setCC("Click 'Next' to go to next step");
-                setIsProcessRunning(false);
+                Dom.setBlinkArrowRed(true,840,-30,null,null,90).play()
+                setCC("Goto 'Conclusion'")
+                setTimeout(()=>{
+                  Dom.setBlinkArrow(true, 790, 544).play();
+                  setCC("Click 'Next' to go to next step");
+                  setIsProcessRunning(false);
+                },25000)
                 // for going to the second step
                 Scenes.currentStep = 2
               }
@@ -1482,13 +1509,12 @@ const Scenes = {
 
       }
 
-
       //to show btn popup
       Scenes.showPopup("1_1")
 
       // todo remove
-      hideConnectionStepImgs()
-      partCalculation()
+      // hideConnectionStepImgs()
+      // partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_begin_experiment.item.onclick = ()=>{
@@ -1623,7 +1649,7 @@ const Scenes = {
               
               if(btnClickedCount==10){
                 Dom.setBlinkArrowRed(true,776,305,35,null,180).play()
-                setCC("Click on Connections Completed")
+                setCC("Click on 'Connections Completed'")
 
                 Scenes.items.btn_connections.item.onclick = ()=>{}
               }
@@ -1637,7 +1663,7 @@ const Scenes = {
         })
 
         Dom.setBlinkArrowRed(true,776,250,35,null,180).play()
-        setCC("Click on Connections")
+        setCC("Click on 'Make Connections'")
 
         //! Onclick for check connections
         Scenes.items.btn_connectons_completed.item.onclick = ()=>{
@@ -1663,7 +1689,7 @@ const Scenes = {
                 Scenes.items.component_2_on_text.hide()
 
                 Dom.setBlinkArrowRed(true,776,360,35,null,180).play()
-                setCC("Click on Start Experiment")
+                setCC("Click on 'Begin Experiment'")
                 partConnectionsIsComplete = true
               }
             }
@@ -1688,9 +1714,8 @@ const Scenes = {
         // show arrow for R
         Dom.setBlinkArrowRed(true,254,310,35,null,-90).play()
         setCC("Select R")
-        
         Scenes.items.part_1_2_calculations.set(3,-70,480,963)
-        Scenes.items.btn_procedure.set(511,-57,37).zIndex(10)
+        Scenes.items.btn_procedure_calculations.set(511,-57,37,110).zIndex(10)
         Scenes.items.btn_nomenclature.set(624,-57,37,160).zIndex(10)
         Scenes.items.btn_conclusion.set(787, -57, 37).zIndex(10)
 
@@ -1797,8 +1822,8 @@ const Scenes = {
       }
 
       // todo remove
-      hideConnectionStepImgs()
-      partCalculation()
+      // hideConnectionStepImgs()
+      //   partCalculation()
 
       //to show btn popup
       Scenes.showPopup("1_2")
@@ -1936,7 +1961,7 @@ const Scenes = {
               
               if(btnClickedCount==10){
                 Dom.setBlinkArrowRed(true,745,305,35,null,180).play()
-                setCC("Click on Connections Completed")
+                setCC("Click on 'Connections Completed'")
 
                 Scenes.items.btn_connections.item.onclick = ()=>{}
               }
@@ -1950,7 +1975,7 @@ const Scenes = {
         })
 
         Dom.setBlinkArrowRed(true,745,250,35,null,180).play()
-        setCC("Click on Connections")
+        setCC("Click on 'Make Connections'")
 
         //! Onclick for check connections
         Scenes.items.btn_connectons_completed.item.onclick = ()=>{
@@ -1976,11 +2001,10 @@ const Scenes = {
                 Scenes.items.component_2_on_text.hide()
 
                 Dom.setBlinkArrowRed(true,745,360,35,null,180).play()
-                setCC("Click on Start Experiment")
+                setCC("Click on 'Begin Experiment'")
                 partConnectionsIsComplete = true
               }
             }
-            
           }
           else{
             Scenes.items.part_1_incomplete_connection.set(570,300,50).zIndex(10)
@@ -2003,7 +2027,7 @@ const Scenes = {
         setCC("Select R")
 
         Scenes.items.part_2_calculations.set(0,-85,475,950)
-        Scenes.items.btn_procedure.set(785,-80,33)
+        Scenes.items.btn_procedure_calculations.set(785,-80,33,110)
         Scenes.items.btn_nomenclature.set(785,-38,30)
         Scenes.items.btn_conclusion.set(785, 2, 37)
         Scenes.items.btn_plot.set(785,70,50).zIndex(10)
@@ -2062,9 +2086,13 @@ const Scenes = {
               Scenes.graphFeatures.addData(graphRef,0,data)
 
               Dom.setBlinkArrowRed(-1)
-              Dom.setBlinkArrow(true, 790, 544).play();
-              setCC("Click 'Next' to go to next step");
-              setIsProcessRunning(false);
+              Dom.setBlinkArrowRed(true,840,45,null,null,90).play()
+                setCC("Goto 'Conclusion'")
+                setTimeout(()=>{
+                  Dom.setBlinkArrow(true, 790, 544).play();
+                  setCC("Click 'Next' to go to next step");
+                  setIsProcessRunning(false);
+                },25000)
               // for going to the second step
               Scenes.currentStep = 2
             }
@@ -2077,8 +2105,8 @@ const Scenes = {
       Scenes.showPopup("2")
 
       // todo remove
-      hideConnectionStepImgs()
-      partCalculation()
+//  hideConnectionStepImgs()
+//   partCalculation()
 
       //! onclick start btn
       Scenes.items.btn_start_experiment.item.onclick = ()=>{
@@ -2201,7 +2229,7 @@ const Scenes = {
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 3
+Scenes.currentStep = 2
 Scenes.next()
 // Scenes.steps[3]()
 // Scenes.next()

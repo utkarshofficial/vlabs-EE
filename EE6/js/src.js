@@ -146,6 +146,7 @@ select_option_2:this.allImgsDom[index++],
 select_option_full:this.allImgsDom[index++],
 slider_thumb:this.allImgsDom[index++],
 part_2_instruction_box:this.allImgsDom[index++],
+btn_procedure_calculations:this.allImgsDom[index++],
 
 
       // * Question Mark

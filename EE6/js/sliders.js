@@ -44,7 +44,7 @@ const sliders = {
 
         
         // ! vGs onclick
-        var differences_vGs = [80, 103, 128, 131, 175];
+        var differences_vGs = [80, 103, 128, 153, 175];
         var vals_vGs = [6,7,8,9,10]
         var currentDifferenceIndex_vGs = 0;
         // for the slider vgs
@@ -114,7 +114,7 @@ const sliders = {
 
           // * show arrow for vGs
           Dom.setBlinkArrowRed(true,0,320,35,null,-90).play()
-          setCC("Select V<sub>GS</sub>")
+          setCC("Select v<sub>GE</sub>")
           
         }
         break
@@ -222,14 +222,17 @@ const sliders = {
 
                 // * show arrow for vGs
                 Dom.setBlinkArrowRed(true,0,328,35,null,-90).play()
-                setCC("Select V<sub>GS</sub>") 
+                setCC("Select v<sub>GE</sub>") 
               }
               else{
                 currentDifferenceIndex_vGs++
-                Dom.setBlinkArrowRed(-1)
-                Dom.setBlinkArrow(true, 790, 544).play();
-                setCC("Click 'Next' to go to next step");
-                setIsProcessRunning(false);
+                Dom.setBlinkArrowRed(true,840,-15,null,null,90).play()
+                setCC("Goto 'Conclusion'")
+                setTimeout(()=>{
+                  Dom.setBlinkArrowRed(true, 790, 444).play();
+                  setCC("Click 'Next' to go to next step");
+                  setIsProcessRunning(false);
+                },25000)
                 // for going to the second step
                 Scenes.currentStep = 2
               }
@@ -249,7 +252,7 @@ const sliders = {
 
           // * show arrow for vGs
           Dom.setBlinkArrowRed(true,0,328,35,null,-90).play()
-          setCC("Select V<sub>GS</sub>")
+          setCC("Select v<sub>GE</sub>")
         }
         break
         
@@ -293,7 +296,7 @@ const sliders = {
             else{
               // * show arrow for vGs
               Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
-              setCC("Select V<sub>GS</sub>")
+              setCC("Select v<sub>GE</sub>")
             }
             
             currentDifferenceIndex++;
@@ -311,7 +314,7 @@ const sliders = {
 
           // * show arrow for vGs
           Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
-          setCC("Select V<sub>GS</sub>")
+          setCC("Select v<sub>GE</sub>")
         }
 
         // ! R onclick 
@@ -321,7 +324,7 @@ const sliders = {
 
           // * show arrow for vGs
           Dom.setBlinkArrowRed(true,0,302,35,null,-90).play()
-          setCC("Select V<sub>GS</sub>")
+          setCC("Select v<sub>GE</sub>")
         }
         break
     }
